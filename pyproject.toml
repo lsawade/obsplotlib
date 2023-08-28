@@ -2,8 +2,8 @@
 # replace with your username:
 name = "obsplotlib"
 description = "Plotting Tools for waveforms from Obspy"
-version = "0.0.1"
 readme = "README.md"
+dynamic = ["version"]
 requires-python = ">=3.10"
 license = {file = "LICENSE", name = "GPLv3+"}
 authors = [
@@ -56,5 +56,11 @@ opl = "obsplotlib.__main.__:main"
 # package-data = {"obsplotlib" = ["example_data/**"]}
 
 [build-system]
-requires = ["setuptools>=43.0.0", "wheel"]
+requires = [
+    "setuptools >= 65",
+    "setuptools_scm[toml]",
+    "wheel"]
 build-backend = "setuptools.build_meta"
+[tool.setuptools_scm]
+write_to = "src/obsplotlib/_version.py"
+version_scheme = "release-branch-semver"

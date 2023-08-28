@@ -1,9 +1,88 @@
+import obspy
 import typing as tp
 from matplotlib.axes import Axes
 import matplotlib.pyplot as plt
 from mpl_toolkits.axes_grid1.inset_locator import InsetPosition
-from obspy.core.util.attribdict import AttribDict
-# Just reusing the AttribDict from ObsPy
+
+
+def add_header(ax,
+               station: str | None = None,
+               station_latitude: float | None = None,
+               station_longitude: float | None = None,
+               station_azimuth: float | None = None,
+               station_back_azimuth: float | None = None,
+               station_distance_in_degree: float | None = None,
+               event: str | None = None,
+               event_time: obspy.UTCDateTime | None = None,
+               event_latitude: float | None = None,
+               event_longitude: float | None = None,
+               event_depth_in_km: float | None = None,
+               event_Mw: float | None = None,
+               bandpass: tp.List[float] | None = None,
+               add_newline_event: bool = False,
+               add_newline_station: bool = False,
+               **kwargs):
+
+    label = ""
+
+    if event is not None:
+        label += f"{event}: "
+
+    if add_newline_event:
+        label += "\n  "
+
+    if event_time is not None:
+        label += f"{event_time.strftime('%Y-%m-%d %H:%M:%S')}  "
+
+    if event_latitude is not None:
+        label += f"La {event_latitude:.3f} "
+
+    if event_longitude is not None:
+        label += f"Lo {event_longitude:.3f} "
+
+    if event_depth_in_km is not None:
+        label += f"Dp {event_depth_in_km:.3f}km"
+
+    if event_Mw is not None:
+        label += f"Mw: {event_Mw:.2f}"
+
+    if any([event, event_time, event_latitude, event_longitude,
+            event_depth_in_km, event_Mw]):
+        label += "\n"
+
+    if station is not None:
+        label += f"{station}: "
+
+    if add_newline_station:
+        label += "\n  "
+
+    if station_latitude is not None:
+        label += f"La {station_latitude:.3f} "
+
+    if station_longitude is not None:
+        label += f"Lo: {station_longitude:.3f} "
+
+    if station_azimuth is not None:
+        label += f"Az: {station_azimuth:.1f} "
+
+    if station_back_azimuth is not None:
+        label += f"Baz: {station_back_azimuth:.1f} "
+
+    if station_distance_in_degree is not None:
+        label += f"Dist: {station_distance_in_degree:.3f}dg "
+
+    if bandpass is not None:
+        label += f"- Bp: {bandpass[0]:d}-{bandpass[1]:d}s"
+
+    # Set some default kwargs for plot_label
+    if 'fontsize' not in kwargs:
+        kwargs['fontsize'] = 'medium'
+
+    if 'location' not in kwargs:
+        kwargs['location'] = 6
+
+    # Finally add label
+    plot_label(ax, label, box=False, **kwargs)
 
 
 def adjust_spines(ax: Axes, spines):

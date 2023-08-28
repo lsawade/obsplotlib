@@ -5,20 +5,63 @@ import numpy as np
 import typing as tp
 
 
-def trace_max(tr,
-              absolute: bool = True,
-              window: bool = False,
-              limits: None | tp.Tuple[obspy.UTCDateTime, obspy.UTCDateTime] = None):
+def get_max(streams: tp.List[obspy.Stream] | obspy.Stream | obspy.Trace,
+            *args, **kwargs) -> float:
 
-    if limits is not None and not window:
+    if isinstance(streams, obspy.Trace):
+        return trace_max(streams, *args, **kwargs)
+    elif isinstance(streams, obspy.Stream):
+        return stream_max(streams, *args, **kwargs)
+    elif isinstance(streams, list) and isinstance(streams[0], obspy.Stream):
+        return stream_set_max(streams, *args, **kwargs)
+    else:
+        raise ValueError('streams must be either a Trace, Stream or a list of '
+                         'streams.')
 
-        # Get data
-        data = tr.data
+
+def trace_max(
+        tr: obspy.Trace,
+        absolute: bool = True,
+        window: bool = False,
+        traveltime: bool = False,
+        limits: None | tp.Tuple[obspy.UTCDateTime, obspy.UTCDateTime] |
+        tp.Tuple[float, float] = None):
+    """Get trace max value given certain parameters
+
+    Parameters
+    ----------
+    tr : obspy.Trace
+        obspy trace to be analyzed
+    absolute : bool, optional
+        whether to output absolute max, by default True, by default True
+    window : bool, optional
+        window, by default False
+    limits : None | tp.Tuple[obspy.UTCDateTime, obspy.UTCDateTime], optional
+        limits, by default None
+    """
+
+    if window:
+
+        raise ValueError("``Window`` not yet implemented.")
+
+    elif limits is not None:
+
+        if isinstance(limits[0], obspy.UTCDateTime):
+            starttime = limits[0]
+            endtime = limits[1]
+        elif traveltime:
+            starttime = tr.stats.origin_time + tr.stats.traveltime + limits[0]
+            endtime = tr.stats.origin_time + tr.stats.traveltime + limits[1]
+        else:
+            starttime = tr.stats.origin_time + limits[0]
+            endtime = tr.stats.origin_time + limits[1]
+
+        _tr = tr.copy().slice(starttime, endtime)
 
         if absolute:
-            return float(np.max(np.abs(data)))
+            return float(np.max(np.abs(_tr.data)))
         else:
-            return float(np.max(data))
+            return float(np.max(_tr.data))
 
     else:
         if absolute:
@@ -27,25 +70,23 @@ def trace_max(tr,
             return float(np.max(tr.data))
 
 
-def stream_max(st: obspy.Stream, **kwargs) -> float:
+def stream_max(st: obspy.Stream, *args, **kwargs) -> float:
     """Return the (absolute) maximum absolute value of a stream.
 
     Parameters
     ----------
     st : obspy.Stream
         Stream to be analyzed
-    abs : bool, optional
-        whether to output absolute max, by default True
-    limits: tuple(obspy.UTCDateTime, obspy.UTCDateTime), optional
-        check values only with window.
-    traveltime: bool, optional
-        Check with respect to stats.traveltime, by default False
+    *args, **kwargs : optional
+        pass to trace_max
 
     Returns
     -------
     float
         absolute maximum value of the all traces in stream
     """
+
+    return np.max([trace_max(tr, *args, **kwargs) for tr in st])
 
 
 def stream_min(st: obspy.Stream, absolute: bool = True) -> float:
@@ -70,15 +111,15 @@ def stream_min(st: obspy.Stream, absolute: bool = True) -> float:
         return float(np.min([np.min(tr.data) for tr in st]))
 
 
-def stream_set_max(streams: tp.List[obspy.Stream], absolute=True) -> float:
+def stream_set_max(streams: tp.List[obspy.Stream], *args, **kwargs) -> float:
     """Return the maximum absolute value of a list of streams.
 
     Parameters
     ----------
     streams : list of obspy.Stream
         Streams to be analyzed
-    abs : bool, optional
-        whether to output absolute min, by default True
+    *args, **kwargs : optional
+        pass to stream_max
 
     Returns
     -------
@@ -86,7 +127,7 @@ def stream_set_max(streams: tp.List[obspy.Stream], absolute=True) -> float:
         maximum absolute value of the all traces in streams
     """
 
-    return np.max([stream_max(st, absolute=absolute) for st in streams])
+    return np.max([stream_max(st, *args, **kwargs) for st in streams])
 
 
 def stream_set_min(streams: tp.List[obspy.Stream], absolute=True) -> float:
@@ -222,7 +263,8 @@ def attach_geometry(st: obspy.Stream,
                 latA, lonA, latB, lonB)
 
             for tr in subset:
-                if inv is None:
+                if not hasattr(tr.stats, 'latitude') and \
+                        not hasattr(tr.stats, 'longitude'):
                     tr.stats.latitude = latB
                     tr.stats.longitude = lonB
                 tr.stats.distance = dist_in_m/1000/(40000/360)
@@ -248,7 +290,7 @@ def copy_geometry(st: obspy.Stream, st2: obspy.Stream | tp.List[obspy.Stream]):
     networks, stations, _, _ = get_station_params(st)
 
     # Make sure
-    if isinstance(st2, Stream):
+    if isinstance(st2, obspy.Stream):
         st2 = [st2,]
 
     # Loop over stations
@@ -270,6 +312,46 @@ def copy_geometry(st: obspy.Stream, st2: obspy.Stream | tp.List[obspy.Stream]):
                 trace.stats.distance = tr.stats.distance
                 trace.stats.back_azimuth = tr.stats.back_azimuth
                 trace.stats.azimuth = tr.stats.azimuth
+
+
+def copy_trace_param(st: obspy.Stream, st2: obspy.Stream | tp.List[obspy.Stream],
+                     param: str):
+    """Copies the station location, distance to event and back azimuth from
+    one stream to one other or a list of other streams.
+
+    Parameters
+    ----------
+    st : Stream
+        stream with station information in stats
+    st2 : Stream | tp.List[Stream]
+        stream to a trace parameter to from st
+
+    """
+
+    # Get station names
+    networks, stations, _, _ = get_station_params(st)
+
+    # Make sure
+    if isinstance(st2, obspy.Stream):
+        st2 = [st2,]
+
+    # Loop over stations
+    for network, station in zip(networks, stations):
+
+        # Get trace
+        stationstream = st.select(network=network, station=station)
+
+        # Loop over streams
+        for stream in st2:
+
+            # Select traces
+            sub_stream = stream.select(network=network, station=station)
+
+            for trace in sub_stream:
+
+                tr = stationstream.select(component=trace.stats.component)[0]
+
+                setattr(trace.stats, param, getattr(tr.stats, param))
 
 
 def get_azimuth_distance_traveltime(

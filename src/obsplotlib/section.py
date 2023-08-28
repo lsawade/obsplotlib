@@ -3,7 +3,6 @@ import matplotlib.dates as mdates
 import matplotlib.axes
 import matplotlib.pyplot as plt
 import typing as tp
-from obspy.geodetics.base import locations2degrees, gps2dist_azimuth
 import obspy
 from .utils import plot_label
 
@@ -11,7 +10,7 @@ from . import stream_utils as su
 
 
 def section(streams: tp.List[obspy.Stream], *args,
-            event_origin_time: obspy.UTCDateTime | None = None,
+            origin_time: obspy.UTCDateTime | None = None,
             ax: matplotlib.axes.Axes | None = None, comp='Z',
             limits: tp.Tuple[obspy.UTCDateTime] | None = None,
             scale: float = 1.0,
@@ -19,6 +18,7 @@ def section(streams: tp.List[obspy.Stream], *args,
             labels=['Observed', 'Synthetic', 'New'],
             legendargs: dict | None = None,
             align: bool = False,
+            absmax: float | None = None,
             **kwargs):
 
     # If axes is None generate new axes
@@ -50,8 +50,8 @@ def section(streams: tp.List[obspy.Stream], *args,
     # If align is True, check all traces for traveltime and window
     if align:
 
-        if event_origin_time is None:
-            raise ValueError('event_origin_time must be given if align=True \n'
+        if origin_time is None:
+            raise ValueError('origin_time must be given if align=True \n'
                              'since traveltime is with respect to origin')
 
         if not su.param_in_streams(streams, 'traveltime', dtype=float):
@@ -59,18 +59,49 @@ def section(streams: tp.List[obspy.Stream], *args,
 
     # Get scaling
     if limits is not None:
+
         slicestart = limits[0]
         sliceend = limits[1]
         maxs = []
+
+        # Get abs maxs for all streams in the windows specificed by limits
         for _st in pstreams:
-            maxs.append(np.max([np.max(np.abs(_tr.copy().slice(slicestart, sliceend).data))
-                                for _tr in _st]))
-        absmax = np.max(maxs)
+            streammaxs = []
+
+            for _tr in _st:
+
+                if origin_time is not None:
+
+                    slicestart = origin_time + limits[0]
+                    sliceend = origin_time + limits[1]
+
+                    if align:
+                        tt = _tr.stats.traveltime
+                        slicestart += tt
+                        sliceend += tt
+
+                else:
+                    slicestart = limits[0]
+                    sliceend = limits[1]
+
+                streammaxs.append(
+                    np.max(np.abs(_tr.copy().slice(slicestart, sliceend).data)))
+
+            maxs.append(streammaxs)
+
+        if absmax is None:
+            absmax = np.max(maxs)
+
     else:
         maxs = []
         for _st in pstreams:
-            maxs.append(np.max([np.max(np.abs(_tr.data)) for _tr in _st]))
-        absmax = np.max(maxs)
+            streammaxs = []
+            for _tr in _st:
+                streammaxs.append(np.max(np.abs(_tr.data)))
+            maxs.append(streammaxs)
+
+        if absmax is None:
+            absmax = np.max(maxs)
 
     # Plot overall max amplitude label
     plot_label(ax, f'max|u|: {absmax:.5g} m',
@@ -83,11 +114,20 @@ def section(streams: tp.List[obspy.Stream], *args,
     # Number of stations
     y = np.arange(1, 1*len(pstreams[0])+1, 1)
 
-    # Set ylabels on the left axis to station info
+    # Define ylabels on the left axis to station info
+    ylabels = []
+    for tr in pstreams[0]:
+        ylabel = f"{tr.stats.network}.{tr.stats.station}\n" \
+            f"D:{tr.stats.distance:>6.2f}"
+
+        if hasattr(tr.stats, 'azimuth'):
+            ylabel += f"\nAz: {tr.stats.azimuth:>5.1f}"
+
+        ylabels.append(ylabel)
+
+    # Set labels
     ax.set_yticks(
-        y, [f"{tr.stats.network}.{tr.stats.station}\n"
-            f"D:{tr.stats.distance:>6.2f}\n"
-            f"Az: {tr.stats.azimuth:>5.1f}" for tr in pstreams[0]],
+        y, ylabels,
         verticalalignment='center',
         horizontalalignment='right',
         fontsize='small')
@@ -100,7 +140,7 @@ def section(streams: tp.List[obspy.Stream], *args,
     for _i in range(Ntraces):
         label = ""
         for _j in range(Nstreams):
-            label += f"{labels[_j][0].upper()}:{np.max(np.abs(pstreams[_j][_i].data)):>10.4g}"
+            label += f"{labels[_j][0].upper()}:{maxs[_j][_i]:>10.4g}"
             # Add newline if not last trace
             if Nstreams > 1 and _j != Nstreams - 1:
                 label += "\n"
@@ -119,17 +159,13 @@ def section(streams: tp.List[obspy.Stream], *args,
     ax2.tick_params(left=False, right=False)
 
     # Set time arguments for the plotting
-    if event_origin_time is not None:
-        time_args = dict(type='relative', reftime=event_origin_time)
+    if origin_time is not None:
+        time_args = dict(type='relative', reftime=origin_time)
     else:
         time_args = dict(type='matplotlib')
 
     # Normalize
     for _i in range(Ntraces):
-
-        # Get max values
-        absmax = np.max([np.max(np.abs(pstreams[_j][_i].data))
-                         for _j in range(Nstreams)])
 
         for _j in range(Nstreams):
 
@@ -137,6 +173,10 @@ def section(streams: tp.List[obspy.Stream], *args,
                 label = labels[_j]
             else:
                 label = None
+
+            if align:
+                tt = pstreams[_j][_i].stats.traveltime
+                time_args['reftime'] = origin_time + tt
 
             plt.plot(
                 pstreams[_j][_i].times(**time_args),
@@ -155,7 +195,7 @@ def section(streams: tp.List[obspy.Stream], *args,
         plt.legend(**legendargs)
 
     # Format x axis to have the date
-    if event_origin_time is None:
+    if origin_time is None:
         ax.xaxis_date()
         ax.xaxis.set_major_formatter(
             mdates.ConciseDateFormatter(ax.xaxis.get_major_locator()))
@@ -168,15 +208,23 @@ def section(streams: tp.List[obspy.Stream], *args,
         ax.set_xlim(limits)
         plt.xlabel('Time since origin (s)')
 
+    # Set y limits
+    ylim = y[0] - 1.25, y[-1] + 1.25
+    ax.set_ylim(ylim)
+    ax2.set_ylim(ylim)
+
 
 def section_multiple_comp(
-    *args, figsize=(12, 4.5),
-    components: str = "NEZ",
-    legendargs: dict | None = None,
+        streams: tp.List[obspy.Stream],
+        *args, components: str = "NEZ",
+        legendargs: dict | None = None,
+        absmax: float | None = None,
+        align: bool = False,
+        limits: tp.Tuple[obspy.UTCDateTime] | tp.Tuple[float] | None = None,
         **kwargs):
 
-    fig = plt.figure(figsize=figsize)
     axes = []
+
     for _i, comp in enumerate(components):
         if _i == len(components) - 1:
             print(_i, 'legendargs')
@@ -186,7 +234,20 @@ def section_multiple_comp(
 
         ax = plt.subplot(1, len(components), _i+1)
 
-        section(*args, ax=ax, comp=comp, legendargs=_legendargs, **kwargs)
+        # Get overall absmax
+        if absmax is None:
+
+            # Check if traveltime is needed
+            if align and limits is not None:
+                traveltime = True
+            else:
+                traveltime = False
+
+            # Get absmax
+            absmax = su.get_max(streams, traveltime=traveltime, limits=limits)
+
+        section(streams, *args, ax=ax, comp=comp, legendargs=_legendargs,
+                limits=limits, absmax=absmax, align=align, **kwargs)
 
         if _i > 0:
             ax.tick_params(labelleft=False)
@@ -195,4 +256,4 @@ def section_multiple_comp(
 
     plt.subplots_adjust(left=0.075, right=0.9, top=0.875, wspace=0.45)
 
-    return fig, axes
+    return axes

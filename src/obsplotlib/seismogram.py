@@ -15,7 +15,7 @@ def trace(
         nooffset: bool = False,
         colors: list = ['k', 'r', 'b'],
         labels: tp.List[str] = ['Observed', 'Synthetic', 'New Synthetic'],
-        event_origin_time: obspy.UTCDateTime | None = None,
+        origin_time: obspy.UTCDateTime | None = None,
         lw: list | float = 1.0,
         ls: list | str = '-',
         absmax: float | None = None,
@@ -50,9 +50,9 @@ def trace(
     if limits is not None:
         starttime, endtime = limits
 
-    # Set some label arguments and time normalization if event_origin_time
+    # Set some label arguments and time normalization if origin_time
     # is given
-    if event_origin_time is not None:
+    if origin_time is not None:
 
         # Get total time delta either from the limits or from the endtimes
         # of the traces compared to the event origin time
@@ -61,7 +61,7 @@ def trace(
         else:
             latest_endtime: obspy.UTCDateTime = max(
                 [tr.stats.endtime for tr in traces])
-            delta = latest_endtime - event_origin_time
+            delta = latest_endtime - origin_time
 
         # After computing the delta decide which unit to use
         if delta > 1800:
@@ -75,12 +75,12 @@ def trace(
             xdiv = 1
 
     else:
-        # If no event_origin_time is given, use matplotlib time
+        # If no origin_time is given, use matplotlib time
         xlabel = 'Time'
         xdiv = 1
 
     # Given the divisor, get the corrected x axis limits
-    if limits is not None and event_origin_time is not None:
+    if limits is not None and origin_time is not None:
         limits = [lim / xdiv for lim in limits]
 
     # Get max amplitude
@@ -128,8 +128,8 @@ def trace(
         absmax_off = 0.1 * absmax
 
     # Set time arguments for the plotting
-    if event_origin_time is not None:
-        time_args = dict(type='relative', reftime=event_origin_time)
+    if origin_time is not None:
+        time_args = dict(type='relative', reftime=origin_time)
     else:
         time_args = dict(type='matplotlib')
 
@@ -139,8 +139,8 @@ def trace(
         # Get time vector
         t = _tr.times(**time_args)
 
-        # Normalize time if event_origin_time is given
-        if event_origin_time is not None:
+        # Normalize time if origin_time is given
+        if origin_time is not None:
             t /= xdiv
 
         # plot trace
@@ -156,25 +156,25 @@ def trace(
         station = traces[0].stats.station
         component = traces[0].stats.channel[-1]
         plot_label(ax, f'{network}.{station}.{component}', dist=0.025,
-                   location=3, fontsize='medium', box=False)
+                   location=3, fontsize='small', box=False)
 
         # Plot label if absmax automatically determined
         if not absmax_given:
             plot_label(
-                ax, f'|A|max: {absmax:.5g} m', dist=0,
-                fontsize='xx-small', box=False)
+                ax, f'|A|max: {absmax:.5g} m', dist=0.025,
+                fontsize='small', box=False)
 
     # Set limits
     if limits is not None:
 
         # Set datetime limits if no event origin time is given
-        if event_origin_time is None:
+        if origin_time is None:
             ax.set_xlim([lim.datetime for lim in limits])
         else:
             ax.set_xlim(limits)
 
     # Set labels and formatting there of
-    if event_origin_time is None:
+    if origin_time is None:
 
         ax.xaxis_date()
         ax.xaxis.set_major_formatter(
@@ -200,21 +200,19 @@ def trace(
     # Add legend
     if legend:
         plt.legend(frameon=False, loc='upper right',
-                   ncol=3, fontsize='x-small')
+                   ncol=3)
 
     return ax
 
 
 def station(streams: tp.List[obspy.Stream] | obspy.Stream, *args,
             components: str = "ZRT",
-            headerdict: dict | None = None,
             **kwargs):
 
     # Make sure a list of streams is parsed
     if isinstance(streams, obspy.Stream):
         streams = [streams]
 
-    fig = plt.figure()
     axes = []
 
     for _i, comp in enumerate(components):
@@ -233,9 +231,17 @@ def station(streams: tp.List[obspy.Stream] | obspy.Stream, *args,
         trace(traces, *args, ax=ax, legend=_legend, plot_labels=False,
               **kwargs)
 
+        # Plot component label
+        plot_label(ax, comp, dist=0.025, fontsize='medium', box=False,
+                   location=13)
+
         # Format x axis to have the date
         if _i < len(components) - 1:
             ax.spines.bottom.set_visible(False)
             ax.tick_params(bottom=False)
 
+        axes.append(ax)
+
     plt.subplots_adjust(hspace=0.0)
+
+    return axes

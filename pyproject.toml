@@ -62,5 +62,5 @@ requires = [
     "wheel"]
 build-backend = "setuptools.build_meta"
 [tool.setuptools_scm]
-write_to = "src/obsplotlib/_version.py"
+write_to = "src/obsplotlib/__version__.py"
 version_scheme = "release-branch-semver"

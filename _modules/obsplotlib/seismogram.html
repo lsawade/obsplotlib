@@ -1,0 +1,568 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+
+    <!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
+        <title>obsplotlib.seismogram - obsplotlib 0.1.0.dev15+gdbc8ba6 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">obsplotlib 0.1.0.dev15+gdbc8ba6 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  
+  <span class="sidebar-brand-text">obsplotlib 0.1.0.dev15+gdbc8ba6 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/index.html">Tutorial of all function</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/run_tutorial.html"><code class="docutils literal notranslate"><span class="pre">obsplotlib</span></code> Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <h1>Source code for obsplotlib.seismogram</h1><div class="highlight"><pre>
+<span></span>
+<span class="kn">import</span> <span class="nn">obspy</span>
+<span class="kn">import</span> <span class="nn">typing</span> <span class="k">as</span> <span class="nn">tp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.axes</span>
+<span class="kn">import</span> <span class="nn">matplotlib.dates</span> <span class="k">as</span> <span class="nn">mdates</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">plot_label</span>
+
+
+<div class="viewcode-block" id="trace"><a class="viewcode-back" href="../../api.html#obsplotlib.seismogram.trace">[docs]</a><span class="k">def</span> <span class="nf">trace</span><span class="p">(</span>
+        <span class="n">traces</span><span class="p">:</span> <span class="n">tp</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="n">obspy</span><span class="o">.</span><span class="n">Trace</span><span class="p">]</span> <span class="o">|</span> <span class="n">obspy</span><span class="o">.</span><span class="n">Trace</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+        <span class="n">ax</span><span class="p">:</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">Axes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">limits</span><span class="p">:</span> <span class="n">tp</span><span class="o">.</span><span class="n">Tuple</span><span class="p">[</span><span class="n">obspy</span><span class="o">.</span><span class="n">UTCDateTime</span><span class="p">,</span> <span class="n">obspy</span><span class="o">.</span><span class="n">UTCDateTime</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">nooffset</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">colors</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">],</span>
+        <span class="n">labels</span><span class="p">:</span> <span class="n">tp</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Observed&#39;</span><span class="p">,</span> <span class="s1">&#39;Synthetic&#39;</span><span class="p">,</span> <span class="s1">&#39;New Synthetic&#39;</span><span class="p">],</span>
+        <span class="n">origin_time</span><span class="p">:</span> <span class="n">obspy</span><span class="o">.</span><span class="n">UTCDateTime</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">lw</span><span class="p">:</span> <span class="nb">list</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">ls</span><span class="p">:</span> <span class="nb">list</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span>
+        <span class="n">absmax</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">normalization_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">=</span> <span class="s1">&#39;all&#39;</span><span class="p">,</span>
+        <span class="n">plot_labels</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">legend</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot a single or a list of traces.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    traces : tp.List[obspy.Trace] | obspy.Trace</span>
+<span class="sd">        obspy.Trace or list of traces</span>
+<span class="sd">    ax : matplotlib.axes.Axes | None, optional</span>
+<span class="sd">        plot into existing axes, by default None</span>
+<span class="sd">    limits : tp.Tuple[obspy.UTCDateTime, obspy.UTCDateTime] | None, optional</span>
+<span class="sd">        set axes limits to UTCDateTimes or floats if origin_time is given,</span>
+<span class="sd">        by default None</span>
+<span class="sd">    nooffset : bool, optional</span>
+<span class="sd">        if you are comparing two traces they are automatically offset, set True</span>
+<span class="sd">        if you don&#39;t want that, by default False</span>
+<span class="sd">    colors : list, optional</span>
+<span class="sd">        list of colors for traces, has to be same length or longer than</span>
+<span class="sd">        the number of traces provided, by default [&#39;k&#39;, &#39;r&#39;, &#39;b&#39;]</span>
+<span class="sd">    labels : tp.List[str], optional</span>
+<span class="sd">        list of colors for labels, has to be same length or longer than</span>
+<span class="sd">        the number of traces provided,</span>
+<span class="sd">        by default [&#39;Observed&#39;, &#39;Synthetic&#39;, &#39;New Synthetic&#39;]</span>
+<span class="sd">    origin_time : obspy.UTCDateTime | None, optional</span>
+<span class="sd">        plot traces with respect to some origin time, by default None</span>
+<span class="sd">    lw : list | float, optional</span>
+<span class="sd">        line width(s) can be single float or list thereof. List has to be same</span>
+<span class="sd">        length or longer than the number of traces provided, by default 1.0</span>
+<span class="sd">    ls : list | str, optional</span>
+<span class="sd">        line styles(s) can be single float or list thereof. List has to be same</span>
+<span class="sd">        length or longer than the number of traces provided, by default &#39;-&#39;</span>
+<span class="sd">    absmax : float | None, optional</span>
+<span class="sd">        normalize traces with respect to a specific absmax, by default None</span>
+<span class="sd">    normalization_type : str | int, optional</span>
+<span class="sd">        finds absmax to normalize by with respect trace with this index or with</span>
+<span class="sd">        respect to &#39;all&#39; traces, by default &#39;all&#39;</span>
+<span class="sd">    plot_labels : bool, optional</span>
+<span class="sd">        Plot trace label, absmax amplitude, by default True</span>
+<span class="sd">    legend : bool, optional</span>
+<span class="sd">        plot a legend or not, by default True</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    matplotlib.axes.Axes</span>
+<span class="sd">        returns axes that the traces have been plotted to</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        Wrong normalization type input</span>
+<span class="sd">    ValueError</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">traces</span><span class="p">,</span> <span class="n">obspy</span><span class="o">.</span><span class="n">Trace</span><span class="p">):</span>
+        <span class="n">traces</span> <span class="o">=</span> <span class="p">[</span><span class="n">traces</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lw</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lw</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">lw</span> <span class="o">=</span> <span class="p">[</span><span class="n">lw</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">traces</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ls</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">ls</span> <span class="o">=</span> <span class="p">[</span><span class="n">ls</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">traces</span><span class="p">)</span>
+
+    <span class="c1"># Check if normalization_type is valid</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">normalization_type</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">normalization_type</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">traces</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;normalization_type must be smaller than the &#39;</span>
+                             <span class="s1">&#39;number of streams&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">normalization_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="s1">&#39;first&#39;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s1">&#39;normalization_type must be either &quot;all&quot; or &quot;first&quot;&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Get limits and timedelta</span>
+    <span class="k">if</span> <span class="n">limits</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">starttime</span><span class="p">,</span> <span class="n">endtime</span> <span class="o">=</span> <span class="n">limits</span>
+
+    <span class="c1"># Set some label arguments and time normalization if origin_time</span>
+    <span class="c1"># is given</span>
+    <span class="k">if</span> <span class="n">origin_time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+        <span class="c1"># Get total time delta either from the limits or from the endtimes</span>
+        <span class="c1"># of the traces compared to the event origin time</span>
+        <span class="k">if</span> <span class="n">limits</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">delta</span> <span class="o">=</span> <span class="n">limits</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">limits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">latest_endtime</span><span class="p">:</span> <span class="n">obspy</span><span class="o">.</span><span class="n">UTCDateTime</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span>
+                <span class="p">[</span><span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">endtime</span> <span class="k">for</span> <span class="n">tr</span> <span class="ow">in</span> <span class="n">traces</span><span class="p">])</span>
+            <span class="n">delta</span> <span class="o">=</span> <span class="n">latest_endtime</span> <span class="o">-</span> <span class="n">origin_time</span>
+
+        <span class="c1"># After computing the delta decide which unit to use</span>
+        <span class="k">if</span> <span class="n">delta</span> <span class="o">&gt;</span> <span class="mi">1800</span><span class="p">:</span>
+            <span class="n">xlabel</span> <span class="o">=</span> <span class="s1">&#39;Time since origin [min]&#39;</span>
+            <span class="n">xdiv</span> <span class="o">=</span> <span class="mi">60</span>
+        <span class="k">elif</span> <span class="n">delta</span> <span class="o">&gt;</span> <span class="mi">10800</span><span class="p">:</span>
+            <span class="n">xlabel</span> <span class="o">=</span> <span class="s1">&#39;Time since origin [h]&#39;</span>
+            <span class="n">xdiv</span> <span class="o">=</span> <span class="mi">3600</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">xlabel</span> <span class="o">=</span> <span class="s1">&#39;Time since origin [s]&#39;</span>
+            <span class="n">xdiv</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># If no origin_time is given, use matplotlib time</span>
+        <span class="n">xlabel</span> <span class="o">=</span> <span class="s1">&#39;Time&#39;</span>
+        <span class="n">xdiv</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="c1"># Given the divisor, get the corrected x axis limits</span>
+    <span class="k">if</span> <span class="n">limits</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">origin_time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">limits</span> <span class="o">=</span> <span class="p">[</span><span class="n">lim</span> <span class="o">/</span> <span class="n">xdiv</span> <span class="k">for</span> <span class="n">lim</span> <span class="ow">in</span> <span class="n">limits</span><span class="p">]</span>
+
+    <span class="c1"># Get max amplitude</span>
+    <span class="k">if</span> <span class="n">absmax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+        <span class="k">if</span> <span class="n">normalization_type</span> <span class="o">==</span> <span class="s1">&#39;all&#39;</span><span class="p">:</span>
+
+            <span class="n">absmaxs</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">tr</span> <span class="ow">in</span> <span class="n">traces</span><span class="p">:</span>
+
+                <span class="c1"># Copy the traces</span>
+                <span class="n">trc</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+                <span class="c1"># Only consider amplitude within limits for normalization</span>
+                <span class="k">if</span> <span class="n">limits</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">trc</span><span class="o">.</span><span class="n">trim</span><span class="p">(</span><span class="n">starttime</span><span class="o">=</span><span class="n">starttime</span><span class="p">,</span> <span class="n">endtime</span><span class="o">=</span><span class="n">endtime</span><span class="p">)</span>
+
+                <span class="c1"># Get max amplitudeof each trace</span>
+                <span class="n">absmaxs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">trc</span><span class="o">.</span><span class="n">data</span><span class="p">)))</span>
+
+        <span class="k">elif</span> <span class="n">normalization_type</span> <span class="o">==</span> <span class="s1">&#39;first&#39;</span><span class="p">:</span>
+
+            <span class="c1"># Copy the traces</span>
+            <span class="n">trc</span> <span class="o">=</span> <span class="n">traces</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+            <span class="c1"># Only consider amplitude within limits for normalization</span>
+            <span class="k">if</span> <span class="n">limits</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">trc</span><span class="o">.</span><span class="n">trim</span><span class="p">(</span><span class="n">starttime</span><span class="o">=</span><span class="n">starttime</span><span class="p">,</span> <span class="n">endtime</span><span class="o">=</span><span class="n">endtime</span><span class="p">)</span>
+
+            <span class="c1"># Get max amplitudeof each trace</span>
+            <span class="n">absmaxs</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">trc</span><span class="o">.</span><span class="n">data</span><span class="p">))]</span>
+
+        <span class="c1"># Get absmax of all traces</span>
+        <span class="n">absmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">absmaxs</span><span class="p">)</span>
+
+        <span class="c1"># absmax_given</span>
+        <span class="n">absmax_given</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">absmax_given</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># Define offset for two traces</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">traces</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">nooffset</span><span class="p">:</span>
+        <span class="n">absmax_off</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">absmax_off</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">absmax</span>
+
+    <span class="c1"># Set time arguments for the plotting</span>
+    <span class="k">if</span> <span class="n">origin_time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">time_args</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;relative&#39;</span><span class="p">,</span> <span class="n">reftime</span><span class="o">=</span><span class="n">origin_time</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">time_args</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;matplotlib&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Loop over set of traces</span>
+    <span class="k">for</span> <span class="n">_j</span><span class="p">,</span> <span class="n">_tr</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">traces</span><span class="p">):</span>
+
+        <span class="c1"># Get time vector</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">_tr</span><span class="o">.</span><span class="n">times</span><span class="p">(</span><span class="o">**</span><span class="n">time_args</span><span class="p">)</span>
+
+        <span class="c1"># Normalize time if origin_time is given</span>
+        <span class="k">if</span> <span class="n">origin_time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">/=</span> <span class="n">xdiv</span>
+
+        <span class="c1"># plot trace</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">_tr</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="n">absmax_off</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">_j</span><span class="p">),</span>
+                 <span class="n">ls</span><span class="p">[</span><span class="n">_j</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">_j</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="n">lw</span><span class="p">[</span><span class="n">_j</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">labels</span><span class="p">[</span><span class="n">_j</span><span class="p">],</span>
+                 <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1"># Axis limits and indicator</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.15</span><span class="o">*</span><span class="n">absmax</span><span class="p">,</span> <span class="mf">1.15</span><span class="o">*</span><span class="n">absmax</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">plot_labels</span><span class="p">:</span>
+        <span class="n">network</span> <span class="o">=</span> <span class="n">traces</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">network</span>
+        <span class="n">station</span> <span class="o">=</span> <span class="n">traces</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">station</span>
+        <span class="n">component</span> <span class="o">=</span> <span class="n">traces</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">channel</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">plot_label</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">network</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">station</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">component</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="mf">0.025</span><span class="p">,</span>
+                   <span class="n">location</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;small&#39;</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="c1"># Plot label if absmax automatically determined</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">absmax_given</span><span class="p">:</span>
+            <span class="n">plot_label</span><span class="p">(</span>
+                <span class="n">ax</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;|A|max: </span><span class="si">{</span><span class="n">absmax</span><span class="si">:</span><span class="s1">.5g</span><span class="si">}</span><span class="s1"> m&#39;</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="mf">0.025</span><span class="p">,</span>
+                <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;small&#39;</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># Set limits</span>
+    <span class="k">if</span> <span class="n">limits</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+        <span class="c1"># Set datetime limits if no event origin time is given</span>
+        <span class="k">if</span> <span class="n">origin_time</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="n">lim</span><span class="o">.</span><span class="n">datetime</span> <span class="k">for</span> <span class="n">lim</span> <span class="ow">in</span> <span class="n">limits</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">limits</span><span class="p">)</span>
+
+    <span class="c1"># Set labels and formatting there of</span>
+    <span class="k">if</span> <span class="n">origin_time</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">xaxis_date</span><span class="p">()</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span>
+            <span class="n">mdates</span><span class="o">.</span><span class="n">ConciseDateFormatter</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_major_locator</span><span class="p">()))</span>
+
+        <span class="c1"># Rotate and align the tick labels so they look better.</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">autofmt_xdate</span><span class="p">()</span>
+
+        <span class="c1"># Add xlabel</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+
+        <span class="c1"># Add xlabel</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">)</span>
+
+    <span class="c1"># Unnecessary spines and ticks</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelleft</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="o">.</span><span class="n">top</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># Add legend</span>
+    <span class="k">if</span> <span class="n">legend</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span>
+                   <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ax</span></div>
+
+
+<div class="viewcode-block" id="station"><a class="viewcode-back" href="../../api.html#obsplotlib.seismogram.station">[docs]</a><span class="k">def</span> <span class="nf">station</span><span class="p">(</span><span class="n">streams</span><span class="p">:</span> <span class="n">tp</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="n">obspy</span><span class="o">.</span><span class="n">Stream</span><span class="p">]</span> <span class="o">|</span> <span class="n">obspy</span><span class="o">.</span><span class="n">Stream</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+            <span class="n">components</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;ZRT&quot;</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plots given set of components of stream(s). Is a wrapper around</span>
+<span class="sd">    .trace() so :func:`obsplotlib.seismogram.trace`. Streams should only</span>
+<span class="sd">    contain traces of a single station. Otherwise, result may be unpredictable.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    streams : tp.List[obspy.Stream] | obspy.Stream</span>
+<span class="sd">        Stream or list of Streams to compare.</span>
+<span class="sd">    components : str, optional</span>
+<span class="sd">        which components to plot, by default &quot;ZRT&quot;</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list of matplotlib.axes.Axes</span>
+<span class="sd">        Each axes contains a component. From top to bottom.</span>
+
+<span class="sd">    See also</span>
+<span class="sd">    --------</span>
+<span class="sd">    :func:`obsplotlib.seismogram.trace`</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Make sure a list of streams is parsed</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">streams</span><span class="p">,</span> <span class="n">obspy</span><span class="o">.</span><span class="n">Stream</span><span class="p">):</span>
+        <span class="n">streams</span> <span class="o">=</span> <span class="p">[</span><span class="n">streams</span><span class="p">]</span>
+
+    <span class="n">axes</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">_i</span><span class="p">,</span> <span class="n">comp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">components</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">_i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">_legend</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_legend</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="c1"># Get the traces for the component</span>
+        <span class="n">traces</span> <span class="o">=</span> <span class="p">[</span><span class="n">st</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">component</span><span class="o">=</span><span class="n">comp</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">st</span> <span class="ow">in</span> <span class="n">streams</span><span class="p">]</span>
+
+        <span class="c1"># Plot the trace</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">components</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">_i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">trace</span><span class="p">(</span><span class="n">traces</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="n">_legend</span><span class="p">,</span> <span class="n">plot_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+              <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="c1"># Plot component label</span>
+        <span class="n">plot_label</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="mf">0.025</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                   <span class="n">location</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+
+        <span class="c1"># Format x axis to have the date</span>
+        <span class="k">if</span> <span class="n">_i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">components</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="o">.</span><span class="n">bottom</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="n">axes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">axes</span></div>
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, Lucas Sawade
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/scripts/furo.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    </body>
+</html>

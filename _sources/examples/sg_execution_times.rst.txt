@@ -1,0 +1,13 @@
+
+:orphan:
+
+.. _sphx_glr_examples_sg_execution_times:
+
+
+Computation times
+=================
+**00:05.193** total execution time for **examples** files:
+
++----------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_run_tutorial.py` (``run_tutorial.py``) | 00:05.193 | 0.0 MB |
++----------------------------------------------------------------+-----------+--------+

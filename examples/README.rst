@@ -1,4 +1,0 @@
-Tutorial of all function
-========================
-
-

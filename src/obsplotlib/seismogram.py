@@ -23,6 +23,57 @@ def trace(
         plot_labels: bool = True,
         legend: bool = True,
         **kwargs):
+    """Plot a single or a list of traces.
+
+    Parameters
+    ----------
+    traces : tp.List[obspy.Trace] | obspy.Trace
+        obspy.Trace or list of traces
+    ax : matplotlib.axes.Axes | None, optional
+        plot into existing axes, by default None
+    limits : tp.Tuple[obspy.UTCDateTime, obspy.UTCDateTime] | None, optional
+        set axes limits to UTCDateTimes or floats if origin_time is given,
+        by default None
+    nooffset : bool, optional
+        if you are comparing two traces they are automatically offset, set True
+        if you don't want that, by default False
+    colors : list, optional
+        list of colors for traces, has to be same length or longer than
+        the number of traces provided, by default ['k', 'r', 'b']
+    labels : tp.List[str], optional
+        list of colors for labels, has to be same length or longer than
+        the number of traces provided,
+        by default ['Observed', 'Synthetic', 'New Synthetic']
+    origin_time : obspy.UTCDateTime | None, optional
+        plot traces with respect to some origin time, by default None
+    lw : list | float, optional
+        line width(s) can be single float or list thereof. List has to be same
+        length or longer than the number of traces provided, by default 1.0
+    ls : list | str, optional
+        line styles(s) can be single float or list thereof. List has to be same
+        length or longer than the number of traces provided, by default '-'
+    absmax : float | None, optional
+        normalize traces with respect to a specific absmax, by default None
+    normalization_type : str | int, optional
+        finds absmax to normalize by with respect trace with this index or with
+        respect to 'all' traces, by default 'all'
+    plot_labels : bool, optional
+        Plot trace label, absmax amplitude, by default True
+    legend : bool, optional
+        plot a legend or not, by default True
+
+    Returns
+    -------
+    matplotlib.axes.Axes
+        returns axes that the traces have been plotted to
+
+    Raises
+    ------
+    ValueError
+        Wrong normalization type input
+    ValueError
+
+    """
 
     if ax is None:
         ax = plt.gca()
@@ -208,6 +259,27 @@ def trace(
 def station(streams: tp.List[obspy.Stream] | obspy.Stream, *args,
             components: str = "ZRT",
             **kwargs):
+    """Plots given set of components of stream(s). Is a wrapper around
+    .trace() so :func:`obsplotlib.seismogram.trace`. Streams should only
+    contain traces of a single station. Otherwise, result may be unpredictable.
+
+    Parameters
+    ----------
+    streams : tp.List[obspy.Stream] | obspy.Stream
+        Stream or list of Streams to compare.
+    components : str, optional
+        which components to plot, by default "ZRT"
+
+    Returns
+    -------
+    list of matplotlib.axes.Axes
+        Each axes contains a component. From top to bottom.
+
+    See also
+    --------
+    :func:`obsplotlib.seismogram.trace`
+
+    """
 
     # Make sure a list of streams is parsed
     if isinstance(streams, obspy.Stream):

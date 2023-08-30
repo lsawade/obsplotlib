@@ -328,7 +328,7 @@ their actual distance, but one by one with a label that has the distance.
     plt.rcParams["font.family"] = "monospace"
 
     plt.figure(figsize=(8, 10))
-    opl.section(obs, lw=0.5)
+    opl.section(obs, lw=0.5, comp='T')
     plt.legend(frameon=False, loc='upper right', ncol=3, fontsize='small')
     plt.subplots_adjust(left=0.15, right=0.85, top=0.95, bottom=0.05)
     plt.show(block=False)
@@ -444,8 +444,8 @@ add_traveltime function or manually using your own function.
 .. code-block:: default
 
 
-    obs_filtered = opl.add_traveltime(obs, event_depth_in_m=event_depth, phase='love',
-                                      orbit=1, return_filtered=True, vlove=6.5)
+    obs_filtered = opl.add_traveltime(obs, phase='love', orbit=1,
+                                      return_filtered=True, vlove=6.5)
 
 
 
@@ -518,7 +518,7 @@ time range before and after the arrival times.
 
 Let's also plot a section aligned to the P arrival times.
 
-.. GENERATED FROM PYTHON SOURCE LINES 259-271
+.. GENERATED FROM PYTHON SOURCE LINES 259-272
 
 .. code-block:: default
 
@@ -529,34 +529,39 @@ Let's also plot a section aligned to the P arrival times.
     limits = [-100, 150]
 
     plt.figure(figsize=(8, 6))
-    opl.section(obs_filtered, origin_time=event_time, limits=limits, lw=0.5,
-                align=True)
-    plt.subplots_adjust(left=0.25, right=0.8, top=0.95, bottom=0.05)
+    ax, ax2 = opl.section(obs_filtered, origin_time=event_time, limits=limits, lw=0.5,
+                          align=True)
+    ax.plot([0, 0], [-0.5, len(obs_filtered) + 0.5], 'k--', lw=0.5)
+    plt.subplots_adjust(left=0.15, right=0.85, top=0.95, bottom=0.1)
     plt.show(block=False)
 
 
 
+.. rst-class:: sphx-glr-script-out
 
-.. image-sg:: /examples/images/sphx_glr_run_tutorial_010.svg
-   :alt: run tutorial
-   :srcset: /examples/images/sphx_glr_run_tutorial_010.svg
-   :class: sphx-glr-single-img
+.. code-block:: pytb
+
+    Traceback (most recent call last):
+      File "/home/runner/work/obsplotlib/obsplotlib/examples/run_tutorial.py", line 266, in <module>
+        ax, ax2 = opl.section(obs_filtered, origin_time=event_time, limits=limits, lw=0.5,
+    TypeError: cannot unpack non-iterable NoneType object
 
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 272-279
+.. GENERATED FROM PYTHON SOURCE LINES 273-282
 
 Note that we have fewer traces here because some land in the Pwave shadow zone
-and are not recorded but seismographs. So far we have only plotted a single
+and are not recorded but seismographs. Also note, that ax, and ax2 give you
+axes to the left and right yaxes. ax and ax2 ticks actually set the left and
+right y axes labels. So far we have only plotted a single
 component (Z) in the section. ``obsplotlib`` also has a function to plot
 multiple components in a single section. This is done using the
 ``opl.section_multiple_comp`` function. This function takes the same arguments
 But insted of being a single letter string, the components argument is a
 string with all components to be plotted in order.
 
-.. GENERATED FROM PYTHON SOURCE LINES 279-287
+.. GENERATED FROM PYTHON SOURCE LINES 282-293
 
 .. code-block:: default
 
@@ -565,28 +570,14 @@ string with all components to be plotted in order.
     axes = opl.section_multiple_comp(obs_filtered, origin_time=event_time,
                                      limits=limits, lw=0.5, align=True,
                                      components="ZRT")
+    for ax, _ in axes:
+        ax.plot([0, 0], [-0.5, len(obs_filtered) + 0.5], 'k--', lw=0.5)
+
     plt.subplots_adjust(left=0.15, right=0.85, top=0.95, bottom=0.05, wspace=0.75)
     plt.show(block=False)
 
 
-
-
-.. image-sg:: /examples/images/sphx_glr_run_tutorial_011.svg
-   :alt: run tutorial
-   :srcset: /examples/images/sphx_glr_run_tutorial_011.svg
-   :class: sphx-glr-single-img
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    2 legendargs
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 288-291
+.. GENERATED FROM PYTHON SOURCE LINES 294-297
 
 One main difference is that the section multiple components will find an
 absmax to normalize across all streams and traces. This can be overwritten by
@@ -595,7 +586,7 @@ absmax parameter which can be manually set.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 7.917 seconds)
+   **Total running time of the script:** (0 minutes 6.734 seconds)
 
 
 .. _sphx_glr_download_examples_run_tutorial.py:

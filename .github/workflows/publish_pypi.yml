@@ -25,11 +25,9 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Install pypa/build
-        run: >-
-          python3 -m
-          pip install
-          build
-          --user
+        run: |
+          python3 -m pip install .
+          python3 -m pip install build --user
 
       - name: Build a binary wheel and a source tarball
         run: >-

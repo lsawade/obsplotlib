@@ -263,15 +263,17 @@ obs_filtered = opl.add_traveltime(obs, event_depth_in_m=event_depth, phase='P',
 limits = [-100, 150]
 
 plt.figure(figsize=(8, 6))
-opl.section(obs_filtered, origin_time=event_time, limits=limits, lw=0.5,
-            align=True)
-plt.plot([0, 0], [-0.5, len(obs_filtered) + 0.5], 'k--', lw=0.5)
+ax, ax2 = opl.section(obs_filtered, origin_time=event_time, limits=limits, lw=0.5,
+                      align=True)
+ax.plot([0, 0], [-0.5, len(obs_filtered) + 0.5], 'k--', lw=0.5)
 plt.subplots_adjust(left=0.15, right=0.85, top=0.95, bottom=0.1)
 plt.show(block=False)
 
 # %%
 # Note that we have fewer traces here because some land in the Pwave shadow zone
-# and are not recorded but seismographs. So far we have only plotted a single
+# and are not recorded but seismographs. Also note, that ax, and ax2 give you
+# axes to the left and right yaxes. ax and ax2 ticks actually set the left and
+# right y axes labels. So far we have only plotted a single
 # component (Z) in the section. ``obsplotlib`` also has a function to plot
 # multiple components in a single section. This is done using the
 # ``opl.section_multiple_comp`` function. This function takes the same arguments
@@ -282,8 +284,9 @@ plt.figure(figsize=(9, 5))
 axes = opl.section_multiple_comp(obs_filtered, origin_time=event_time,
                                  limits=limits, lw=0.5, align=True,
                                  components="ZRT")
-for ax in axes:
+for ax, _ in axes:
     ax.plot([0, 0], [-0.5, len(obs_filtered) + 0.5], 'k--', lw=0.5)
+
 plt.subplots_adjust(left=0.15, right=0.85, top=0.95, bottom=0.05, wspace=0.75)
 plt.show(block=False)
 
@@ -291,5 +294,3 @@ plt.show(block=False)
 # One main difference is that the section multiple components will find an
 # absmax to normalize across all streams and traces. This can be overwritten by
 # absmax parameter which can be manually set.
-
-# %%

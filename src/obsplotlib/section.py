@@ -213,6 +213,8 @@ def section(streams: tp.List[obspy.Stream], *args,
     ax.set_ylim(ylim)
     ax2.set_ylim(ylim)
 
+    return ax, ax2
+
 
 def section_multiple_comp(
         streams: tp.List[obspy.Stream],
@@ -246,13 +248,13 @@ def section_multiple_comp(
             # Get absmax
             absmax = su.get_max(streams, traveltime=traveltime, limits=limits)
 
-        section(streams, *args, ax=ax, comp=comp, legendargs=_legendargs,
-                limits=limits, absmax=absmax, align=align, **kwargs)
+        ax, ax2 = section(streams, *args, ax=ax, comp=comp, legendargs=_legendargs,
+                          limits=limits, absmax=absmax, align=align, **kwargs)
 
         if _i > 0:
             ax.tick_params(labelleft=False)
 
-        axes.append(ax)
+        axes.append((ax, ax2))
 
     plt.subplots_adjust(left=0.075, right=0.9, top=0.875, wspace=0.45)
 

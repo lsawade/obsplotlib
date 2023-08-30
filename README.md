@@ -13,7 +13,9 @@ more info that the generic obspy plotting tools.
 pip install obsplotlib
 ```
 
-## [Github](http://github.com/lsawade/obsplotlib)
-## [Documentation](http://lsawade.github.io/obsplotlib)
-## [Tutorial](https://lsawade.github.io/obsplotlib/examples/run_tutorial.html#sphx-glr-examples-run-tutorial-py)
+## Links
+
+[Github](http://github.com/lsawade/obsplotlib)
+[Documentation](http://lsawade.github.io/obsplotlib)
+[Tutorial](https://lsawade.github.io/obsplotlib/examples/run_tutorial.html#sphx-glr-examples-run-tutorial-py)
 

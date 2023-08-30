@@ -16,7 +16,7 @@ Loading all modules
 """
 # sphinx_gallery_thumbnail_number = 1
 # sphinx_gallery_dummy_images = 1
-# %%
+
 from obsplotlib.seismogram import station
 import obspy
 import obsplotlib.plot as opl

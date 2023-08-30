@@ -181,7 +181,7 @@ plt.show(block=False)
 plt.rcParams["font.family"] = "monospace"
 
 plt.figure(figsize=(8, 10))
-opl.section(obs, lw=0.5)
+opl.section(obs, lw=0.5, comp='T')
 plt.legend(frameon=False, loc='upper right', ncol=3, fontsize='small')
 plt.subplots_adjust(left=0.15, right=0.85, top=0.95, bottom=0.05)
 plt.show(block=False)
@@ -225,8 +225,8 @@ plt.show(block=False)
 # a obspy.Trace.stats.traveltime parameter. This can be done using the
 # add_traveltime function or manually using your own function.
 
-obs_filtered = opl.add_traveltime(obs, event_depth_in_m=event_depth, phase='love',
-                                  orbit=1, return_filtered=True, vlove=6.5)
+obs_filtered = opl.add_traveltime(obs, phase='love', orbit=1,
+                                  return_filtered=True, vlove=6.5)
 
 # %%
 # Note that the add traveltime function uses the TauPy model by default for
@@ -265,7 +265,8 @@ limits = [-100, 150]
 plt.figure(figsize=(8, 6))
 opl.section(obs_filtered, origin_time=event_time, limits=limits, lw=0.5,
             align=True)
-plt.subplots_adjust(left=0.25, right=0.8, top=0.95, bottom=0.05)
+plt.plot([0, 0], [-0.5, len(obs_filtered) + 0.5], 'k--', lw=0.5)
+plt.subplots_adjust(left=0.15, right=0.85, top=0.95, bottom=0.1)
 plt.show(block=False)
 
 # %%
@@ -281,6 +282,8 @@ plt.figure(figsize=(9, 5))
 axes = opl.section_multiple_comp(obs_filtered, origin_time=event_time,
                                  limits=limits, lw=0.5, align=True,
                                  components="ZRT")
+for ax in axes:
+    ax.plot([0, 0], [-0.5, len(obs_filtered) + 0.5], 'k--', lw=0.5)
 plt.subplots_adjust(left=0.15, right=0.85, top=0.95, bottom=0.05, wspace=0.75)
 plt.show(block=False)
 

@@ -1,4 +1,4 @@
-Tutorial of all function
-========================
+Tutorial of all functions
+=========================
 
 

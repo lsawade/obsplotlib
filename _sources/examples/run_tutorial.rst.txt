@@ -31,20 +31,10 @@ liking.
 Loading all modules
 -------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 17-17
+.. GENERATED FROM PYTHON SOURCE LINES 17-23
 
 .. code-block:: default
 
-
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 20-25
-
-.. code-block:: default
 
     from obsplotlib.seismogram import station
     import obspy
@@ -544,7 +534,6 @@ Let's also plot a section aligned to the P arrival times.
     Traceback (most recent call last):
       File "/home/runner/work/obsplotlib/obsplotlib/examples/run_tutorial.py", line 266, in <module>
         ax, ax2 = opl.section(obs_filtered, origin_time=event_time, limits=limits, lw=0.5,
-        ^^^^^^^
     TypeError: cannot unpack non-iterable NoneType object
 
 
@@ -587,7 +576,7 @@ absmax parameter which can be manually set.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 6.140 seconds)
+   **Total running time of the script:** (0 minutes 5.266 seconds)
 
 
 .. _sphx_glr_download_examples_run_tutorial.py:

@@ -1,4 +1,4 @@
-name: Documentation
+name: Build and Publish to PyPi and TestPyPi
 on:
   push:
     branches: [ main ]

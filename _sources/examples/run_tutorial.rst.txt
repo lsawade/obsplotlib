@@ -18,8 +18,8 @@
 .. _sphx_glr_examples_run_tutorial.py:
 
 
-``obsplotlib`` Tutorial
-=======================
+Full ``obsplotlib`` Tutorial
+============================
 
 The tutorial will go over the plotting functions in ``obsplotlib`` and how to
 prepare your data to plot traces, station seismograms and full seismic sections
@@ -31,12 +31,11 @@ liking.
 Loading all modules
 -------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 17-23
+.. GENERATED FROM PYTHON SOURCE LINES 17-22
 
 .. code-block:: default
 
 
-    from obsplotlib.seismogram import station
     import obspy
     import obsplotlib.plot as opl
     import matplotlib.pyplot as plt
@@ -48,13 +47,13 @@ Loading all modules
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 26-29
+.. GENERATED FROM PYTHON SOURCE LINES 25-28
 
 Loading data
 ------------
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 30-34
+.. GENERATED FROM PYTHON SOURCE LINES 29-33
 
 .. code-block:: default
 
@@ -69,12 +68,12 @@ Loading data
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 35-37
+.. GENERATED FROM PYTHON SOURCE LINES 34-36
 
 Before plotting anything let's get some information about the event and the
 station and process the data
 
-.. GENERATED FROM PYTHON SOURCE LINES 37-45
+.. GENERATED FROM PYTHON SOURCE LINES 36-44
 
 .. code-block:: default
 
@@ -93,11 +92,11 @@ station and process the data
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 46-47
+.. GENERATED FROM PYTHON SOURCE LINES 45-46
 
 Attach the event station geometry to the traces, important for rotation to RTZ
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-51
+.. GENERATED FROM PYTHON SOURCE LINES 46-50
 
 .. code-block:: default
 
@@ -112,11 +111,11 @@ Attach the event station geometry to the traces, important for rotation to RTZ
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 52-53
+.. GENERATED FROM PYTHON SOURCE LINES 51-52
 
 Processing the data very generically
 
-.. GENERATED FROM PYTHON SOURCE LINES 53-56
+.. GENERATED FROM PYTHON SOURCE LINES 52-55
 
 .. code-block:: default
 
@@ -130,7 +129,7 @@ Processing the data very generically
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 57-63
+.. GENERATED FROM PYTHON SOURCE LINES 56-62
 
 Trace
 -----
@@ -139,7 +138,7 @@ First let's inspect the trace plotting function. It is in a way a wrapper
 around the matplotlib plot function but with some added functionality to grab
 info from the stats object and plot it in a "nice" way.
 
-.. GENERATED FROM PYTHON SOURCE LINES 63-73
+.. GENERATED FROM PYTHON SOURCE LINES 62-72
 
 .. code-block:: default
 
@@ -165,12 +164,12 @@ info from the stats object and plot it in a "nice" way.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-76
+.. GENERATED FROM PYTHON SOURCE LINES 73-75
 
 Since we have both station and event information in the stats object we can
 add a header to the figure to be a little more explicit.
 
-.. GENERATED FROM PYTHON SOURCE LINES 76-102
+.. GENERATED FROM PYTHON SOURCE LINES 75-101
 
 .. code-block:: default
 
@@ -212,7 +211,7 @@ add a header to the figure to be a little more explicit.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 103-134
+.. GENERATED FROM PYTHON SOURCE LINES 102-133
 
 In the example above we are providing all possible arguments to the
 ``add_header`` function just for show. Depending on whether they are provided
@@ -246,7 +245,7 @@ plot trace function, so most arguments are parsed to the trace function. The
 The components are defined by a keyword argument. So you may use ``ZRT``
 ``NEZ`` or ``123`` or just two, ``RT``, for example.
 
-.. GENERATED FROM PYTHON SOURCE LINES 134-158
+.. GENERATED FROM PYTHON SOURCE LINES 133-157
 
 .. code-block:: default
 
@@ -286,7 +285,7 @@ The components are defined by a keyword argument. So you may use ``ZRT``
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 159-179
+.. GENERATED FROM PYTHON SOURCE LINES 158-178
 
 Putting the legend outside the axes is nice when we are plotting multiple
 traces to compare them. But if we are only plotting a single stream, it is
@@ -309,7 +308,7 @@ add distance, (and optionally, azimuth, and back_azimuth for labels)
 to the stats object. To save space in the section, traces are not plotting by
 their actual distance, but one by one with a label that has the distance.
 
-.. GENERATED FROM PYTHON SOURCE LINES 179-190
+.. GENERATED FROM PYTHON SOURCE LINES 178-189
 
 .. code-block:: default
 
@@ -336,12 +335,12 @@ their actual distance, but one by one with a label that has the distance.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 191-193
+.. GENERATED FROM PYTHON SOURCE LINES 190-192
 
 Plotting the same section but with axis limits from 300 seconds to 1500 seconds
 after the event
 
-.. GENERATED FROM PYTHON SOURCE LINES 193-203
+.. GENERATED FROM PYTHON SOURCE LINES 192-202
 
 .. code-block:: default
 
@@ -367,12 +366,12 @@ after the event
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 204-206
+.. GENERATED FROM PYTHON SOURCE LINES 203-205
 
 Plotting the same section but with the origin time defined so that we get
 Time since event origin on the x-axis.
 
-.. GENERATED FROM PYTHON SOURCE LINES 206-212
+.. GENERATED FROM PYTHON SOURCE LINES 205-211
 
 .. code-block:: default
 
@@ -394,13 +393,13 @@ Time since event origin on the x-axis.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 213-216
+.. GENERATED FROM PYTHON SOURCE LINES 212-215
 
 Again plotting the same section but now with the origin time defined so that we
 get Time since event origin on the x-axis and with axis limits from 300 seconds
 to 1500 seconds after the event
 
-.. GENERATED FROM PYTHON SOURCE LINES 216-223
+.. GENERATED FROM PYTHON SOURCE LINES 215-222
 
 .. code-block:: default
 
@@ -423,13 +422,13 @@ to 1500 seconds after the event
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 224-227
+.. GENERATED FROM PYTHON SOURCE LINES 223-226
 
 Next we are going to plot an aligned sections. To do this each trace must have
 a obspy.Trace.stats.traveltime parameter. This can be done using the
 add_traveltime function or manually using your own function.
 
-.. GENERATED FROM PYTHON SOURCE LINES 227-231
+.. GENERATED FROM PYTHON SOURCE LINES 226-230
 
 .. code-block:: default
 
@@ -444,13 +443,13 @@ add_traveltime function or manually using your own function.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 232-235
+.. GENERATED FROM PYTHON SOURCE LINES 231-234
 
 Note that the add traveltime function uses the TauPy model by default for
 body waves and fixed velocity for surface waves. The traveltimes are then
 computed using the distance parameter in the stats object.
 
-.. GENERATED FROM PYTHON SOURCE LINES 237-244
+.. GENERATED FROM PYTHON SOURCE LINES 236-243
 
 .. code-block:: default
 
@@ -473,13 +472,13 @@ computed using the distance parameter in the stats object.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 245-248
+.. GENERATED FROM PYTHON SOURCE LINES 244-247
 
 Now this does not make a lot of sense since the traces are not aligned at the
 start. Conveniently we can set the limits parameter to only plot a certain
 time range before and after the arrival times.
 
-.. GENERATED FROM PYTHON SOURCE LINES 248-257
+.. GENERATED FROM PYTHON SOURCE LINES 247-256
 
 .. code-block:: default
 
@@ -504,11 +503,11 @@ time range before and after the arrival times.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 258-259
+.. GENERATED FROM PYTHON SOURCE LINES 257-258
 
 Let's also plot a section aligned to the P arrival times.
 
-.. GENERATED FROM PYTHON SOURCE LINES 259-272
+.. GENERATED FROM PYTHON SOURCE LINES 258-271
 
 .. code-block:: default
 
@@ -527,19 +526,17 @@ Let's also plot a section aligned to the P arrival times.
 
 
 
-.. rst-class:: sphx-glr-script-out
 
-.. code-block:: pytb
-
-    Traceback (most recent call last):
-      File "/home/runner/work/obsplotlib/obsplotlib/examples/run_tutorial.py", line 266, in <module>
-        ax, ax2 = opl.section(obs_filtered, origin_time=event_time, limits=limits, lw=0.5,
-    TypeError: cannot unpack non-iterable NoneType object
+.. image-sg:: /examples/images/sphx_glr_run_tutorial_010.svg
+   :alt: run tutorial
+   :srcset: /examples/images/sphx_glr_run_tutorial_010.svg
+   :class: sphx-glr-single-img
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 273-282
+
+.. GENERATED FROM PYTHON SOURCE LINES 272-281
 
 Note that we have fewer traces here because some land in the Pwave shadow zone
 and are not recorded but seismographs. Also note, that ax, and ax2 give you
@@ -551,7 +548,7 @@ multiple components in a single section. This is done using the
 But insted of being a single letter string, the components argument is a
 string with all components to be plotted in order.
 
-.. GENERATED FROM PYTHON SOURCE LINES 282-293
+.. GENERATED FROM PYTHON SOURCE LINES 281-292
 
 .. code-block:: default
 
@@ -567,16 +564,634 @@ string with all components to be plotted in order.
     plt.show(block=False)
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 294-297
+
+
+.. image-sg:: /examples/images/sphx_glr_run_tutorial_011.svg
+   :alt: run tutorial
+   :srcset: /examples/images/sphx_glr_run_tutorial_011.svg
+   :class: sphx-glr-single-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    2 legendargs
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 293-305
 
 One main difference is that the section multiple components will find an
 absmax to normalize across all streams and traces. This can be overwritten by
 absmax parameter which can be manually set.
 
 
+Trace comparison
+----------------
+
+So far we have only really looked at a single set of traces. Very often in
+seismology however we want to look at trace comparisons. And sometimes
+directly looks at measurements on traces, or windows. Let's load a second
+set of traces to compare our observed data too.
+
+.. GENERATED FROM PYTHON SOURCE LINES 305-310
+
+.. code-block:: default
+
+
+    # Read traces and station info
+    synraw = obspy.read("DATA/synthetic/traces/*.sac")
+    syninv = obspy.read_inventory("DATA/synthetic/station.xml")
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 311-312
+
+Just like with the observed data we are attach geometry for rotation
+
+.. GENERATED FROM PYTHON SOURCE LINES 312-316
+
+.. code-block:: default
+
+    opl.attach_geometry(synraw, event_latitude=event_latitude,
+                        event_longitude=event_longitude, inv=syninv)
+
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 317-319
+
+Since we want to process both synthetics and observed the same fashion,
+We have to resample the traces in addition to the basic processing.
+
+.. GENERATED FROM PYTHON SOURCE LINES 319-332
+
+.. code-block:: default
+
+
+    starttime = event_time
+    npts = 10800
+    sampling_rate_in_hz = 1
+    bandpass = [50, 500]
+    obs = opl.process(raw, inv=inv, remove_response=True, bandpass=bandpass,
+                      starttime=starttime, npts=npts,
+                      sampling_rate_in_hz=1)
+
+    syn = opl.process(synraw, inv=inv, remove_response=False, bandpass=bandpass,
+                      starttime=starttime, npts=npts,
+                      sampling_rate_in_hz=1)
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 333-334
+
+Once both are processed we can plot them with
+
+.. GENERATED FROM PYTHON SOURCE LINES 334-352
+
+.. code-block:: default
+
+
+    obstr = obs.select(network=network_str, station=station_str,
+                       component=component_str)[0]
+    syntr = syn.select(network=network_str, station=station_str,
+                       component=component_str)[0]
+
+    plt.figure()
+    ax = opl.trace([obstr, syntr], labels=['Observed', 'GLAD-M25'],
+                   origin_time=event_time, lw=0.75)
+
+    # Just reusing the header dict from earlier
+    header_dict['station'] = obstr.id
+    header_dict['bandpass'] = bandpass
+
+    opl.add_header(ax, **header_dict)
+    plt.subplots_adjust(left=0.05, right=0.95, top=0.8, bottom=0.125)
+    plt.show(block=False)
+
+
+
+
+.. image-sg:: /examples/images/sphx_glr_run_tutorial_012.svg
+   :alt: run tutorial
+   :srcset: /examples/images/sphx_glr_run_tutorial_012.svg
+   :class: sphx-glr-single-img
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 353-354
+
+Repeat to plot a station
+
+.. GENERATED FROM PYTHON SOURCE LINES 354-377
+
+.. code-block:: default
+
+
+    # Get station from observed trace
+    obs_st = obs.select(network="II", station="BFO")
+    syn_st = syn.select(network="II", station="BFO")
+
+    # Plot the station
+    plt.figure(figsize=(8, 5))
+    axes = opl.station([obs_st, syn_st], components='ZRT', lw=0.5,
+                       labels=['Observed', 'GLAD-M25'], nooffset=True)
+
+    # If dissatisfied with legend fontsize and position? Just recreate it using
+    # the first axes object.
+    axes[0].legend(frameon=False, loc='lower right', ncol=3, fontsize='small',
+                   bbox_to_anchor=(1.0, 1.0))
+
+    # Add the header with a bit more distance to make room for the legend outside
+    # the  axes
+    opl.add_header(axes[0], **header_dict, dist=0.075)
+
+    # Slightly adjust the plots to make the fit nicely into the figure
+    plt.subplots_adjust(left=0.075, right=0.925, top=0.775, bottom=0.15)
+    plt.show(block=False)
+
+
+
+
+.. image-sg:: /examples/images/sphx_glr_run_tutorial_013.svg
+   :alt: run tutorial
+   :srcset: /examples/images/sphx_glr_run_tutorial_013.svg
+   :class: sphx-glr-single-img
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 378-380
+
+For the section, we need do a couple more things. The set of traces in these
+do not perfectly overlapping.
+
+.. GENERATED FROM PYTHON SOURCE LINES 380-383
+
+.. code-block:: default
+
+
+    streams = opl.select_intersection([obs, syn], components='ZRT')
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    list index out of range
+    Cant find G.FUTU..Z
+    list index out of range
+    Cant find G.FUTU..R
+    list index out of range
+    Cant find G.FUTU..T
+    list index out of range
+    Cant find II.PALK..Z
+    list index out of range
+    Cant find II.PALK..R
+    list index out of range
+    Cant find II.PALK..T
+    list index out of range
+    Cant find IU.OTAV..Z
+    list index out of range
+    Cant find IU.OTAV..R
+    list index out of range
+    Cant find IU.OTAV..T
+    list index out of range
+    Cant find IU.PMSA..Z
+    list index out of range
+    Cant find IU.PMSA..R
+    list index out of range
+    Cant find IU.PMSA..T
+    list index out of range
+    Cant find IC.XAN..Z
+    list index out of range
+    Cant find IC.XAN..R
+    list index out of range
+    Cant find IC.XAN..T
+    list index out of range
+    Cant find II.ABPO..Z
+    list index out of range
+    Cant find II.ABPO..R
+    list index out of range
+    Cant find II.ABPO..T
+    list index out of range
+    Cant find IU.CASY..Z
+    list index out of range
+    Cant find IU.CASY..R
+    list index out of range
+    Cant find IU.CASY..T
+    list index out of range
+    Cant find IU.HNR..Z
+    list index out of range
+    Cant find IU.HNR..R
+    list index out of range
+    Cant find IU.HNR..T
+    list index out of range
+    Cant find IU.WVT..Z
+    list index out of range
+    Cant find IU.WVT..R
+    list index out of range
+    Cant find IU.WVT..T
+    list index out of range
+    Cant find II.CMLA..Z
+    list index out of range
+    Cant find II.CMLA..R
+    list index out of range
+    Cant find II.CMLA..T
+    list index out of range
+    Cant find II.SUR..Z
+    list index out of range
+    Cant find II.SUR..R
+    list index out of range
+    Cant find II.SUR..T
+    list index out of range
+    Cant find II.SACV..Z
+    list index out of range
+    Cant find II.SACV..R
+    list index out of range
+    Cant find II.SACV..T
+    list index out of range
+    Cant find II.COCO..Z
+    list index out of range
+    Cant find II.COCO..R
+    list index out of range
+    Cant find II.COCO..T
+    list index out of range
+    Cant find II.ASCN..Z
+    list index out of range
+    Cant find II.ASCN..R
+    list index out of range
+    Cant find II.ASCN..T
+    list index out of range
+    Cant find G.SPB..Z
+    list index out of range
+    Cant find G.SPB..R
+    list index out of range
+    Cant find G.SPB..T
+    list index out of range
+    Cant find II.KAPI..Z
+    list index out of range
+    Cant find II.KAPI..R
+    list index out of range
+    Cant find II.KAPI..T
+    list index out of range
+    Cant find II.AAK..Z
+    list index out of range
+    Cant find II.AAK..R
+    list index out of range
+    Cant find II.AAK..T
+    list index out of range
+    Cant find GE.LVC..Z
+    list index out of range
+    Cant find GE.LVC..R
+    list index out of range
+    Cant find GE.LVC..T
+    list index out of range
+    Cant find II.FFC..Z
+    list index out of range
+    Cant find II.FFC..R
+    list index out of range
+    Cant find II.FFC..T
+    list index out of range
+    Cant find IU.TRQA..Z
+    list index out of range
+    Cant find IU.TRQA..R
+    list index out of range
+    Cant find IU.TRQA..T
+    list index out of range
+    Cant find II.NIL..Z
+    list index out of range
+    Cant find II.NIL..R
+    list index out of range
+    Cant find II.NIL..T
+    list index out of range
+    Cant find IU.SBA..Z
+    list index out of range
+    Cant find IU.SBA..R
+    list index out of range
+    Cant find IU.SBA..T
+    list index out of range
+    Cant find II.BORG..Z
+    list index out of range
+    Cant find II.BORG..R
+    list index out of range
+    Cant find II.BORG..T
+    list index out of range
+    Cant find IU.MAJO..Z
+    list index out of range
+    Cant find IU.MAJO..R
+    list index out of range
+    Cant find IU.MAJO..T
+    list index out of range
+    Cant find IU.COR..Z
+    list index out of range
+    Cant find IU.COR..R
+    list index out of range
+    Cant find IU.COR..T
+    list index out of range
+    Cant find II.MSEY..Z
+    list index out of range
+    Cant find II.MSEY..R
+    list index out of range
+    Cant find II.MSEY..T
+    list index out of range
+    Cant find IU.MIDW..Z
+    list index out of range
+    Cant find IU.MIDW..R
+    list index out of range
+    Cant find IU.MIDW..T
+    list index out of range
+    Cant find G.TRIS..Z
+    list index out of range
+    Cant find G.TRIS..R
+    list index out of range
+    Cant find G.TRIS..T
+    list index out of range
+    Cant find IU.YAK..Z
+    list index out of range
+    Cant find IU.YAK..R
+    list index out of range
+    Cant find IU.YAK..T
+    list index out of range
+    Cant find G.ROCAM..Z
+    list index out of range
+    Cant find G.ROCAM..R
+    list index out of range
+    Cant find G.ROCAM..T
+    list index out of range
+    Cant find G.KIP..Z
+    list index out of range
+    Cant find G.KIP..R
+    list index out of range
+    Cant find G.KIP..T
+    list index out of range
+    Cant find G.TAM..Z
+    list index out of range
+    Cant find G.TAM..R
+    list index out of range
+    Cant find G.TAM..T
+    list index out of range
+    Cant find II.KWJN..Z
+    list index out of range
+    Cant find II.KWJN..R
+    list index out of range
+    Cant find II.KWJN..T
+    list index out of range
+    Cant find II.TLY..Z
+    list index out of range
+    Cant find II.TLY..R
+    list index out of range
+    Cant find II.TLY..T
+    list index out of range
+    Cant find IU.RCBR..Z
+    list index out of range
+    Cant find IU.RCBR..R
+    list index out of range
+    Cant find IU.RCBR..T
+    list index out of range
+    Cant find IU.LSZ..Z
+    list index out of range
+    Cant find IU.LSZ..R
+    list index out of range
+    Cant find IU.LSZ..T
+    list index out of range
+    Cant find II.LVZ..Z
+    list index out of range
+    Cant find II.LVZ..R
+    list index out of range
+    Cant find II.LVZ..T
+    list index out of range
+    Cant find IU.SAML..Z
+    list index out of range
+    Cant find IU.SAML..R
+    list index out of range
+    Cant find IU.SAML..T
+    list index out of range
+    Cant find IU.SJG..Z
+    list index out of range
+    Cant find IU.SJG..R
+    list index out of range
+    Cant find IU.SJG..T
+    list index out of range
+    Cant find IU.YSS..Z
+    list index out of range
+    Cant find IU.YSS..R
+    list index out of range
+    Cant find IU.YSS..T
+    list index out of range
+    Cant find II.TAU..Z
+    list index out of range
+    Cant find II.TAU..R
+    list index out of range
+    Cant find II.TAU..T
+    list index out of range
+    Cant find IU.GUMO..Z
+    list index out of range
+    Cant find IU.GUMO..R
+    list index out of range
+    Cant find IU.GUMO..T
+    list index out of range
+    Cant find IU.KOWA..Z
+    list index out of range
+    Cant find IU.KOWA..R
+    list index out of range
+    Cant find IU.KOWA..T
+    list index out of range
+    Cant find IU.TIXI..Z
+    list index out of range
+    Cant find IU.TIXI..R
+    list index out of range
+    Cant find IU.TIXI..T
+    list index out of range
+    Cant find G.IVI..Z
+    list index out of range
+    Cant find G.IVI..R
+    list index out of range
+    Cant find G.IVI..T
+    list index out of range
+    Cant find IU.KONO..Z
+    list index out of range
+    Cant find IU.KONO..R
+    list index out of range
+    Cant find IU.KONO..T
+    list index out of range
+    Cant find G.PAF..Z
+    list index out of range
+    Cant find G.PAF..R
+    list index out of range
+    Cant find G.PAF..T
+    list index out of range
+    Cant find II.ALE..Z
+    list index out of range
+    Cant find II.ALE..R
+    list index out of range
+    Cant find II.ALE..T
+    list index out of range
+    Cant find IU.MAKZ..Z
+    list index out of range
+    Cant find IU.MAKZ..R
+    list index out of range
+    Cant find IU.MAKZ..T
+    list index out of range
+    Cant find II.RPN..Z
+    list index out of range
+    Cant find II.RPN..R
+    list index out of range
+    Cant find II.RPN..T
+    list index out of range
+    Cant find G.NOUC..Z
+    list index out of range
+    Cant find G.NOUC..R
+    list index out of range
+    Cant find G.NOUC..T
+    list index out of range
+    Cant find IU.INCN..Z
+    list index out of range
+    Cant find IU.INCN..R
+    list index out of range
+    Cant find IU.INCN..T
+    list index out of range
+    Cant find IU.MSKU..Z
+    list index out of range
+    Cant find IU.MSKU..R
+    list index out of range
+    Cant find IU.MSKU..T
+    list index out of range
+    Cant find IU.TEIG..Z
+    list index out of range
+    Cant find IU.TEIG..R
+    list index out of range
+    Cant find IU.TEIG..T
+    list index out of range
+    Cant find II.RAYN..Z
+    list index out of range
+    Cant find II.RAYN..R
+    list index out of range
+    Cant find II.RAYN..T
+    list index out of range
+    Cant find MN.TNV..Z
+    list index out of range
+    Cant find MN.TNV..R
+    list index out of range
+    Cant find MN.TNV..T
+    list index out of range
+    Cant find IU.ANTO..Z
+    list index out of range
+    Cant find IU.ANTO..R
+    list index out of range
+    Cant find IU.ANTO..T
+    list index out of range
+    Cant find IU.CHTO..Z
+    list index out of range
+    Cant find IU.CHTO..R
+    list index out of range
+    Cant find IU.CHTO..T
+    list index out of range
+    Cant find IU.SPA..Z
+    list index out of range
+    Cant find IU.SPA..R
+    list index out of range
+    Cant find IU.SPA..T
+    list index out of range
+    Cant find IU.ADK..Z
+    list index out of range
+    Cant find IU.ADK..R
+    list index out of range
+    Cant find IU.ADK..T
+    list index out of range
+    Cant find G.MPG..Z
+    list index out of range
+    Cant find G.MPG..R
+    list index out of range
+    Cant find G.MPG..T
+    list index out of range
+    Cant find G.ECH..Z
+    list index out of range
+    Cant find G.ECH..R
+    list index out of range
+    Cant find G.ECH..T
+    list index out of range
+    Cant find IU.NWAO..Z
+    list index out of range
+    Cant find IU.NWAO..R
+    list index out of range
+    Cant find IU.NWAO..T
+    list index out of range
+    Cant find II.ARU..Z
+    list index out of range
+    Cant find II.ARU..R
+    list index out of range
+    Cant find II.ARU..T
+    list index out of range
+    Cant find G.PPTF..Z
+    list index out of range
+    Cant find G.PPTF..R
+    list index out of range
+    Cant find G.PPTF..T
+    list index out of range
+    Cant find GE.KMBO..Z
+    list index out of range
+    Cant find GE.KMBO..R
+    list index out of range
+    Cant find GE.KMBO..T
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 384-386
+
+Now that we have selected only the traces that are in all streams, we can
+plot a section with the traces.
+
+.. GENERATED FROM PYTHON SOURCE LINES 386-392
+
+.. code-block:: default
+
+
+    plt.figure(figsize=(8, 10))
+    opl.section(streams, origin_time=event_time, lw=0.5,
+                labels=['Observed', 'GLAD-M25'])
+    plt.subplots_adjust(left=0.15, right=0.85, top=0.95, bottom=0.05)
+    plt.show(block=False)
+
+
+
+.. image-sg:: /examples/images/sphx_glr_run_tutorial_014.svg
+   :alt: run tutorial
+   :srcset: /examples/images/sphx_glr_run_tutorial_014.svg
+   :class: sphx-glr-single-img
+
+
+
+
+
+
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 6.745 seconds)
+   **Total running time of the script:** (0 minutes 6.947 seconds)
 
 
 .. _sphx_glr_download_examples_run_tutorial.py:

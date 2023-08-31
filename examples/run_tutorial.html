@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="API" href="../api.html" /><link rel="prev" title="Tutorial of all functions" href="index.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="API" href="../api.html" /><link rel="prev" title="Plotting the logo and the favicon" href="run_logo.html" />
 
-    <!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
-        <title>obsplotlib Tutorial - obsplotlib 0.2.3 documentation</title>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
+        <title>Full obsplotlib Tutorial - obsplotlib 0.3.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
@@ -129,7 +129,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">obsplotlib 0.2.3 documentation</div></a>
+      <a href="../index.html"><div class="brand">obsplotlib 0.3.1 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -151,8 +151,12 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="../_static/logo.svg" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="../_static/logo.svg" alt="Dark Logo"/>
+  </div>
   
-  <span class="sidebar-brand-text">obsplotlib 0.2.3 documentation</span>
+  <span class="sidebar-brand-text">obsplotlib 0.3.1 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -162,8 +166,9 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Tutorial of all functions</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">obsplotlib</span></code> Tutorial</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Tutorials</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="run_logo.html">Plotting the logo and the favicon</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Full <code class="docutils literal notranslate"><span class="pre">obsplotlib</span></code> Tutorial</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
@@ -206,8 +211,8 @@
 <p><a class="reference internal" href="#sphx-glr-download-examples-run-tutorial-py"><span class="std std-ref">Go to the end</span></a>
 to download the full example code</p>
 </div>
-<section class="sphx-glr-example-title" id="obsplotlib-tutorial">
-<span id="sphx-glr-examples-run-tutorial-py"></span><h1><code class="docutils literal notranslate"><span class="pre">obsplotlib</span></code> Tutorial<a class="headerlink" href="#obsplotlib-tutorial" title="Permalink to this heading">#</a></h1>
+<section class="sphx-glr-example-title" id="full-obsplotlib-tutorial">
+<span id="sphx-glr-examples-run-tutorial-py"></span><h1>Full <code class="docutils literal notranslate"><span class="pre">obsplotlib</span></code> Tutorial<a class="headerlink" href="#full-obsplotlib-tutorial" title="Permalink to this heading">#</a></h1>
 <p>The tutorial will go over the plotting functions in <code class="docutils literal notranslate"><span class="pre">obsplotlib</span></code> and how to
 prepare your data to plot traces, station seismograms and full seismic sections
 using <code class="docutils literal notranslate"><span class="pre">obsplotlib</span></code>. Here and there the tutorial will digress into some
@@ -215,8 +220,7 @@ matplotlib details, to show how you could easily customize the plots to your
 liking.</p>
 <section id="loading-all-modules">
 <h2>Loading all modules<a class="headerlink" href="#loading-all-modules" title="Permalink to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">obsplotlib.seismogram</span> <span class="kn">import</span> <span class="n">station</span>
-<span class="kn">import</span> <span class="nn">obspy</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">obspy</span>
 <span class="kn">import</span> <span class="nn">obsplotlib.plot</span> <span class="k">as</span> <span class="nn">opl</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
@@ -447,13 +451,7 @@ time range before and after the arrival times.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
-  File <span class="nb">&quot;/home/runner/work/obsplotlib/obsplotlib/examples/run_tutorial.py&quot;</span>, line <span class="m">266</span>, in <span class="n">&lt;module&gt;</span>
-<span class="w">    </span><span class="n">ax</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">opl</span><span class="o">.</span><span class="n">section</span><span class="p">(</span><span class="n">obs_filtered</span><span class="p">,</span> <span class="n">origin_time</span><span class="o">=</span><span class="n">event_time</span><span class="p">,</span> <span class="n">limits</span><span class="o">=</span><span class="n">limits</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-<span class="gr">TypeError</span>: <span class="n">cannot unpack non-iterable NoneType object</span>
-</pre></div>
-</div>
-<p>Note that we have fewer traces here because some land in the Pwave shadow zone
+<img src="../_images/sphx_glr_run_tutorial_010.svg" srcset="../_images/sphx_glr_run_tutorial_010.svg" alt="run tutorial" class = "sphx-glr-single-img"/><p>Note that we have fewer traces here because some land in the Pwave shadow zone
 and are not recorded but seismographs. Also note, that ax, and ax2 give you
 axes to the left and right yaxes. ax and ax2 ticks actually set the left and
 right y axes labels. So far we have only plotted a single
@@ -473,10 +471,500 @@ string with all components to be plotted in order.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
+<img src="../_images/sphx_glr_run_tutorial_011.svg" srcset="../_images/sphx_glr_run_tutorial_011.svg" alt="run tutorial" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2 legendargs
+</pre></div>
+</div>
 <p>One main difference is that the section multiple components will find an
 absmax to normalize across all streams and traces. This can be overwritten by
 absmax parameter which can be manually set.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 6.745 seconds)</p>
+</section>
+<section id="trace-comparison">
+<h2>Trace comparison<a class="headerlink" href="#trace-comparison" title="Permalink to this heading">#</a></h2>
+<p>So far we have only really looked at a single set of traces. Very often in
+seismology however we want to look at trace comparisons. And sometimes
+directly looks at measurements on traces, or windows. Let’s load a second
+set of traces to compare our observed data too.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read traces and station info</span>
+<span class="n">synraw</span> <span class="o">=</span> <span class="n">obspy</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;DATA/synthetic/traces/*.sac&quot;</span><span class="p">)</span>
+<span class="n">syninv</span> <span class="o">=</span> <span class="n">obspy</span><span class="o">.</span><span class="n">read_inventory</span><span class="p">(</span><span class="s2">&quot;DATA/synthetic/station.xml&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Just like with the observed data we are attach geometry for rotation</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">opl</span><span class="o">.</span><span class="n">attach_geometry</span><span class="p">(</span><span class="n">synraw</span><span class="p">,</span> <span class="n">event_latitude</span><span class="o">=</span><span class="n">event_latitude</span><span class="p">,</span>
+                    <span class="n">event_longitude</span><span class="o">=</span><span class="n">event_longitude</span><span class="p">,</span> <span class="n">inv</span><span class="o">=</span><span class="n">syninv</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Since we want to process both synthetics and observed the same fashion,
+We have to resample the traces in addition to the basic processing.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">starttime</span> <span class="o">=</span> <span class="n">event_time</span>
+<span class="n">npts</span> <span class="o">=</span> <span class="mi">10800</span>
+<span class="n">sampling_rate_in_hz</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">bandpass</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>
+<span class="n">obs</span> <span class="o">=</span> <span class="n">opl</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">inv</span><span class="o">=</span><span class="n">inv</span><span class="p">,</span> <span class="n">remove_response</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bandpass</span><span class="o">=</span><span class="n">bandpass</span><span class="p">,</span>
+                  <span class="n">starttime</span><span class="o">=</span><span class="n">starttime</span><span class="p">,</span> <span class="n">npts</span><span class="o">=</span><span class="n">npts</span><span class="p">,</span>
+                  <span class="n">sampling_rate_in_hz</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">syn</span> <span class="o">=</span> <span class="n">opl</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">synraw</span><span class="p">,</span> <span class="n">inv</span><span class="o">=</span><span class="n">inv</span><span class="p">,</span> <span class="n">remove_response</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bandpass</span><span class="o">=</span><span class="n">bandpass</span><span class="p">,</span>
+                  <span class="n">starttime</span><span class="o">=</span><span class="n">starttime</span><span class="p">,</span> <span class="n">npts</span><span class="o">=</span><span class="n">npts</span><span class="p">,</span>
+                  <span class="n">sampling_rate_in_hz</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Once both are processed we can plot them with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">obstr</span> <span class="o">=</span> <span class="n">obs</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">network_str</span><span class="p">,</span> <span class="n">station</span><span class="o">=</span><span class="n">station_str</span><span class="p">,</span>
+                   <span class="n">component</span><span class="o">=</span><span class="n">component_str</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">syntr</span> <span class="o">=</span> <span class="n">syn</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">network_str</span><span class="p">,</span> <span class="n">station</span><span class="o">=</span><span class="n">station_str</span><span class="p">,</span>
+                   <span class="n">component</span><span class="o">=</span><span class="n">component_str</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">opl</span><span class="o">.</span><span class="n">trace</span><span class="p">([</span><span class="n">obstr</span><span class="p">,</span> <span class="n">syntr</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Observed&#39;</span><span class="p">,</span> <span class="s1">&#39;GLAD-M25&#39;</span><span class="p">],</span>
+               <span class="n">origin_time</span><span class="o">=</span><span class="n">event_time</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+
+<span class="c1"># Just reusing the header dict from earlier</span>
+<span class="n">header_dict</span><span class="p">[</span><span class="s1">&#39;station&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">obstr</span><span class="o">.</span><span class="n">id</span>
+<span class="n">header_dict</span><span class="p">[</span><span class="s1">&#39;bandpass&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bandpass</span>
+
+<span class="n">opl</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">header_dict</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.125</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../_images/sphx_glr_run_tutorial_012.svg" srcset="../_images/sphx_glr_run_tutorial_012.svg" alt="run tutorial" class = "sphx-glr-single-img"/><p>Repeat to plot a station</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get station from observed trace</span>
+<span class="n">obs_st</span> <span class="o">=</span> <span class="n">obs</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="s2">&quot;II&quot;</span><span class="p">,</span> <span class="n">station</span><span class="o">=</span><span class="s2">&quot;BFO&quot;</span><span class="p">)</span>
+<span class="n">syn_st</span> <span class="o">=</span> <span class="n">syn</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="s2">&quot;II&quot;</span><span class="p">,</span> <span class="n">station</span><span class="o">=</span><span class="s2">&quot;BFO&quot;</span><span class="p">)</span>
+
+<span class="c1"># Plot the station</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">axes</span> <span class="o">=</span> <span class="n">opl</span><span class="o">.</span><span class="n">station</span><span class="p">([</span><span class="n">obs_st</span><span class="p">,</span> <span class="n">syn_st</span><span class="p">],</span> <span class="n">components</span><span class="o">=</span><span class="s1">&#39;ZRT&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                   <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Observed&#39;</span><span class="p">,</span> <span class="s1">&#39;GLAD-M25&#39;</span><span class="p">],</span> <span class="n">nooffset</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># If dissatisfied with legend fontsize and position? Just recreate it using</span>
+<span class="c1"># the first axes object.</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;small&#39;</span><span class="p">,</span>
+               <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+
+<span class="c1"># Add the header with a bit more distance to make room for the legend outside</span>
+<span class="c1"># the  axes</span>
+<span class="n">opl</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">**</span><span class="n">header_dict</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="mf">0.075</span><span class="p">)</span>
+
+<span class="c1"># Slightly adjust the plots to make the fit nicely into the figure</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.075</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.925</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.775</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../_images/sphx_glr_run_tutorial_013.svg" srcset="../_images/sphx_glr_run_tutorial_013.svg" alt="run tutorial" class = "sphx-glr-single-img"/><p>For the section, we need do a couple more things. The set of traces in these
+do not perfectly overlapping.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">streams</span> <span class="o">=</span> <span class="n">opl</span><span class="o">.</span><span class="n">select_intersection</span><span class="p">([</span><span class="n">obs</span><span class="p">,</span> <span class="n">syn</span><span class="p">],</span> <span class="n">components</span><span class="o">=</span><span class="s1">&#39;ZRT&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>list index out of range
+Cant find G.FUTU..Z
+list index out of range
+Cant find G.FUTU..R
+list index out of range
+Cant find G.FUTU..T
+list index out of range
+Cant find II.PALK..Z
+list index out of range
+Cant find II.PALK..R
+list index out of range
+Cant find II.PALK..T
+list index out of range
+Cant find IU.OTAV..Z
+list index out of range
+Cant find IU.OTAV..R
+list index out of range
+Cant find IU.OTAV..T
+list index out of range
+Cant find IU.PMSA..Z
+list index out of range
+Cant find IU.PMSA..R
+list index out of range
+Cant find IU.PMSA..T
+list index out of range
+Cant find IC.XAN..Z
+list index out of range
+Cant find IC.XAN..R
+list index out of range
+Cant find IC.XAN..T
+list index out of range
+Cant find II.ABPO..Z
+list index out of range
+Cant find II.ABPO..R
+list index out of range
+Cant find II.ABPO..T
+list index out of range
+Cant find IU.CASY..Z
+list index out of range
+Cant find IU.CASY..R
+list index out of range
+Cant find IU.CASY..T
+list index out of range
+Cant find IU.HNR..Z
+list index out of range
+Cant find IU.HNR..R
+list index out of range
+Cant find IU.HNR..T
+list index out of range
+Cant find IU.WVT..Z
+list index out of range
+Cant find IU.WVT..R
+list index out of range
+Cant find IU.WVT..T
+list index out of range
+Cant find II.CMLA..Z
+list index out of range
+Cant find II.CMLA..R
+list index out of range
+Cant find II.CMLA..T
+list index out of range
+Cant find II.SUR..Z
+list index out of range
+Cant find II.SUR..R
+list index out of range
+Cant find II.SUR..T
+list index out of range
+Cant find II.SACV..Z
+list index out of range
+Cant find II.SACV..R
+list index out of range
+Cant find II.SACV..T
+list index out of range
+Cant find II.COCO..Z
+list index out of range
+Cant find II.COCO..R
+list index out of range
+Cant find II.COCO..T
+list index out of range
+Cant find II.ASCN..Z
+list index out of range
+Cant find II.ASCN..R
+list index out of range
+Cant find II.ASCN..T
+list index out of range
+Cant find G.SPB..Z
+list index out of range
+Cant find G.SPB..R
+list index out of range
+Cant find G.SPB..T
+list index out of range
+Cant find II.KAPI..Z
+list index out of range
+Cant find II.KAPI..R
+list index out of range
+Cant find II.KAPI..T
+list index out of range
+Cant find II.AAK..Z
+list index out of range
+Cant find II.AAK..R
+list index out of range
+Cant find II.AAK..T
+list index out of range
+Cant find GE.LVC..Z
+list index out of range
+Cant find GE.LVC..R
+list index out of range
+Cant find GE.LVC..T
+list index out of range
+Cant find II.FFC..Z
+list index out of range
+Cant find II.FFC..R
+list index out of range
+Cant find II.FFC..T
+list index out of range
+Cant find IU.TRQA..Z
+list index out of range
+Cant find IU.TRQA..R
+list index out of range
+Cant find IU.TRQA..T
+list index out of range
+Cant find II.NIL..Z
+list index out of range
+Cant find II.NIL..R
+list index out of range
+Cant find II.NIL..T
+list index out of range
+Cant find IU.SBA..Z
+list index out of range
+Cant find IU.SBA..R
+list index out of range
+Cant find IU.SBA..T
+list index out of range
+Cant find II.BORG..Z
+list index out of range
+Cant find II.BORG..R
+list index out of range
+Cant find II.BORG..T
+list index out of range
+Cant find IU.MAJO..Z
+list index out of range
+Cant find IU.MAJO..R
+list index out of range
+Cant find IU.MAJO..T
+list index out of range
+Cant find IU.COR..Z
+list index out of range
+Cant find IU.COR..R
+list index out of range
+Cant find IU.COR..T
+list index out of range
+Cant find II.MSEY..Z
+list index out of range
+Cant find II.MSEY..R
+list index out of range
+Cant find II.MSEY..T
+list index out of range
+Cant find IU.MIDW..Z
+list index out of range
+Cant find IU.MIDW..R
+list index out of range
+Cant find IU.MIDW..T
+list index out of range
+Cant find G.TRIS..Z
+list index out of range
+Cant find G.TRIS..R
+list index out of range
+Cant find G.TRIS..T
+list index out of range
+Cant find IU.YAK..Z
+list index out of range
+Cant find IU.YAK..R
+list index out of range
+Cant find IU.YAK..T
+list index out of range
+Cant find G.ROCAM..Z
+list index out of range
+Cant find G.ROCAM..R
+list index out of range
+Cant find G.ROCAM..T
+list index out of range
+Cant find G.KIP..Z
+list index out of range
+Cant find G.KIP..R
+list index out of range
+Cant find G.KIP..T
+list index out of range
+Cant find G.TAM..Z
+list index out of range
+Cant find G.TAM..R
+list index out of range
+Cant find G.TAM..T
+list index out of range
+Cant find II.KWJN..Z
+list index out of range
+Cant find II.KWJN..R
+list index out of range
+Cant find II.KWJN..T
+list index out of range
+Cant find II.TLY..Z
+list index out of range
+Cant find II.TLY..R
+list index out of range
+Cant find II.TLY..T
+list index out of range
+Cant find IU.RCBR..Z
+list index out of range
+Cant find IU.RCBR..R
+list index out of range
+Cant find IU.RCBR..T
+list index out of range
+Cant find IU.LSZ..Z
+list index out of range
+Cant find IU.LSZ..R
+list index out of range
+Cant find IU.LSZ..T
+list index out of range
+Cant find II.LVZ..Z
+list index out of range
+Cant find II.LVZ..R
+list index out of range
+Cant find II.LVZ..T
+list index out of range
+Cant find IU.SAML..Z
+list index out of range
+Cant find IU.SAML..R
+list index out of range
+Cant find IU.SAML..T
+list index out of range
+Cant find IU.SJG..Z
+list index out of range
+Cant find IU.SJG..R
+list index out of range
+Cant find IU.SJG..T
+list index out of range
+Cant find IU.YSS..Z
+list index out of range
+Cant find IU.YSS..R
+list index out of range
+Cant find IU.YSS..T
+list index out of range
+Cant find II.TAU..Z
+list index out of range
+Cant find II.TAU..R
+list index out of range
+Cant find II.TAU..T
+list index out of range
+Cant find IU.GUMO..Z
+list index out of range
+Cant find IU.GUMO..R
+list index out of range
+Cant find IU.GUMO..T
+list index out of range
+Cant find IU.KOWA..Z
+list index out of range
+Cant find IU.KOWA..R
+list index out of range
+Cant find IU.KOWA..T
+list index out of range
+Cant find IU.TIXI..Z
+list index out of range
+Cant find IU.TIXI..R
+list index out of range
+Cant find IU.TIXI..T
+list index out of range
+Cant find G.IVI..Z
+list index out of range
+Cant find G.IVI..R
+list index out of range
+Cant find G.IVI..T
+list index out of range
+Cant find IU.KONO..Z
+list index out of range
+Cant find IU.KONO..R
+list index out of range
+Cant find IU.KONO..T
+list index out of range
+Cant find G.PAF..Z
+list index out of range
+Cant find G.PAF..R
+list index out of range
+Cant find G.PAF..T
+list index out of range
+Cant find II.ALE..Z
+list index out of range
+Cant find II.ALE..R
+list index out of range
+Cant find II.ALE..T
+list index out of range
+Cant find IU.MAKZ..Z
+list index out of range
+Cant find IU.MAKZ..R
+list index out of range
+Cant find IU.MAKZ..T
+list index out of range
+Cant find II.RPN..Z
+list index out of range
+Cant find II.RPN..R
+list index out of range
+Cant find II.RPN..T
+list index out of range
+Cant find G.NOUC..Z
+list index out of range
+Cant find G.NOUC..R
+list index out of range
+Cant find G.NOUC..T
+list index out of range
+Cant find IU.INCN..Z
+list index out of range
+Cant find IU.INCN..R
+list index out of range
+Cant find IU.INCN..T
+list index out of range
+Cant find IU.MSKU..Z
+list index out of range
+Cant find IU.MSKU..R
+list index out of range
+Cant find IU.MSKU..T
+list index out of range
+Cant find IU.TEIG..Z
+list index out of range
+Cant find IU.TEIG..R
+list index out of range
+Cant find IU.TEIG..T
+list index out of range
+Cant find II.RAYN..Z
+list index out of range
+Cant find II.RAYN..R
+list index out of range
+Cant find II.RAYN..T
+list index out of range
+Cant find MN.TNV..Z
+list index out of range
+Cant find MN.TNV..R
+list index out of range
+Cant find MN.TNV..T
+list index out of range
+Cant find IU.ANTO..Z
+list index out of range
+Cant find IU.ANTO..R
+list index out of range
+Cant find IU.ANTO..T
+list index out of range
+Cant find IU.CHTO..Z
+list index out of range
+Cant find IU.CHTO..R
+list index out of range
+Cant find IU.CHTO..T
+list index out of range
+Cant find IU.SPA..Z
+list index out of range
+Cant find IU.SPA..R
+list index out of range
+Cant find IU.SPA..T
+list index out of range
+Cant find IU.ADK..Z
+list index out of range
+Cant find IU.ADK..R
+list index out of range
+Cant find IU.ADK..T
+list index out of range
+Cant find G.MPG..Z
+list index out of range
+Cant find G.MPG..R
+list index out of range
+Cant find G.MPG..T
+list index out of range
+Cant find G.ECH..Z
+list index out of range
+Cant find G.ECH..R
+list index out of range
+Cant find G.ECH..T
+list index out of range
+Cant find IU.NWAO..Z
+list index out of range
+Cant find IU.NWAO..R
+list index out of range
+Cant find IU.NWAO..T
+list index out of range
+Cant find II.ARU..Z
+list index out of range
+Cant find II.ARU..R
+list index out of range
+Cant find II.ARU..T
+list index out of range
+Cant find G.PPTF..Z
+list index out of range
+Cant find G.PPTF..R
+list index out of range
+Cant find G.PPTF..T
+list index out of range
+Cant find GE.KMBO..Z
+list index out of range
+Cant find GE.KMBO..R
+list index out of range
+Cant find GE.KMBO..T
+</pre></div>
+</div>
+<p>Now that we have selected only the traces that are in all streams, we can
+plot a section with the traces.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">opl</span><span class="o">.</span><span class="n">section</span><span class="p">(</span><span class="n">streams</span><span class="p">,</span> <span class="n">origin_time</span><span class="o">=</span><span class="n">event_time</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+            <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Observed&#39;</span><span class="p">,</span> <span class="s1">&#39;GLAD-M25&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../_images/sphx_glr_run_tutorial_014.svg" srcset="../_images/sphx_glr_run_tutorial_014.svg" alt="run tutorial" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 6.947 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-run-tutorial-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/41a5e94ffb93dcc61268579181ad4336/run_tutorial.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">run_tutorial.py</span></code></a></p>
@@ -503,14 +991,14 @@ absmax parameter which can be manually set.</p>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="index.html">
+          <a class="prev-page" href="run_logo.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Tutorial of all functions</div>
+                <div class="title">Plotting the logo and the favicon</div>
                 
               </div>
             </a>
@@ -544,12 +1032,13 @@ absmax parameter which can be manually set.</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">obsplotlib</span></code> Tutorial</a><ul>
+<li><a class="reference internal" href="#">Full <code class="docutils literal notranslate"><span class="pre">obsplotlib</span></code> Tutorial</a><ul>
 <li><a class="reference internal" href="#loading-all-modules">Loading all modules</a></li>
 <li><a class="reference internal" href="#loading-data">Loading data</a></li>
 <li><a class="reference internal" href="#trace">Trace</a></li>
 <li><a class="reference internal" href="#station">Station</a></li>
 <li><a class="reference internal" href="#section">Section</a></li>
+<li><a class="reference internal" href="#trace-comparison">Trace comparison</a></li>
 </ul>
 </li>
 </ul>

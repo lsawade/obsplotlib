@@ -1,7 +1,7 @@
 :orphan:
 
-Tutorial of all functions
-=========================
+Tutorials
+=========
 
 
 
@@ -10,6 +10,23 @@ Tutorial of all functions
 .. raw:: html
 
     <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example will go over the creation of the logo from the data in the example directory.">
+
+.. only:: html
+
+  .. image:: /examples/images/thumb/sphx_glr_run_logo_thumb.svg
+    :alt:
+
+  :ref:`sphx_glr_examples_run_logo.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Plotting the logo and the favicon</div>
+    </div>
 
 
 .. raw:: html
@@ -25,7 +42,7 @@ Tutorial of all functions
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">obsplotlib Tutorial</div>
+      <div class="sphx-glr-thumbnail-title">Full obsplotlib Tutorial</div>
     </div>
 
 
@@ -37,6 +54,7 @@ Tutorial of all functions
 .. toctree::
    :hidden:
 
+   /examples/run_logo
    /examples/run_tutorial
 
 

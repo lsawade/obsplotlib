@@ -47,6 +47,9 @@ html_theme = 'furo'
 html_static_path = ['_static']
 
 html_theme_options = {
+
+    "light_logo": "logo.svg",
+    "dark_logo": "logo.svg",
     # "navbar_end": ["navbar-icon-links"],
     # "icon_links": [
     #     {

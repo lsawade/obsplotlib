@@ -9,3 +9,5 @@ pypitoken
 testpypitoken
 obsplotlib-testpypitoken
 obsplotlib-pypitoken
+examples/logo.svg
+examples/favicon.ico

@@ -1,7 +1,7 @@
 #!/bin/env python
 """
-``obsplotlib`` Tutorial
-=======================
+Full ``obsplotlib`` Tutorial
+============================
 
 The tutorial will go over the plotting functions in ``obsplotlib`` and how to
 prepare your data to plot traces, station seismograms and full seismic sections

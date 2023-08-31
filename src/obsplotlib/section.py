@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.dates as mdates
+import matplotlib.patches as patches
 import matplotlib.axes
 import matplotlib.pyplot as plt
 import typing as tp
@@ -19,6 +20,7 @@ def section(streams: tp.List[obspy.Stream], *args,
             legendargs: dict | None = None,
             align: bool = False,
             absmax: float | None = None,
+            window: bool = False,
             **kwargs):
     """Plots a section of seismograms of given stream or stream set. The
     stream(s) need(s) to contain traces which have the distance parameter
@@ -233,6 +235,32 @@ def section(streams: tp.List[obspy.Stream], *args,
                 pstreams[_j][_i].data /
                 absmax * scale + y[_i], '-',
                 *args, c=colors[_j], label=label, **kwargs)
+
+            # Plot windows if available
+            if window and _j == 0:
+                # if windowkwargs is None:
+                #     windowkwargs = dict(color=colors[_j], alpha=0.5)
+
+                for window in pstreams[_j][_i].stats.windows:
+
+                    if origin_time is not None:
+                        windowstart = (window.starttime - origin_time)
+                        windowend = (window.endtime - origin_time)
+                        duration = windowend - windowstart
+                    else:
+                        windowstart = window.starttime.matplotlib_date
+                        windowend = window.endtime.matplotlib_date
+                        duration = windowend - windowstart
+
+                    # Vertical window extension
+                    windowy0 = y[_i] - 0.6
+                    windowy1 = y[_i] + 0.6
+                    windowdy = windowy1 - windowy0
+
+                    ax.add_patch(patches.Rectangle(
+                        (windowstart, windowy0),
+                        duration, windowdy, edgecolor='none', zorder=-1,
+                        facecolor=[0.9, 0.9, 0.9], clip_on=True))
 
     # Remove all spines
     ax.spines.top.set_visible(False)

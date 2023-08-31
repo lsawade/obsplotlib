@@ -5,6 +5,13 @@ import weakref
 import numpy as np
 
 
+def bold(string):
+    N = string.count(' ')
+    string = f'$\\bf{{{string}}}$'
+    string = N * ' ' + 3 * ' ' + string
+    return string
+
+
 class Window(AttribDict):
 
     starttime: obspy.UTCDateTime
@@ -19,6 +26,17 @@ class Window(AttribDict):
         and make measurements that way."""
         super().__init__(*args, **kwargs)
 
+        self.startidx = self.get_index(tr, self.starttime)
+        self.endidx = self.get_index(tr, self.endtime)
+
+        # Correct the starttime to the index
+        self.starttime = tr.stats.starttime \
+            + self.startidx/tr.stats.sampling_rate
+
+        # Correct the endtime to the index
+        self.endtime = tr.stats.starttime \
+            + self.endidx/tr.stats.sampling_rate
+
     def __len__(self):
         return self.endidx - self.startidx
 
@@ -26,20 +44,39 @@ class Window(AttribDict):
     def duration(self):
         return self.endtime - self.starttime
 
+    def get_index(self, tr: obspy.Trace, time: obspy.UTCDateTime):
+
+        # Get all UTCDateTime objects from the trace
+        times = tr.times(type="utcdatetime")
+
+        # Get the index on the traces with closest time to the input time
+        return int(np.argmin(np.abs(times-time)))
+
     def __repr__(self):
         return f'Window(starttime={self.starttime}, endtime={self.endtime})'
 
-    # def L2(self, other: obspy.Trace) -> float:
-    #     """Returns the L2 norm between two Traces."""
-    #     if self.trace.stats.sampling_rate != other.stats.sampling_rate:
-    #         raise ValueError('Sampling rates must be the same')
+    def get_label(self) -> str:
 
-    #     if self.trace.stats.starttime != other.stats.starttime:
-    #         raise ValueError('starttime must be the same')
+        outstr = ''
 
-    #     if self.trace.stats.endtime != other.stats.endtime:
-    #         raise ValueError('endtime must be the same')
+        comparison_keys = list(self.measurements.keys())
+        measurement_keys = list(self.measurements[comparison_keys[0]].keys())
 
-    #     return float(0.5 * np.sum(
-    #         (self.trace.data[self.startidx:self.endidx]
-    #          - other.data[self.startidx:self.endidx])**2))
+        N = 5
+        outstr += f'{"":{N}}'
+        for key in comparison_keys:
+            string = bold(key)
+            outstr += f'{string:>6s}'
+
+        # ADd new line
+        outstr += '\n'
+
+        for mkey in measurement_keys:
+            outstr += f'{mkey+":":{N}}'
+
+            for ckey in comparison_keys:
+                outstr += f' {self.measurements[ckey][mkey]:>5.2f}'
+
+            outstr += '\n'
+
+        return outstr

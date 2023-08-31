@@ -4,6 +4,7 @@ import typing as tp
 import numpy as np
 import matplotlib.axes
 import matplotlib.dates as mdates
+import matplotlib.patches as patches
 import matplotlib.pyplot as plt
 from .utils import plot_label
 
@@ -22,6 +23,7 @@ def trace(
         normalization_type: str | int = 'all',
         plot_labels: bool = True,
         legend: bool = True,
+        window: bool = False, windowkwargs: dict | None = None,
         **kwargs):
     """Plot a single or a list of traces.
 
@@ -61,6 +63,10 @@ def trace(
         Plot trace label, absmax amplitude, by default True
     legend : bool, optional
         plot a legend or not, by default True
+    window : bool, optional
+        plot windows if available, by default False
+    windowkwargs : dict | None, optional
+        kwargs for window plotting, by default None
 
     Returns
     -------
@@ -75,7 +81,7 @@ def trace(
 
     """
 
-    if ax is None:
+    if not ax:
         ax = plt.gca()
 
     if isinstance(traces, obspy.Trace):
@@ -199,6 +205,35 @@ def trace(
                  ls[_j], *args, c=colors[_j], lw=lw[_j], label=labels[_j],
                  **kwargs)
 
+        # Plot windows if available
+        if window and _j == 0:
+            if windowkwargs is None:
+                windowkwargs = dict(
+                    plot_measurements=False)
+
+            for window in _tr.stats.windows:
+
+                if origin_time is not None:
+                    windowstart = (window.starttime - origin_time)/xdiv
+                    windowend = (window.endtime - origin_time)/xdiv
+                    duration = windowend - windowstart
+                else:
+                    windowstart = window.starttime.matplotlib_date
+                    windowend = window.endtime.matplotlib_date
+                    duration = windowend - windowstart
+
+                print(windowstart, windowend, duration)
+                ax.add_patch(patches.Rectangle(
+                    (windowstart, - 1.5 * absmax),
+                    duration, + 3 * absmax, edgecolor='none',
+                    facecolor=(0.9, 0.9, 0.9), clip_on=True))
+
+                if windowkwargs['plot_measurements']:
+                    ax.text(windowstart, -1.15*absmax, window.get_label(),
+                            horizontalalignment='left',
+                            verticalalignment='bottom', fontsize='small',
+                            bbox=dict(facecolor='none', edgecolor='none'))
+
     # Axis limits and indicator
     ax.set_ylim(-1.15*absmax, 1.15*absmax)
 
@@ -286,6 +321,7 @@ def station(streams: tp.List[obspy.Stream] | obspy.Stream, *args,
         streams = [streams]
 
     axes = []
+    ax = None  # for sharex
 
     for _i, comp in enumerate(components):
 
@@ -297,9 +333,10 @@ def station(streams: tp.List[obspy.Stream] | obspy.Stream, *args,
         # Get the traces for the component
         traces = [st.select(component=comp)[0] for st in streams]
 
-        # Plot the trace
-        ax = plt.subplot(len(components), 1, _i+1)
+        # Create a new subplot axes
+        ax = plt.subplot(len(components), 1, _i+1, sharex=ax)
 
+        # Plot the trace
         trace(traces, *args, ax=ax, legend=_legend, plot_labels=False,
               **kwargs)
 

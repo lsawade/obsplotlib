@@ -11,13 +11,13 @@ class Window(AttribDict):
     endtime: obspy.UTCDateTime
     startidx: int
     endidx: int
+    measurements: dict
 
     def __init__(self, tr: obspy.Trace, *args, **kwargs):
         """Initializes a window object with a trace object reference.
         That way we can always access the trace object from the window
         and make measurements that way."""
         super().__init__(*args, **kwargs)
-        self.trace = weakref.ref(tr)  # type: obspy.Trace
 
     def __len__(self):
         return self.endidx - self.startidx
@@ -29,17 +29,17 @@ class Window(AttribDict):
     def __repr__(self):
         return f'Window(starttime={self.starttime}, endtime={self.endtime})'
 
-    def L2(self, other: obspy.Trace) -> float:
-        """Returns the L2 norm between two Traces."""
-        if self.trace.stats.sampling_rate != other.stats.sampling_rate:
-            raise ValueError('Sampling rates must be the same')
+    # def L2(self, other: obspy.Trace) -> float:
+    #     """Returns the L2 norm between two Traces."""
+    #     if self.trace.stats.sampling_rate != other.stats.sampling_rate:
+    #         raise ValueError('Sampling rates must be the same')
 
-        if self.trace.stats.starttime != other.stats.starttime:
-            raise ValueError('starttime must be the same')
+    #     if self.trace.stats.starttime != other.stats.starttime:
+    #         raise ValueError('starttime must be the same')
 
-        if self.trace.stats.endtime != other.stats.endtime:
-            raise ValueError('endtime must be the same')
+    #     if self.trace.stats.endtime != other.stats.endtime:
+    #         raise ValueError('endtime must be the same')
 
-        return float(0.5 * np.sum(
-            (self.trace.data[self.startidx:self.endidx]
-             - other.data[self.startidx:self.endidx])**2))
+    #     return float(0.5 * np.sum(
+    #         (self.trace.data[self.startidx:self.endidx]
+    #          - other.data[self.startidx:self.endidx])**2))

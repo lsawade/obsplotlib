@@ -293,3 +293,99 @@ plt.show(block=False)
 # One main difference is that the section multiple components will find an
 # absmax to normalize across all streams and traces. This can be overwritten by
 # absmax parameter which can be manually set.
+#
+#
+# Trace comparison
+# ----------------
+#
+# So far we have only really looked at a single set of traces. Very often in
+# seismology however we want to look at trace comparisons. And sometimes
+# directly looks at measurements on traces, or windows. Let's load a second
+# set of traces to compare our observed data too.
+
+# Read traces and station info
+synraw = obspy.read("DATA/synthetic/traces/*.sac")
+syninv = obspy.read_inventory("DATA/synthetic/station.xml")
+
+# %%
+# Just like with the observed data we are attach geometry for rotation
+opl.attach_geometry(synraw, event_latitude=event_latitude,
+                    event_longitude=event_longitude, inv=syninv)
+
+
+# %%
+# Since we want to process both synthetics and observed the same fashion,
+# We have to resample the traces in addition to the basic processing.
+
+starttime = event_time
+npts = 10800
+sampling_rate_in_hz = 1
+bandpass = [50, 500]
+obs = opl.process(raw, inv=inv, remove_response=True, bandpass=bandpass,
+                  starttime=starttime, npts=npts,
+                  sampling_rate_in_hz=1)
+
+syn = opl.process(synraw, inv=inv, remove_response=False, bandpass=bandpass,
+                  starttime=starttime, npts=npts,
+                  sampling_rate_in_hz=1)
+
+# %%
+# Once both are processed we can plot them with
+
+obstr = obs.select(network=network_str, station=station_str,
+                   component=component_str)[0]
+syntr = syn.select(network=network_str, station=station_str,
+                   component=component_str)[0]
+
+plt.figure()
+ax = opl.trace([obstr, syntr], labels=['Observed', 'GLAD-M25'],
+               origin_time=event_time, lw=0.75)
+
+# Just reusing the header dict from earlier
+header_dict['station'] = obstr.id
+header_dict['bandpass'] = bandpass
+
+opl.add_header(ax, **header_dict)
+plt.subplots_adjust(left=0.05, right=0.95, top=0.8, bottom=0.125)
+plt.show(block=False)
+
+# %%
+# Repeat to plot a station
+
+# Get station from observed trace
+obs_st = obs.select(network="II", station="BFO")
+syn_st = syn.select(network="II", station="BFO")
+
+# Plot the station
+plt.figure(figsize=(8, 5))
+axes = opl.station([obs_st, syn_st], components='ZRT', lw=0.5,
+                   labels=['Observed', 'GLAD-M25'], nooffset=True)
+
+# If dissatisfied with legend fontsize and position? Just recreate it using
+# the first axes object.
+axes[0].legend(frameon=False, loc='lower right', ncol=3, fontsize='small',
+               bbox_to_anchor=(1.0, 1.0))
+
+# Add the header with a bit more distance to make room for the legend outside
+# the  axes
+opl.add_header(axes[0], **header_dict, dist=0.075)
+
+# Slightly adjust the plots to make the fit nicely into the figure
+plt.subplots_adjust(left=0.075, right=0.925, top=0.775, bottom=0.15)
+plt.show(block=False)
+
+# %%
+# For the section, we need do a couple more things. The set of traces in these
+# do not perfectly overlapping.
+
+streams = opl.select_intersection([obs, syn], components='ZRT')
+
+# %%
+# Now that we have selected only the traces that are in all streams, we can
+# plot a section with the traces.
+
+plt.figure(figsize=(8, 10))
+opl.section(streams, origin_time=event_time, lw=0.5,
+            labels=['Observed', 'GLAD-M25'])
+plt.subplots_adjust(left=0.15, right=0.85, top=0.95, bottom=0.05)
+plt.show(block=False)

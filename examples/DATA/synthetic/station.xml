@@ -1,0 +1,571 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<FDSNStationXML xmlns="http://www.fdsn.org/xml/station/1" schemaVersion="1.1">
+  <Source>ObsPy 1.3.0</Source>
+  <Module>ObsPy 1.3.0</Module>
+  <ModuleURI>https://www.obspy.org</ModuleURI>
+  <Created>2023-08-30T21:08:45.988832Z</Created>
+  <Network code="G">
+    <Station code="MPG">
+      <Latitude unit="DEGREES">5.110099792480469</Latitude>
+      <Longitude unit="DEGREES">-52.644500732421875</Longitude>
+      <Elevation unit="METERS">-0.0</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="ROCAM">
+      <Latitude unit="DEGREES">-19.75550079345703</Latitude>
+      <Longitude unit="DEGREES">63.37009811401367</Longitude>
+      <Elevation unit="METERS">-0.0</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="TAM">
+      <Latitude unit="DEGREES">22.791500091552734</Latitude>
+      <Longitude unit="DEGREES">5.52839994430542</Longitude>
+      <Elevation unit="METERS">-0.0</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="PAF">
+      <Latitude unit="DEGREES">-49.35100173950195</Latitude>
+      <Longitude unit="DEGREES">70.21070098876953</Longitude>
+      <Elevation unit="METERS">-0.0</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="FUTU">
+      <Latitude unit="DEGREES">-14.307700157165527</Latitude>
+      <Longitude unit="DEGREES">-178.12109375</Longitude>
+      <Elevation unit="METERS">-0.0</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="NOUC">
+      <Latitude unit="DEGREES">-22.098600387573242</Latitude>
+      <Longitude unit="DEGREES">166.3065948486328</Longitude>
+      <Elevation unit="METERS">-0.0</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="SPB">
+      <Latitude unit="DEGREES">-23.59269905090332</Latitude>
+      <Longitude unit="DEGREES">-47.426998138427734</Longitude>
+      <Elevation unit="METERS">-0.0</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="IVI">
+      <Latitude unit="DEGREES">61.2057991027832</Latitude>
+      <Longitude unit="DEGREES">-48.171199798583984</Longitude>
+      <Elevation unit="METERS">-0.0</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="KIP">
+      <Latitude unit="DEGREES">21.420000076293945</Latitude>
+      <Longitude unit="DEGREES">-158.01119995117188</Longitude>
+      <Elevation unit="METERS">-0.032999999821186066</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="TRIS">
+      <Latitude unit="DEGREES">-37.06809997558594</Latitude>
+      <Longitude unit="DEGREES">-12.315199851989746</Longitude>
+      <Elevation unit="METERS">-0.0020000000949949026</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="ECH">
+      <Latitude unit="DEGREES">48.21630096435547</Latitude>
+      <Longitude unit="DEGREES">7.158999919891357</Longitude>
+      <Elevation unit="METERS">-0.25</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="PPTF">
+      <Latitude unit="DEGREES">-17.589599609375</Latitude>
+      <Longitude unit="DEGREES">-149.56520080566406</Longitude>
+      <Elevation unit="METERS">-0.0</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+  </Network>
+  <Network code="GE">
+    <Station code="LVC">
+      <Latitude unit="DEGREES">-22.618200302124023</Latitude>
+      <Longitude unit="DEGREES">-68.91130065917969</Longitude>
+      <Elevation unit="METERS">-0.029999999329447746</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="KMBO">
+      <Latitude unit="DEGREES">-1.1267999410629272</Latitude>
+      <Longitude unit="DEGREES">37.25230026245117</Longitude>
+      <Elevation unit="METERS">-0.019999999552965164</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+  </Network>
+  <Network code="II">
+    <Station code="ABPO">
+      <Latitude unit="DEGREES">-19.01799964904785</Latitude>
+      <Longitude unit="DEGREES">47.229000091552734</Longitude>
+      <Elevation unit="METERS">-0.0052999998442828655</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="HOPE">
+      <Latitude unit="DEGREES">-54.283599853515625</Latitude>
+      <Longitude unit="DEGREES">-36.48789978027344</Longitude>
+      <Elevation unit="METERS">-0.0</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="KWJN">
+      <Latitude unit="DEGREES">9.287300109863281</Latitude>
+      <Longitude unit="DEGREES">167.53689575195312</Longitude>
+      <Elevation unit="METERS">-0.006000000052154064</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="ALE">
+      <Latitude unit="DEGREES">82.50330352783203</Latitude>
+      <Longitude unit="DEGREES">-62.349998474121094</Longitude>
+      <Elevation unit="METERS">-0.0</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="ASCN">
+      <Latitude unit="DEGREES">-7.932700157165527</Latitude>
+      <Longitude unit="DEGREES">-14.360099792480469</Longitude>
+      <Elevation unit="METERS">-0.10000000149011612</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="TLY">
+      <Latitude unit="DEGREES">51.68069839477539</Latitude>
+      <Longitude unit="DEGREES">103.643798828125</Longitude>
+      <Elevation unit="METERS">-0.019999999552965164</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="PALK">
+      <Latitude unit="DEGREES">7.272799968719482</Latitude>
+      <Longitude unit="DEGREES">80.70220184326172</Longitude>
+      <Elevation unit="METERS">-0.09000000357627869</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="COCO">
+      <Latitude unit="DEGREES">-12.190099716186523</Latitude>
+      <Longitude unit="DEGREES">96.83489990234375</Longitude>
+      <Elevation unit="METERS">-0.07000000029802322</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="ARU">
+      <Latitude unit="DEGREES">56.430198669433594</Latitude>
+      <Longitude unit="DEGREES">58.5625</Longitude>
+      <Elevation unit="METERS">-0.0</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="FFC">
+      <Latitude unit="DEGREES">54.724998474121094</Latitude>
+      <Longitude unit="DEGREES">-101.97830200195312</Longitude>
+      <Elevation unit="METERS">-0.0</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="KDAK">
+      <Latitude unit="DEGREES">57.782798767089844</Latitude>
+      <Longitude unit="DEGREES">-152.58349609375</Longitude>
+      <Elevation unit="METERS">-0.08799999952316284</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="SACV">
+      <Latitude unit="DEGREES">14.970199584960938</Latitude>
+      <Longitude unit="DEGREES">-23.60849952697754</Longitude>
+      <Elevation unit="METERS">-0.09700000286102295</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="RAYN">
+      <Latitude unit="DEGREES">23.522499084472656</Latitude>
+      <Longitude unit="DEGREES">45.50320053100586</Longitude>
+      <Elevation unit="METERS">-0.07500000298023224</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="CMLA">
+      <Latitude unit="DEGREES">37.76369857788086</Latitude>
+      <Longitude unit="DEGREES">-25.52429962158203</Longitude>
+      <Elevation unit="METERS">-0.09700000286102295</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="TAU">
+      <Latitude unit="DEGREES">-42.9099006652832</Latitude>
+      <Longitude unit="DEGREES">147.32040405273438</Longitude>
+      <Elevation unit="METERS">-0.0</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="BFO">
+      <Latitude unit="DEGREES">48.330101013183594</Latitude>
+      <Longitude unit="DEGREES">8.32960033416748</Longitude>
+      <Elevation unit="METERS">-0.1599999964237213</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="SUR">
+      <Latitude unit="DEGREES">-32.37969970703125</Latitude>
+      <Longitude unit="DEGREES">20.81170082092285</Longitude>
+      <Elevation unit="METERS">-0.0</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="NIL">
+      <Latitude unit="DEGREES">33.65060043334961</Latitude>
+      <Longitude unit="DEGREES">73.26860046386719</Longitude>
+      <Elevation unit="METERS">-0.06800000369548798</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="DGAR">
+      <Latitude unit="DEGREES">-7.412099838256836</Latitude>
+      <Longitude unit="DEGREES">72.45249938964844</Longitude>
+      <Elevation unit="METERS">-0.0020000000949949026</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="RPN">
+      <Latitude unit="DEGREES">-27.126699447631836</Latitude>
+      <Longitude unit="DEGREES">-109.33439636230469</Longitude>
+      <Elevation unit="METERS">-0.0</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="MSEY">
+      <Latitude unit="DEGREES">-4.673699855804443</Latitude>
+      <Longitude unit="DEGREES">55.47919845581055</Longitude>
+      <Elevation unit="METERS">-0.09099999815225601</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="LVZ">
+      <Latitude unit="DEGREES">67.89790344238281</Latitude>
+      <Longitude unit="DEGREES">34.65140151977539</Longitude>
+      <Elevation unit="METERS">-0.20000000298023224</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+  </Network>
+  <Network code="IU">
+    <Station code="TRQA">
+      <Latitude unit="DEGREES">-38.056800842285156</Latitude>
+      <Longitude unit="DEGREES">-61.97869873046875</Longitude>
+      <Elevation unit="METERS">-0.10100000351667404</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="NWAO">
+      <Latitude unit="DEGREES">-32.92770004272461</Latitude>
+      <Longitude unit="DEGREES">117.23899841308594</Longitude>
+      <Elevation unit="METERS">-0.10499999672174454</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="HRV">
+      <Latitude unit="DEGREES">42.50640106201172</Latitude>
+      <Longitude unit="DEGREES">-71.55829620361328</Longitude>
+      <Elevation unit="METERS">-0.0</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="CTAO">
+      <Latitude unit="DEGREES">-20.088199615478516</Latitude>
+      <Longitude unit="DEGREES">146.25450134277344</Longitude>
+      <Elevation unit="METERS">-0.03700000047683716</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="YSS">
+      <Latitude unit="DEGREES">46.95869827270508</Latitude>
+      <Longitude unit="DEGREES">142.76040649414062</Longitude>
+      <Elevation unit="METERS">-0.0020000000949949026</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="SNZO">
+      <Latitude unit="DEGREES">-41.30870056152344</Latitude>
+      <Longitude unit="DEGREES">174.7042999267578</Longitude>
+      <Elevation unit="METERS">-0.10000000149011612</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="RCBR">
+      <Latitude unit="DEGREES">-5.827400207519531</Latitude>
+      <Longitude unit="DEGREES">-35.90140151977539</Longitude>
+      <Elevation unit="METERS">-0.10899999737739563</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="SAML">
+      <Latitude unit="DEGREES">-8.94890022277832</Latitude>
+      <Longitude unit="DEGREES">-63.183101654052734</Longitude>
+      <Elevation unit="METERS">-0.11100000143051147</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="ANMO">
+      <Latitude unit="DEGREES">34.945899963378906</Latitude>
+      <Longitude unit="DEGREES">-106.45719909667969</Longitude>
+      <Elevation unit="METERS">-0.15000000596046448</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="INCN">
+      <Latitude unit="DEGREES">37.47760009765625</Latitude>
+      <Longitude unit="DEGREES">126.6239013671875</Longitude>
+      <Elevation unit="METERS">-0.014999999664723873</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="SPA">
+      <Latitude unit="DEGREES">-90.0</Latitude>
+      <Longitude unit="DEGREES">0.0</Longitude>
+      <Elevation unit="METERS">-0.009999999776482582</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="MSKU">
+      <Latitude unit="DEGREES">-1.6556999683380127</Latitude>
+      <Longitude unit="DEGREES">13.611599922180176</Longitude>
+      <Elevation unit="METERS">-0.02500000037252903</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="HNR">
+      <Latitude unit="DEGREES">-9.438699722290039</Latitude>
+      <Longitude unit="DEGREES">159.94749450683594</Longitude>
+      <Elevation unit="METERS">-0.10000000149011612</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="CHTO">
+      <Latitude unit="DEGREES">18.81410026550293</Latitude>
+      <Longitude unit="DEGREES">98.94429779052734</Longitude>
+      <Elevation unit="METERS">-0.10100000351667404</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="ADK">
+      <Latitude unit="DEGREES">51.882301330566406</Latitude>
+      <Longitude unit="DEGREES">-176.6842041015625</Longitude>
+      <Elevation unit="METERS">-0.0</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="OTAV">
+      <Latitude unit="DEGREES">0.23759999871253967</Latitude>
+      <Longitude unit="DEGREES">-78.45079803466797</Longitude>
+      <Elevation unit="METERS">-0.014999999664723873</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="DAV">
+      <Latitude unit="DEGREES">7.069699764251709</Latitude>
+      <Longitude unit="DEGREES">125.5791015625</Longitude>
+      <Elevation unit="METERS">-0.0010000000474974513</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="WVT">
+      <Latitude unit="DEGREES">36.12969970703125</Latitude>
+      <Longitude unit="DEGREES">-87.83000183105469</Longitude>
+      <Elevation unit="METERS">-0.0</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="SJG">
+      <Latitude unit="DEGREES">18.109100341796875</Latitude>
+      <Longitude unit="DEGREES">-66.1500015258789</Longitude>
+      <Elevation unit="METERS">-0.0</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="MIDW">
+      <Latitude unit="DEGREES">28.215599060058594</Latitude>
+      <Longitude unit="DEGREES">-177.3697967529297</Longitude>
+      <Elevation unit="METERS">-0.09359999746084213</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="XMAS">
+      <Latitude unit="DEGREES">2.044800043106079</Latitude>
+      <Longitude unit="DEGREES">-157.44569396972656</Longitude>
+      <Elevation unit="METERS">-0.0010000000474974513</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="CASY">
+      <Latitude unit="DEGREES">-66.2791976928711</Latitude>
+      <Longitude unit="DEGREES">110.535400390625</Longitude>
+      <Elevation unit="METERS">-0.004999999888241291</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="COR">
+      <Latitude unit="DEGREES">44.58549880981445</Latitude>
+      <Longitude unit="DEGREES">-123.30460357666016</Longitude>
+      <Elevation unit="METERS">-0.0</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="ANTO">
+      <Latitude unit="DEGREES">39.86800003051758</Latitude>
+      <Longitude unit="DEGREES">32.793399810791016</Longitude>
+      <Elevation unit="METERS">-0.19499999284744263</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="TIXI">
+      <Latitude unit="DEGREES">71.63410186767578</Latitude>
+      <Longitude unit="DEGREES">128.86669921875</Longitude>
+      <Elevation unit="METERS">-0.0</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="PMSA">
+      <Latitude unit="DEGREES">-64.77439880371094</Latitude>
+      <Longitude unit="DEGREES">-64.04889678955078</Longitude>
+      <Elevation unit="METERS">-0.0</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="MAKZ">
+      <Latitude unit="DEGREES">46.80799865722656</Latitude>
+      <Longitude unit="DEGREES">81.97699737548828</Longitude>
+      <Elevation unit="METERS">-0.009999999776482582</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="KONO">
+      <Latitude unit="DEGREES">59.64910125732422</Latitude>
+      <Longitude unit="DEGREES">9.598199844360352</Longitude>
+      <Elevation unit="METERS">-0.3400000035762787</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="LSZ">
+      <Latitude unit="DEGREES">-15.277899742126465</Latitude>
+      <Longitude unit="DEGREES">28.188199996948242</Longitude>
+      <Elevation unit="METERS">-0.0</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="GUMO">
+      <Latitude unit="DEGREES">13.589300155639648</Latitude>
+      <Longitude unit="DEGREES">144.86839294433594</Longitude>
+      <Elevation unit="METERS">-0.10899999737739563</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+    <Station code="TEIG">
+      <Latitude unit="DEGREES">20.226299285888672</Latitude>
+      <Longitude unit="DEGREES">-88.27629852294922</Longitude>
+      <Elevation unit="METERS">-0.11100000143051147</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+  </Network>
+  <Network code="IC">
+    <Station code="XAN">
+      <Latitude unit="DEGREES">34.03129959106445</Latitude>
+      <Longitude unit="DEGREES">108.92369842529297</Longitude>
+      <Elevation unit="METERS">-0.0</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+  </Network>
+  <Network code="MN">
+    <Station code="TNV">
+      <Latitude unit="DEGREES">-74.69999694824219</Latitude>
+      <Longitude unit="DEGREES">164.1199951171875</Longitude>
+      <Elevation unit="METERS">-0.004999999888241291</Elevation>
+      <Site>
+        <Name></Name>
+      </Site>
+    </Station>
+  </Network>
+</FDSNStationXML>

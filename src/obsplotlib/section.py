@@ -20,6 +20,56 @@ def section(streams: tp.List[obspy.Stream], *args,
             align: bool = False,
             absmax: float | None = None,
             **kwargs):
+    """Plots a section of seismograms of given stream or stream set. The
+    stream(s) need(s) to contain traces which have the distance parameter
+    set.
+
+    Parameters
+    ----------
+    streams : tp.List[obspy.Stream]
+        obspy.Stream or list of obspy.Streams
+    origin_time : obspy.UTCDateTime | None, optional
+        origin time to plot traces agains, by default None
+    ax : matplotlib.axes.Axes | None, optional
+        axes to plot the section into, by default None
+    comp : str, optional
+        which component to plot, by default 'Z'
+    limits : tp.Tuple[obspy.UTCDateTime] | None, optional
+        time limits, by default None
+    scale : float, optional
+        since the traces have to be normalized, we can scale them after
+        normalization, by default 1.0
+    colors : list, optional
+        list of colors must be equal or longer than list
+        of streams, by default ['k', 'r', 'b']
+    labels : list, optional
+        list of labels must be equal or longer than list
+        of streams, by default ['Observed', 'Synthetic', 'New']
+    legendargs : dict | None, optional
+        a set of arguments to be parsed to ``plt.legend()`` if None, no legend
+        is plotted, by default None
+    align : bool, optional
+        align traces to a traveltime. traces must have stats.traveltime
+        parameter and origin time must be given, by default False
+    absmax : float | None, optional
+        optional value to normalize traces by. If none, automatically
+        determined, by default None
+
+    Returns
+    -------
+    tuple of matplotlib.axes.Axes
+        first axes is the main axes that is plotted into which handles
+        yticklabels on the right, the second axes handles yticklabels
+        on the right.
+
+    Raises
+    ------
+    ValueError
+        if ``align=True``, but no ``origin_time`` given
+    ValueError
+        if ``align=True``, but the traces' stats objects do not have the
+        traveltime attribute.
+    """
 
     # If axes is None generate new axes
     if ax is None:
@@ -224,6 +274,28 @@ def section_multiple_comp(
         align: bool = False,
         limits: tp.Tuple[obspy.UTCDateTime] | tp.Tuple[float] | None = None,
         **kwargs):
+    """Wrapper around section that plit multiple sections into a single figure.
+
+    Parameters
+    ----------
+    streams : tp.List[obspy.Stream]
+        stream or list of streams to be plotted into a single axes.
+    components : str, optional
+        _description_, by default "NEZ"
+    legendargs : dict | None, optional
+        _description_, by default None
+    absmax : float | None, optional
+        _description_, by default None
+    align : bool, optional
+        _description_, by default False
+    limits : tp.Tuple[obspy.UTCDateTime] | tp.Tuple[float] | None, optional
+        _description_, by default None
+
+    Returns
+    -------
+    _type_
+        _description_
+    """
 
     axes = []
 

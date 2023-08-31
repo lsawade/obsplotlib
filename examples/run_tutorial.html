@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="API" href="../api.html" /><link rel="prev" title="Plotting the logo and the favicon" href="run_logo.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
-        <title>Full obsplotlib Tutorial - obsplotlib 0.3.1 documentation</title>
+        <title>Full obsplotlib Tutorial - obsplotlib 0.4.0.dev1+g32c27ef documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
@@ -129,7 +129,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">obsplotlib 0.3.1 documentation</div></a>
+      <a href="../index.html"><div class="brand">obsplotlib 0.4.0.dev1+g32c27ef documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -156,7 +156,7 @@
     <img class="sidebar-logo only-dark" src="../_static/logo.svg" alt="Dark Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">obsplotlib 0.3.1 documentation</span>
+  <span class="sidebar-brand-text">obsplotlib 0.4.0.dev1+g32c27ef documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -499,7 +499,7 @@ We have to resample the traces in addition to the basic processing.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">starttime</span> <span class="o">=</span> <span class="n">event_time</span>
 <span class="n">npts</span> <span class="o">=</span> <span class="mi">10800</span>
 <span class="n">sampling_rate_in_hz</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">bandpass</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>
+<span class="n">bandpass</span> <span class="o">=</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>
 <span class="n">obs</span> <span class="o">=</span> <span class="n">opl</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">inv</span><span class="o">=</span><span class="n">inv</span><span class="p">,</span> <span class="n">remove_response</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bandpass</span><span class="o">=</span><span class="n">bandpass</span><span class="p">,</span>
                   <span class="n">starttime</span><span class="o">=</span><span class="n">starttime</span><span class="p">,</span> <span class="n">npts</span><span class="o">=</span><span class="n">npts</span><span class="p">,</span>
                   <span class="n">sampling_rate_in_hz</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -558,389 +558,11 @@ do not perfectly overlapping.</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>list index out of range
-Cant find IU.INCN..Z
-list index out of range
-Cant find IU.INCN..R
-list index out of range
-Cant find IU.INCN..T
-list index out of range
-Cant find II.KAPI..Z
-list index out of range
-Cant find II.KAPI..R
-list index out of range
-Cant find II.KAPI..T
-list index out of range
-Cant find IC.XAN..Z
-list index out of range
-Cant find IC.XAN..R
-list index out of range
-Cant find IC.XAN..T
-list index out of range
-Cant find II.ALE..Z
-list index out of range
-Cant find II.ALE..R
-list index out of range
-Cant find II.ALE..T
-list index out of range
-Cant find G.ECH..Z
-list index out of range
-Cant find G.ECH..R
-list index out of range
-Cant find G.ECH..T
-list index out of range
-Cant find IU.SBA..Z
-list index out of range
-Cant find IU.SBA..R
-list index out of range
-Cant find IU.SBA..T
-list index out of range
-Cant find G.PPTF..Z
-list index out of range
-Cant find G.PPTF..R
-list index out of range
-Cant find G.PPTF..T
-list index out of range
-Cant find II.PALK..Z
-list index out of range
-Cant find II.PALK..R
-list index out of range
-Cant find II.PALK..T
-list index out of range
-Cant find IU.KONO..Z
-list index out of range
-Cant find IU.KONO..R
-list index out of range
-Cant find IU.KONO..T
-list index out of range
-Cant find G.KIP..Z
-list index out of range
-Cant find G.KIP..R
-list index out of range
-Cant find G.KIP..T
-list index out of range
-Cant find IU.LSZ..Z
-list index out of range
-Cant find IU.LSZ..R
-list index out of range
-Cant find IU.LSZ..T
-list index out of range
-Cant find IU.CHTO..Z
-list index out of range
-Cant find IU.CHTO..R
-list index out of range
-Cant find IU.CHTO..T
-list index out of range
-Cant find IU.MIDW..Z
-list index out of range
-Cant find IU.MIDW..R
-list index out of range
-Cant find IU.MIDW..T
-list index out of range
-Cant find IU.RCBR..Z
-list index out of range
-Cant find IU.RCBR..R
-list index out of range
-Cant find IU.RCBR..T
-list index out of range
-Cant find G.FUTU..Z
-list index out of range
-Cant find G.FUTU..R
-list index out of range
-Cant find G.FUTU..T
-list index out of range
-Cant find IU.TEIG..Z
-list index out of range
-Cant find IU.TEIG..R
-list index out of range
-Cant find IU.TEIG..T
-list index out of range
-Cant find IU.WVT..Z
-list index out of range
-Cant find IU.WVT..R
-list index out of range
-Cant find IU.WVT..T
-list index out of range
-Cant find II.LVZ..Z
-list index out of range
-Cant find II.LVZ..R
-list index out of range
-Cant find II.LVZ..T
-list index out of range
-Cant find II.CMLA..Z
-list index out of range
-Cant find II.CMLA..R
-list index out of range
-Cant find II.CMLA..T
-list index out of range
-Cant find II.KWJN..Z
-list index out of range
-Cant find II.KWJN..R
-list index out of range
-Cant find II.KWJN..T
-list index out of range
-Cant find II.RPN..Z
-list index out of range
-Cant find II.RPN..R
-list index out of range
-Cant find II.RPN..T
-list index out of range
-Cant find IU.PMSA..Z
-list index out of range
-Cant find IU.PMSA..R
-list index out of range
-Cant find IU.PMSA..T
-list index out of range
-Cant find IU.ANTO..Z
-list index out of range
-Cant find IU.ANTO..R
-list index out of range
-Cant find IU.ANTO..T
-list index out of range
-Cant find IU.HNR..Z
-list index out of range
-Cant find IU.HNR..R
-list index out of range
-Cant find IU.HNR..T
-list index out of range
-Cant find II.AAK..Z
-list index out of range
-Cant find II.AAK..R
-list index out of range
-Cant find II.AAK..T
-list index out of range
-Cant find II.TAU..Z
-list index out of range
-Cant find II.TAU..R
-list index out of range
-Cant find II.TAU..T
-list index out of range
-Cant find G.IVI..Z
-list index out of range
-Cant find G.IVI..R
-list index out of range
-Cant find G.IVI..T
-list index out of range
-Cant find II.NIL..Z
-list index out of range
-Cant find II.NIL..R
-list index out of range
-Cant find II.NIL..T
-list index out of range
-Cant find G.NOUC..Z
-list index out of range
-Cant find G.NOUC..R
-list index out of range
-Cant find G.NOUC..T
-list index out of range
-Cant find IU.SPA..Z
-list index out of range
-Cant find IU.SPA..R
-list index out of range
-Cant find IU.SPA..T
-list index out of range
-Cant find IU.MSKU..Z
-list index out of range
-Cant find IU.MSKU..R
-list index out of range
-Cant find IU.MSKU..T
-list index out of range
-Cant find IU.NWAO..Z
-list index out of range
-Cant find IU.NWAO..R
-list index out of range
-Cant find IU.NWAO..T
-list index out of range
-Cant find IU.KOWA..Z
-list index out of range
-Cant find IU.KOWA..R
-list index out of range
-Cant find IU.KOWA..T
-list index out of range
-Cant find IU.ADK..Z
-list index out of range
-Cant find IU.ADK..R
-list index out of range
-Cant find IU.ADK..T
-list index out of range
-Cant find G.MPG..Z
-list index out of range
-Cant find G.MPG..R
-list index out of range
-Cant find G.MPG..T
-list index out of range
-Cant find II.TLY..Z
-list index out of range
-Cant find II.TLY..R
-list index out of range
-Cant find II.TLY..T
-list index out of range
-Cant find G.SPB..Z
-list index out of range
-Cant find G.SPB..R
-list index out of range
-Cant find G.SPB..T
-list index out of range
-Cant find IU.CASY..Z
-list index out of range
-Cant find IU.CASY..R
-list index out of range
-Cant find IU.CASY..T
-list index out of range
-Cant find GE.LVC..Z
-list index out of range
-Cant find GE.LVC..R
-list index out of range
-Cant find GE.LVC..T
-list index out of range
-Cant find II.SACV..Z
-list index out of range
-Cant find II.SACV..R
-list index out of range
-Cant find II.SACV..T
-list index out of range
-Cant find GE.KMBO..Z
-list index out of range
-Cant find GE.KMBO..R
-list index out of range
-Cant find GE.KMBO..T
-list index out of range
-Cant find IU.GUMO..Z
-list index out of range
-Cant find IU.GUMO..R
-list index out of range
-Cant find IU.GUMO..T
-list index out of range
-Cant find II.COCO..Z
-list index out of range
-Cant find II.COCO..R
-list index out of range
-Cant find II.COCO..T
-list index out of range
-Cant find IU.OTAV..Z
-list index out of range
-Cant find IU.OTAV..R
-list index out of range
-Cant find IU.OTAV..T
-list index out of range
-Cant find II.SUR..Z
-list index out of range
-Cant find II.SUR..R
-list index out of range
-Cant find II.SUR..T
-list index out of range
-Cant find II.FFC..Z
-list index out of range
-Cant find II.FFC..R
-list index out of range
-Cant find II.FFC..T
-list index out of range
-Cant find IU.SJG..Z
-list index out of range
-Cant find IU.SJG..R
-list index out of range
-Cant find IU.SJG..T
-list index out of range
-Cant find IU.TIXI..Z
-list index out of range
-Cant find IU.TIXI..R
-list index out of range
-Cant find IU.TIXI..T
-list index out of range
-Cant find IU.YSS..Z
-list index out of range
-Cant find IU.YSS..R
-list index out of range
-Cant find IU.YSS..T
-list index out of range
-Cant find IU.SAML..Z
-list index out of range
-Cant find IU.SAML..R
-list index out of range
-Cant find IU.SAML..T
-list index out of range
-Cant find MN.TNV..Z
-list index out of range
-Cant find MN.TNV..R
-list index out of range
-Cant find MN.TNV..T
-list index out of range
-Cant find G.ROCAM..Z
-list index out of range
-Cant find G.ROCAM..R
-list index out of range
-Cant find G.ROCAM..T
-list index out of range
-Cant find IU.YAK..Z
-list index out of range
-Cant find IU.YAK..R
-list index out of range
-Cant find IU.YAK..T
-list index out of range
-Cant find G.TAM..Z
-list index out of range
-Cant find G.TAM..R
-list index out of range
-Cant find G.TAM..T
-list index out of range
-Cant find G.TRIS..Z
-list index out of range
-Cant find G.TRIS..R
-list index out of range
-Cant find G.TRIS..T
-list index out of range
 Cant find II.RAYN..Z
 list index out of range
 Cant find II.RAYN..R
 list index out of range
 Cant find II.RAYN..T
-list index out of range
-Cant find IU.MAKZ..Z
-list index out of range
-Cant find IU.MAKZ..R
-list index out of range
-Cant find IU.MAKZ..T
-list index out of range
-Cant find II.BORG..Z
-list index out of range
-Cant find II.BORG..R
-list index out of range
-Cant find II.BORG..T
-list index out of range
-Cant find II.ASCN..Z
-list index out of range
-Cant find II.ASCN..R
-list index out of range
-Cant find II.ASCN..T
-list index out of range
-Cant find IU.COR..Z
-list index out of range
-Cant find IU.COR..R
-list index out of range
-Cant find IU.COR..T
-list index out of range
-Cant find IU.MAJO..Z
-list index out of range
-Cant find IU.MAJO..R
-list index out of range
-Cant find IU.MAJO..T
-list index out of range
-Cant find II.ARU..Z
-list index out of range
-Cant find II.ARU..R
-list index out of range
-Cant find II.ARU..T
-list index out of range
-Cant find II.MSEY..Z
-list index out of range
-Cant find II.MSEY..R
-list index out of range
-Cant find II.MSEY..T
-list index out of range
-Cant find G.PAF..Z
-list index out of range
-Cant find G.PAF..R
-list index out of range
-Cant find G.PAF..T
 list index out of range
 Cant find II.ABPO..Z
 list index out of range
@@ -948,11 +570,389 @@ Cant find II.ABPO..R
 list index out of range
 Cant find II.ABPO..T
 list index out of range
+Cant find IU.PMSA..Z
+list index out of range
+Cant find IU.PMSA..R
+list index out of range
+Cant find IU.PMSA..T
+list index out of range
+Cant find IU.TEIG..Z
+list index out of range
+Cant find IU.TEIG..R
+list index out of range
+Cant find IU.TEIG..T
+list index out of range
+Cant find IU.SJG..Z
+list index out of range
+Cant find IU.SJG..R
+list index out of range
+Cant find IU.SJG..T
+list index out of range
+Cant find GE.KMBO..Z
+list index out of range
+Cant find GE.KMBO..R
+list index out of range
+Cant find GE.KMBO..T
+list index out of range
+Cant find II.SACV..Z
+list index out of range
+Cant find II.SACV..R
+list index out of range
+Cant find II.SACV..T
+list index out of range
+Cant find II.MSEY..Z
+list index out of range
+Cant find II.MSEY..R
+list index out of range
+Cant find II.MSEY..T
+list index out of range
+Cant find G.KIP..Z
+list index out of range
+Cant find G.KIP..R
+list index out of range
+Cant find G.KIP..T
+list index out of range
+Cant find II.COCO..Z
+list index out of range
+Cant find II.COCO..R
+list index out of range
+Cant find II.COCO..T
+list index out of range
+Cant find IU.YSS..Z
+list index out of range
+Cant find IU.YSS..R
+list index out of range
+Cant find IU.YSS..T
+list index out of range
+Cant find G.SPB..Z
+list index out of range
+Cant find G.SPB..R
+list index out of range
+Cant find G.SPB..T
+list index out of range
+Cant find II.NIL..Z
+list index out of range
+Cant find II.NIL..R
+list index out of range
+Cant find II.NIL..T
+list index out of range
+Cant find IU.HNR..Z
+list index out of range
+Cant find IU.HNR..R
+list index out of range
+Cant find IU.HNR..T
+list index out of range
+Cant find IU.MSKU..Z
+list index out of range
+Cant find IU.MSKU..R
+list index out of range
+Cant find IU.MSKU..T
+list index out of range
+Cant find IU.RCBR..Z
+list index out of range
+Cant find IU.RCBR..R
+list index out of range
+Cant find IU.RCBR..T
+list index out of range
+Cant find GE.LVC..Z
+list index out of range
+Cant find GE.LVC..R
+list index out of range
+Cant find GE.LVC..T
+list index out of range
+Cant find G.PPTF..Z
+list index out of range
+Cant find G.PPTF..R
+list index out of range
+Cant find G.PPTF..T
+list index out of range
+Cant find II.TLY..Z
+list index out of range
+Cant find II.TLY..R
+list index out of range
+Cant find II.TLY..T
+list index out of range
+Cant find II.ALE..Z
+list index out of range
+Cant find II.ALE..R
+list index out of range
+Cant find II.ALE..T
+list index out of range
+Cant find IU.TIXI..Z
+list index out of range
+Cant find IU.TIXI..R
+list index out of range
+Cant find IU.TIXI..T
+list index out of range
+Cant find II.BORG..Z
+list index out of range
+Cant find II.BORG..R
+list index out of range
+Cant find II.BORG..T
+list index out of range
+Cant find II.SUR..Z
+list index out of range
+Cant find II.SUR..R
+list index out of range
+Cant find II.SUR..T
+list index out of range
+Cant find IU.KONO..Z
+list index out of range
+Cant find IU.KONO..R
+list index out of range
+Cant find IU.KONO..T
+list index out of range
+Cant find IU.CASY..Z
+list index out of range
+Cant find IU.CASY..R
+list index out of range
+Cant find IU.CASY..T
+list index out of range
+Cant find G.FUTU..Z
+list index out of range
+Cant find G.FUTU..R
+list index out of range
+Cant find G.FUTU..T
+list index out of range
+Cant find II.ASCN..Z
+list index out of range
+Cant find II.ASCN..R
+list index out of range
+Cant find II.ASCN..T
+list index out of range
+Cant find II.CMLA..Z
+list index out of range
+Cant find II.CMLA..R
+list index out of range
+Cant find II.CMLA..T
+list index out of range
+Cant find IU.SPA..Z
+list index out of range
+Cant find IU.SPA..R
+list index out of range
+Cant find IU.SPA..T
+list index out of range
+Cant find IU.MIDW..Z
+list index out of range
+Cant find IU.MIDW..R
+list index out of range
+Cant find IU.MIDW..T
+list index out of range
+Cant find II.PALK..Z
+list index out of range
+Cant find II.PALK..R
+list index out of range
+Cant find II.PALK..T
+list index out of range
+Cant find IU.MAKZ..Z
+list index out of range
+Cant find IU.MAKZ..R
+list index out of range
+Cant find IU.MAKZ..T
+list index out of range
+Cant find IU.MAJO..Z
+list index out of range
+Cant find IU.MAJO..R
+list index out of range
+Cant find IU.MAJO..T
+list index out of range
+Cant find G.NOUC..Z
+list index out of range
+Cant find G.NOUC..R
+list index out of range
+Cant find G.NOUC..T
+list index out of range
+Cant find G.ROCAM..Z
+list index out of range
+Cant find G.ROCAM..R
+list index out of range
+Cant find G.ROCAM..T
+list index out of range
+Cant find II.AAK..Z
+list index out of range
+Cant find II.AAK..R
+list index out of range
+Cant find II.AAK..T
+list index out of range
+Cant find IU.ANTO..Z
+list index out of range
+Cant find IU.ANTO..R
+list index out of range
+Cant find IU.ANTO..T
+list index out of range
 Cant find IU.TRQA..Z
 list index out of range
 Cant find IU.TRQA..R
 list index out of range
 Cant find IU.TRQA..T
+list index out of range
+Cant find IC.XAN..Z
+list index out of range
+Cant find IC.XAN..R
+list index out of range
+Cant find IC.XAN..T
+list index out of range
+Cant find II.RPN..Z
+list index out of range
+Cant find II.RPN..R
+list index out of range
+Cant find II.RPN..T
+list index out of range
+Cant find G.TRIS..Z
+list index out of range
+Cant find G.TRIS..R
+list index out of range
+Cant find G.TRIS..T
+list index out of range
+Cant find II.FFC..Z
+list index out of range
+Cant find II.FFC..R
+list index out of range
+Cant find II.FFC..T
+list index out of range
+Cant find IU.OTAV..Z
+list index out of range
+Cant find IU.OTAV..R
+list index out of range
+Cant find IU.OTAV..T
+list index out of range
+Cant find IU.COR..Z
+list index out of range
+Cant find IU.COR..R
+list index out of range
+Cant find IU.COR..T
+list index out of range
+Cant find G.IVI..Z
+list index out of range
+Cant find G.IVI..R
+list index out of range
+Cant find G.IVI..T
+list index out of range
+Cant find G.MPG..Z
+list index out of range
+Cant find G.MPG..R
+list index out of range
+Cant find G.MPG..T
+list index out of range
+Cant find G.TAM..Z
+list index out of range
+Cant find G.TAM..R
+list index out of range
+Cant find G.TAM..T
+list index out of range
+Cant find IU.KOWA..Z
+list index out of range
+Cant find IU.KOWA..R
+list index out of range
+Cant find IU.KOWA..T
+list index out of range
+Cant find IU.SBA..Z
+list index out of range
+Cant find IU.SBA..R
+list index out of range
+Cant find IU.SBA..T
+list index out of range
+Cant find IU.SAML..Z
+list index out of range
+Cant find IU.SAML..R
+list index out of range
+Cant find IU.SAML..T
+list index out of range
+Cant find IU.INCN..Z
+list index out of range
+Cant find IU.INCN..R
+list index out of range
+Cant find IU.INCN..T
+list index out of range
+Cant find IU.WVT..Z
+list index out of range
+Cant find IU.WVT..R
+list index out of range
+Cant find IU.WVT..T
+list index out of range
+Cant find MN.TNV..Z
+list index out of range
+Cant find MN.TNV..R
+list index out of range
+Cant find MN.TNV..T
+list index out of range
+Cant find IU.LSZ..Z
+list index out of range
+Cant find IU.LSZ..R
+list index out of range
+Cant find IU.LSZ..T
+list index out of range
+Cant find G.PAF..Z
+list index out of range
+Cant find G.PAF..R
+list index out of range
+Cant find G.PAF..T
+list index out of range
+Cant find II.KWJN..Z
+list index out of range
+Cant find II.KWJN..R
+list index out of range
+Cant find II.KWJN..T
+list index out of range
+Cant find II.TAU..Z
+list index out of range
+Cant find II.TAU..R
+list index out of range
+Cant find II.TAU..T
+list index out of range
+Cant find II.KAPI..Z
+list index out of range
+Cant find II.KAPI..R
+list index out of range
+Cant find II.KAPI..T
+list index out of range
+Cant find IU.YAK..Z
+list index out of range
+Cant find IU.YAK..R
+list index out of range
+Cant find IU.YAK..T
+list index out of range
+Cant find G.ECH..Z
+list index out of range
+Cant find G.ECH..R
+list index out of range
+Cant find G.ECH..T
+list index out of range
+Cant find IU.ADK..Z
+list index out of range
+Cant find IU.ADK..R
+list index out of range
+Cant find IU.ADK..T
+list index out of range
+Cant find IU.GUMO..Z
+list index out of range
+Cant find IU.GUMO..R
+list index out of range
+Cant find IU.GUMO..T
+list index out of range
+Cant find IU.NWAO..Z
+list index out of range
+Cant find IU.NWAO..R
+list index out of range
+Cant find IU.NWAO..T
+list index out of range
+Cant find IU.CHTO..Z
+list index out of range
+Cant find IU.CHTO..R
+list index out of range
+Cant find IU.CHTO..T
+list index out of range
+Cant find II.LVZ..Z
+list index out of range
+Cant find II.LVZ..R
+list index out of range
+Cant find II.LVZ..T
+list index out of range
+Cant find II.ARU..Z
+list index out of range
+Cant find II.ARU..R
+list index out of range
+Cant find II.ARU..T
 </pre></div>
 </div>
 <p>Now that we have selected only the traces that are in all streams, we can
@@ -964,7 +964,645 @@ plot a section with the traces.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_run_tutorial_014.svg" srcset="../_images/sphx_glr_run_tutorial_014.svg" alt="run tutorial" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 5.925 seconds)</p>
+<img src="../_images/sphx_glr_run_tutorial_014.svg" srcset="../_images/sphx_glr_run_tutorial_014.svg" alt="run tutorial" class = "sphx-glr-single-img"/></section>
+<section id="windows">
+<h2>Windows<a class="headerlink" href="#windows" title="Permalink to this heading">#</a></h2>
+<p>Often we select windows on traces to measure misfit, cross-correlation times
+and more. <code class="docutils literal notranslate"><span class="pre">obsplotlib</span></code> has a function to plot windows on traces with labels
+of such measurements. The measurements are stored in a list of
+<a href="#id1"><span class="problematic" id="id2">``</span></a>obsplotlib.Window``s under trace.stats.windows. The window object has a
+measurement attribute which contains a dictionary with labels of the traces
+to compare it to which in turn is a dictionary of the actual measurements
+Let’s see what that means in an example.</p>
+<p>First we need to select a window on a trace. We can do this using the
+add traveltime function from earlier and selecting a window around the arrival</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">obs_filtered</span> <span class="o">=</span> <span class="n">opl</span><span class="o">.</span><span class="n">add_traveltime</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">event_depth_in_m</span><span class="o">=</span><span class="n">event_depth</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="s1">&#39;S&#39;</span><span class="p">,</span>
+                                  <span class="n">origin_time</span><span class="o">=</span><span class="n">event_time</span><span class="p">,</span> <span class="n">return_filtered</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In traces before 30dg, the S arrival window seems to be unclear wrt.
+following surfaces waves. So we will only use traces with a distance
+greater than 35dg.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">obs_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">tr</span> <span class="ow">in</span> <span class="n">obs_filtered</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">distance</span> <span class="o">&lt;</span> <span class="mi">35</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">obs_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tr</span><span class="p">)</span>
+
+<span class="n">obs_filtered</span> <span class="o">=</span> <span class="n">obspy</span><span class="o">.</span><span class="n">Stream</span><span class="p">(</span><span class="n">obs_list</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now to make our life a little easier there is a function to copy specific
+parameters from one trace to another. In this case we want to copy the
+traveltime</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select intersection of the observed traces with P traveltime and the synthetic</span>
+<span class="c1"># traces</span>
+<span class="n">obs_filtered</span><span class="p">,</span> <span class="n">syn_filtered</span> <span class="o">=</span> <span class="n">opl</span><span class="o">.</span><span class="n">select_intersection</span><span class="p">([</span><span class="n">obs_filtered</span><span class="p">,</span> <span class="n">syn</span><span class="p">],</span>
+                                                     <span class="n">components</span><span class="o">=</span><span class="s1">&#39;ZRT&#39;</span><span class="p">)</span>
+
+<span class="c1"># Copy the traveltime from the observed to the synthetic traces</span>
+<span class="n">opl</span><span class="o">.</span><span class="n">copy_trace_param</span><span class="p">(</span><span class="n">obs_filtered</span><span class="p">,</span> <span class="n">syn_filtered</span><span class="p">,</span> <span class="s1">&#39;traveltime&#39;</span><span class="p">)</span>
+<span class="n">opl</span><span class="o">.</span><span class="n">copy_trace_param</span><span class="p">(</span><span class="n">obs_filtered</span><span class="p">,</span> <span class="n">syn_filtered</span><span class="p">,</span> <span class="s1">&#39;origin_time&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>list index out of range
+Cant find II.BFO..Z
+list index out of range
+Cant find II.BFO..R
+list index out of range
+Cant find II.BFO..T
+list index out of range
+Cant find II.RAYN..Z
+list index out of range
+Cant find II.RAYN..R
+list index out of range
+Cant find II.RAYN..T
+list index out of range
+Cant find II.ABPO..Z
+list index out of range
+Cant find II.ABPO..R
+list index out of range
+Cant find II.ABPO..T
+list index out of range
+Cant find IU.PMSA..Z
+list index out of range
+Cant find IU.PMSA..R
+list index out of range
+Cant find IU.PMSA..T
+list index out of range
+Cant find IU.TEIG..Z
+list index out of range
+Cant find IU.TEIG..R
+list index out of range
+Cant find IU.TEIG..T
+list index out of range
+Cant find II.HOPE..Z
+list index out of range
+Cant find II.HOPE..R
+list index out of range
+Cant find II.HOPE..T
+list index out of range
+Cant find IU.SJG..Z
+list index out of range
+Cant find IU.SJG..R
+list index out of range
+Cant find IU.SJG..T
+list index out of range
+Cant find GE.KMBO..Z
+list index out of range
+Cant find GE.KMBO..R
+list index out of range
+Cant find GE.KMBO..T
+list index out of range
+Cant find II.SACV..Z
+list index out of range
+Cant find II.SACV..R
+list index out of range
+Cant find II.SACV..T
+list index out of range
+Cant find II.MSEY..Z
+list index out of range
+Cant find II.MSEY..R
+list index out of range
+Cant find II.MSEY..T
+list index out of range
+Cant find IU.DAV..Z
+list index out of range
+Cant find IU.DAV..R
+list index out of range
+Cant find IU.DAV..T
+list index out of range
+Cant find G.KIP..Z
+list index out of range
+Cant find G.KIP..R
+list index out of range
+Cant find G.KIP..T
+list index out of range
+Cant find II.COCO..Z
+list index out of range
+Cant find II.COCO..R
+list index out of range
+Cant find II.COCO..T
+list index out of range
+Cant find IU.YSS..Z
+list index out of range
+Cant find IU.YSS..R
+list index out of range
+Cant find IU.YSS..T
+list index out of range
+Cant find G.SPB..Z
+list index out of range
+Cant find G.SPB..R
+list index out of range
+Cant find G.SPB..T
+list index out of range
+Cant find II.NIL..Z
+list index out of range
+Cant find II.NIL..R
+list index out of range
+Cant find II.NIL..T
+list index out of range
+Cant find IU.HNR..Z
+list index out of range
+Cant find IU.HNR..R
+list index out of range
+Cant find IU.HNR..T
+list index out of range
+Cant find IU.MSKU..Z
+list index out of range
+Cant find IU.MSKU..R
+list index out of range
+Cant find IU.MSKU..T
+list index out of range
+Cant find II.KDAK..Z
+list index out of range
+Cant find II.KDAK..R
+list index out of range
+Cant find II.KDAK..T
+list index out of range
+Cant find IU.RCBR..Z
+list index out of range
+Cant find IU.RCBR..R
+list index out of range
+Cant find IU.RCBR..T
+list index out of range
+Cant find GE.LVC..Z
+list index out of range
+Cant find GE.LVC..R
+list index out of range
+Cant find GE.LVC..T
+list index out of range
+Cant find G.PPTF..Z
+list index out of range
+Cant find G.PPTF..R
+list index out of range
+Cant find G.PPTF..T
+list index out of range
+Cant find II.TLY..Z
+list index out of range
+Cant find II.TLY..R
+list index out of range
+Cant find II.TLY..T
+list index out of range
+Cant find II.ALE..Z
+list index out of range
+Cant find II.ALE..R
+list index out of range
+Cant find II.ALE..T
+list index out of range
+Cant find IU.TIXI..Z
+list index out of range
+Cant find IU.TIXI..R
+list index out of range
+Cant find IU.TIXI..T
+list index out of range
+Cant find II.SUR..Z
+list index out of range
+Cant find II.SUR..R
+list index out of range
+Cant find II.SUR..T
+list index out of range
+Cant find IU.KONO..Z
+list index out of range
+Cant find IU.KONO..R
+list index out of range
+Cant find IU.KONO..T
+list index out of range
+Cant find IU.CASY..Z
+list index out of range
+Cant find IU.CASY..R
+list index out of range
+Cant find IU.CASY..T
+list index out of range
+Cant find G.FUTU..Z
+list index out of range
+Cant find G.FUTU..R
+list index out of range
+Cant find G.FUTU..T
+list index out of range
+Cant find II.ASCN..Z
+list index out of range
+Cant find II.ASCN..R
+list index out of range
+Cant find II.ASCN..T
+list index out of range
+Cant find II.DGAR..Z
+list index out of range
+Cant find II.DGAR..R
+list index out of range
+Cant find II.DGAR..T
+list index out of range
+Cant find IU.CTAO..Z
+list index out of range
+Cant find IU.CTAO..R
+list index out of range
+Cant find IU.CTAO..T
+list index out of range
+Cant find II.CMLA..Z
+list index out of range
+Cant find II.CMLA..R
+list index out of range
+Cant find II.CMLA..T
+list index out of range
+Cant find IU.SPA..Z
+list index out of range
+Cant find IU.SPA..R
+list index out of range
+Cant find IU.SPA..T
+list index out of range
+Cant find IU.MIDW..Z
+list index out of range
+Cant find IU.MIDW..R
+list index out of range
+Cant find IU.MIDW..T
+list index out of range
+Cant find II.PALK..Z
+list index out of range
+Cant find II.PALK..R
+list index out of range
+Cant find II.PALK..T
+list index out of range
+Cant find IU.MAKZ..Z
+list index out of range
+Cant find IU.MAKZ..R
+list index out of range
+Cant find IU.MAKZ..T
+list index out of range
+Cant find G.NOUC..Z
+list index out of range
+Cant find G.NOUC..R
+list index out of range
+Cant find G.NOUC..T
+list index out of range
+Cant find G.ROCAM..Z
+list index out of range
+Cant find G.ROCAM..R
+list index out of range
+Cant find G.ROCAM..T
+list index out of range
+Cant find IU.ANTO..Z
+list index out of range
+Cant find IU.ANTO..R
+list index out of range
+Cant find IU.ANTO..T
+list index out of range
+Cant find IU.TRQA..Z
+list index out of range
+Cant find IU.TRQA..R
+list index out of range
+Cant find IU.TRQA..T
+list index out of range
+Cant find IC.XAN..Z
+list index out of range
+Cant find IC.XAN..R
+list index out of range
+Cant find IC.XAN..T
+list index out of range
+Cant find II.RPN..Z
+list index out of range
+Cant find II.RPN..R
+list index out of range
+Cant find II.RPN..T
+list index out of range
+Cant find G.TRIS..Z
+list index out of range
+Cant find G.TRIS..R
+list index out of range
+Cant find G.TRIS..T
+list index out of range
+Cant find II.FFC..Z
+list index out of range
+Cant find II.FFC..R
+list index out of range
+Cant find II.FFC..T
+list index out of range
+Cant find IU.OTAV..Z
+list index out of range
+Cant find IU.OTAV..R
+list index out of range
+Cant find IU.OTAV..T
+list index out of range
+Cant find IU.COR..Z
+list index out of range
+Cant find IU.COR..R
+list index out of range
+Cant find IU.COR..T
+list index out of range
+Cant find G.IVI..Z
+list index out of range
+Cant find G.IVI..R
+list index out of range
+Cant find G.IVI..T
+list index out of range
+Cant find G.TAM..Z
+list index out of range
+Cant find G.TAM..R
+list index out of range
+Cant find G.TAM..T
+list index out of range
+Cant find G.MPG..Z
+list index out of range
+Cant find G.MPG..R
+list index out of range
+Cant find G.MPG..T
+list index out of range
+Cant find IU.KOWA..Z
+list index out of range
+Cant find IU.KOWA..R
+list index out of range
+Cant find IU.KOWA..T
+list index out of range
+Cant find IU.SBA..Z
+list index out of range
+Cant find IU.SBA..R
+list index out of range
+Cant find IU.SBA..T
+list index out of range
+Cant find IU.SAML..Z
+list index out of range
+Cant find IU.SAML..R
+list index out of range
+Cant find IU.SAML..T
+list index out of range
+Cant find IU.INCN..Z
+list index out of range
+Cant find IU.INCN..R
+list index out of range
+Cant find IU.INCN..T
+list index out of range
+Cant find IU.WVT..Z
+list index out of range
+Cant find IU.WVT..R
+list index out of range
+Cant find IU.WVT..T
+list index out of range
+Cant find MN.TNV..Z
+list index out of range
+Cant find MN.TNV..R
+list index out of range
+Cant find MN.TNV..T
+list index out of range
+Cant find IU.LSZ..Z
+list index out of range
+Cant find IU.LSZ..R
+list index out of range
+Cant find IU.LSZ..T
+list index out of range
+Cant find G.PAF..Z
+list index out of range
+Cant find G.PAF..R
+list index out of range
+Cant find G.PAF..T
+list index out of range
+Cant find II.KWJN..Z
+list index out of range
+Cant find II.KWJN..R
+list index out of range
+Cant find II.KWJN..T
+list index out of range
+Cant find II.TAU..Z
+list index out of range
+Cant find II.TAU..R
+list index out of range
+Cant find II.TAU..T
+list index out of range
+Cant find IU.ADK..Z
+list index out of range
+Cant find IU.ADK..R
+list index out of range
+Cant find IU.ADK..T
+list index out of range
+Cant find G.ECH..Z
+list index out of range
+Cant find G.ECH..R
+list index out of range
+Cant find G.ECH..T
+list index out of range
+Cant find IU.GUMO..Z
+list index out of range
+Cant find IU.GUMO..R
+list index out of range
+Cant find IU.GUMO..T
+list index out of range
+Cant find IU.NWAO..Z
+list index out of range
+Cant find IU.NWAO..R
+list index out of range
+Cant find IU.NWAO..T
+list index out of range
+Cant find IU.CHTO..Z
+list index out of range
+Cant find IU.CHTO..R
+list index out of range
+Cant find IU.CHTO..T
+list index out of range
+Cant find II.LVZ..Z
+list index out of range
+Cant find II.LVZ..R
+list index out of range
+Cant find II.LVZ..T
+list index out of range
+Cant find II.ARU..Z
+list index out of range
+Cant find II.ARU..R
+list index out of range
+Cant find II.ARU..T
+</pre></div>
+</div>
+<p>Let’s first plot these traces in a panel to see what we are working with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">limits</span> <span class="o">=</span> <span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="mi">250</span>
+<span class="n">axes</span> <span class="o">=</span> <span class="n">opl</span><span class="o">.</span><span class="n">section_multiple_comp</span><span class="p">([</span><span class="n">obs_filtered</span><span class="p">,</span> <span class="n">syn_filtered</span><span class="p">],</span>
+                                 <span class="n">origin_time</span><span class="o">=</span><span class="n">event_time</span><span class="p">,</span>
+                                 <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Observed&#39;</span><span class="p">,</span> <span class="s1">&#39;GLAD-M25&#39;</span><span class="p">],</span>
+                                 <span class="n">limits</span><span class="o">=</span><span class="n">limits</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                 <span class="n">components</span><span class="o">=</span><span class="s2">&quot;ZRT&quot;</span><span class="p">)</span>
+
+<span class="c1"># Add a vertical line at 0 seconds and modify labels</span>
+<span class="k">for</span> <span class="n">_i</span><span class="p">,</span> <span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">axes</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">obs_filtered</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">],</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">_i</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Offset from P arrival [s]&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add legend to</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;small&#39;</span><span class="p">,</span>
+                  <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+
+<span class="c1"># Add header with event info</span>
+<span class="n">opl</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span>
+               <span class="n">event</span><span class="o">=</span><span class="n">event_name</span><span class="p">,</span> <span class="n">event_time</span><span class="o">=</span><span class="n">event_time</span><span class="p">,</span>
+               <span class="n">event_latitude</span><span class="o">=</span><span class="n">event_latitude</span><span class="p">,</span> <span class="n">event_longitude</span><span class="o">=</span><span class="n">event_longitude</span><span class="p">,</span>
+               <span class="n">event_depth_in_km</span><span class="o">=</span><span class="n">event_depth</span><span class="o">/</span><span class="mf">1000.0</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="mf">0.075</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../_images/sphx_glr_run_tutorial_015.svg" srcset="../_images/sphx_glr_run_tutorial_015.svg" alt="run tutorial" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2 legendargs
+</pre></div>
+</div>
+<p>Now we can select a window on the observed trace. And make measurements using
+that window</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">tr</span> <span class="ow">in</span> <span class="n">obs_filtered</span><span class="p">:</span>
+
+    <span class="c1"># Create a window object</span>
+    <span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">windows</span> <span class="o">=</span> <span class="p">[</span><span class="n">opl</span><span class="o">.</span><span class="n">Window</span><span class="p">(</span>
+        <span class="n">tr</span><span class="p">,</span>
+        <span class="n">starttime</span><span class="o">=</span><span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">origin_time</span> <span class="o">+</span> <span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">traveltime</span> <span class="o">+</span> <span class="n">limits</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+        <span class="n">endtime</span><span class="o">=</span><span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">origin_time</span> <span class="o">+</span> <span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">traveltime</span> <span class="o">+</span> <span class="n">limits</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+
+    <span class="c1"># Make measurements</span>
+    <span class="n">syn_tr</span> <span class="o">=</span> <span class="n">syn_filtered</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">network</span><span class="p">,</span>
+                                 <span class="n">station</span><span class="o">=</span><span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">station</span><span class="p">,</span>
+                                 <span class="n">component</span><span class="o">=</span><span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">component</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># Copy traces</span>
+    <span class="n">ctr</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">csyntr</span> <span class="o">=</span> <span class="n">syn_tr</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="c1"># Cut traces</span>
+    <span class="n">ctr</span> <span class="o">=</span> <span class="n">ctr</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">windows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">starttime</span><span class="p">,</span> <span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">windows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">endtime</span><span class="p">)</span>
+    <span class="n">csyntr</span> <span class="o">=</span> <span class="n">csyntr</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span>
+        <span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">windows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">starttime</span><span class="p">,</span> <span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">windows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">endtime</span><span class="p">)</span>
+
+    <span class="c1"># Taper traces</span>
+    <span class="n">ctr</span><span class="o">.</span><span class="n">taper</span><span class="p">(</span><span class="n">max_percentage</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span>
+    <span class="n">csyntr</span><span class="o">.</span><span class="n">taper</span><span class="p">(</span><span class="n">max_percentage</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span>
+
+    <span class="c1"># compute misfit</span>
+    <span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">windows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">measurements</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;M25&#39;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">L2</span><span class="o">=</span><span class="n">opl</span><span class="o">.</span><span class="n">L2</span><span class="p">(</span><span class="n">ctr</span><span class="p">,</span> <span class="n">csyntr</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Compute cross-correlation timeshift</span>
+    <span class="n">cc_max</span><span class="p">,</span> <span class="n">ishift</span> <span class="o">=</span> <span class="n">opl</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="n">ctr</span><span class="p">,</span> <span class="n">csyntr</span><span class="p">)</span>
+
+    <span class="c1"># Make second synthetic trace with fixed cross-correlation timeshift</span>
+    <span class="n">csyntrs</span> <span class="o">=</span> <span class="n">syn_tr</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">csyntrs</span> <span class="o">=</span> <span class="n">csyntrs</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span>
+        <span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">windows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">starttime</span> <span class="o">+</span> <span class="n">ishift</span> <span class="o">*</span> <span class="n">csyntr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">delta</span><span class="p">,</span>
+        <span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">windows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">endtime</span> <span class="o">+</span> <span class="n">ishift</span> <span class="o">*</span> <span class="n">csyntr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">delta</span><span class="p">)</span>
+    <span class="n">csyntrs</span><span class="o">.</span><span class="n">taper</span><span class="p">(</span><span class="n">max_percentage</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Compute the correlation ratio</span>
+    <span class="n">cc_ratio</span> <span class="o">=</span> <span class="n">opl</span><span class="o">.</span><span class="n">Xratio</span><span class="p">(</span><span class="n">ctr</span><span class="p">,</span> <span class="n">csyntr</span><span class="p">)</span>
+
+    <span class="c1"># Add measurements to window object</span>
+    <span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">windows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">measurements</span><span class="p">[</span><span class="s1">&#39;M25&#39;</span><span class="p">][</span><span class="s1">&#39;Xmax&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cc_max</span>
+    <span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">windows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">measurements</span><span class="p">[</span><span class="s1">&#39;M25&#39;</span><span class="p">][</span><span class="s1">&#39;IT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ishift</span>
+    <span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">windows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">measurements</span><span class="p">[</span><span class="s1">&#39;M25&#39;</span><span class="p">][</span><span class="s1">&#39;DT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ishift</span> <span class="o">*</span> \
+        <span class="n">ctr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">delta</span>
+    <span class="n">tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">windows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">measurements</span><span class="p">[</span><span class="s1">&#39;M25&#39;</span><span class="p">][</span><span class="s1">&#39;XR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cc_ratio</span>
+</pre></div>
+</div>
+<p>Now that we have windows and some measurements we can plot them using any
+of the previous methods. Let’s plot them as trace first</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">network_str</span> <span class="o">=</span> <span class="s1">&#39;IU&#39;</span>
+<span class="n">station_str</span> <span class="o">=</span> <span class="s1">&#39;HRV&#39;</span>
+<span class="n">component_str</span> <span class="o">=</span> <span class="s1">&#39;Z&#39;</span>
+
+<span class="n">headerdict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">station</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">network_str</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">station_str</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="n">station_latitude</span><span class="o">=</span><span class="n">obs_filtered</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">network_str</span><span class="p">,</span> <span class="n">station</span><span class="o">=</span><span class="n">station_str</span><span class="p">)[</span>
+        <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span>
+    <span class="n">station_longitude</span><span class="o">=</span><span class="n">obs_filtered</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+        <span class="n">network</span><span class="o">=</span><span class="n">network_str</span><span class="p">,</span> <span class="n">station</span><span class="o">=</span><span class="n">station_str</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span>
+    <span class="n">station_azimuth</span><span class="o">=</span><span class="n">obs_filtered</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">network_str</span><span class="p">,</span> <span class="n">station</span><span class="o">=</span><span class="n">station_str</span><span class="p">)[</span>
+        <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">azimuth</span><span class="p">,</span>
+    <span class="n">station_distance_in_degree</span><span class="o">=</span><span class="n">obs_filtered</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">network_str</span><span class="p">,</span> <span class="n">station</span><span class="o">=</span><span class="n">station_str</span><span class="p">)[</span>
+        <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">distance</span><span class="p">,</span>
+    <span class="n">station_back_azimuth</span><span class="o">=</span><span class="n">obs_filtered</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+        <span class="n">network</span><span class="o">=</span><span class="n">network_str</span><span class="p">,</span> <span class="n">station</span><span class="o">=</span><span class="n">station_str</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">back_azimuth</span><span class="p">,</span>
+    <span class="n">event</span><span class="o">=</span><span class="n">event_name</span><span class="p">,</span>
+    <span class="n">event_latitude</span><span class="o">=</span><span class="n">event_latitude</span><span class="p">,</span>
+    <span class="n">event_longitude</span><span class="o">=</span><span class="n">event_longitude</span><span class="p">,</span>
+    <span class="n">event_depth_in_km</span><span class="o">=</span><span class="n">event_depth</span><span class="o">/</span><span class="mf">1000.0</span><span class="p">,</span>
+    <span class="n">bandpass</span><span class="o">=</span><span class="n">bandpass</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Grab only the Z component</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">obstr</span> <span class="o">=</span> <span class="n">obs_filtered</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">network_str</span><span class="p">,</span> <span class="n">station</span><span class="o">=</span><span class="n">station_str</span><span class="p">,</span>
+                            <span class="n">component</span><span class="o">=</span><span class="n">component_str</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">syntr</span> <span class="o">=</span> <span class="n">syn_filtered</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">network_str</span><span class="p">,</span> <span class="n">station</span><span class="o">=</span><span class="n">station_str</span><span class="p">,</span>
+                            <span class="n">component</span><span class="o">=</span><span class="n">component_str</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Now, let&#39;s plot a full station plot the station</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">opl</span><span class="o">.</span><span class="n">trace</span><span class="p">([</span><span class="n">obstr</span><span class="p">,</span> <span class="n">syntr</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+               <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Observed&#39;</span><span class="p">,</span> <span class="s1">&#39;GLAD-M25&#39;</span><span class="p">],</span> <span class="n">nooffset</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+               <span class="n">limits</span><span class="o">=</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">3250</span><span class="p">),</span>
+               <span class="n">origin_time</span><span class="o">=</span><span class="n">event_time</span><span class="p">)</span>
+
+<span class="n">opl</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">headerdict</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="mf">0.025</span><span class="p">)</span>
+<span class="c1"># Slightly adjust the plots to make the fit nicely into the figure</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.075</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.925</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.775</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../_images/sphx_glr_run_tutorial_016.svg" srcset="../_images/sphx_glr_run_tutorial_016.svg" alt="run tutorial" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>17.65 25.15 7.5
+</pre></div>
+</div>
+<p>Now, let’s plot a full station, so let’s grab all station traces</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">obsst</span> <span class="o">=</span> <span class="n">obs_filtered</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">network_str</span><span class="p">,</span> <span class="n">station</span><span class="o">=</span><span class="n">station_str</span><span class="p">)</span>
+<span class="n">synst</span> <span class="o">=</span> <span class="n">syn_filtered</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">network_str</span><span class="p">,</span> <span class="n">station</span><span class="o">=</span><span class="n">station_str</span><span class="p">)</span>
+
+<span class="c1">#</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">axes</span> <span class="o">=</span> <span class="n">opl</span><span class="o">.</span><span class="n">station</span><span class="p">([</span><span class="n">obsst</span><span class="p">,</span> <span class="n">synst</span><span class="p">],</span> <span class="n">components</span><span class="o">=</span><span class="s1">&#39;ZRT&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                   <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Observed&#39;</span><span class="p">,</span> <span class="s1">&#39;GLAD-M25&#39;</span><span class="p">],</span> <span class="n">nooffset</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                   <span class="n">origin_time</span><span class="o">=</span><span class="n">event_time</span><span class="p">)</span>
+
+<span class="n">opl</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">**</span><span class="n">headerdict</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="mf">0.025</span><span class="p">)</span>
+
+<span class="c1"># Slightly adjust the plots to make the fit nicely into the figure</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.075</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.925</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.775</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../_images/sphx_glr_run_tutorial_017.svg" srcset="../_images/sphx_glr_run_tutorial_017.svg" alt="run tutorial" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>17.65 25.15 7.5
+17.65 25.15 7.5
+17.65 25.15 7.5
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the station</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">axes</span> <span class="o">=</span> <span class="n">opl</span><span class="o">.</span><span class="n">section</span><span class="p">([</span><span class="n">obs_filtered</span><span class="p">,</span> <span class="n">syn_filtered</span><span class="p">],</span>
+                   <span class="n">comp</span><span class="o">=</span><span class="s1">&#39;Z&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">limits</span><span class="o">=</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">3250</span><span class="p">),</span>
+                   <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Observed&#39;</span><span class="p">,</span> <span class="s1">&#39;GLAD-M25&#39;</span><span class="p">],</span>
+                   <span class="n">origin_time</span><span class="o">=</span><span class="n">event_time</span><span class="p">)</span>
+
+<span class="n">opl</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">**</span><span class="n">headerdict</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="mf">0.025</span><span class="p">)</span>
+<span class="c1"># Slightly adjust the plots to make the fit nicely into the figure</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../_images/sphx_glr_run_tutorial_018.svg" srcset="../_images/sphx_glr_run_tutorial_018.svg" alt="run tutorial" class = "sphx-glr-single-img"/><p>Now let’s turn back to a single trace, and plot the window on it. So,
+Far</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">obstr</span> <span class="o">=</span> <span class="n">obs_filtered</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">network_str</span><span class="p">,</span> <span class="n">station</span><span class="o">=</span><span class="n">station_str</span><span class="p">,</span>
+                            <span class="n">component</span><span class="o">=</span><span class="n">component_str</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">syntr</span> <span class="o">=</span> <span class="n">syn_filtered</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">network_str</span><span class="p">,</span> <span class="n">station</span><span class="o">=</span><span class="n">station_str</span><span class="p">,</span>
+                            <span class="n">component</span><span class="o">=</span><span class="n">component_str</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">4.25</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">opl</span><span class="o">.</span><span class="n">trace</span><span class="p">([</span><span class="n">obstr</span><span class="p">,</span> <span class="n">syntr</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Observed&#39;</span><span class="p">,</span> <span class="s1">&#39;GLAD-M25&#39;</span><span class="p">],</span>
+               <span class="n">limits</span><span class="o">=</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">3250</span><span class="p">),</span>
+               <span class="n">origin_time</span><span class="o">=</span><span class="n">event_time</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">nooffset</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+               <span class="n">windowkwargs</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">plot_measurements</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">opl</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">headerdict</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="mf">0.025</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../_images/sphx_glr_run_tutorial_019.svg" srcset="../_images/sphx_glr_run_tutorial_019.svg" alt="run tutorial" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>17.65 25.15 7.5
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 10.236 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-run-tutorial-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/41a5e94ffb93dcc61268579181ad4336/run_tutorial.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">run_tutorial.py</span></code></a></p>
@@ -1039,6 +1677,7 @@ plot a section with the traces.</p>
 <li><a class="reference internal" href="#station">Station</a></li>
 <li><a class="reference internal" href="#section">Section</a></li>
 <li><a class="reference internal" href="#trace-comparison">Trace comparison</a></li>
+<li><a class="reference internal" href="#windows">Windows</a></li>
 </ul>
 </li>
 </ul>

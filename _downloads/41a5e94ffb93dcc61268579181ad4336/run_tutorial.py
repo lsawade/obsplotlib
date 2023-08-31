@@ -320,7 +320,7 @@ opl.attach_geometry(synraw, event_latitude=event_latitude,
 starttime = event_time
 npts = 10800
 sampling_rate_in_hz = 1
-bandpass = [50, 500]
+bandpass = [40, 500]
 obs = opl.process(raw, inv=inv, remove_response=True, bandpass=bandpass,
                   starttime=starttime, npts=npts,
                   sampling_rate_in_hz=1)
@@ -389,3 +389,238 @@ opl.section(streams, origin_time=event_time, lw=0.5,
             labels=['Observed', 'GLAD-M25'])
 plt.subplots_adjust(left=0.15, right=0.85, top=0.95, bottom=0.05)
 plt.show(block=False)
+
+
+# %%
+#
+# Windows
+# -------
+#
+# Often we select windows on traces to measure misfit, cross-correlation times
+# and more. ``obsplotlib`` has a function to plot windows on traces with labels
+# of such measurements. The measurements are stored in a list of
+# ``obsplotlib.Window``s under trace.stats.windows. The window object has a
+# measurement attribute which contains a dictionary with labels of the traces
+# to compare it to which in turn is a dictionary of the actual measurements
+# Let's see what that means in an example.
+#
+# First we need to select a window on a trace. We can do this using the
+# add traveltime function from earlier and selecting a window around the arrival
+
+obs_filtered = opl.add_traveltime(obs, event_depth_in_m=event_depth, phase='S',
+                                  origin_time=event_time, return_filtered=True)
+
+# %%
+# In traces before 30dg, the S arrival window seems to be unclear wrt.
+# following surfaces waves. So we will only use traces with a distance
+# greater than 35dg.
+
+obs_list = []
+for tr in obs_filtered:
+    if tr.stats.distance < 35:
+        pass
+    else:
+        obs_list.append(tr)
+
+obs_filtered = obspy.Stream(obs_list)
+
+# %%
+# Now to make our life a little easier there is a function to copy specific
+# parameters from one trace to another. In this case we want to copy the
+# traveltime
+
+# Select intersection of the observed traces with P traveltime and the synthetic
+# traces
+obs_filtered, syn_filtered = opl.select_intersection([obs_filtered, syn],
+                                                     components='ZRT')
+
+# Copy the traveltime from the observed to the synthetic traces
+opl.copy_trace_param(obs_filtered, syn_filtered, 'traveltime')
+opl.copy_trace_param(obs_filtered, syn_filtered, 'origin_time')
+
+# %%
+# Let's first plot these traces in a panel to see what we are working with
+
+plt.figure(figsize=(9, 5))
+limits = -200, 250
+axes = opl.section_multiple_comp([obs_filtered, syn_filtered],
+                                 origin_time=event_time,
+                                 labels=['Observed', 'GLAD-M25'],
+                                 limits=limits, lw=0.5, align=True,
+                                 components="ZRT")
+
+# Add a vertical line at 0 seconds and modify labels
+for _i, (ax, _) in enumerate(axes):
+    ax.plot([0, 0], [-0.5, len(obs_filtered) + 0.5], 'k--', lw=0.5)
+    if _i == 1:
+        ax.set_xlabel('Offset from P arrival [s]')
+    else:
+        ax.set_xlabel('')
+
+# Add legend to
+axes[2][0].legend(frameon=False, loc='lower right', ncol=3, fontsize='small',
+                  bbox_to_anchor=(1.0, 1.0))
+
+# Add header with event info
+opl.add_header(axes[0][0],
+               event=event_name, event_time=event_time,
+               event_latitude=event_latitude, event_longitude=event_longitude,
+               event_depth_in_km=event_depth/1000.0, dist=0.075)
+plt.subplots_adjust(left=0.15, right=0.85, top=0.9, bottom=0.1, wspace=0.75)
+plt.show(block=False)
+
+# %%
+# Now we can select a window on the observed trace. And make measurements using
+# that window
+
+for tr in obs_filtered:
+
+    # Create a window object
+    tr.stats.windows = [opl.Window(
+        tr,
+        starttime=tr.stats.origin_time + tr.stats.traveltime + limits[0],
+        endtime=tr.stats.origin_time + tr.stats.traveltime + limits[1])]
+
+    # Make measurements
+    syn_tr = syn_filtered.select(network=tr.stats.network,
+                                 station=tr.stats.station,
+                                 component=tr.stats.component)[0]
+
+    # Copy traces
+    ctr = tr.copy()
+    csyntr = syn_tr.copy()
+
+    # Cut traces
+    ctr = ctr.slice(tr.stats.windows[0].starttime, tr.stats.windows[0].endtime)
+    csyntr = csyntr.slice(
+        tr.stats.windows[0].starttime, tr.stats.windows[0].endtime)
+
+    # Taper traces
+    ctr.taper(max_percentage=0.05, type='cosine')
+    csyntr.taper(max_percentage=0.05, type='cosine')
+
+    # compute misfit
+    tr.stats.windows[0].measurements = {
+        'M25': dict(
+            L2=opl.L2(ctr, csyntr, normalize=True)
+        )
+    }
+
+    # Compute cross-correlation timeshift
+    cc_max, ishift = opl.X(ctr, csyntr)
+
+    # Make second synthetic trace with fixed cross-correlation timeshift
+    csyntrs = syn_tr.copy()
+    csyntrs = csyntrs.slice(
+        tr.stats.windows[0].starttime + ishift * csyntr.stats.delta,
+        tr.stats.windows[0].endtime + ishift * csyntr.stats.delta)
+    csyntrs.taper(max_percentage=0.05, type='cosine')
+
+    # Compute the correlation ratio
+    cc_ratio = opl.Xratio(ctr, csyntr)
+
+    # Add measurements to window object
+    tr.stats.windows[0].measurements['M25']['Xmax'] = cc_max
+    tr.stats.windows[0].measurements['M25']['IT'] = ishift
+    tr.stats.windows[0].measurements['M25']['DT'] = ishift * \
+        ctr.stats.delta
+    tr.stats.windows[0].measurements['M25']['XR'] = cc_ratio
+
+
+# %%
+# Now that we have windows and some measurements we can plot them using any
+# of the previous methods. Let's plot them as trace first
+network_str = 'IU'
+station_str = 'HRV'
+component_str = 'Z'
+
+headerdict = dict(
+    station=f'{network_str}.{station_str}',
+    station_latitude=obs_filtered.select(network=network_str, station=station_str)[
+        0].stats.latitude,
+    station_longitude=obs_filtered.select(
+        network=network_str, station=station_str)[0].stats.latitude,
+    station_azimuth=obs_filtered.select(network=network_str, station=station_str)[
+        0].stats.azimuth,
+    station_distance_in_degree=obs_filtered.select(network=network_str, station=station_str)[
+        0].stats.distance,
+    station_back_azimuth=obs_filtered.select(
+        network=network_str, station=station_str)[0].stats.back_azimuth,
+    event=event_name,
+    event_latitude=event_latitude,
+    event_longitude=event_longitude,
+    event_depth_in_km=event_depth/1000.0,
+    bandpass=bandpass,
+)
+
+# %%
+# Grab only the Z component
+obstr = obs_filtered.select(network=network_str, station=station_str,
+                            component=component_str)[0]
+syntr = syn_filtered.select(network=network_str, station=station_str,
+                            component=component_str)[0]
+
+# Now, let's plot a full station plot the station
+plt.figure(figsize=(8, 5))
+ax = opl.trace([obstr, syntr], lw=0.5, window=True,
+               labels=['Observed', 'GLAD-M25'], nooffset=True,
+               limits=(500, 3250),
+               origin_time=event_time)
+
+opl.add_header(ax, **headerdict, dist=0.025)
+# Slightly adjust the plots to make the fit nicely into the figure
+plt.subplots_adjust(left=0.075, right=0.925, top=0.775, bottom=0.15)
+plt.show(block=False)
+
+# %%
+# Now, let's plot a full station, so let's grab all station traces
+obsst = obs_filtered.select(network=network_str, station=station_str)
+synst = syn_filtered.select(network=network_str, station=station_str)
+
+#
+plt.figure(figsize=(8, 5))
+axes = opl.station([obsst, synst], components='ZRT', lw=0.5, window=True,
+                   labels=['Observed', 'GLAD-M25'], nooffset=True,
+                   origin_time=event_time)
+
+opl.add_header(axes[0], **headerdict, dist=0.025)
+
+# Slightly adjust the plots to make the fit nicely into the figure
+plt.subplots_adjust(left=0.075, right=0.925, top=0.775, bottom=0.15)
+plt.show(block=False)
+
+
+# %%
+
+# Plot the station
+plt.figure(figsize=(8, 5))
+axes = opl.section([obs_filtered, syn_filtered],
+                   comp='Z', lw=0.5, window=True, limits=(500, 3250),
+                   labels=['Observed', 'GLAD-M25'],
+                   origin_time=event_time)
+
+opl.add_header(axes[0], **headerdict, dist=0.025)
+# Slightly adjust the plots to make the fit nicely into the figure
+plt.subplots_adjust(left=0.15, right=0.85, top=0.9, bottom=0.1)
+plt.show(block=False)
+
+# %%
+# Now let's turn back to a single trace, and plot the window on it. So,
+# Far
+
+obstr = obs_filtered.select(network=network_str, station=station_str,
+                            component=component_str)[0]
+syntr = syn_filtered.select(network=network_str, station=station_str,
+                            component=component_str)[0]
+
+# %%
+plt.figure(figsize=(8, 4.25))
+ax = opl.trace([obstr, syntr], labels=['Observed', 'GLAD-M25'],
+               limits=(500, 3250),
+               origin_time=event_time, lw=0.75, window=True, nooffset=True,
+               windowkwargs=dict(plot_measurements=True))
+opl.add_header(ax, **headerdict, dist=0.025)
+plt.show(block=False)
+
+
+# %%

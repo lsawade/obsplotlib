@@ -1,7 +1,8 @@
 #!/bin/env python
 """
+
 Full Obsplotlib Tutorial
-============================
+========================
 
 The tutorial will go over the plotting functions in ``obsplotlib`` and how to
 prepare your data to plot traces, station seismograms and full seismic sections
@@ -661,4 +662,3 @@ plt.show(block=False)
 # and synthetic data we find the amplitude that best fits the data, but
 # disregard the phase. This is a very simple inversion, but it is a good example
 # For showing measurements on traces and windows.
-: start-after: : orphan:

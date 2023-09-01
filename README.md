@@ -16,6 +16,22 @@ pip install obsplotlib
 ## Links
 
 [Github](http://github.com/lsawade/obsplotlib)
+
 [Documentation](http://lsawade.github.io/obsplotlib)
+
 [Tutorial](https://lsawade.github.io/obsplotlib/examples/run_tutorial.html#sphx-glr-examples-run-tutorial-py)
+
+## Development
+
+Fork the package, and install it locally
+
+```bash
+git clone git@github.com:<your_username>/obsplotlib.git
+cd obsplotlib
+pip install -e .
+```
+
+Commit changes, push, make pull request.
+
+
 

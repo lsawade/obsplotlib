@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
 
     <link rel="shortcut icon" href="../../_static/favicon.ico"/><!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
-        <title>obsplotlib.seismogram - obsplotlib 0.4.0.dev1+g32c27ef documentation</title>
+        <title>obsplotlib.seismogram - obsplotlib 0.3.2 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
@@ -128,7 +128,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../index.html"><div class="brand">obsplotlib 0.4.0.dev1+g32c27ef documentation</div></a>
+      <a href="../../index.html"><div class="brand">obsplotlib 0.3.2 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -155,7 +155,7 @@
     <img class="sidebar-logo only-dark" src="../../_static/logo.svg" alt="Dark Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">obsplotlib 0.4.0.dev1+g32c27ef documentation</span>
+  <span class="sidebar-brand-text">obsplotlib 0.3.2 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -163,13 +163,12 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/index.html">Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../examples/run_logo.html">Plotting the logo and the favicon</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../examples/run_tutorial.html">Full <code class="docutils literal notranslate"><span class="pre">obsplotlib</span></code> Tutorial</a></li>
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/run_1_tutorial.html">Full Obsplotlib Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/run_2_logo.html">Plotting the logo and the favicon</a></li>
 </ul>
-</li>
+<p class="caption" role="heading"><span class="caption-text">More:</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../api.html">API</a></li>
 </ul>
 
@@ -415,8 +414,10 @@
         <span class="c1"># Plot windows if available</span>
         <span class="k">if</span> <span class="n">window</span> <span class="ow">and</span> <span class="n">_j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">windowkwargs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">windowkwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-                    <span class="n">plot_measurements</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="n">windowkwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">plot_measurements</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="s1">&#39;text_kwargs&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">windowkwargs</span><span class="p">:</span>
+                <span class="n">windowkwargs</span><span class="p">[</span><span class="s1">&#39;text_kwargs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
 
             <span class="k">for</span> <span class="n">window</span> <span class="ow">in</span> <span class="n">_tr</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">windows</span><span class="p">:</span>
 
@@ -429,7 +430,6 @@
                     <span class="n">windowend</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">endtime</span><span class="o">.</span><span class="n">matplotlib_date</span>
                     <span class="n">duration</span> <span class="o">=</span> <span class="n">windowend</span> <span class="o">-</span> <span class="n">windowstart</span>
 
-                <span class="nb">print</span><span class="p">(</span><span class="n">windowstart</span><span class="p">,</span> <span class="n">windowend</span><span class="p">,</span> <span class="n">duration</span><span class="p">)</span>
                 <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">patches</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">(</span>
                     <span class="p">(</span><span class="n">windowstart</span><span class="p">,</span> <span class="o">-</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">absmax</span><span class="p">),</span>
                     <span class="n">duration</span><span class="p">,</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">absmax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span>
@@ -438,8 +438,9 @@
                 <span class="k">if</span> <span class="n">windowkwargs</span><span class="p">[</span><span class="s1">&#39;plot_measurements&#39;</span><span class="p">]:</span>
                     <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">windowstart</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.15</span><span class="o">*</span><span class="n">absmax</span><span class="p">,</span> <span class="n">window</span><span class="o">.</span><span class="n">get_label</span><span class="p">(),</span>
                             <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span>
-                            <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;small&#39;</span><span class="p">,</span>
-                            <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">))</span>
+                            <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span>
+                            <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">),</span>
+                            <span class="o">**</span><span class="n">windowkwargs</span><span class="p">[</span><span class="s1">&#39;text_kwargs&#39;</span><span class="p">])</span>
 
     <span class="c1"># Axis limits and indicator</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.15</span><span class="o">*</span><span class="n">absmax</span><span class="p">,</span> <span class="mf">1.15</span><span class="o">*</span><span class="n">absmax</span><span class="p">)</span>
@@ -554,7 +555,7 @@
         <span class="c1"># Format x axis to have the date</span>
         <span class="k">if</span> <span class="n">_i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">components</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="o">.</span><span class="n">bottom</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-            <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
         <span class="n">axes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
 

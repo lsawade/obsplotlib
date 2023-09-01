@@ -1,7 +1,13 @@
 :orphan:
 
-Tutorials
-=========
+Gallery
+=======
+
+Here are some examples scripts that show the use of the library. The most
+important one being the "Full Obsplotlib Tutorial", which is a step-by-step
+guide to more and more advanced usage of the library, which includes basic
+seismic sections, and comparison seismograms between and observed and synthetic
+data, and a comparison between observed and two sets of synthetic seismograms.
 
 
 
@@ -14,35 +20,35 @@ Tutorials
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="This example will go over the creation of the logo from the data in the example directory.">
+    <div class="sphx-glr-thumbcontainer" tooltip="The tutorial will go over the plotting functions in obsplotlib and how to prepare your data to ...">
 
 .. only:: html
 
-  .. image:: /examples/images/thumb/sphx_glr_run_logo_thumb.svg
+  .. image:: /examples/images/thumb/sphx_glr_run_1_tutorial_thumb.svg
     :alt:
 
-  :ref:`sphx_glr_examples_run_logo.py`
+  :ref:`sphx_glr_examples_run_1_tutorial.py`
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">Plotting the logo and the favicon</div>
+      <div class="sphx-glr-thumbnail-title">Full Obsplotlib Tutorial</div>
     </div>
 
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="The tutorial will go over the plotting functions in obsplotlib and how to prepare your data to ...">
+    <div class="sphx-glr-thumbcontainer" tooltip="This example will go over the creation of the logo from the data in the example directory.">
 
 .. only:: html
 
-  .. image:: /examples/images/thumb/sphx_glr_run_tutorial_thumb.svg
+  .. image:: /examples/images/thumb/sphx_glr_run_2_logo_thumb.svg
     :alt:
 
-  :ref:`sphx_glr_examples_run_tutorial.py`
+  :ref:`sphx_glr_examples_run_2_logo.py`
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">Full obsplotlib Tutorial</div>
+      <div class="sphx-glr-thumbnail-title">Plotting the logo and the favicon</div>
     </div>
 
 
@@ -54,8 +60,8 @@ Tutorials
 .. toctree::
    :hidden:
 
-   /examples/run_logo
-   /examples/run_tutorial
+   /examples/run_1_tutorial
+   /examples/run_2_logo
 
 
 .. only:: html

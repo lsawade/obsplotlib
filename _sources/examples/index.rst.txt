@@ -20,7 +20,7 @@ data, and a comparison between observed and two sets of synthetic seismograms.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example script with invalid Python syntax ">
+    <div class="sphx-glr-thumbcontainer" tooltip="The tutorial will go over the plotting functions in obsplotlib and how to prepare your data to ...">
 
 .. only:: html
 
@@ -31,7 +31,7 @@ data, and a comparison between observed and two sets of synthetic seismograms.
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">SyntaxError</div>
+      <div class="sphx-glr-thumbnail-title">Full Obsplotlib Tutorial</div>
     </div>
 
 

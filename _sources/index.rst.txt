@@ -15,6 +15,7 @@ and customizable, so that users can easily add their own plotting functions,
 or modify created plots to their liking.
 
 .. include:: examples/index.rst
+   :start-after: :orphan:
 
 
 .. toctree::

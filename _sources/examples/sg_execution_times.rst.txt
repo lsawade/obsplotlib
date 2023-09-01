@@ -6,10 +6,10 @@
 
 Computation times
 =================
-**00:15.261** total execution time for **examples** files:
+**00:11.690** total execution time for **examples** files:
 
 +--------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_examples_run_1_tutorial.py` (``run_1_tutorial.py``) | 00:14.852 | 0.0 MB |
+| :ref:`sphx_glr_examples_run_1_tutorial.py` (``run_1_tutorial.py``) | 00:11.386 | 0.0 MB |
 +--------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_examples_run_2_logo.py` (``run_2_logo.py``)         | 00:00.408 | 0.0 MB |
+| :ref:`sphx_glr_examples_run_2_logo.py` (``run_2_logo.py``)         | 00:00.304 | 0.0 MB |
 +--------------------------------------------------------------------+-----------+--------+

@@ -505,7 +505,7 @@ opl.make_measurements(obs_filtered, syn_filtered, label='M25')
 #         }
 #     }
 #
-# ..note::
+# .. note::
 #
 #     It's important to note here that the measurement labels are not
 #     fixed in the plotting functions but rather grabbed from this dictionary.
@@ -513,11 +513,11 @@ opl.make_measurements(obs_filtered, syn_filtered, label='M25')
 #     them. Simply add a dictionary or an AttribDict to the
 #     trace.stats.windows[idx].measurements dictionary with the label as key
 #     and the measurement dictionary as value.
-
-
-# %%
+#
+#
 # Now that we have windows and some measurements we can plot them using any
 # of the previous methods. Let's plot them as trace first
+
 network_str = 'IU'
 station_str = 'HRV'
 component_str = 'Z'
@@ -661,3 +661,4 @@ plt.show(block=False)
 # and synthetic data we find the amplitude that best fits the data, but
 # disregard the phase. This is a very simple inversion, but it is a good example
 # For showing measurements on traces and windows.
+: start-after: : orphan:

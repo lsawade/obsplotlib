@@ -1,6 +1,6 @@
 #!/bin/env python
 """
-Full ``obsplotlib`` Tutorial
+Full Obsplotlib Tutorial
 ============================
 
 The tutorial will go over the plotting functions in ``obsplotlib`` and how to
@@ -17,6 +17,7 @@ Loading all modules
 # sphinx_gallery_thumbnail_number = 1
 # sphinx_gallery_dummy_images = 1
 
+import numpy as np
 import obspy
 import obsplotlib.plot as opl
 import matplotlib.pyplot as plt
@@ -399,7 +400,7 @@ plt.show(block=False)
 # Often we select windows on traces to measure misfit, cross-correlation times
 # and more. ``obsplotlib`` has a function to plot windows on traces with labels
 # of such measurements. The measurements are stored in a list of
-# ``obsplotlib.Window``s under trace.stats.windows. The window object has a
+# ``obsplotlib.Window``'s under trace.stats.windows. The window object has a
 # measurement attribute which contains a dictionary with labels of the traces
 # to compare it to which in turn is a dictionary of the actual measurements
 # Let's see what that means in an example.
@@ -470,61 +471,48 @@ plt.subplots_adjust(left=0.15, right=0.85, top=0.9, bottom=0.1, wspace=0.75)
 plt.show(block=False)
 
 # %%
-# Now we can select a window on the observed trace. And make measurements using
-# that window
+# Now we can select a window on the observed trace.
 
 for tr in obs_filtered:
-
     # Create a window object
     tr.stats.windows = [opl.Window(
         tr,
         starttime=tr.stats.origin_time + tr.stats.traveltime + limits[0],
         endtime=tr.stats.origin_time + tr.stats.traveltime + limits[1])]
 
-    # Make measurements
-    syn_tr = syn_filtered.select(network=tr.stats.network,
-                                 station=tr.stats.station,
-                                 component=tr.stats.component)[0]
+# %%
+# Given the window on the observed trace we can now make some measurements.
+# This we abbreviate to calling the convenience function ``make_measurements``.
+# ``make_measurements`` will make a measurement for each window on each trace
+# and add it to the window object.
 
-    # Copy traces
-    ctr = tr.copy()
-    csyntr = syn_tr.copy()
+opl.make_measurements(obs_filtered, syn_filtered, label='M25')
 
-    # Cut traces
-    ctr = ctr.slice(tr.stats.windows[0].starttime, tr.stats.windows[0].endtime)
-    csyntr = csyntr.slice(
-        tr.stats.windows[0].starttime, tr.stats.windows[0].endtime)
-
-    # Taper traces
-    ctr.taper(max_percentage=0.05, type='cosine')
-    csyntr.taper(max_percentage=0.05, type='cosine')
-
-    # compute misfit
-    tr.stats.windows[0].measurements = {
-        'M25': dict(
-            L2=opl.L2(ctr, csyntr, normalize=True)
-        )
-    }
-
-    # Compute cross-correlation timeshift
-    cc_max, ishift = opl.X(ctr, csyntr)
-
-    # Make second synthetic trace with fixed cross-correlation timeshift
-    csyntrs = syn_tr.copy()
-    csyntrs = csyntrs.slice(
-        tr.stats.windows[0].starttime + ishift * csyntr.stats.delta,
-        tr.stats.windows[0].endtime + ishift * csyntr.stats.delta)
-    csyntrs.taper(max_percentage=0.05, type='cosine')
-
-    # Compute the correlation ratio
-    cc_ratio = opl.Xratio(ctr, csyntr)
-
-    # Add measurements to window object
-    tr.stats.windows[0].measurements['M25']['Xmax'] = cc_max
-    tr.stats.windows[0].measurements['M25']['IT'] = ishift
-    tr.stats.windows[0].measurements['M25']['DT'] = ishift * \
-        ctr.stats.delta
-    tr.stats.windows[0].measurements['M25']['XR'] = cc_ratio
+# %%
+# The measurements attribute is a dictionary with the following structure:
+#
+# .. code:: python
+#
+#     window.measurements = {
+#         'label1': {
+#             'L2': <normalized L2 norm>,
+#             'Xmx'= <cc max>,
+#             'DT'= <timeshift>,
+#             'XR'= <cc_ratio>
+#         },
+#         'label2': {
+#             ...
+#         }
+#     }
+#
+# ..note::
+#
+#     It's important to note here that the measurement labels are not
+#     fixed in the plotting functions but rather grabbed from this dictionary.
+#     So you can add your own measurements to the dictionary and plot
+#     them. Simply add a dictionary or an AttribDict to the
+#     trace.stats.windows[idx].measurements dictionary with the label as key
+#     and the measurement dictionary as value.
 
 
 # %%
@@ -533,19 +521,15 @@ for tr in obs_filtered:
 network_str = 'IU'
 station_str = 'HRV'
 component_str = 'Z'
+stationtr = obs_filtered.select(network=network_str, station=station_str)[0]
 
 headerdict = dict(
     station=f'{network_str}.{station_str}',
-    station_latitude=obs_filtered.select(network=network_str, station=station_str)[
-        0].stats.latitude,
-    station_longitude=obs_filtered.select(
-        network=network_str, station=station_str)[0].stats.latitude,
-    station_azimuth=obs_filtered.select(network=network_str, station=station_str)[
-        0].stats.azimuth,
-    station_distance_in_degree=obs_filtered.select(network=network_str, station=station_str)[
-        0].stats.distance,
-    station_back_azimuth=obs_filtered.select(
-        network=network_str, station=station_str)[0].stats.back_azimuth,
+    station_latitude=stationtr.stats.latitude,
+    station_longitude=stationtr.stats.longitude,
+    station_azimuth=stationtr.stats.azimuth,
+    station_distance_in_degree=stationtr.stats.distance,
+    station_back_azimuth=stationtr.stats.back_azimuth,
     event=event_name,
     event_latitude=event_latitude,
     event_longitude=event_longitude,
@@ -581,7 +565,9 @@ synst = syn_filtered.select(network=network_str, station=station_str)
 plt.figure(figsize=(8, 5))
 axes = opl.station([obsst, synst], components='ZRT', lw=0.5, window=True,
                    labels=['Observed', 'GLAD-M25'], nooffset=True,
-                   origin_time=event_time)
+                   origin_time=event_time,
+                   limits=(15.0*60.0, 30.0*60.0)
+                   )
 
 opl.add_header(axes[0], **headerdict, dist=0.025)
 
@@ -606,21 +592,72 @@ plt.show(block=False)
 
 # %%
 # Now let's turn back to a single trace, and plot the window on it. So,
-# Far
+# far we have only plotted the extent of the trace and the window. But we
+# can also plot the measurements on the window. To do this we have to parse
+# a dictionary to the kwarg ``windowkwargs`` with the key
+# plot_measurements=True.
 
 obstr = obs_filtered.select(network=network_str, station=station_str,
                             component=component_str)[0]
 syntr = syn_filtered.select(network=network_str, station=station_str,
                             component=component_str)[0]
 
-# %%
 plt.figure(figsize=(8, 4.25))
 ax = opl.trace([obstr, syntr], labels=['Observed', 'GLAD-M25'],
                limits=(500, 3250),
-               origin_time=event_time, lw=0.75, window=True, nooffset=True,
+               origin_time=event_time, lw=0.75,
+               window=True, nooffset=True,
                windowkwargs=dict(plot_measurements=True))
 opl.add_header(ax, **headerdict, dist=0.025)
 plt.show(block=False)
 
 
 # %%
+# Finally let's add a second set of traces to the plot. This time we will
+# use amplitude measurements we made earlier to find an amplitude correction
+# factor and apply it to the synthetic traces to make them match the observed
+# slightly better. Then, we make measurements again and plot them.
+
+# Copy the synthetics
+newsyn = syn_filtered.copy()
+
+# Get factor
+factor = np.mean([window.measurements['M25']['XR']
+                 for _tr in obs_filtered for window in _tr.stats.windows])
+
+# Correct new synthetics
+for tr in newsyn:
+    tr.data *= factor
+
+# Make measurements
+opl.make_measurements(obs_filtered, newsyn, label='M25C')
+
+# %%
+# Now we plot the measurements on Z and R components of the station with
+# both the windows and the measurements. That we added to the windows
+
+# Subselect streams
+obsst = obs_filtered.select(network=network_str, station=station_str)
+synst = syn_filtered.select(network=network_str, station=station_str)
+newsynst = newsyn.select(network=network_str, station=station_str)
+
+
+plt.figure(figsize=(8, 5))
+ax = opl.station([obsst, synst, newsynst], labels=['Observed', 'M25', 'M25C'],
+                 limits=(500, 3250), components='ZR',
+                 origin_time=event_time, lw=0.75,
+                 window=True, nooffset=True,
+                 windowkwargs=dict(
+                     plot_measurements=True,
+                     text_kwargs=dict(fontsize='x-small'))
+                 )
+opl.add_header(ax[0], **headerdict, dist=0.025)
+plt.show(block=False)
+
+# %%
+# In doing this we have more or less performed a small inversion. If we optimize
+# for the sources scalar moment, M0, considering all S arrivals, simply perform
+# a scaling. By finding all time-shifted correlation ratios between observed
+# and synthetic data we find the amplitude that best fits the data, but
+# disregard the phase. This is a very simple inversion, but it is a good example
+# For showing measurements on traces and windows.

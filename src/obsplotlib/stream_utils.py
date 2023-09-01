@@ -3,6 +3,7 @@ from obspy.taup import TauPyModel
 from obspy.geodetics.base import locations2degrees, gps2dist_azimuth
 import numpy as np
 import typing as tp
+from . import signal
 
 
 def get_max(streams: tp.List[obspy.Stream] | obspy.Stream | obspy.Trace,
@@ -530,3 +531,69 @@ def param_in_streams(streams: tp.List[obspy.Stream],
                     return False
 
     return True
+
+
+def make_measurements(observed: obspy.Stream, synthetic: obspy.Stream,
+                      label: str = 'Syn'):
+    """Convenience function to make measurements on a stream of observed and
+    synthetic data. The function uses the Window attribute of the traces to
+    make measurements, and adds the measurments to the Window object with
+    the provided label. Adds
+    - L2 norm
+    - Cross-correlation maximum
+    - Cross-correlation timeshift
+    - Cross-correlation ratio
+
+    Parameters
+    ----------
+    obs : obspy.Stream
+        Data to compare the synthetics to
+    syn : obspy.Stream
+        synthetic data
+    label : str, optional
+        Label for the measurements, by default 'Syn'
+    """
+
+    for _obs in observed:
+
+        for window in _obs.stats.windows:
+            # Make measurements
+            _syn = synthetic.select(network=_obs.stats.network,
+                                    station=_obs.stats.station,
+                                    component=_obs.stats.component)[0]
+
+            # Copy traces
+            obs = _obs.copy()
+            syn = _syn.copy()
+
+            # Cut traces
+            obs = obs.slice(window.starttime, window.endtime)
+            syn = syn.slice(window.starttime, window.endtime)
+
+            # Taper traces
+            obs.taper(max_percentage=0.05, type='cosine')
+            syn.taper(max_percentage=0.05, type='cosine')
+
+            # Compute cross-correlation timeshift
+            cc_max, ishift = signal.X(obs, syn)
+
+            # Make second synthetic trace with fixed cross-correlation timeshift
+            syns = _syn.copy()
+            tshift = ishift * _obs.stats.delta
+            syns = syns.slice(window.starttime + tshift,
+                              window.endtime + tshift)
+            syns.taper(max_percentage=0.05, type='cosine')
+
+            # Compute the correlation ratio
+            cc_ratio = signal.Xratio(obs, syns)
+
+            # Add measurements to window object
+            # Compute Normalize L2 Norm
+            if not hasattr(window, 'measurements'):
+                window.measurements = dict()
+
+            window.measurements[label] = dict(
+                L2=signal.L2(obs, syn, normalize=True),
+                Xmx=cc_max,
+                DT=ishift * _obs.stats.delta,
+                XR=cc_ratio)

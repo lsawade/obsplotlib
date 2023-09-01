@@ -1,14 +1,14 @@
 # Just reusing the AttribDict from ObsPy
 from obspy.core.util.attribdict import AttribDict
+from collections import OrderedDict
 import obspy
-import weakref
 import numpy as np
 
 
 def bold(string):
     N = string.count(' ')
     string = f'$\\bf{{{string}}}$'
-    string = N * ' ' + 3 * ' ' + string
+    string = N * ' ' + string
     return string
 
 
@@ -18,7 +18,7 @@ class Window(AttribDict):
     endtime: obspy.UTCDateTime
     startidx: int
     endidx: int
-    measurements: dict
+    measurements: OrderedDict = OrderedDict()
 
     def __init__(self, tr: obspy.Trace, *args, **kwargs):
         """Initializes a window object with a trace object reference.
@@ -62,11 +62,10 @@ class Window(AttribDict):
         comparison_keys = list(self.measurements.keys())
         measurement_keys = list(self.measurements[comparison_keys[0]].keys())
 
-        N = 5
+        N = 4
         outstr += f'{"":{N}}'
         for key in comparison_keys:
-            string = bold(key)
-            outstr += f'{string:>6s}'
+            outstr += bold(f'{key:>6s}')
 
         # ADd new line
         outstr += '\n'

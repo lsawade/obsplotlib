@@ -208,8 +208,10 @@ def trace(
         # Plot windows if available
         if window and _j == 0:
             if windowkwargs is None:
-                windowkwargs = dict(
-                    plot_measurements=False)
+                windowkwargs = dict(plot_measurements=False)
+
+            if 'text_kwargs' not in windowkwargs:
+                windowkwargs['text_kwargs'] = dict()
 
             for window in _tr.stats.windows:
 
@@ -222,7 +224,6 @@ def trace(
                     windowend = window.endtime.matplotlib_date
                     duration = windowend - windowstart
 
-                print(windowstart, windowend, duration)
                 ax.add_patch(patches.Rectangle(
                     (windowstart, - 1.5 * absmax),
                     duration, + 3 * absmax, edgecolor='none',
@@ -231,8 +232,9 @@ def trace(
                 if windowkwargs['plot_measurements']:
                     ax.text(windowstart, -1.15*absmax, window.get_label(),
                             horizontalalignment='left',
-                            verticalalignment='bottom', fontsize='small',
-                            bbox=dict(facecolor='none', edgecolor='none'))
+                            verticalalignment='bottom',
+                            bbox=dict(facecolor='none', edgecolor='none'),
+                            **windowkwargs['text_kwargs'])
 
     # Axis limits and indicator
     ax.set_ylim(-1.15*absmax, 1.15*absmax)
@@ -347,7 +349,7 @@ def station(streams: tp.List[obspy.Stream] | obspy.Stream, *args,
         # Format x axis to have the date
         if _i < len(components) - 1:
             ax.spines.bottom.set_visible(False)
-            ax.tick_params(bottom=False)
+            ax.tick_params(bottom=False, labelbottom=False)
 
         axes.append(ax)
 

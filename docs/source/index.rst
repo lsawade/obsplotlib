@@ -19,7 +19,7 @@ or modify created plots to their liking.
 
 .. toctree::
    :maxdepth: 2
-   :caption:
+   :caption: More:
 
    api.rst
 

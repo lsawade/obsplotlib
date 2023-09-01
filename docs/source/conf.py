@@ -1,4 +1,5 @@
 from sphinx_gallery.scrapers import matplotlib_scraper
+from sphinx_gallery.sorting import FileNameSortKey
 # Get version
 from importlib.metadata import version
 release = version('obsplotlib')
@@ -95,6 +96,7 @@ sphinx_gallery_conf = {
     'examples_dirs': ['../../examples/'],
     # path to where to save gallery generated output
     'gallery_dirs': ["examples"],
+    'within_subsection_order': FileNameSortKey,
     # Checks matplotlib for figure creation
     'image_scrapers': (matplotlib_svg_scraper(),),
     # Which files to include

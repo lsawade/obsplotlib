@@ -333,6 +333,12 @@ their actual distance, but one by one with a label that has the distance.
    :class: sphx-glr-single-img
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    [[0.0024505997585772816, 0.001574379603044935, 0.0034862554498077862, 0.0008669836693182409, 0.0012316358557313669, 0.0034692072260754806, 0.00045049464682523016, 0.0019141582446365148, 0.001712866024974609, 0.006028308625859601, 0.003178954145711804, 0.0014389197046787085, 0.0018913556818178337, 0.0019865869491995734, 0.002635682348778954, 0.002674076510788794, 0.0026444151335401336]]
+
 
 
 
@@ -364,6 +370,12 @@ after the event
    :class: sphx-glr-single-img
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    [[0.0020310921642309986, 0.0010257692358382614, 0.001983981210650028, 0.0013267483860925798, 0.0017255150466662214, 0.0016511777441700994, 0.0030876538450560465, 0.0013512138886367432, 0.0014211126947204448, 0.002014548801327227, 0.0013739496815176441, 0.00023638277804639374, 0.00020274114030764014, 0.00019168378969858078, 0.0005016897992049631, 0.0003863219400469282, 0.0007487967017329957]]
+
 
 
 
@@ -390,6 +402,12 @@ Time since event origin on the x-axis.
    :srcset: /examples/images/sphx_glr_run_1_tutorial_006.svg
    :class: sphx-glr-single-img
 
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    [[0.0020310921642309986, 0.0010257692358382614, 0.001983981210650028, 0.0013267483860925798, 0.0017255150466662214, 0.0016511777441700994, 0.0030876538450560465, 0.0013512138886367432, 0.0014211126947204448, 0.002014548801327227, 0.0013739496815176441, 0.0009117332787971929, 0.0005526138063811933, 0.0012934679077098888, 0.0014582299649838087, 0.002119008990522608, 0.002125903901535755]]
 
 
 
@@ -419,6 +437,12 @@ to 1500 seconds after the event
    :srcset: /examples/images/sphx_glr_run_1_tutorial_007.svg
    :class: sphx-glr-single-img
 
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    [[0.0020310921642309986, 0.0010257692358382614, 0.001983981210650028, 0.0013267483860925798, 0.0017255150466662214, 0.0016511777441700994, 0.0030876538450560465, 0.0013512138886367432, 0.0014211126947204448, 0.002014548801327227, 0.0013739496815176441, 0.00023638277804639374, 0.00020274114030764014, 0.00019168378969858078, 0.0005016897992049631, 0.0003863219400469282, 0.0007487967017329957]]
 
 
 
@@ -470,6 +494,12 @@ computed using the distance parameter in the stats object.
    :class: sphx-glr-single-img
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    [[0.0024505997585772816, 0.001574379603044935, 0.0034862554498077862, 0.0008669836693182409, 0.0012316358557313669, 0.0034692072260754806, 0.00045049464682523016, 0.0019141582446365148, 0.001712866024974609, 0.006028308625859601, 0.003178954145711804, 0.0014389197046787085, 0.0018913556818178337, 0.0019865869491995734, 0.002635682348778954, 0.002674076510788794, 0.0026444151335401336]]
+
 
 
 
@@ -500,6 +530,12 @@ time range before and after the arrival times.
    :srcset: /examples/images/sphx_glr_run_1_tutorial_009.svg
    :class: sphx-glr-single-img
 
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    [[0.0024505997585772816, 0.0012767136298588678, 0.00104853307345953, 0.0006091300019544863, 0.0002571998120610813, 0.00048242447337560354, 0.00020127603656706975, 0.0003074609888726817, 0.0002552381701421307, 0.0006551659733019955, 0.0003770037293277743, 0.0005516896255325048, 0.0004015282169721006, 0.0003854706270344753, 0.00039110647686225124, 0.0002788232881691158, 0.0005119379234385056]]
 
 
 
@@ -533,6 +569,12 @@ Let's also plot a section aligned to the P arrival times.
    :srcset: /examples/images/sphx_glr_run_1_tutorial_010.svg
    :class: sphx-glr-single-img
 
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    [[0.00016538255213666348, 5.519750832211496e-05, 9.9452679689026e-05, 8.868830268138597e-05, 0.00012870453127058373, 6.839569881138807e-05, 8.119057923157647e-05]]
 
 
 
@@ -577,7 +619,10 @@ string with all components to be plotted in order.
 
  .. code-block:: none
 
+    [[0.00016538255213666348, 5.519750832211496e-05, 9.9452679689026e-05, 8.868830268138597e-05, 0.00012870453127058373, 6.839569881138807e-05, 8.119057923157647e-05]]
+    [[0.00019458408556125568, 2.934906965917464e-05, 5.0188914866007917e-05, 4.9184553831081936e-05, 6.322671228778273e-05, 2.4140425798115153e-05, 3.7130343789894805e-05]]
     2 legendargs
+    [[3.338864985276305e-05, 5.002313404158561e-06, 5.223139727360008e-06, 3.4678735519461123e-06, 1.0908791501773577e-05, 2.9317280004807354e-06, 1.0448378338137199e-05]]
 
 
 
@@ -763,233 +808,11 @@ do not perfectly overlapping.
  .. code-block:: none
 
     list index out of range
-    Cant find G.KIP..Z
+    Cant find G.SPB..Z
     list index out of range
-    Cant find G.KIP..R
+    Cant find G.SPB..R
     list index out of range
-    Cant find G.KIP..T
-    list index out of range
-    Cant find IU.YSS..Z
-    list index out of range
-    Cant find IU.YSS..R
-    list index out of range
-    Cant find IU.YSS..T
-    list index out of range
-    Cant find II.NIL..Z
-    list index out of range
-    Cant find II.NIL..R
-    list index out of range
-    Cant find II.NIL..T
-    list index out of range
-    Cant find GE.KMBO..Z
-    list index out of range
-    Cant find GE.KMBO..R
-    list index out of range
-    Cant find GE.KMBO..T
-    list index out of range
-    Cant find IU.SPA..Z
-    list index out of range
-    Cant find IU.SPA..R
-    list index out of range
-    Cant find IU.SPA..T
-    list index out of range
-    Cant find GE.LVC..Z
-    list index out of range
-    Cant find GE.LVC..R
-    list index out of range
-    Cant find GE.LVC..T
-    list index out of range
-    Cant find II.ALE..Z
-    list index out of range
-    Cant find II.ALE..R
-    list index out of range
-    Cant find II.ALE..T
-    list index out of range
-    Cant find G.PPTF..Z
-    list index out of range
-    Cant find G.PPTF..R
-    list index out of range
-    Cant find G.PPTF..T
-    list index out of range
-    Cant find II.RPN..Z
-    list index out of range
-    Cant find II.RPN..R
-    list index out of range
-    Cant find II.RPN..T
-    list index out of range
-    Cant find II.SUR..Z
-    list index out of range
-    Cant find II.SUR..R
-    list index out of range
-    Cant find II.SUR..T
-    list index out of range
-    Cant find II.ASCN..Z
-    list index out of range
-    Cant find II.ASCN..R
-    list index out of range
-    Cant find II.ASCN..T
-    list index out of range
-    Cant find G.TRIS..Z
-    list index out of range
-    Cant find G.TRIS..R
-    list index out of range
-    Cant find G.TRIS..T
-    list index out of range
-    Cant find IU.SBA..Z
-    list index out of range
-    Cant find IU.SBA..R
-    list index out of range
-    Cant find IU.SBA..T
-    list index out of range
-    Cant find G.MPG..Z
-    list index out of range
-    Cant find G.MPG..R
-    list index out of range
-    Cant find G.MPG..T
-    list index out of range
-    Cant find IU.KOWA..Z
-    list index out of range
-    Cant find IU.KOWA..R
-    list index out of range
-    Cant find IU.KOWA..T
-    list index out of range
-    Cant find G.IVI..Z
-    list index out of range
-    Cant find G.IVI..R
-    list index out of range
-    Cant find G.IVI..T
-    list index out of range
-    Cant find II.AAK..Z
-    list index out of range
-    Cant find II.AAK..R
-    list index out of range
-    Cant find II.AAK..T
-    list index out of range
-    Cant find IC.XAN..Z
-    list index out of range
-    Cant find IC.XAN..R
-    list index out of range
-    Cant find IC.XAN..T
-    list index out of range
-    Cant find IU.MAJO..Z
-    list index out of range
-    Cant find IU.MAJO..R
-    list index out of range
-    Cant find IU.MAJO..T
-    list index out of range
-    Cant find II.RAYN..Z
-    list index out of range
-    Cant find II.RAYN..R
-    list index out of range
-    Cant find II.RAYN..T
-    list index out of range
-    Cant find II.BORG..Z
-    list index out of range
-    Cant find II.BORG..R
-    list index out of range
-    Cant find II.BORG..T
-    list index out of range
-    Cant find IU.MIDW..Z
-    list index out of range
-    Cant find IU.MIDW..R
-    list index out of range
-    Cant find IU.MIDW..T
-    list index out of range
-    Cant find II.FFC..Z
-    list index out of range
-    Cant find II.FFC..R
-    list index out of range
-    Cant find II.FFC..T
-    list index out of range
-    Cant find II.MSEY..Z
-    list index out of range
-    Cant find II.MSEY..R
-    list index out of range
-    Cant find II.MSEY..T
-    list index out of range
-    Cant find IU.INCN..Z
-    list index out of range
-    Cant find IU.INCN..R
-    list index out of range
-    Cant find IU.INCN..T
-    list index out of range
-    Cant find IU.SJG..Z
-    list index out of range
-    Cant find IU.SJG..R
-    list index out of range
-    Cant find IU.SJG..T
-    list index out of range
-    Cant find IU.TIXI..Z
-    list index out of range
-    Cant find IU.TIXI..R
-    list index out of range
-    Cant find IU.TIXI..T
-    list index out of range
-    Cant find G.PAF..Z
-    list index out of range
-    Cant find G.PAF..R
-    list index out of range
-    Cant find G.PAF..T
-    list index out of range
-    Cant find IU.NWAO..Z
-    list index out of range
-    Cant find IU.NWAO..R
-    list index out of range
-    Cant find IU.NWAO..T
-    list index out of range
-    Cant find G.ROCAM..Z
-    list index out of range
-    Cant find G.ROCAM..R
-    list index out of range
-    Cant find G.ROCAM..T
-    list index out of range
-    Cant find II.LVZ..Z
-    list index out of range
-    Cant find II.LVZ..R
-    list index out of range
-    Cant find II.LVZ..T
-    list index out of range
-    Cant find IU.MSKU..Z
-    list index out of range
-    Cant find IU.MSKU..R
-    list index out of range
-    Cant find IU.MSKU..T
-    list index out of range
-    Cant find IU.MAKZ..Z
-    list index out of range
-    Cant find IU.MAKZ..R
-    list index out of range
-    Cant find IU.MAKZ..T
-    list index out of range
-    Cant find IU.TEIG..Z
-    list index out of range
-    Cant find IU.TEIG..R
-    list index out of range
-    Cant find IU.TEIG..T
-    list index out of range
-    Cant find II.SACV..Z
-    list index out of range
-    Cant find II.SACV..R
-    list index out of range
-    Cant find II.SACV..T
-    list index out of range
-    Cant find IU.CASY..Z
-    list index out of range
-    Cant find IU.CASY..R
-    list index out of range
-    Cant find IU.CASY..T
-    list index out of range
-    Cant find IU.RCBR..Z
-    list index out of range
-    Cant find IU.RCBR..R
-    list index out of range
-    Cant find IU.RCBR..T
-    list index out of range
-    Cant find G.NOUC..Z
-    list index out of range
-    Cant find G.NOUC..R
-    list index out of range
-    Cant find G.NOUC..T
+    Cant find G.SPB..T
     list index out of range
     Cant find IU.LSZ..Z
     list index out of range
@@ -997,53 +820,11 @@ do not perfectly overlapping.
     list index out of range
     Cant find IU.LSZ..T
     list index out of range
-    Cant find II.COCO..Z
+    Cant find MN.TNV..Z
     list index out of range
-    Cant find II.COCO..R
+    Cant find MN.TNV..R
     list index out of range
-    Cant find II.COCO..T
-    list index out of range
-    Cant find IU.OTAV..Z
-    list index out of range
-    Cant find IU.OTAV..R
-    list index out of range
-    Cant find IU.OTAV..T
-    list index out of range
-    Cant find II.KWJN..Z
-    list index out of range
-    Cant find II.KWJN..R
-    list index out of range
-    Cant find II.KWJN..T
-    list index out of range
-    Cant find II.TAU..Z
-    list index out of range
-    Cant find II.TAU..R
-    list index out of range
-    Cant find II.TAU..T
-    list index out of range
-    Cant find II.PALK..Z
-    list index out of range
-    Cant find II.PALK..R
-    list index out of range
-    Cant find II.PALK..T
-    list index out of range
-    Cant find G.SPB..Z
-    list index out of range
-    Cant find G.SPB..R
-    list index out of range
-    Cant find G.SPB..T
-    list index out of range
-    Cant find IU.ADK..Z
-    list index out of range
-    Cant find IU.ADK..R
-    list index out of range
-    Cant find IU.ADK..T
-    list index out of range
-    Cant find IU.CHTO..Z
-    list index out of range
-    Cant find IU.CHTO..R
-    list index out of range
-    Cant find IU.CHTO..T
+    Cant find MN.TNV..T
     list index out of range
     Cant find IU.HNR..Z
     list index out of range
@@ -1051,11 +832,17 @@ do not perfectly overlapping.
     list index out of range
     Cant find IU.HNR..T
     list index out of range
-    Cant find IU.YAK..Z
+    Cant find II.RAYN..Z
     list index out of range
-    Cant find IU.YAK..R
+    Cant find II.RAYN..R
     list index out of range
-    Cant find IU.YAK..T
+    Cant find II.RAYN..T
+    list index out of range
+    Cant find IU.RCBR..Z
+    list index out of range
+    Cant find IU.RCBR..R
+    list index out of range
+    Cant find IU.RCBR..T
     list index out of range
     Cant find IU.TRQA..Z
     list index out of range
@@ -1063,35 +850,11 @@ do not perfectly overlapping.
     list index out of range
     Cant find IU.TRQA..T
     list index out of range
-    Cant find G.ECH..Z
+    Cant find IU.YSS..Z
     list index out of range
-    Cant find G.ECH..R
+    Cant find IU.YSS..R
     list index out of range
-    Cant find G.ECH..T
-    list index out of range
-    Cant find IU.KONO..Z
-    list index out of range
-    Cant find IU.KONO..R
-    list index out of range
-    Cant find IU.KONO..T
-    list index out of range
-    Cant find IU.WVT..Z
-    list index out of range
-    Cant find IU.WVT..R
-    list index out of range
-    Cant find IU.WVT..T
-    list index out of range
-    Cant find IU.GUMO..Z
-    list index out of range
-    Cant find IU.GUMO..R
-    list index out of range
-    Cant find IU.GUMO..T
-    list index out of range
-    Cant find II.CMLA..Z
-    list index out of range
-    Cant find II.CMLA..R
-    list index out of range
-    Cant find II.CMLA..T
+    Cant find IU.YSS..T
     list index out of range
     Cant find II.KAPI..Z
     list index out of range
@@ -1099,11 +862,29 @@ do not perfectly overlapping.
     list index out of range
     Cant find II.KAPI..T
     list index out of range
-    Cant find MN.TNV..Z
+    Cant find II.SUR..Z
     list index out of range
-    Cant find MN.TNV..R
+    Cant find II.SUR..R
     list index out of range
-    Cant find MN.TNV..T
+    Cant find II.SUR..T
+    list index out of range
+    Cant find G.TRIS..Z
+    list index out of range
+    Cant find G.TRIS..R
+    list index out of range
+    Cant find G.TRIS..T
+    list index out of range
+    Cant find IU.CHTO..Z
+    list index out of range
+    Cant find IU.CHTO..R
+    list index out of range
+    Cant find IU.CHTO..T
+    list index out of range
+    Cant find IU.INCN..Z
+    list index out of range
+    Cant find IU.INCN..R
+    list index out of range
+    Cant find IU.INCN..T
     list index out of range
     Cant find IU.SAML..Z
     list index out of range
@@ -1117,29 +898,41 @@ do not perfectly overlapping.
     list index out of range
     Cant find G.FUTU..T
     list index out of range
-    Cant find II.TLY..Z
+    Cant find IU.OTAV..Z
     list index out of range
-    Cant find II.TLY..R
+    Cant find IU.OTAV..R
     list index out of range
-    Cant find II.TLY..T
+    Cant find IU.OTAV..T
     list index out of range
-    Cant find IU.COR..Z
+    Cant find II.PALK..Z
     list index out of range
-    Cant find IU.COR..R
+    Cant find II.PALK..R
     list index out of range
-    Cant find IU.COR..T
+    Cant find II.PALK..T
     list index out of range
-    Cant find II.ARU..Z
+    Cant find IC.XAN..Z
     list index out of range
-    Cant find II.ARU..R
+    Cant find IC.XAN..R
     list index out of range
-    Cant find II.ARU..T
+    Cant find IC.XAN..T
     list index out of range
-    Cant find IU.PMSA..Z
+    Cant find G.PAF..Z
     list index out of range
-    Cant find IU.PMSA..R
+    Cant find G.PAF..R
     list index out of range
-    Cant find IU.PMSA..T
+    Cant find G.PAF..T
+    list index out of range
+    Cant find G.IVI..Z
+    list index out of range
+    Cant find G.IVI..R
+    list index out of range
+    Cant find G.IVI..T
+    list index out of range
+    Cant find II.NIL..Z
+    list index out of range
+    Cant find II.NIL..R
+    list index out of range
+    Cant find II.NIL..T
     list index out of range
     Cant find IU.ANTO..Z
     list index out of range
@@ -1147,11 +940,263 @@ do not perfectly overlapping.
     list index out of range
     Cant find IU.ANTO..T
     list index out of range
+    Cant find IU.SBA..Z
+    list index out of range
+    Cant find IU.SBA..R
+    list index out of range
+    Cant find IU.SBA..T
+    list index out of range
     Cant find II.ABPO..Z
     list index out of range
     Cant find II.ABPO..R
     list index out of range
     Cant find II.ABPO..T
+    list index out of range
+    Cant find G.MPG..Z
+    list index out of range
+    Cant find G.MPG..R
+    list index out of range
+    Cant find G.MPG..T
+    list index out of range
+    Cant find IU.MAKZ..Z
+    list index out of range
+    Cant find IU.MAKZ..R
+    list index out of range
+    Cant find IU.MAKZ..T
+    list index out of range
+    Cant find IU.WVT..Z
+    list index out of range
+    Cant find IU.WVT..R
+    list index out of range
+    Cant find IU.WVT..T
+    list index out of range
+    Cant find II.BORG..Z
+    list index out of range
+    Cant find II.BORG..R
+    list index out of range
+    Cant find II.BORG..T
+    list index out of range
+    Cant find II.TLY..Z
+    list index out of range
+    Cant find II.TLY..R
+    list index out of range
+    Cant find II.TLY..T
+    list index out of range
+    Cant find IU.PMSA..Z
+    list index out of range
+    Cant find IU.PMSA..R
+    list index out of range
+    Cant find IU.PMSA..T
+    list index out of range
+    Cant find IU.KOWA..Z
+    list index out of range
+    Cant find IU.KOWA..R
+    list index out of range
+    Cant find IU.KOWA..T
+    list index out of range
+    Cant find IU.NWAO..Z
+    list index out of range
+    Cant find IU.NWAO..R
+    list index out of range
+    Cant find IU.NWAO..T
+    list index out of range
+    Cant find II.ARU..Z
+    list index out of range
+    Cant find II.ARU..R
+    list index out of range
+    Cant find II.ARU..T
+    list index out of range
+    Cant find GE.KMBO..Z
+    list index out of range
+    Cant find GE.KMBO..R
+    list index out of range
+    Cant find GE.KMBO..T
+    list index out of range
+    Cant find G.ROCAM..Z
+    list index out of range
+    Cant find G.ROCAM..R
+    list index out of range
+    Cant find G.ROCAM..T
+    list index out of range
+    Cant find G.NOUC..Z
+    list index out of range
+    Cant find G.NOUC..R
+    list index out of range
+    Cant find G.NOUC..T
+    list index out of range
+    Cant find II.ALE..Z
+    list index out of range
+    Cant find II.ALE..R
+    list index out of range
+    Cant find II.ALE..T
+    list index out of range
+    Cant find II.MSEY..Z
+    list index out of range
+    Cant find II.MSEY..R
+    list index out of range
+    Cant find II.MSEY..T
+    list index out of range
+    Cant find II.TAU..Z
+    list index out of range
+    Cant find II.TAU..R
+    list index out of range
+    Cant find II.TAU..T
+    list index out of range
+    Cant find IU.MAJO..Z
+    list index out of range
+    Cant find IU.MAJO..R
+    list index out of range
+    Cant find IU.MAJO..T
+    list index out of range
+    Cant find II.COCO..Z
+    list index out of range
+    Cant find II.COCO..R
+    list index out of range
+    Cant find II.COCO..T
+    list index out of range
+    Cant find IU.COR..Z
+    list index out of range
+    Cant find IU.COR..R
+    list index out of range
+    Cant find IU.COR..T
+    list index out of range
+    Cant find IU.CASY..Z
+    list index out of range
+    Cant find IU.CASY..R
+    list index out of range
+    Cant find IU.CASY..T
+    list index out of range
+    Cant find IU.MIDW..Z
+    list index out of range
+    Cant find IU.MIDW..R
+    list index out of range
+    Cant find IU.MIDW..T
+    list index out of range
+    Cant find IU.TIXI..Z
+    list index out of range
+    Cant find IU.TIXI..R
+    list index out of range
+    Cant find IU.TIXI..T
+    list index out of range
+    Cant find II.CMLA..Z
+    list index out of range
+    Cant find II.CMLA..R
+    list index out of range
+    Cant find II.CMLA..T
+    list index out of range
+    Cant find II.AAK..Z
+    list index out of range
+    Cant find II.AAK..R
+    list index out of range
+    Cant find II.AAK..T
+    list index out of range
+    Cant find II.ASCN..Z
+    list index out of range
+    Cant find II.ASCN..R
+    list index out of range
+    Cant find II.ASCN..T
+    list index out of range
+    Cant find GE.LVC..Z
+    list index out of range
+    Cant find GE.LVC..R
+    list index out of range
+    Cant find GE.LVC..T
+    list index out of range
+    Cant find II.FFC..Z
+    list index out of range
+    Cant find II.FFC..R
+    list index out of range
+    Cant find II.FFC..T
+    list index out of range
+    Cant find II.KWJN..Z
+    list index out of range
+    Cant find II.KWJN..R
+    list index out of range
+    Cant find II.KWJN..T
+    list index out of range
+    Cant find II.SACV..Z
+    list index out of range
+    Cant find II.SACV..R
+    list index out of range
+    Cant find II.SACV..T
+    list index out of range
+    Cant find IU.ADK..Z
+    list index out of range
+    Cant find IU.ADK..R
+    list index out of range
+    Cant find IU.ADK..T
+    list index out of range
+    Cant find IU.YAK..Z
+    list index out of range
+    Cant find IU.YAK..R
+    list index out of range
+    Cant find IU.YAK..T
+    list index out of range
+    Cant find II.LVZ..Z
+    list index out of range
+    Cant find II.LVZ..R
+    list index out of range
+    Cant find II.LVZ..T
+    list index out of range
+    Cant find IU.GUMO..Z
+    list index out of range
+    Cant find IU.GUMO..R
+    list index out of range
+    Cant find IU.GUMO..T
+    list index out of range
+    Cant find IU.KONO..Z
+    list index out of range
+    Cant find IU.KONO..R
+    list index out of range
+    Cant find IU.KONO..T
+    list index out of range
+    Cant find IU.MSKU..Z
+    list index out of range
+    Cant find IU.MSKU..R
+    list index out of range
+    Cant find IU.MSKU..T
+    list index out of range
+    Cant find IU.SJG..Z
+    list index out of range
+    Cant find IU.SJG..R
+    list index out of range
+    Cant find IU.SJG..T
+    list index out of range
+    Cant find IU.TEIG..Z
+    list index out of range
+    Cant find IU.TEIG..R
+    list index out of range
+    Cant find IU.TEIG..T
+    list index out of range
+    Cant find G.KIP..Z
+    list index out of range
+    Cant find G.KIP..R
+    list index out of range
+    Cant find G.KIP..T
+    list index out of range
+    Cant find II.RPN..Z
+    list index out of range
+    Cant find II.RPN..R
+    list index out of range
+    Cant find II.RPN..T
+    list index out of range
+    Cant find G.ECH..Z
+    list index out of range
+    Cant find G.ECH..R
+    list index out of range
+    Cant find G.ECH..T
+    list index out of range
+    Cant find G.PPTF..Z
+    list index out of range
+    Cant find G.PPTF..R
+    list index out of range
+    Cant find G.PPTF..T
+    list index out of range
+    Cant find IU.SPA..Z
+    list index out of range
+    Cant find IU.SPA..R
+    list index out of range
+    Cant find IU.SPA..T
     list index out of range
     Cant find G.TAM..Z
     list index out of range
@@ -1187,6 +1232,12 @@ plot a section with the traces.
    :srcset: /examples/images/sphx_glr_run_1_tutorial_014.svg
    :class: sphx-glr-single-img
 
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    [[0.002743187661132795, 0.00219715452262896, 0.0014256783021462304, 0.0022499778402648514, 0.003818495470623282, 0.001631694111054505, 0.002642893139688799, 0.0018508093530368377, 0.0015391092284538662, 0.002128403387366918], [0.005993899763920346, 0.0024470425442413533, 0.0012458114041164683, 0.00405182421513302, 0.005487683286779865, 0.002123495738556396, 0.003336863761592863, 0.0029469907263877377, 0.0023977613864230862, 0.0034373540232758783]]
 
 
 
@@ -1278,239 +1329,11 @@ traveltime
  .. code-block:: none
 
     list index out of range
-    Cant find G.KIP..Z
+    Cant find G.SPB..Z
     list index out of range
-    Cant find G.KIP..R
+    Cant find G.SPB..R
     list index out of range
-    Cant find G.KIP..T
-    list index out of range
-    Cant find IU.YSS..Z
-    list index out of range
-    Cant find IU.YSS..R
-    list index out of range
-    Cant find IU.YSS..T
-    list index out of range
-    Cant find II.NIL..Z
-    list index out of range
-    Cant find II.NIL..R
-    list index out of range
-    Cant find II.NIL..T
-    list index out of range
-    Cant find GE.KMBO..Z
-    list index out of range
-    Cant find GE.KMBO..R
-    list index out of range
-    Cant find GE.KMBO..T
-    list index out of range
-    Cant find GE.LVC..Z
-    list index out of range
-    Cant find GE.LVC..R
-    list index out of range
-    Cant find GE.LVC..T
-    list index out of range
-    Cant find II.ALE..Z
-    list index out of range
-    Cant find II.ALE..R
-    list index out of range
-    Cant find II.ALE..T
-    list index out of range
-    Cant find G.PPTF..Z
-    list index out of range
-    Cant find G.PPTF..R
-    list index out of range
-    Cant find G.PPTF..T
-    list index out of range
-    Cant find II.RPN..Z
-    list index out of range
-    Cant find II.RPN..R
-    list index out of range
-    Cant find II.RPN..T
-    list index out of range
-    Cant find II.SUR..Z
-    list index out of range
-    Cant find II.SUR..R
-    list index out of range
-    Cant find II.SUR..T
-    list index out of range
-    Cant find II.ASCN..Z
-    list index out of range
-    Cant find II.ASCN..R
-    list index out of range
-    Cant find II.ASCN..T
-    list index out of range
-    Cant find II.DGAR..Z
-    list index out of range
-    Cant find II.DGAR..R
-    list index out of range
-    Cant find II.DGAR..T
-    list index out of range
-    Cant find G.TRIS..Z
-    list index out of range
-    Cant find G.TRIS..R
-    list index out of range
-    Cant find G.TRIS..T
-    list index out of range
-    Cant find IU.SBA..Z
-    list index out of range
-    Cant find IU.SBA..R
-    list index out of range
-    Cant find IU.SBA..T
-    list index out of range
-    Cant find G.MPG..Z
-    list index out of range
-    Cant find G.MPG..R
-    list index out of range
-    Cant find G.MPG..T
-    list index out of range
-    Cant find G.IVI..Z
-    list index out of range
-    Cant find G.IVI..R
-    list index out of range
-    Cant find G.IVI..T
-    list index out of range
-    Cant find IU.KOWA..Z
-    list index out of range
-    Cant find IU.KOWA..R
-    list index out of range
-    Cant find IU.KOWA..T
-    list index out of range
-    Cant find IC.XAN..Z
-    list index out of range
-    Cant find IC.XAN..R
-    list index out of range
-    Cant find IC.XAN..T
-    list index out of range
-    Cant find II.RAYN..Z
-    list index out of range
-    Cant find II.RAYN..R
-    list index out of range
-    Cant find II.RAYN..T
-    list index out of range
-    Cant find IU.MIDW..Z
-    list index out of range
-    Cant find IU.MIDW..R
-    list index out of range
-    Cant find IU.MIDW..T
-    list index out of range
-    Cant find IU.SJG..Z
-    list index out of range
-    Cant find IU.SJG..R
-    list index out of range
-    Cant find IU.SJG..T
-    list index out of range
-    Cant find IU.SPA..Z
-    list index out of range
-    Cant find IU.SPA..R
-    list index out of range
-    Cant find IU.SPA..T
-    list index out of range
-    Cant find IU.TIXI..Z
-    list index out of range
-    Cant find IU.TIXI..R
-    list index out of range
-    Cant find IU.TIXI..T
-    list index out of range
-    Cant find II.FFC..Z
-    list index out of range
-    Cant find II.FFC..R
-    list index out of range
-    Cant find II.FFC..T
-    list index out of range
-    Cant find II.MSEY..Z
-    list index out of range
-    Cant find II.MSEY..R
-    list index out of range
-    Cant find II.MSEY..T
-    list index out of range
-    Cant find IU.INCN..Z
-    list index out of range
-    Cant find IU.INCN..R
-    list index out of range
-    Cant find IU.INCN..T
-    list index out of range
-    Cant find G.PAF..Z
-    list index out of range
-    Cant find G.PAF..R
-    list index out of range
-    Cant find G.PAF..T
-    list index out of range
-    Cant find IU.NWAO..Z
-    list index out of range
-    Cant find IU.NWAO..R
-    list index out of range
-    Cant find IU.NWAO..T
-    list index out of range
-    Cant find G.ROCAM..Z
-    list index out of range
-    Cant find G.ROCAM..R
-    list index out of range
-    Cant find G.ROCAM..T
-    list index out of range
-    Cant find II.LVZ..Z
-    list index out of range
-    Cant find II.LVZ..R
-    list index out of range
-    Cant find II.LVZ..T
-    list index out of range
-    Cant find IU.MSKU..Z
-    list index out of range
-    Cant find IU.MSKU..R
-    list index out of range
-    Cant find IU.MSKU..T
-    list index out of range
-    Cant find IU.DAV..Z
-    list index out of range
-    Cant find IU.DAV..R
-    list index out of range
-    Cant find IU.DAV..T
-    list index out of range
-    Cant find IU.MAKZ..Z
-    list index out of range
-    Cant find IU.MAKZ..R
-    list index out of range
-    Cant find IU.MAKZ..T
-    list index out of range
-    Cant find IU.TEIG..Z
-    list index out of range
-    Cant find IU.TEIG..R
-    list index out of range
-    Cant find IU.TEIG..T
-    list index out of range
-    Cant find II.SACV..Z
-    list index out of range
-    Cant find II.SACV..R
-    list index out of range
-    Cant find II.SACV..T
-    list index out of range
-    Cant find II.BFO..Z
-    list index out of range
-    Cant find II.BFO..R
-    list index out of range
-    Cant find II.BFO..T
-    list index out of range
-    Cant find IU.CASY..Z
-    list index out of range
-    Cant find IU.CASY..R
-    list index out of range
-    Cant find IU.CASY..T
-    list index out of range
-    Cant find IU.CTAO..Z
-    list index out of range
-    Cant find IU.CTAO..R
-    list index out of range
-    Cant find IU.CTAO..T
-    list index out of range
-    Cant find IU.RCBR..Z
-    list index out of range
-    Cant find IU.RCBR..R
-    list index out of range
-    Cant find IU.RCBR..T
-    list index out of range
-    Cant find G.NOUC..Z
-    list index out of range
-    Cant find G.NOUC..R
-    list index out of range
-    Cant find G.NOUC..T
+    Cant find G.SPB..T
     list index out of range
     Cant find IU.LSZ..Z
     list index out of range
@@ -1518,65 +1341,11 @@ traveltime
     list index out of range
     Cant find IU.LSZ..T
     list index out of range
-    Cant find II.COCO..Z
+    Cant find MN.TNV..Z
     list index out of range
-    Cant find II.COCO..R
+    Cant find MN.TNV..R
     list index out of range
-    Cant find II.COCO..T
-    list index out of range
-    Cant find II.HOPE..Z
-    list index out of range
-    Cant find II.HOPE..R
-    list index out of range
-    Cant find II.HOPE..T
-    list index out of range
-    Cant find IU.OTAV..Z
-    list index out of range
-    Cant find IU.OTAV..R
-    list index out of range
-    Cant find IU.OTAV..T
-    list index out of range
-    Cant find II.KWJN..Z
-    list index out of range
-    Cant find II.KWJN..R
-    list index out of range
-    Cant find II.KWJN..T
-    list index out of range
-    Cant find II.TAU..Z
-    list index out of range
-    Cant find II.TAU..R
-    list index out of range
-    Cant find II.TAU..T
-    list index out of range
-    Cant find II.PALK..Z
-    list index out of range
-    Cant find II.PALK..R
-    list index out of range
-    Cant find II.PALK..T
-    list index out of range
-    Cant find G.SPB..Z
-    list index out of range
-    Cant find G.SPB..R
-    list index out of range
-    Cant find G.SPB..T
-    list index out of range
-    Cant find II.KDAK..Z
-    list index out of range
-    Cant find II.KDAK..R
-    list index out of range
-    Cant find II.KDAK..T
-    list index out of range
-    Cant find IU.ADK..Z
-    list index out of range
-    Cant find IU.ADK..R
-    list index out of range
-    Cant find IU.ADK..T
-    list index out of range
-    Cant find IU.CHTO..Z
-    list index out of range
-    Cant find IU.CHTO..R
-    list index out of range
-    Cant find IU.CHTO..T
+    Cant find MN.TNV..T
     list index out of range
     Cant find IU.HNR..Z
     list index out of range
@@ -1584,11 +1353,17 @@ traveltime
     list index out of range
     Cant find IU.HNR..T
     list index out of range
-    Cant find IU.WVT..Z
+    Cant find II.RAYN..Z
     list index out of range
-    Cant find IU.WVT..R
+    Cant find II.RAYN..R
     list index out of range
-    Cant find IU.WVT..T
+    Cant find II.RAYN..T
+    list index out of range
+    Cant find IU.RCBR..Z
+    list index out of range
+    Cant find IU.RCBR..R
+    list index out of range
+    Cant find IU.RCBR..T
     list index out of range
     Cant find IU.TRQA..Z
     list index out of range
@@ -1596,35 +1371,47 @@ traveltime
     list index out of range
     Cant find IU.TRQA..T
     list index out of range
-    Cant find G.ECH..Z
+    Cant find IU.YSS..Z
     list index out of range
-    Cant find G.ECH..R
+    Cant find IU.YSS..R
     list index out of range
-    Cant find G.ECH..T
+    Cant find IU.YSS..T
     list index out of range
-    Cant find IU.KONO..Z
+    Cant find II.SUR..Z
     list index out of range
-    Cant find IU.KONO..R
+    Cant find II.SUR..R
     list index out of range
-    Cant find IU.KONO..T
+    Cant find II.SUR..T
     list index out of range
-    Cant find IU.GUMO..Z
+    Cant find IU.CTAO..Z
     list index out of range
-    Cant find IU.GUMO..R
+    Cant find IU.CTAO..R
     list index out of range
-    Cant find IU.GUMO..T
+    Cant find IU.CTAO..T
     list index out of range
-    Cant find II.CMLA..Z
+    Cant find G.TRIS..Z
     list index out of range
-    Cant find II.CMLA..R
+    Cant find G.TRIS..R
     list index out of range
-    Cant find II.CMLA..T
+    Cant find G.TRIS..T
     list index out of range
-    Cant find MN.TNV..Z
+    Cant find II.KDAK..Z
     list index out of range
-    Cant find MN.TNV..R
+    Cant find II.KDAK..R
     list index out of range
-    Cant find MN.TNV..T
+    Cant find II.KDAK..T
+    list index out of range
+    Cant find IU.CHTO..Z
+    list index out of range
+    Cant find IU.CHTO..R
+    list index out of range
+    Cant find IU.CHTO..T
+    list index out of range
+    Cant find IU.INCN..Z
+    list index out of range
+    Cant find IU.INCN..R
+    list index out of range
+    Cant find IU.INCN..T
     list index out of range
     Cant find IU.SAML..Z
     list index out of range
@@ -1638,29 +1425,47 @@ traveltime
     list index out of range
     Cant find G.FUTU..T
     list index out of range
-    Cant find II.TLY..Z
+    Cant find IU.OTAV..Z
     list index out of range
-    Cant find II.TLY..R
+    Cant find IU.OTAV..R
     list index out of range
-    Cant find II.TLY..T
+    Cant find IU.OTAV..T
     list index out of range
-    Cant find IU.COR..Z
+    Cant find II.HOPE..Z
     list index out of range
-    Cant find IU.COR..R
+    Cant find II.HOPE..R
     list index out of range
-    Cant find IU.COR..T
+    Cant find II.HOPE..T
     list index out of range
-    Cant find II.ARU..Z
+    Cant find II.PALK..Z
     list index out of range
-    Cant find II.ARU..R
+    Cant find II.PALK..R
     list index out of range
-    Cant find II.ARU..T
+    Cant find II.PALK..T
     list index out of range
-    Cant find IU.PMSA..Z
+    Cant find IC.XAN..Z
     list index out of range
-    Cant find IU.PMSA..R
+    Cant find IC.XAN..R
     list index out of range
-    Cant find IU.PMSA..T
+    Cant find IC.XAN..T
+    list index out of range
+    Cant find G.PAF..Z
+    list index out of range
+    Cant find G.PAF..R
+    list index out of range
+    Cant find G.PAF..T
+    list index out of range
+    Cant find G.IVI..Z
+    list index out of range
+    Cant find G.IVI..R
+    list index out of range
+    Cant find G.IVI..T
+    list index out of range
+    Cant find II.NIL..Z
+    list index out of range
+    Cant find II.NIL..R
+    list index out of range
+    Cant find II.NIL..T
     list index out of range
     Cant find IU.ANTO..Z
     list index out of range
@@ -1668,11 +1473,257 @@ traveltime
     list index out of range
     Cant find IU.ANTO..T
     list index out of range
+    Cant find IU.SBA..Z
+    list index out of range
+    Cant find IU.SBA..R
+    list index out of range
+    Cant find IU.SBA..T
+    list index out of range
     Cant find II.ABPO..Z
     list index out of range
     Cant find II.ABPO..R
     list index out of range
     Cant find II.ABPO..T
+    list index out of range
+    Cant find G.MPG..Z
+    list index out of range
+    Cant find G.MPG..R
+    list index out of range
+    Cant find G.MPG..T
+    list index out of range
+    Cant find IU.MAKZ..Z
+    list index out of range
+    Cant find IU.MAKZ..R
+    list index out of range
+    Cant find IU.MAKZ..T
+    list index out of range
+    Cant find IU.WVT..Z
+    list index out of range
+    Cant find IU.WVT..R
+    list index out of range
+    Cant find IU.WVT..T
+    list index out of range
+    Cant find II.TLY..Z
+    list index out of range
+    Cant find II.TLY..R
+    list index out of range
+    Cant find II.TLY..T
+    list index out of range
+    Cant find IU.PMSA..Z
+    list index out of range
+    Cant find IU.PMSA..R
+    list index out of range
+    Cant find IU.PMSA..T
+    list index out of range
+    Cant find IU.DAV..Z
+    list index out of range
+    Cant find IU.DAV..R
+    list index out of range
+    Cant find IU.DAV..T
+    list index out of range
+    Cant find IU.KOWA..Z
+    list index out of range
+    Cant find IU.KOWA..R
+    list index out of range
+    Cant find IU.KOWA..T
+    list index out of range
+    Cant find IU.NWAO..Z
+    list index out of range
+    Cant find IU.NWAO..R
+    list index out of range
+    Cant find IU.NWAO..T
+    list index out of range
+    Cant find II.ARU..Z
+    list index out of range
+    Cant find II.ARU..R
+    list index out of range
+    Cant find II.ARU..T
+    list index out of range
+    Cant find GE.KMBO..Z
+    list index out of range
+    Cant find GE.KMBO..R
+    list index out of range
+    Cant find GE.KMBO..T
+    list index out of range
+    Cant find G.ROCAM..Z
+    list index out of range
+    Cant find G.ROCAM..R
+    list index out of range
+    Cant find G.ROCAM..T
+    list index out of range
+    Cant find G.NOUC..Z
+    list index out of range
+    Cant find G.NOUC..R
+    list index out of range
+    Cant find G.NOUC..T
+    list index out of range
+    Cant find II.ALE..Z
+    list index out of range
+    Cant find II.ALE..R
+    list index out of range
+    Cant find II.ALE..T
+    list index out of range
+    Cant find II.MSEY..Z
+    list index out of range
+    Cant find II.MSEY..R
+    list index out of range
+    Cant find II.MSEY..T
+    list index out of range
+    Cant find II.TAU..Z
+    list index out of range
+    Cant find II.TAU..R
+    list index out of range
+    Cant find II.TAU..T
+    list index out of range
+    Cant find II.COCO..Z
+    list index out of range
+    Cant find II.COCO..R
+    list index out of range
+    Cant find II.COCO..T
+    list index out of range
+    Cant find IU.COR..Z
+    list index out of range
+    Cant find IU.COR..R
+    list index out of range
+    Cant find IU.COR..T
+    list index out of range
+    Cant find IU.CASY..Z
+    list index out of range
+    Cant find IU.CASY..R
+    list index out of range
+    Cant find IU.CASY..T
+    list index out of range
+    Cant find IU.MIDW..Z
+    list index out of range
+    Cant find IU.MIDW..R
+    list index out of range
+    Cant find IU.MIDW..T
+    list index out of range
+    Cant find IU.TIXI..Z
+    list index out of range
+    Cant find IU.TIXI..R
+    list index out of range
+    Cant find IU.TIXI..T
+    list index out of range
+    Cant find II.CMLA..Z
+    list index out of range
+    Cant find II.CMLA..R
+    list index out of range
+    Cant find II.CMLA..T
+    list index out of range
+    Cant find II.DGAR..Z
+    list index out of range
+    Cant find II.DGAR..R
+    list index out of range
+    Cant find II.DGAR..T
+    list index out of range
+    Cant find II.ASCN..Z
+    list index out of range
+    Cant find II.ASCN..R
+    list index out of range
+    Cant find II.ASCN..T
+    list index out of range
+    Cant find GE.LVC..Z
+    list index out of range
+    Cant find GE.LVC..R
+    list index out of range
+    Cant find GE.LVC..T
+    list index out of range
+    Cant find II.FFC..Z
+    list index out of range
+    Cant find II.FFC..R
+    list index out of range
+    Cant find II.FFC..T
+    list index out of range
+    Cant find II.KWJN..Z
+    list index out of range
+    Cant find II.KWJN..R
+    list index out of range
+    Cant find II.KWJN..T
+    list index out of range
+    Cant find II.SACV..Z
+    list index out of range
+    Cant find II.SACV..R
+    list index out of range
+    Cant find II.SACV..T
+    list index out of range
+    Cant find IU.ADK..Z
+    list index out of range
+    Cant find IU.ADK..R
+    list index out of range
+    Cant find IU.ADK..T
+    list index out of range
+    Cant find IU.MSKU..Z
+    list index out of range
+    Cant find IU.MSKU..R
+    list index out of range
+    Cant find IU.MSKU..T
+    list index out of range
+    Cant find II.LVZ..Z
+    list index out of range
+    Cant find II.LVZ..R
+    list index out of range
+    Cant find II.LVZ..T
+    list index out of range
+    Cant find II.BFO..Z
+    list index out of range
+    Cant find II.BFO..R
+    list index out of range
+    Cant find II.BFO..T
+    list index out of range
+    Cant find IU.GUMO..Z
+    list index out of range
+    Cant find IU.GUMO..R
+    list index out of range
+    Cant find IU.GUMO..T
+    list index out of range
+    Cant find IU.KONO..Z
+    list index out of range
+    Cant find IU.KONO..R
+    list index out of range
+    Cant find IU.KONO..T
+    list index out of range
+    Cant find IU.SJG..Z
+    list index out of range
+    Cant find IU.SJG..R
+    list index out of range
+    Cant find IU.SJG..T
+    list index out of range
+    Cant find IU.TEIG..Z
+    list index out of range
+    Cant find IU.TEIG..R
+    list index out of range
+    Cant find IU.TEIG..T
+    list index out of range
+    Cant find G.KIP..Z
+    list index out of range
+    Cant find G.KIP..R
+    list index out of range
+    Cant find G.KIP..T
+    list index out of range
+    Cant find II.RPN..Z
+    list index out of range
+    Cant find II.RPN..R
+    list index out of range
+    Cant find II.RPN..T
+    list index out of range
+    Cant find G.ECH..Z
+    list index out of range
+    Cant find G.ECH..R
+    list index out of range
+    Cant find G.ECH..T
+    list index out of range
+    Cant find G.PPTF..Z
+    list index out of range
+    Cant find G.PPTF..R
+    list index out of range
+    Cant find G.PPTF..T
+    list index out of range
+    Cant find IU.SPA..Z
+    list index out of range
+    Cant find IU.SPA..R
+    list index out of range
+    Cant find IU.SPA..T
     list index out of range
     Cant find G.TAM..Z
     list index out of range
@@ -1733,7 +1784,10 @@ Let's first plot these traces in a panel to see what we are working with
 
  .. code-block:: none
 
+    [[0.00043633959929839563, 0.00020448526450415425, 0.00042656153197850535, 0.0006455207333116463], [0.0004135726125294305, 0.00029381812579423836, 0.0007501182163931972, 0.0010359891685168387]]
+    [[0.0016980154896035992, 0.0010636520817336652, 0.0016136762343113837, 0.003049387903641918], [0.0016891928446583523, 0.0013129425429092556, 0.002479644832544455, 0.002977535635952327]]
     2 legendargs
+    [[0.0008915771646592599, 0.0005116767359316616, 0.0004926222127364147, 0.0002101515028380593], [0.0013209157414376042, 0.0009799776478217283, 0.000931475682878813, 0.0003947648168670685]]
 
 
 
@@ -1945,6 +1999,12 @@ Now, let's plot a full station, so let's grab all station traces
    :class: sphx-glr-single-img
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    [[0.00219715452262896, 0.0014256783021462304, 0.0022499778402648514, 0.003818495470623282], [0.0024470425442413533, 0.0012458114041164683, 0.00405182421513302, 0.005487683286779865]]
+
 
 
 
@@ -2073,7 +2133,7 @@ For showing measurements on traces and windows.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 11.137 seconds)
+   **Total running time of the script:** (0 minutes 12.531 seconds)
 
 
 .. _sphx_glr_download_examples_run_1_tutorial.py:

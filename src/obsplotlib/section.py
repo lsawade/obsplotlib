@@ -21,6 +21,8 @@ def section(streams: tp.List[obspy.Stream], *args,
             align: bool = False,
             absmax: float | None = None,
             window: bool = False,
+            plot_geometry: bool = True,
+            plot_amplitudes: bool = True,
             **kwargs):
     """Plots a section of seismograms of given stream or stream set. The
     stream(s) need(s) to contain traces which have the distance parameter
@@ -153,9 +155,10 @@ def section(streams: tp.List[obspy.Stream], *args,
             maxs.append(streammaxs)
 
         if absmax is None:
-            absmax = np.max(maxs)
+            absmax = np.max(np.max(maxs))
 
     # Plot overall max amplitude label
+    print(maxs)
     plot_label(ax, f'max|u|: {absmax:.5g} m',
                fontsize='small', box=False, dist=0.0, location=4)
 
@@ -169,11 +172,13 @@ def section(streams: tp.List[obspy.Stream], *args,
     # Define ylabels on the left axis to station info
     ylabels = []
     for tr in pstreams[0]:
-        ylabel = f"{tr.stats.network}.{tr.stats.station}\n" \
-            f"D:{tr.stats.distance:>6.2f}"
+        ylabel = f"{tr.stats.network}.{tr.stats.station}"
 
-        if hasattr(tr.stats, 'azimuth'):
-            ylabel += f"\nAz: {tr.stats.azimuth:>5.1f}"
+        if plot_geometry:
+            f"\nD:{tr.stats.distance:>6.2f}"
+
+            if hasattr(tr.stats, 'azimuth'):
+                ylabel += f"\nAz: {tr.stats.azimuth:>5.1f}"
 
         ylabels.append(ylabel)
 
@@ -187,28 +192,35 @@ def section(streams: tp.List[obspy.Stream], *args,
     # Set y values on the right axis to max values
     ax2 = ax.secondary_yaxis("right")
 
-    # Make ticks contain the absolute max value of each trace
-    ticks = []
-    for _i in range(Ntraces):
-        label = ""
-        for _j in range(Nstreams):
-            label += f"{labels[_j][0].upper()}:{maxs[_j][_i]:>10.4g}"
-            # Add newline if not last trace
-            if Nstreams > 1 and _j != Nstreams - 1:
-                label += "\n"
-        ticks.append(label)
-
-    # Set tick labels
-    ax2.set_yticks(y, ticks,
-                   verticalalignment='center',
-                   horizontalalignment='left',
-                   fontsize='small')
-
-    # Remove spine
+     # Remove spine
     ax2.spines.right.set_visible(False)
 
     # Remove ticks
     ax2.tick_params(left=False, right=False)
+
+    if plot_amplitudes:
+
+        # Make ticks contain the absolute max value of each trace
+        ticks = []
+        for _i in range(Ntraces):
+            label = ""
+            for _j in range(Nstreams):
+                label += f"{labels[_j][0].upper()}:{maxs[_j][_i]:>10.4g}"
+                # Add newline if not last trace
+                if Nstreams > 1 and _j != Nstreams - 1:
+                    label += "\n"
+            ticks.append(label)
+
+        # Set tick labels
+        ax2.set_yticks(y, ticks,
+                    verticalalignment='center',
+                    horizontalalignment='left',
+                    fontsize='small')
+
+    else:
+
+        # Remove ticks
+        ax2.tick_params(left=False, right=False, labelright=False)
 
     # Set time arguments for the plotting
     if origin_time is not None:

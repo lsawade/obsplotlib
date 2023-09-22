@@ -26,8 +26,12 @@ class Window(AttribDict):
         and make measurements that way."""
         super().__init__(*args, **kwargs)
 
-        self.startidx = self.get_index(tr, self.starttime)
-        self.endidx = self.get_index(tr, self.endtime)
+        if 'startidx' in kwargs:
+            self.startidx = kwargs['startidx']
+            self.endidx = kwargs['endidx']
+        else:
+            self.startidx = self.get_index(tr, self.starttime)
+            self.endidx = self.get_index(tr, self.endtime)
 
         # Correct the starttime to the index
         self.starttime = tr.stats.starttime \

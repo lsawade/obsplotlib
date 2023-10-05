@@ -3,6 +3,7 @@ import matplotlib as mpl
 
 from .attribdict import (
     AttribDict)
+from .frechet import frechet
 from .process import (
     process)
 from .section import (
@@ -33,6 +34,7 @@ from .window import (
     Window)
 
 __all__ = ['AttribDict',
+           'frechet',
            'process',
            'section',
            'section_multiple_comp',

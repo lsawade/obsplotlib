@@ -36,7 +36,7 @@ Loading all modules
 
 .. GENERATED FROM PYTHON SOURCE LINES 20-26
 
-.. code-block:: default
+.. code-block:: Python
 
 
     import numpy as np
@@ -59,7 +59,7 @@ Loading data
 
 .. GENERATED FROM PYTHON SOURCE LINES 33-37
 
-.. code-block:: default
+.. code-block:: Python
 
     event = obspy.read_events("DATA/CMTSOLUTION")[0]
     raw = obspy.read("DATA/observed/traces/II.BFO.*.sac")
@@ -79,7 +79,7 @@ station and process the data
 
 .. GENERATED FROM PYTHON SOURCE LINES 40-48
 
-.. code-block:: default
+.. code-block:: Python
 
 
     # Get event latitude and longitude for geometry evaluation
@@ -102,7 +102,7 @@ Attach the event station geometry to the traces, important for rotation to RTZ
 
 .. GENERATED FROM PYTHON SOURCE LINES 50-54
 
-.. code-block:: default
+.. code-block:: Python
 
 
     opl.attach_geometry(raw, event_latitude=event_latitude,
@@ -126,7 +126,7 @@ taper.
 
 .. GENERATED FROM PYTHON SOURCE LINES 61-71
 
-.. code-block:: default
+.. code-block:: Python
 
     bandpass = [10, 50]
     obs = opl.process(raw, inv=inv, remove_response=True, bandpass=bandpass,
@@ -151,7 +151,7 @@ Finally we perform some fixes to really isolate the wavelet
 
 .. GENERATED FROM PYTHON SOURCE LINES 73-85
 
-.. code-block:: default
+.. code-block:: Python
 
 
     # Tapering multiple time to attenuate boundaries
@@ -182,7 +182,7 @@ out, soft orange and soft blue are ideal colors for that
 
 .. GENERATED FROM PYTHON SOURCE LINES 91-122
 
-.. code-block:: default
+.. code-block:: Python
 
 
     orange = np.array([232, 152, 59])/255
@@ -237,7 +237,7 @@ out, soft orange and soft blue are ideal colors for that
 
 .. GENERATED FROM PYTHON SOURCE LINES 128-159
 
-.. code-block:: default
+.. code-block:: Python
 
 
     orange = np.array([232, 152, 59])/255
@@ -285,7 +285,7 @@ out, soft orange and soft blue are ideal colors for that
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.272 seconds)
+   **Total running time of the script:** (0 minutes 0.226 seconds)
 
 
 .. _sphx_glr_download_examples_run_2_logo.py:
@@ -294,16 +294,13 @@ out, soft orange and soft blue are ideal colors for that
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: run_2_logo.ipynb <run_2_logo.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: run_2_logo.py <run_2_logo.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: run_2_logo.ipynb <run_2_logo.ipynb>`
 
 
 .. only:: html

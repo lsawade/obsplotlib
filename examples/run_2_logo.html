@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="API" href="../api.html" /><link rel="prev" title="Full Obsplotlib Tutorial" href="run_1_tutorial.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
-        <title>Plotting the logo and the favicon - obsplotlib 0.5.0.dev1+gea89774 documentation</title>
+        <title>Plotting the logo and the favicon - obsplotlib 0.5.0.dev2+g9402825 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
@@ -129,7 +129,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">obsplotlib 0.5.0.dev1+gea89774 documentation</div></a>
+      <a href="../index.html"><div class="brand">obsplotlib 0.5.0.dev2+g9402825 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -156,7 +156,7 @@
     <img class="sidebar-logo only-dark" src="../_static/logo.svg" alt="Dark Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">obsplotlib 0.5.0.dev1+gea89774 documentation</span>
+  <span class="sidebar-brand-text">obsplotlib 0.5.0.dev2+g9402825 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -222,7 +222,7 @@ Sorry aboot dat.</p>
 </div>
 <section id="loading-all-modules">
 <h2>Loading all modules<a class="headerlink" href="#loading-all-modules" title="Permalink to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">obspy</span>
 <span class="kn">import</span> <span class="nn">obsplotlib.plot</span> <span class="k">as</span> <span class="nn">opl</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -231,14 +231,14 @@ Sorry aboot dat.</p>
 </section>
 <section id="loading-data">
 <h2>Loading data<a class="headerlink" href="#loading-data" title="Permalink to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">event</span> <span class="o">=</span> <span class="n">obspy</span><span class="o">.</span><span class="n">read_events</span><span class="p">(</span><span class="s2">&quot;DATA/CMTSOLUTION&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">event</span> <span class="o">=</span> <span class="n">obspy</span><span class="o">.</span><span class="n">read_events</span><span class="p">(</span><span class="s2">&quot;DATA/CMTSOLUTION&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">raw</span> <span class="o">=</span> <span class="n">obspy</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;DATA/observed/traces/II.BFO.*.sac&quot;</span><span class="p">)</span>
 <span class="n">inv</span> <span class="o">=</span> <span class="n">obspy</span><span class="o">.</span><span class="n">read_inventory</span><span class="p">(</span><span class="s2">&quot;DATA/observed/station.xml&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Before plotting anything let’s get some information about the event and the
 station and process the data</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get event latitude and longitude for geometry evaluation</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get event latitude and longitude for geometry evaluation</span>
 <span class="n">event_time</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">preferred_origin</span><span class="p">()</span><span class="o">.</span><span class="n">time</span>
 <span class="n">event_latitude</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">preferred_origin</span><span class="p">()</span><span class="o">.</span><span class="n">latitude</span>
 <span class="n">event_longitude</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">preferred_origin</span><span class="p">()</span><span class="o">.</span><span class="n">longitude</span>
@@ -247,7 +247,7 @@ station and process the data</p>
 </pre></div>
 </div>
 <p>Attach the event station geometry to the traces, important for rotation to RTZ</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">opl</span><span class="o">.</span><span class="n">attach_geometry</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">event_latitude</span><span class="o">=</span><span class="n">event_latitude</span><span class="p">,</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">opl</span><span class="o">.</span><span class="n">attach_geometry</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">event_latitude</span><span class="o">=</span><span class="n">event_latitude</span><span class="p">,</span>
                     <span class="n">event_longitude</span><span class="o">=</span><span class="n">event_longitude</span><span class="p">,</span> <span class="n">inv</span><span class="o">=</span><span class="n">inv</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -256,7 +256,7 @@ station and process the data</p>
 <h2>Processing data<a class="headerlink" href="#processing-data" title="Permalink to this heading">#</a></h2>
 <p>Here we’re just taking the data from the tutorial and are playing with the
 taper.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bandpass</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">bandpass</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
 <span class="n">obs</span> <span class="o">=</span> <span class="n">opl</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">inv</span><span class="o">=</span><span class="n">inv</span><span class="p">,</span> <span class="n">remove_response</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bandpass</span><span class="o">=</span><span class="n">bandpass</span><span class="p">,</span>
                   <span class="n">starttime</span><span class="o">=</span><span class="n">event_time</span><span class="o">+</span><span class="mi">800</span><span class="p">,</span> <span class="n">npts</span><span class="o">=</span><span class="mi">750</span><span class="p">,</span> <span class="n">sampling_rate_in_hz</span><span class="o">=</span><span class="mi">5</span>
                   <span class="p">)</span>
@@ -268,7 +268,7 @@ taper.</p>
 </pre></div>
 </div>
 <p>Finally we perform some fixes to really isolate the wavelet</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tapering multiple time to attenuate boundaries</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tapering multiple time to attenuate boundaries</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
     <span class="n">tr</span><span class="o">.</span><span class="n">taper</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">,</span> <span class="n">max_percentage</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
 
@@ -284,7 +284,7 @@ taper.</p>
 <h2>Plot Logo<a class="headerlink" href="#plot-logo" title="Permalink to this heading">#</a></h2>
 <p>We want the logo to be visible on both dark and light backgrounds. As it turns
 out, soft orange and soft blue are ideal colors for that</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">orange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">232</span><span class="p">,</span> <span class="mi">152</span><span class="p">,</span> <span class="mi">59</span><span class="p">])</span><span class="o">/</span><span class="mi">255</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">orange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">232</span><span class="p">,</span> <span class="mi">152</span><span class="p">,</span> <span class="mi">59</span><span class="p">])</span><span class="o">/</span><span class="mi">255</span>
 <span class="n">blue</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">65</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mi">216</span><span class="p">])</span><span class="o">/</span><span class="mi">255</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
@@ -319,7 +319,7 @@ out, soft orange and soft blue are ideal colors for that</p>
 <h2>Plot Favicon<a class="headerlink" href="#plot-favicon" title="Permalink to this heading">#</a></h2>
 <p>We want the logo to be visible on both dark and light backgrounds. As it turns
 out, soft orange and soft blue are ideal colors for that</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">orange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">232</span><span class="p">,</span> <span class="mi">152</span><span class="p">,</span> <span class="mi">59</span><span class="p">])</span><span class="o">/</span><span class="mi">255</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">orange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">232</span><span class="p">,</span> <span class="mi">152</span><span class="p">,</span> <span class="mi">59</span><span class="p">])</span><span class="o">/</span><span class="mi">255</span>
 <span class="n">blue</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">65</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mi">216</span><span class="p">])</span><span class="o">/</span><span class="mi">255</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
@@ -351,13 +351,13 @@ out, soft orange and soft blue are ideal colors for that</p>
 <span class="c1"># plt.savefig(&#39;favicon.ico&#39;, format=&#39;PNG&#39;, transparent=True, dpi=32)</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_run_2_logo_002.svg" srcset="../_images/sphx_glr_run_2_logo_002.svg" alt="run 2 logo" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.272 seconds)</p>
+<img src="../_images/sphx_glr_run_2_logo_002.svg" srcset="../_images/sphx_glr_run_2_logo_002.svg" alt="run 2 logo" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.226 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-run-2-logo-py">
-<div class="sphx-glr-download sphx-glr-download-python docutils container">
-<p><a class="reference download internal" download="" href="../_downloads/6c32fe4b286d37c63902ba6f2fd081ab/run_2_logo.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">run_2_logo.py</span></code></a></p>
-</div>
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/542d488c25393e04db35eeebfac33e2f/run_2_logo.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">run_2_logo.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/6c32fe4b286d37c63902ba6f2fd081ab/run_2_logo.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">run_2_logo.py</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>

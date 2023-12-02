@@ -203,12 +203,26 @@ def get_station_params(st: obspy.Stream):
         station_set.add((tr.stats.network, tr.stats.station))
 
     # Append to list of networks and stations, latitudes and longitudes
-    for network, station in station_set:
+    for _i, (network, station) in enumerate(station_set):
+
         networks.append(network)
         stations.append(station)
         tr = st.select(network=network, station=station)[0]
-        latitudes.append(tr.stats.latitude)
-        longitudes.append(tr.stats.longitude)
+
+        if hasattr(tr.stats, 'latitude') and hasattr(tr.stats, 'longitude'):
+            latitudes.append(tr.stats.latitude)
+            longitudes.append(tr.stats.longitude)
+
+        elif hasattr(tr.stats, 'sac'):
+
+            if hasattr(tr.stats.sac, 'stla') and hasattr(tr.stats.sac, 'stlo'):
+                if _i == 0:
+                    print(network,station)
+                latitudes.append(tr.stats.sac.stla)
+                longitudes.append(tr.stats.sac.stlo)
+            else:
+                raise ValueError('No station information found in station '
+                                 f'{network}.{station}')
 
     return networks, stations, latitudes, longitudes
 

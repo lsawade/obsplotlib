@@ -10,20 +10,28 @@ from .utils import plot_label
 from . import stream_utils as su
 
 
-def section(streams: tp.List[obspy.Stream], *args,
-            origin_time: obspy.UTCDateTime | None = None,
-            ax: matplotlib.axes.Axes | None = None, comp='Z',
-            limits: tp.Tuple[obspy.UTCDateTime] | None = None,
-            scale: float = 1.0,
-            colors=['k', 'r', 'b'],
-            labels=['Observed', 'Synthetic', 'New'],
-            legendargs: dict | None = None,
-            align: bool = False,
-            absmax: float | None = None,
-            window: bool = False,
-            plot_geometry: bool = True,
-            plot_amplitudes: bool = True,
-            **kwargs):
+def section(
+    streams: tp.List[obspy.Stream],
+    *args,
+    origin_time: obspy.UTCDateTime | None = None,
+    ax: matplotlib.axes.Axes | None = None,
+    comp="Z",
+    limits: tp.Tuple[obspy.UTCDateTime] | None = None,
+    scale: float = 1.0,
+    colors=["k", "r", "b"],
+    ls=["-", "-", "-"],
+    lw=[0.75, 0.75, 0.75],
+    labels=["Observed", "Synthetic", "New"],
+    legendargs: dict | None = None,
+    align: bool = False,
+    absmax: float | None = None,
+    window: bool = False,
+    plot_geometry: bool = True,
+    plot_amplitudes: bool = True,
+    plot_stations_right: bool = False,
+    skip_station: int | None = None,
+    **kwargs,
+):
     """Plots a section of seismograms of given stream or stream set. The
     stream(s) need(s) to contain traces which have the distance parameter
     set.
@@ -91,29 +99,29 @@ def section(streams: tp.List[obspy.Stream], *args,
 
     # Make more colors if needed and print warning
     if len(colors) < Nstreams:
-        cmap = plt.get_cmap('rainbow')
-        colors = ['k', *cmap(np.linspace(0, 1, Nstreams-1, endpoint=True))]
+        cmap = plt.get_cmap("rainbow")
+        colors = ["k", *cmap(np.linspace(0, 1, Nstreams - 1, endpoint=True))]
 
     # Number of traces
     Ntraces = len(pstreams[0])
 
     # Sort streams
     for _st in pstreams:
-        _st.sort(keys=['distance', 'network', 'station'])
+        _st.sort(keys=["distance", "network", "station"])
 
     # If align is True, check all traces for traveltime and window
     if align:
-
         if origin_time is None:
-            raise ValueError('origin_time must be given if align=True \n'
-                             'since traveltime is with respect to origin')
+            raise ValueError(
+                "origin_time must be given if align=True \n"
+                "since traveltime is with respect to origin"
+            )
 
-        if not su.param_in_streams(streams, 'traveltime', dtype=float):
-            raise ValueError('traveltime not in streams')
+        if not su.param_in_streams(streams, "traveltime", dtype=float):
+            raise ValueError("traveltime not in streams")
 
     # Get scaling
     if limits is not None:
-
         slicestart = limits[0]
         sliceend = limits[1]
         maxs = []
@@ -123,9 +131,7 @@ def section(streams: tp.List[obspy.Stream], *args,
             streammaxs = []
 
             for _tr in _st:
-
                 if origin_time is not None:
-
                     slicestart = origin_time + limits[0]
                     sliceend = origin_time + limits[1]
 
@@ -139,7 +145,8 @@ def section(streams: tp.List[obspy.Stream], *args,
                     sliceend = limits[1]
 
                 streammaxs.append(
-                    np.max(np.abs(_tr.copy().slice(slicestart, sliceend).data)))
+                    np.max(np.abs(_tr.copy().slice(slicestart, sliceend).data))
+                )
 
             maxs.append(streammaxs)
 
@@ -158,48 +165,60 @@ def section(streams: tp.List[obspy.Stream], *args,
             absmax = np.max(np.max(maxs))
 
     # Plot overall max amplitude label
-    print(maxs)
-    plot_label(ax, f'max|u|: {absmax:.5g} m',
-               fontsize='small', box=False, dist=0.0, location=4)
+    # plot_label(
+    #     ax, f"max|u|: {absmax:.5g} m", fontsize="small", box=False, dist=0.0, location=4
+    # )
 
     # Plot component label
-    plot_label(ax, f'{comp}', fontweight='bold',
-               fontsize='medium', box=False, dist=0.0, location=1)
+    # plot_label(
+    #     ax,
+    #     f"{comp}",
+    #     fontweight="bold",
+    #     fontsize="medium",
+    #     box=False,
+    #     dist=0.0,
+    #     location=1,
+    # )
 
     # Number of stations
-    y = np.arange(1, 1*len(pstreams[0])+1, 1)
+    y = np.arange(1, 1 * len(pstreams[0]) + 1, 1)
 
     # Define ylabels on the left axis to station info
     ylabels = []
-    for tr in pstreams[0]:
-        ylabel = f"{tr.stats.network}.{tr.stats.station}"
+    for _i, tr in enumerate(pstreams[0]):
+        if skip_station is not None and np.mod(_i, skip_station) != 0:
+            # ylabels.append("\xb7")
+            ylabels.append("")
+        else:
+            ylabel = f"{tr.stats.network}.{tr.stats.station}"
 
-        if plot_geometry:
-            f"\nD:{tr.stats.distance:>6.2f}"
+            if plot_geometry:
+                f"\nD:{tr.stats.distance:>6.2f}"
 
-            if hasattr(tr.stats, 'azimuth'):
-                ylabel += f"\nAz: {tr.stats.azimuth:>5.1f}"
+                if hasattr(tr.stats, "azimuth"):
+                    ylabel += f"\nAz: {tr.stats.azimuth:>5.1f}"
 
-        ylabels.append(ylabel)
+            ylabels.append(ylabel)
 
     # Set labels
     ax.set_yticks(
-        y, ylabels,
-        verticalalignment='center',
-        horizontalalignment='right',
-        fontsize='small')
+        y,
+        ylabels,
+        verticalalignment="center",
+        horizontalalignment="right",
+        # fontsize="small",
+    )
 
     # Set y values on the right axis to max values
     ax2 = ax.secondary_yaxis("right")
 
-     # Remove spine
+    # Remove spine
     ax2.spines.right.set_visible(False)
 
     # Remove ticks
     ax2.tick_params(left=False, right=False)
 
-    if plot_amplitudes:
-
+    if plot_amplitudes and not plot_stations_right:
         # Make ticks contain the absolute max value of each trace
         ticks = []
         for _i in range(Ntraces):
@@ -212,27 +231,55 @@ def section(streams: tp.List[obspy.Stream], *args,
             ticks.append(label)
 
         # Set tick labels
-        ax2.set_yticks(y, ticks,
-                    verticalalignment='center',
-                    horizontalalignment='left',
-                    fontsize='small')
+        ax2.set_yticks(
+            y,
+            ticks,
+            verticalalignment="center",
+            horizontalalignment="left",
+            # fontsize="small",
+        )
+
+    elif (skip_station % 2) == 0 and plot_stations_right:
+        ticks = []
+        for _i, tr in enumerate(pstreams[0]):
+            if (
+                skip_station is not None
+                and np.mod(_i + skip_station / 2, skip_station) != 0
+            ):
+                # ylabels.append("\xb7")
+                ticks.append("")
+            else:
+                ylabel = f"{tr.stats.network}.{tr.stats.station}"
+
+                if plot_geometry:
+                    f"\nD:{tr.stats.distance:>6.2f}"
+
+                    if hasattr(tr.stats, "azimuth"):
+                        ylabel += f"\nAz: {tr.stats.azimuth:>5.1f}"
+
+                ticks.append(ylabel)
+        # Set tick labels
+        ax2.set_yticks(
+            y,
+            ticks,
+            verticalalignment="center",
+            horizontalalignment="left",
+            # fontsize="small",
+        )
 
     else:
-
         # Remove ticks
         ax2.tick_params(left=False, right=False, labelright=False)
 
     # Set time arguments for the plotting
     if origin_time is not None:
-        time_args = dict(type='relative', reftime=origin_time)
+        time_args = dict(type="relative", reftime=origin_time)
     else:
-        time_args = dict(type='matplotlib')
+        time_args = dict(type="matplotlib")
 
     # Normalize
     for _i in range(Ntraces):
-
         for _j in range(Nstreams):
-
             if _i == 0:
                 label = labels[_j]
             else:
@@ -240,13 +287,18 @@ def section(streams: tp.List[obspy.Stream], *args,
 
             if align:
                 tt = pstreams[_j][_i].stats.traveltime
-                time_args['reftime'] = origin_time + tt
+                time_args["reftime"] = origin_time + tt
 
             plt.plot(
                 pstreams[_j][_i].times(**time_args),
-                pstreams[_j][_i].data /
-                absmax * scale + y[_i], '-',
-                *args, c=colors[_j], label=label, **kwargs)
+                pstreams[_j][_i].data / absmax * scale + y[_i],
+                *args,
+                c=colors[_j],
+                ls=ls[_j],
+                lw=lw[_j],
+                label=label,
+                **kwargs,
+            )
 
             # Plot windows if available
             if window and _j == 0:
@@ -254,10 +306,9 @@ def section(streams: tp.List[obspy.Stream], *args,
                 #     windowkwargs = dict(color=colors[_j], alpha=0.5)
 
                 for window in pstreams[_j][_i].stats.windows:
-
                     if origin_time is not None:
-                        windowstart = (window.starttime - origin_time)
-                        windowend = (window.endtime - origin_time)
+                        windowstart = window.starttime - origin_time
+                        windowend = window.endtime - origin_time
                         duration = windowend - windowstart
                     else:
                         windowstart = window.starttime.matplotlib_date
@@ -269,10 +320,17 @@ def section(streams: tp.List[obspy.Stream], *args,
                     windowy1 = y[_i] + 0.6
                     windowdy = windowy1 - windowy0
 
-                    ax.add_patch(patches.Rectangle(
-                        (windowstart, windowy0),
-                        duration, windowdy, edgecolor='none', zorder=-1,
-                        facecolor=[0.9, 0.9, 0.9], clip_on=True))
+                    ax.add_patch(
+                        patches.Rectangle(
+                            (windowstart, windowy0),
+                            duration,
+                            windowdy,
+                            edgecolor="none",
+                            zorder=-1,
+                            facecolor=[0.9, 0.9, 0.9],
+                            clip_on=True,
+                        )
+                    )
 
     # Remove all spines
     ax.spines.top.set_visible(False)
@@ -288,15 +346,16 @@ def section(streams: tp.List[obspy.Stream], *args,
     if origin_time is None:
         ax.xaxis_date()
         ax.xaxis.set_major_formatter(
-            mdates.ConciseDateFormatter(ax.xaxis.get_major_locator()))
+            mdates.ConciseDateFormatter(ax.xaxis.get_major_locator())
+        )
 
         if limits is not None:
             ax.set_xlim([lim.datetime for lim in limits])
 
-        plt.xlabel('Time')
+        plt.xlabel("Time")
     else:
         ax.set_xlim(limits)
-        plt.xlabel('Time since origin (s)')
+        plt.xlabel("Time since origin (s)")
 
     # Set y limits
     ylim = y[0] - 1.25, y[-1] + 1.25
@@ -307,13 +366,15 @@ def section(streams: tp.List[obspy.Stream], *args,
 
 
 def section_multiple_comp(
-        streams: tp.List[obspy.Stream],
-        *args, components: str = "NEZ",
-        legendargs: dict | None = None,
-        absmax: float | None = None,
-        align: bool = False,
-        limits: tp.Tuple[obspy.UTCDateTime] | tp.Tuple[float] | None = None,
-        **kwargs):
+    streams: tp.List[obspy.Stream],
+    *args,
+    components: str = "NEZ",
+    legendargs: dict | None = None,
+    absmax: float | None = None,
+    align: bool = False,
+    limits: tp.Tuple[obspy.UTCDateTime] | tp.Tuple[float] | None = None,
+    **kwargs,
+):
     """Wrapper around section that plit multiple sections into a single figure.
 
     Parameters
@@ -341,16 +402,15 @@ def section_multiple_comp(
 
     for _i, comp in enumerate(components):
         if _i == len(components) - 1:
-            print(_i, 'legendargs')
+            print(_i, "legendargs")
             _legendargs = legendargs
         else:
             _legendargs = None
 
-        ax = plt.subplot(1, len(components), _i+1)
+        ax = plt.subplot(1, len(components), _i + 1)
 
         # Get overall absmax
         if absmax is None:
-
             # Check if traveltime is needed
             if align and limits is not None:
                 traveltime = True
@@ -360,8 +420,17 @@ def section_multiple_comp(
             # Get absmax
             absmax = su.get_max(streams, traveltime=traveltime, limits=limits)
 
-        ax, ax2 = section(streams, *args, ax=ax, comp=comp, legendargs=_legendargs,
-                          limits=limits, absmax=absmax, align=align, **kwargs)
+        ax, ax2 = section(
+            streams,
+            *args,
+            ax=ax,
+            comp=comp,
+            legendargs=_legendargs,
+            limits=limits,
+            absmax=absmax,
+            align=align,
+            **kwargs,
+        )
 
         if _i > 0:
             ax.tick_params(labelleft=False)

@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Plotting the logo and the favicon" href="run_2_logo.html" /><link rel="prev" title="Obsplotlib" href="../index.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
-        <title>Full Obsplotlib Tutorial - obsplotlib 0.5.0.dev2+g9402825 documentation</title>
+        <title>Full Obsplotlib Tutorial - obsplotlib 0.5.0.dev3+g1dbbc28 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
@@ -129,7 +129,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">obsplotlib 0.5.0.dev2+g9402825 documentation</div></a>
+      <a href="../index.html"><div class="brand">obsplotlib 0.5.0.dev3+g1dbbc28 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -156,7 +156,7 @@
     <img class="sidebar-logo only-dark" src="../_static/logo.svg" alt="Dark Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">obsplotlib 0.5.0.dev2+g9402825 documentation</span>
+  <span class="sidebar-brand-text">obsplotlib 0.5.0.dev3+g1dbbc28 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -378,7 +378,12 @@ their actual distance, but one by one with a label that has the distance.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_run_1_tutorial_004.svg" srcset="../_images/sphx_glr_run_1_tutorial_004.svg" alt="run 1 tutorial" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[0.0024505997585772816, 0.001574379603044935, 0.0034862554498077862, 0.0008669836693182409, 0.0012316358557313669, 0.0034692072260754806, 0.00045049464682523016, 0.0019141582446359291, 0.001712866024974609, 0.006028308625859601, 0.003178954145711804, 0.0014389197046787085, 0.0018913556818178337, 0.0019865869491995734, 0.002635682348778954, 0.002674076510788794, 0.0026444151334525496]]
+<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/home/runner/work/obsplotlib/obsplotlib/examples/run_1_tutorial.py&quot;</span>, line <span class="m">185</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">opl</span><span class="o">.</span><span class="n">section</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">comp</span><span class="o">=</span><span class="s1">&#39;T&#39;</span><span class="p">)</span>
+  File <span class="nb">&quot;/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/obsplotlib/section.py&quot;</span>, line <span class="m">298</span>, in <span class="n">section</span>
+<span class="w">    </span><span class="n">lw</span><span class="o">=</span><span class="n">lw</span><span class="p">[</span><span class="n">_j</span><span class="p">],</span>
+<span class="gr">TypeError</span>: <span class="n">&#39;float&#39; object is not subscriptable</span>
 </pre></div>
 </div>
 <p>Plotting the same section but with axis limits from 300 seconds to 1500 seconds
@@ -393,18 +398,12 @@ after the event</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_run_1_tutorial_005.svg" srcset="../_images/sphx_glr_run_1_tutorial_005.svg" alt="run 1 tutorial" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[0.0020310921642309986, 0.0010257692358382614, 0.001983981210650028, 0.0013267483860925798, 0.0017255150466662214, 0.0016511777441700994, 0.0030876538450560465, 0.0013512138886367432, 0.0014211126947204448, 0.002014548801327227, 0.0013739496815176441, 0.00023638277804639374, 0.00020274114030764014, 0.00019168378969858078, 0.0005016897992049631, 0.00038632194026782895, 0.0007487967017329957]]
-</pre></div>
-</div>
 <p>Plotting the same section but with the origin time defined so that we get
 Time since event origin on the x-axis.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 <span class="n">opl</span><span class="o">.</span><span class="n">section</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">origin_time</span><span class="o">=</span><span class="n">event_time</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-<img src="../_images/sphx_glr_run_1_tutorial_006.svg" srcset="../_images/sphx_glr_run_1_tutorial_006.svg" alt="run 1 tutorial" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[0.0020310921642309986, 0.0010257692358382614, 0.001983981210650028, 0.0013267483860925798, 0.0017255150466662214, 0.0016511777441700994, 0.0030876538450560465, 0.0013512138886367432, 0.0014211126947204448, 0.002014548801327227, 0.0013739496815176441, 0.0009117332787971929, 0.0005526138063811933, 0.0012934679077098888, 0.0014582299649838087, 0.002119008990523307, 0.002125903901535755]]
 </pre></div>
 </div>
 <p>Again plotting the same section but now with the origin time defined so that we
@@ -415,9 +414,6 @@ to 1500 seconds after the event</p>
 <span class="n">opl</span><span class="o">.</span><span class="n">section</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">origin_time</span><span class="o">=</span><span class="n">event_time</span><span class="p">,</span> <span class="n">limits</span><span class="o">=</span><span class="n">limits</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-<img src="../_images/sphx_glr_run_1_tutorial_007.svg" srcset="../_images/sphx_glr_run_1_tutorial_007.svg" alt="run 1 tutorial" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[0.0020310921642309986, 0.0010257692358382614, 0.001983981210650028, 0.0013267483860925798, 0.0017255150466662214, 0.0016511777441700994, 0.0030876538450560465, 0.0013512138886367432, 0.0014211126947204448, 0.002014548801327227, 0.0013739496815176441, 0.00023638277804639374, 0.00020274114030764014, 0.00019168378969858078, 0.0005016897992049631, 0.00038632194026782895, 0.0007487967017329957]]
 </pre></div>
 </div>
 <p>Next we are going to plot an aligned sections. To do this each trace must have
@@ -437,9 +433,6 @@ computed using the distance parameter in the stats object.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_run_1_tutorial_008.svg" srcset="../_images/sphx_glr_run_1_tutorial_008.svg" alt="run 1 tutorial" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[0.0024505997585772816, 0.001574379603044935, 0.0034862554498077862, 0.0008669836693182409, 0.0012316358557313669, 0.0034692072260754806, 0.00045049464682523016, 0.0019141582446359291, 0.001712866024974609, 0.006028308625859601, 0.003178954145711804, 0.0014389197046787085, 0.0018913556818178337, 0.0019865869491995734, 0.002635682348778954, 0.002674076510788794, 0.0026444151334525496]]
-</pre></div>
-</div>
 <p>Now this does not make a lot of sense since the traces are not aligned at the
 start. Conveniently we can set the limits parameter to only plot a certain
 time range before and after the arrival times.</p>
@@ -450,9 +443,6 @@ time range before and after the arrival times.</p>
             <span class="n">align</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">comp</span><span class="o">=</span><span class="s1">&#39;T&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-<img src="../_images/sphx_glr_run_1_tutorial_009.svg" srcset="../_images/sphx_glr_run_1_tutorial_009.svg" alt="run 1 tutorial" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[0.0024505997585772816, 0.0012767136298588678, 0.00104853307345953, 0.0006091300019544863, 0.0002571998120610813, 0.00048242447337560354, 0.00020127603656706975, 0.0003074609888726761, 0.0002552381701421307, 0.0006551659733019955, 0.0003770037293277743, 0.0005516896255325048, 0.0004015282169721006, 0.0003854706270344753, 0.00039110647686225124, 0.0002788232881691158, 0.0005119379240116497]]
 </pre></div>
 </div>
 <p>Let’s also plot a section aligned to the P arrival times.</p>
@@ -467,9 +457,6 @@ time range before and after the arrival times.</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">obs_filtered</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">],</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-<img src="../_images/sphx_glr_run_1_tutorial_010.svg" srcset="../_images/sphx_glr_run_1_tutorial_010.svg" alt="run 1 tutorial" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[0.00016538255213666348, 5.519750832211496e-05, 9.9452679689026e-05, 8.868830268138597e-05, 0.00012870453127058373, 6.839569881138807e-05, 8.119057923157647e-05]]
 </pre></div>
 </div>
 <p>Note that we have fewer traces here because some land in the Pwave shadow zone
@@ -490,12 +477,6 @@ string with all components to be plotted in order.</p>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-<img src="../_images/sphx_glr_run_1_tutorial_011.svg" srcset="../_images/sphx_glr_run_1_tutorial_011.svg" alt="run 1 tutorial" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[0.00016538255213666348, 5.519750832211496e-05, 9.9452679689026e-05, 8.868830268138597e-05, 0.00012870453127058373, 6.839569881138807e-05, 8.119057923157647e-05]]
-[[0.00019458408556125568, 2.934906965917464e-05, 5.0188914866007917e-05, 4.9184553831081936e-05, 6.322671228778273e-05, 2.4140425798115153e-05, 3.7130343789894805e-05]]
-2 legendargs
-[[3.338864985276305e-05, 5.002313404158561e-06, 5.223139727360008e-06, 3.4678735519461123e-06, 1.0908791501773577e-05, 2.9317280004807354e-06, 1.0448378338137199e-05]]
 </pre></div>
 </div>
 <p>One main difference is that the section multiple components will find an
@@ -552,7 +533,7 @@ We have to resample the traces in addition to the basic processing.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_run_1_tutorial_012.svg" srcset="../_images/sphx_glr_run_1_tutorial_012.svg" alt="run 1 tutorial" class = "sphx-glr-single-img"/><p>Repeat to plot a station</p>
+<p>Repeat to plot a station</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get station from observed trace</span>
 <span class="n">obs_st</span> <span class="o">=</span> <span class="n">obs</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="s2">&quot;II&quot;</span><span class="p">,</span> <span class="n">station</span><span class="o">=</span><span class="s2">&quot;BFO&quot;</span><span class="p">)</span>
 <span class="n">syn_st</span> <span class="o">=</span> <span class="n">syn</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="s2">&quot;II&quot;</span><span class="p">,</span> <span class="n">station</span><span class="o">=</span><span class="s2">&quot;BFO&quot;</span><span class="p">)</span>
@@ -576,407 +557,9 @@ We have to resample the traces in addition to the basic processing.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_run_1_tutorial_013.svg" srcset="../_images/sphx_glr_run_1_tutorial_013.svg" alt="run 1 tutorial" class = "sphx-glr-single-img"/><p>For the section, we need do a couple more things. The set of traces in these
+<p>For the section, we need do a couple more things. The set of traces in these
 do not perfectly overlapping.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">streams</span> <span class="o">=</span> <span class="n">opl</span><span class="o">.</span><span class="n">select_intersection</span><span class="p">([</span><span class="n">obs</span><span class="p">,</span> <span class="n">syn</span><span class="p">],</span> <span class="n">components</span><span class="o">=</span><span class="s1">&#39;ZRT&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>list index out of range
-Cant find II.KAPI..Z
-list index out of range
-Cant find II.KAPI..R
-list index out of range
-Cant find II.KAPI..T
-list index out of range
-Cant find G.IVI..Z
-list index out of range
-Cant find G.IVI..R
-list index out of range
-Cant find G.IVI..T
-list index out of range
-Cant find II.ABPO..Z
-list index out of range
-Cant find II.ABPO..R
-list index out of range
-Cant find II.ABPO..T
-list index out of range
-Cant find IU.MAKZ..Z
-list index out of range
-Cant find IU.MAKZ..R
-list index out of range
-Cant find IU.MAKZ..T
-list index out of range
-Cant find GE.KMBO..Z
-list index out of range
-Cant find GE.KMBO..R
-list index out of range
-Cant find GE.KMBO..T
-list index out of range
-Cant find II.PALK..Z
-list index out of range
-Cant find II.PALK..R
-list index out of range
-Cant find II.PALK..T
-list index out of range
-Cant find II.COCO..Z
-list index out of range
-Cant find II.COCO..R
-list index out of range
-Cant find II.COCO..T
-list index out of range
-Cant find G.FUTU..Z
-list index out of range
-Cant find G.FUTU..R
-list index out of range
-Cant find G.FUTU..T
-list index out of range
-Cant find IU.CHTO..Z
-list index out of range
-Cant find IU.CHTO..R
-list index out of range
-Cant find IU.CHTO..T
-list index out of range
-Cant find II.CMLA..Z
-list index out of range
-Cant find II.CMLA..R
-list index out of range
-Cant find II.CMLA..T
-list index out of range
-Cant find IU.ADK..Z
-list index out of range
-Cant find IU.ADK..R
-list index out of range
-Cant find IU.ADK..T
-list index out of range
-Cant find II.ASCN..Z
-list index out of range
-Cant find II.ASCN..R
-list index out of range
-Cant find II.ASCN..T
-list index out of range
-Cant find G.ECH..Z
-list index out of range
-Cant find G.ECH..R
-list index out of range
-Cant find G.ECH..T
-list index out of range
-Cant find G.PAF..Z
-list index out of range
-Cant find G.PAF..R
-list index out of range
-Cant find G.PAF..T
-list index out of range
-Cant find IU.PMSA..Z
-list index out of range
-Cant find IU.PMSA..R
-list index out of range
-Cant find IU.PMSA..T
-list index out of range
-Cant find G.ROCAM..Z
-list index out of range
-Cant find G.ROCAM..R
-list index out of range
-Cant find G.ROCAM..T
-list index out of range
-Cant find MN.TNV..Z
-list index out of range
-Cant find MN.TNV..R
-list index out of range
-Cant find MN.TNV..T
-list index out of range
-Cant find G.TRIS..Z
-list index out of range
-Cant find G.TRIS..R
-list index out of range
-Cant find G.TRIS..T
-list index out of range
-Cant find II.TLY..Z
-list index out of range
-Cant find II.TLY..R
-list index out of range
-Cant find II.TLY..T
-list index out of range
-Cant find IU.KONO..Z
-list index out of range
-Cant find IU.KONO..R
-list index out of range
-Cant find IU.KONO..T
-list index out of range
-Cant find IU.MIDW..Z
-list index out of range
-Cant find IU.MIDW..R
-list index out of range
-Cant find IU.MIDW..T
-list index out of range
-Cant find G.KIP..Z
-list index out of range
-Cant find G.KIP..R
-list index out of range
-Cant find G.KIP..T
-list index out of range
-Cant find IU.SPA..Z
-list index out of range
-Cant find IU.SPA..R
-list index out of range
-Cant find IU.SPA..T
-list index out of range
-Cant find II.AAK..Z
-list index out of range
-Cant find II.AAK..R
-list index out of range
-Cant find II.AAK..T
-list index out of range
-Cant find IU.SAML..Z
-list index out of range
-Cant find IU.SAML..R
-list index out of range
-Cant find IU.SAML..T
-list index out of range
-Cant find II.TAU..Z
-list index out of range
-Cant find II.TAU..R
-list index out of range
-Cant find II.TAU..T
-list index out of range
-Cant find IU.TEIG..Z
-list index out of range
-Cant find IU.TEIG..R
-list index out of range
-Cant find IU.TEIG..T
-list index out of range
-Cant find II.NIL..Z
-list index out of range
-Cant find II.NIL..R
-list index out of range
-Cant find II.NIL..T
-list index out of range
-Cant find II.KWJN..Z
-list index out of range
-Cant find II.KWJN..R
-list index out of range
-Cant find II.KWJN..T
-list index out of range
-Cant find II.SUR..Z
-list index out of range
-Cant find II.SUR..R
-list index out of range
-Cant find II.SUR..T
-list index out of range
-Cant find IU.OTAV..Z
-list index out of range
-Cant find IU.OTAV..R
-list index out of range
-Cant find IU.OTAV..T
-list index out of range
-Cant find IU.YAK..Z
-list index out of range
-Cant find IU.YAK..R
-list index out of range
-Cant find IU.YAK..T
-list index out of range
-Cant find IU.GUMO..Z
-list index out of range
-Cant find IU.GUMO..R
-list index out of range
-Cant find IU.GUMO..T
-list index out of range
-Cant find IU.TRQA..Z
-list index out of range
-Cant find IU.TRQA..R
-list index out of range
-Cant find IU.TRQA..T
-list index out of range
-Cant find IU.SBA..Z
-list index out of range
-Cant find IU.SBA..R
-list index out of range
-Cant find IU.SBA..T
-list index out of range
-Cant find II.MSEY..Z
-list index out of range
-Cant find II.MSEY..R
-list index out of range
-Cant find II.MSEY..T
-list index out of range
-Cant find II.RAYN..Z
-list index out of range
-Cant find II.RAYN..R
-list index out of range
-Cant find II.RAYN..T
-list index out of range
-Cant find IU.TIXI..Z
-list index out of range
-Cant find IU.TIXI..R
-list index out of range
-Cant find IU.TIXI..T
-list index out of range
-Cant find IU.WVT..Z
-list index out of range
-Cant find IU.WVT..R
-list index out of range
-Cant find IU.WVT..T
-list index out of range
-Cant find II.RPN..Z
-list index out of range
-Cant find II.RPN..R
-list index out of range
-Cant find II.RPN..T
-list index out of range
-Cant find IU.SJG..Z
-list index out of range
-Cant find IU.SJG..R
-list index out of range
-Cant find IU.SJG..T
-list index out of range
-Cant find II.BORG..Z
-list index out of range
-Cant find II.BORG..R
-list index out of range
-Cant find II.BORG..T
-list index out of range
-Cant find G.SPB..Z
-list index out of range
-Cant find G.SPB..R
-list index out of range
-Cant find G.SPB..T
-list index out of range
-Cant find G.TAM..Z
-list index out of range
-Cant find G.TAM..R
-list index out of range
-Cant find G.TAM..T
-list index out of range
-Cant find G.MPG..Z
-list index out of range
-Cant find G.MPG..R
-list index out of range
-Cant find G.MPG..T
-list index out of range
-Cant find G.PPTF..Z
-list index out of range
-Cant find G.PPTF..R
-list index out of range
-Cant find G.PPTF..T
-list index out of range
-Cant find IU.HNR..Z
-list index out of range
-Cant find IU.HNR..R
-list index out of range
-Cant find IU.HNR..T
-list index out of range
-Cant find IU.LSZ..Z
-list index out of range
-Cant find IU.LSZ..R
-list index out of range
-Cant find IU.LSZ..T
-list index out of range
-Cant find IU.CASY..Z
-list index out of range
-Cant find IU.CASY..R
-list index out of range
-Cant find IU.CASY..T
-list index out of range
-Cant find IU.ANTO..Z
-list index out of range
-Cant find IU.ANTO..R
-list index out of range
-Cant find IU.ANTO..T
-list index out of range
-Cant find IU.KOWA..Z
-list index out of range
-Cant find IU.KOWA..R
-list index out of range
-Cant find IU.KOWA..T
-list index out of range
-Cant find GE.LVC..Z
-list index out of range
-Cant find GE.LVC..R
-list index out of range
-Cant find GE.LVC..T
-list index out of range
-Cant find II.ALE..Z
-list index out of range
-Cant find II.ALE..R
-list index out of range
-Cant find II.ALE..T
-list index out of range
-Cant find G.NOUC..Z
-list index out of range
-Cant find G.NOUC..R
-list index out of range
-Cant find G.NOUC..T
-list index out of range
-Cant find IU.INCN..Z
-list index out of range
-Cant find IU.INCN..R
-list index out of range
-Cant find IU.INCN..T
-list index out of range
-Cant find IU.RCBR..Z
-list index out of range
-Cant find IU.RCBR..R
-list index out of range
-Cant find IU.RCBR..T
-list index out of range
-Cant find II.LVZ..Z
-list index out of range
-Cant find II.LVZ..R
-list index out of range
-Cant find II.LVZ..T
-list index out of range
-Cant find II.ARU..Z
-list index out of range
-Cant find II.ARU..R
-list index out of range
-Cant find II.ARU..T
-list index out of range
-Cant find IU.MSKU..Z
-list index out of range
-Cant find IU.MSKU..R
-list index out of range
-Cant find IU.MSKU..T
-list index out of range
-Cant find IC.XAN..Z
-list index out of range
-Cant find IC.XAN..R
-list index out of range
-Cant find IC.XAN..T
-list index out of range
-Cant find II.SACV..Z
-list index out of range
-Cant find II.SACV..R
-list index out of range
-Cant find II.SACV..T
-list index out of range
-Cant find IU.COR..Z
-list index out of range
-Cant find IU.COR..R
-list index out of range
-Cant find IU.COR..T
-list index out of range
-Cant find IU.YSS..Z
-list index out of range
-Cant find IU.YSS..R
-list index out of range
-Cant find IU.YSS..T
-list index out of range
-Cant find IU.NWAO..Z
-list index out of range
-Cant find IU.NWAO..R
-list index out of range
-Cant find IU.NWAO..T
-list index out of range
-Cant find II.FFC..Z
-list index out of range
-Cant find II.FFC..R
-list index out of range
-Cant find II.FFC..T
-list index out of range
-Cant find IU.MAJO..Z
-list index out of range
-Cant find IU.MAJO..R
-list index out of range
-Cant find IU.MAJO..T
 </pre></div>
 </div>
 <p>Now that we have selected only the traces that are in all streams, we can
@@ -986,9 +569,6 @@ plot a section with the traces.</p>
             <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Observed&#39;</span><span class="p">,</span> <span class="s1">&#39;GLAD-M25&#39;</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-<img src="../_images/sphx_glr_run_1_tutorial_014.svg" srcset="../_images/sphx_glr_run_1_tutorial_014.svg" alt="run 1 tutorial" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[0.002743187661132795, 0.00219715452262896, 0.0014256783021462304, 0.0022499778402648514, 0.003818495470623282, 0.001631694111054505, 0.002642893139688799, 0.0018508093530368377, 0.0015391092284538662, 0.002128403387366918], [0.0059938997638769465, 0.0024470425442413533, 0.0012458114041164683, 0.0040518242151323545, 0.005487683286779865, 0.002123495738556396, 0.003336863761592863, 0.0029469907263877377, 0.0023977613864230862, 0.0034373540232758783]]
 </pre></div>
 </div>
 </section>
@@ -1033,410 +613,6 @@ traveltime</p>
 <span class="n">opl</span><span class="o">.</span><span class="n">copy_trace_param</span><span class="p">(</span><span class="n">obs_filtered</span><span class="p">,</span> <span class="n">syn_filtered</span><span class="p">,</span> <span class="s1">&#39;origin_time&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>list index out of range
-Cant find II.ABPO..Z
-list index out of range
-Cant find II.ABPO..R
-list index out of range
-Cant find II.ABPO..T
-list index out of range
-Cant find G.IVI..Z
-list index out of range
-Cant find G.IVI..R
-list index out of range
-Cant find G.IVI..T
-list index out of range
-Cant find IU.MAKZ..Z
-list index out of range
-Cant find IU.MAKZ..R
-list index out of range
-Cant find IU.MAKZ..T
-list index out of range
-Cant find GE.KMBO..Z
-list index out of range
-Cant find GE.KMBO..R
-list index out of range
-Cant find GE.KMBO..T
-list index out of range
-Cant find II.PALK..Z
-list index out of range
-Cant find II.PALK..R
-list index out of range
-Cant find II.PALK..T
-list index out of range
-Cant find II.KDAK..Z
-list index out of range
-Cant find II.KDAK..R
-list index out of range
-Cant find II.KDAK..T
-list index out of range
-Cant find II.COCO..Z
-list index out of range
-Cant find II.COCO..R
-list index out of range
-Cant find II.COCO..T
-list index out of range
-Cant find G.FUTU..Z
-list index out of range
-Cant find G.FUTU..R
-list index out of range
-Cant find G.FUTU..T
-list index out of range
-Cant find IU.CHTO..Z
-list index out of range
-Cant find IU.CHTO..R
-list index out of range
-Cant find IU.CHTO..T
-list index out of range
-Cant find II.BFO..Z
-list index out of range
-Cant find II.BFO..R
-list index out of range
-Cant find II.BFO..T
-list index out of range
-Cant find II.CMLA..Z
-list index out of range
-Cant find II.CMLA..R
-list index out of range
-Cant find II.CMLA..T
-list index out of range
-Cant find II.HOPE..Z
-list index out of range
-Cant find II.HOPE..R
-list index out of range
-Cant find II.HOPE..T
-list index out of range
-Cant find IU.ADK..Z
-list index out of range
-Cant find IU.ADK..R
-list index out of range
-Cant find IU.ADK..T
-list index out of range
-Cant find IU.DAV..Z
-list index out of range
-Cant find IU.DAV..R
-list index out of range
-Cant find IU.DAV..T
-list index out of range
-Cant find II.ASCN..Z
-list index out of range
-Cant find II.ASCN..R
-list index out of range
-Cant find II.ASCN..T
-list index out of range
-Cant find G.ECH..Z
-list index out of range
-Cant find G.ECH..R
-list index out of range
-Cant find G.ECH..T
-list index out of range
-Cant find G.PAF..Z
-list index out of range
-Cant find G.PAF..R
-list index out of range
-Cant find G.PAF..T
-list index out of range
-Cant find IU.PMSA..Z
-list index out of range
-Cant find IU.PMSA..R
-list index out of range
-Cant find IU.PMSA..T
-list index out of range
-Cant find G.ROCAM..Z
-list index out of range
-Cant find G.ROCAM..R
-list index out of range
-Cant find G.ROCAM..T
-list index out of range
-Cant find MN.TNV..Z
-list index out of range
-Cant find MN.TNV..R
-list index out of range
-Cant find MN.TNV..T
-list index out of range
-Cant find G.TRIS..Z
-list index out of range
-Cant find G.TRIS..R
-list index out of range
-Cant find G.TRIS..T
-list index out of range
-Cant find II.TLY..Z
-list index out of range
-Cant find II.TLY..R
-list index out of range
-Cant find II.TLY..T
-list index out of range
-Cant find IU.KONO..Z
-list index out of range
-Cant find IU.KONO..R
-list index out of range
-Cant find IU.KONO..T
-list index out of range
-Cant find IU.MIDW..Z
-list index out of range
-Cant find IU.MIDW..R
-list index out of range
-Cant find IU.MIDW..T
-list index out of range
-Cant find G.KIP..Z
-list index out of range
-Cant find G.KIP..R
-list index out of range
-Cant find G.KIP..T
-list index out of range
-Cant find IU.SPA..Z
-list index out of range
-Cant find IU.SPA..R
-list index out of range
-Cant find IU.SPA..T
-list index out of range
-Cant find IU.SAML..Z
-list index out of range
-Cant find IU.SAML..R
-list index out of range
-Cant find IU.SAML..T
-list index out of range
-Cant find II.TAU..Z
-list index out of range
-Cant find II.TAU..R
-list index out of range
-Cant find II.TAU..T
-list index out of range
-Cant find IU.TEIG..Z
-list index out of range
-Cant find IU.TEIG..R
-list index out of range
-Cant find IU.TEIG..T
-list index out of range
-Cant find II.NIL..Z
-list index out of range
-Cant find II.NIL..R
-list index out of range
-Cant find II.NIL..T
-list index out of range
-Cant find II.KWJN..Z
-list index out of range
-Cant find II.KWJN..R
-list index out of range
-Cant find II.KWJN..T
-list index out of range
-Cant find II.SUR..Z
-list index out of range
-Cant find II.SUR..R
-list index out of range
-Cant find II.SUR..T
-list index out of range
-Cant find IU.OTAV..Z
-list index out of range
-Cant find IU.OTAV..R
-list index out of range
-Cant find IU.OTAV..T
-list index out of range
-Cant find IU.GUMO..Z
-list index out of range
-Cant find IU.GUMO..R
-list index out of range
-Cant find IU.GUMO..T
-list index out of range
-Cant find IU.TRQA..Z
-list index out of range
-Cant find IU.TRQA..R
-list index out of range
-Cant find IU.TRQA..T
-list index out of range
-Cant find IU.SBA..Z
-list index out of range
-Cant find IU.SBA..R
-list index out of range
-Cant find IU.SBA..T
-list index out of range
-Cant find II.MSEY..Z
-list index out of range
-Cant find II.MSEY..R
-list index out of range
-Cant find II.MSEY..T
-list index out of range
-Cant find II.RAYN..Z
-list index out of range
-Cant find II.RAYN..R
-list index out of range
-Cant find II.RAYN..T
-list index out of range
-Cant find IU.TIXI..Z
-list index out of range
-Cant find IU.TIXI..R
-list index out of range
-Cant find IU.TIXI..T
-list index out of range
-Cant find IU.WVT..Z
-list index out of range
-Cant find IU.WVT..R
-list index out of range
-Cant find IU.WVT..T
-list index out of range
-Cant find II.RPN..Z
-list index out of range
-Cant find II.RPN..R
-list index out of range
-Cant find II.RPN..T
-list index out of range
-Cant find IU.SJG..Z
-list index out of range
-Cant find IU.SJG..R
-list index out of range
-Cant find IU.SJG..T
-list index out of range
-Cant find G.TAM..Z
-list index out of range
-Cant find G.TAM..R
-list index out of range
-Cant find G.TAM..T
-list index out of range
-Cant find G.SPB..Z
-list index out of range
-Cant find G.SPB..R
-list index out of range
-Cant find G.SPB..T
-list index out of range
-Cant find II.DGAR..Z
-list index out of range
-Cant find II.DGAR..R
-list index out of range
-Cant find II.DGAR..T
-list index out of range
-Cant find IU.CTAO..Z
-list index out of range
-Cant find IU.CTAO..R
-list index out of range
-Cant find IU.CTAO..T
-list index out of range
-Cant find IU.HNR..Z
-list index out of range
-Cant find IU.HNR..R
-list index out of range
-Cant find IU.HNR..T
-list index out of range
-Cant find G.MPG..Z
-list index out of range
-Cant find G.MPG..R
-list index out of range
-Cant find G.MPG..T
-list index out of range
-Cant find G.PPTF..Z
-list index out of range
-Cant find G.PPTF..R
-list index out of range
-Cant find G.PPTF..T
-list index out of range
-Cant find IU.LSZ..Z
-list index out of range
-Cant find IU.LSZ..R
-list index out of range
-Cant find IU.LSZ..T
-list index out of range
-Cant find IU.CASY..Z
-list index out of range
-Cant find IU.CASY..R
-list index out of range
-Cant find IU.CASY..T
-list index out of range
-Cant find IU.ANTO..Z
-list index out of range
-Cant find IU.ANTO..R
-list index out of range
-Cant find IU.ANTO..T
-list index out of range
-Cant find IU.KOWA..Z
-list index out of range
-Cant find IU.KOWA..R
-list index out of range
-Cant find IU.KOWA..T
-list index out of range
-Cant find GE.LVC..Z
-list index out of range
-Cant find GE.LVC..R
-list index out of range
-Cant find GE.LVC..T
-list index out of range
-Cant find II.ALE..Z
-list index out of range
-Cant find II.ALE..R
-list index out of range
-Cant find II.ALE..T
-list index out of range
-Cant find G.NOUC..Z
-list index out of range
-Cant find G.NOUC..R
-list index out of range
-Cant find G.NOUC..T
-list index out of range
-Cant find IU.INCN..Z
-list index out of range
-Cant find IU.INCN..R
-list index out of range
-Cant find IU.INCN..T
-list index out of range
-Cant find IU.RCBR..Z
-list index out of range
-Cant find IU.RCBR..R
-list index out of range
-Cant find IU.RCBR..T
-list index out of range
-Cant find II.LVZ..Z
-list index out of range
-Cant find II.LVZ..R
-list index out of range
-Cant find II.LVZ..T
-list index out of range
-Cant find II.ARU..Z
-list index out of range
-Cant find II.ARU..R
-list index out of range
-Cant find II.ARU..T
-list index out of range
-Cant find IU.MSKU..Z
-list index out of range
-Cant find IU.MSKU..R
-list index out of range
-Cant find IU.MSKU..T
-list index out of range
-Cant find IC.XAN..Z
-list index out of range
-Cant find IC.XAN..R
-list index out of range
-Cant find IC.XAN..T
-list index out of range
-Cant find II.SACV..Z
-list index out of range
-Cant find II.SACV..R
-list index out of range
-Cant find II.SACV..T
-list index out of range
-Cant find IU.COR..Z
-list index out of range
-Cant find IU.COR..R
-list index out of range
-Cant find IU.COR..T
-list index out of range
-Cant find IU.YSS..Z
-list index out of range
-Cant find IU.YSS..R
-list index out of range
-Cant find IU.YSS..T
-list index out of range
-Cant find IU.NWAO..Z
-list index out of range
-Cant find IU.NWAO..R
-list index out of range
-Cant find IU.NWAO..T
-list index out of range
-Cant find II.FFC..Z
-list index out of range
-Cant find II.FFC..R
-list index out of range
-Cant find II.FFC..T
-</pre></div>
-</div>
 <p>Let’s first plot these traces in a panel to see what we are working with</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">limits</span> <span class="o">=</span> <span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="mi">250</span>
@@ -1465,12 +641,6 @@ Cant find II.FFC..T
                <span class="n">event_depth_in_km</span><span class="o">=</span><span class="n">event_depth</span><span class="o">/</span><span class="mf">1000.0</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="mf">0.075</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-<img src="../_images/sphx_glr_run_1_tutorial_015.svg" srcset="../_images/sphx_glr_run_1_tutorial_015.svg" alt="run 1 tutorial" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[0.00043633959929839563, 0.00020448526450415425, 0.00042656153197850535, 0.0006455207333116463], [0.0004135726125294305, 0.00029381812579423836, 0.000750118216387448, 0.0010359891685168387]]
-[[0.0016980154896035992, 0.0010636520817336652, 0.0016136762343113837, 0.003049387903641918], [0.0016891928446583523, 0.0013129425429092556, 0.002479644832544455, 0.002977535635952327]]
-2 legendargs
-[[0.0008915771646592599, 0.0005116767359316616, 0.0004926222127364147, 0.0002101515028380593], [0.0013209157414376042, 0.0009799776478217283, 0.000931475682878813, 0.0003947648168670685]]
 </pre></div>
 </div>
 <p>Now we can select a window on the observed trace.</p>
@@ -1553,7 +723,7 @@ of the previous methods. Let’s plot them as trace first</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_run_1_tutorial_016.svg" srcset="../_images/sphx_glr_run_1_tutorial_016.svg" alt="run 1 tutorial" class = "sphx-glr-single-img"/><p>Now, let’s plot a full station, so let’s grab all station traces</p>
+<p>Now, let’s plot a full station, so let’s grab all station traces</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">obsst</span> <span class="o">=</span> <span class="n">obs_filtered</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">network_str</span><span class="p">,</span> <span class="n">station</span><span class="o">=</span><span class="n">station_str</span><span class="p">)</span>
 <span class="n">synst</span> <span class="o">=</span> <span class="n">syn_filtered</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">network_str</span><span class="p">,</span> <span class="n">station</span><span class="o">=</span><span class="n">station_str</span><span class="p">)</span>
 
@@ -1572,7 +742,7 @@ of the previous methods. Let’s plot them as trace first</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_run_1_tutorial_017.svg" srcset="../_images/sphx_glr_run_1_tutorial_017.svg" alt="run 1 tutorial" class = "sphx-glr-single-img"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the station</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the station</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">axes</span> <span class="o">=</span> <span class="n">opl</span><span class="o">.</span><span class="n">section</span><span class="p">([</span><span class="n">obs_filtered</span><span class="p">,</span> <span class="n">syn_filtered</span><span class="p">],</span>
                    <span class="n">comp</span><span class="o">=</span><span class="s1">&#39;Z&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">limits</span><span class="o">=</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">3250</span><span class="p">),</span>
@@ -1583,9 +753,6 @@ of the previous methods. Let’s plot them as trace first</p>
 <span class="c1"># Slightly adjust the plots to make the fit nicely into the figure</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-<img src="../_images/sphx_glr_run_1_tutorial_018.svg" srcset="../_images/sphx_glr_run_1_tutorial_018.svg" alt="run 1 tutorial" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[0.00219715452262896, 0.0014256783021462304, 0.0022499778402648514, 0.003818495470623282], [0.0024470425442413533, 0.0012458114041164683, 0.0040518242151323545, 0.005487683286779865]]
 </pre></div>
 </div>
 <p>Now let’s turn back to a single trace, and plot the window on it. So,
@@ -1608,7 +775,7 @@ plot_measurements=True.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_run_1_tutorial_019.svg" srcset="../_images/sphx_glr_run_1_tutorial_019.svg" alt="run 1 tutorial" class = "sphx-glr-single-img"/><p>Finally let’s add a second set of traces to the plot. This time we will
+<p>Finally let’s add a second set of traces to the plot. This time we will
 use amplitude measurements we made earlier to find an amplitude correction
 factor and apply it to the synthetic traces to make them match the observed
 slightly better. Then, we make measurements again and plot them.</p>
@@ -1648,13 +815,13 @@ both the windows and the measurements. That we added to the windows</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_run_1_tutorial_020.svg" srcset="../_images/sphx_glr_run_1_tutorial_020.svg" alt="run 1 tutorial" class = "sphx-glr-single-img"/><p>In doing this we have more or less performed a small inversion. If we optimize
+<p>In doing this we have more or less performed a small inversion. If we optimize
 for the sources scalar moment, M0, considering all S arrivals, simply perform
 a scaling. By finding all time-shifted correlation ratios between observed
 and synthetic data we find the amplitude that best fits the data, but
 disregard the phase. This is a very simple inversion, but it is a good example
 For showing measurements on traces and windows.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 10.100 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.904 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-run-1-tutorial-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/594f4e8a30d6e62f063fabdb83e9edc5/run_1_tutorial.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">run_1_tutorial.ipynb</span></code></a></p>

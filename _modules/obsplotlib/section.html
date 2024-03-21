@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
 
     <link rel="shortcut icon" href="../../_static/favicon.ico"/><!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
-        <title>obsplotlib.section - obsplotlib 0.5.0.dev3+g1dbbc28 documentation</title>
+        <title>obsplotlib.section - obsplotlib 0.5.0.dev4+g87760d8 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
@@ -128,7 +128,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../index.html"><div class="brand">obsplotlib 0.5.0.dev3+g1dbbc28 documentation</div></a>
+      <a href="../../index.html"><div class="brand">obsplotlib 0.5.0.dev4+g87760d8 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -155,7 +155,7 @@
     <img class="sidebar-logo only-dark" src="../../_static/logo.svg" alt="Dark Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">obsplotlib 0.5.0.dev3+g1dbbc28 documentation</span>
+  <span class="sidebar-brand-text">obsplotlib 0.5.0.dev4+g87760d8 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -236,6 +236,7 @@
     <span class="n">plot_amplitudes</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">plot_stations_right</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">skip_station</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">invert</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Plots a section of seismograms of given stream or stream set. The</span>
@@ -389,6 +390,9 @@
     <span class="c1"># Number of stations</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">pstreams</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
+    <span class="k">if</span> <span class="n">invert</span><span class="p">:</span>
+        <span class="n">y</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+
     <span class="c1"># Define ylabels on the left axis to station info</span>
     <span class="n">ylabels</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">_i</span><span class="p">,</span> <span class="n">tr</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pstreams</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
@@ -483,6 +487,12 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">time_args</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;matplotlib&quot;</span><span class="p">)</span>
 
+    <span class="c1"># Factor to add to invert the traces</span>
+    <span class="k">if</span> <span class="n">invert</span><span class="p">:</span>
+        <span class="n">invert_factor</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">invert_factor</span> <span class="o">=</span> <span class="mi">1</span>
+
     <span class="c1"># Normalize</span>
     <span class="k">for</span> <span class="n">_i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Ntraces</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">_j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Nstreams</span><span class="p">):</span>
@@ -497,7 +507,7 @@
 
             <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
                 <span class="n">pstreams</span><span class="p">[</span><span class="n">_j</span><span class="p">][</span><span class="n">_i</span><span class="p">]</span><span class="o">.</span><span class="n">times</span><span class="p">(</span><span class="o">**</span><span class="n">time_args</span><span class="p">),</span>
-                <span class="n">pstreams</span><span class="p">[</span><span class="n">_j</span><span class="p">][</span><span class="n">_i</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="o">/</span> <span class="n">absmax</span> <span class="o">*</span> <span class="n">scale</span> <span class="o">+</span> <span class="n">y</span><span class="p">[</span><span class="n">_i</span><span class="p">],</span>
+                <span class="n">pstreams</span><span class="p">[</span><span class="n">_j</span><span class="p">][</span><span class="n">_i</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="o">/</span> <span class="n">absmax</span> <span class="o">*</span> <span class="n">scale</span> <span class="o">*</span> <span class="n">invert_factor</span> <span class="o">+</span> <span class="n">y</span><span class="p">[</span><span class="n">_i</span><span class="p">],</span>
                 <span class="o">*</span><span class="n">args</span><span class="p">,</span>
                 <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">_j</span><span class="p">],</span>
                 <span class="n">ls</span><span class="o">=</span><span class="n">ls</span><span class="p">[</span><span class="n">_j</span><span class="p">],</span>
@@ -522,8 +532,8 @@
                         <span class="n">duration</span> <span class="o">=</span> <span class="n">windowend</span> <span class="o">-</span> <span class="n">windowstart</span>
 
                     <span class="c1"># Vertical window extension</span>
-                    <span class="n">windowy0</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">_i</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.6</span>
-                    <span class="n">windowy1</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">_i</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.6</span>
+                    <span class="n">windowy0</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">_i</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.6</span> <span class="o">*</span> <span class="n">scale</span> <span class="o">*</span> <span class="n">invert_factor</span>
+                    <span class="n">windowy1</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">_i</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.6</span> <span class="o">*</span> <span class="n">scale</span> <span class="o">*</span> <span class="n">invert_factor</span>
                     <span class="n">windowdy</span> <span class="o">=</span> <span class="n">windowy1</span> <span class="o">-</span> <span class="n">windowy0</span>
 
                     <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span>
@@ -564,9 +574,15 @@
         <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time since origin (s)&quot;</span><span class="p">)</span>
 
     <span class="c1"># Set y limits</span>
-    <span class="n">ylim</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mf">1.25</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mf">1.25</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">)</span>
-    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">invert</span><span class="p">:</span>
+        <span class="n">ylim</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mf">1.5</span><span class="p">,</span>
+            <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mf">1.5</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ylim</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mf">1.5</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mf">1.5</span>
+    <span class="c1"># ax.set_ylim(ylim)</span>
+    <span class="c1"># ax2.set_ylim(ylim)</span>
 
     <span class="k">return</span> <span class="n">ax</span><span class="p">,</span> <span class="n">ax2</span></div>
 

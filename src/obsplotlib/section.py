@@ -27,6 +27,8 @@ def section(
     absmax: float | None = None,
     window: bool = False,
     plot_geometry: bool = True,
+    dist_label: bool = True,
+    az_label: bool = True,
     plot_amplitudes: bool = True,
     plot_stations_right: bool = False,
     skip_station: int | None = None,
@@ -67,6 +69,16 @@ def section(
     absmax : float | None, optional
         optional value to normalize traces by. If none, automatically
         determined, by default None
+    window : bool, optional
+        plot windows if available, by default False
+    plot_geometry : bool, optional
+        plot geometry information, by default True
+    dist_label : bool, optional
+        plot distance label, by default True
+    az_label : bool, optional
+        plot azimuth label, by default True
+    plot_amplitudes : bool, optional
+        plot amplitudes on the right axis, by default True
 
     Returns
     -------
@@ -91,6 +103,10 @@ def section(
     # If single stream is given, make it a list
     if isinstance(streams, obspy.Stream):
         streams = [streams]
+
+    # Fix linestyle for single value.
+    if isinstance(ls, str):
+        ls = [ls] * len(streams)
 
     # Get a single component
     pstreams = [stream.select(component=comp).copy() for stream in streams]
@@ -196,11 +212,12 @@ def section(
         else:
             ylabel = f"{tr.stats.network}.{tr.stats.station}"
 
-            if plot_geometry:
-                f"\nD:{tr.stats.distance:>6.2f}"
+        if plot_geometry:
+            if hasattr(tr.stats, 'distance') and dist_label:
+                ylabel += f"\nD:{tr.stats.distance:>6.2f}"
 
-                if hasattr(tr.stats, "azimuth"):
-                    ylabel += f"\nAz: {tr.stats.azimuth:>5.1f}"
+            if hasattr(tr.stats, 'azimuth') and az_label:
+                ylabel += f"\nAz: {tr.stats.azimuth:>5.1f}"
 
             ylabels.append(ylabel)
 

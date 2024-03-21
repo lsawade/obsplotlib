@@ -43,7 +43,21 @@ Loading all modules
 
 
 
+.. rst-class:: sphx-glr-script-out
 
+.. code-block:: pytb
+
+    Traceback (most recent call last):
+      File "/home/runner/work/obsplotlib/obsplotlib/examples/run_1_tutorial.py", line 23, in <module>
+        import obsplotlib.plot as opl
+      File "/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/obsplotlib/plot.py", line 9, in <module>
+        from .section import section, section_multiple_comp
+      File "/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/obsplotlib/section.py", line 10, in <module>
+        from . import stream_utils as su
+      File "/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/obsplotlib/stream_utils.py", line 249
+     
+        ^
+    SyntaxError: invalid non-printable character U+00A0
 
 
 
@@ -61,12 +75,6 @@ Loading data
     event = obspy.read_events("DATA/CMTSOLUTION")[0]
     raw = obspy.read("DATA/observed/traces/*.sac")
     inv = obspy.read_inventory("DATA/observed/station.xml")
-
-
-
-
-
-
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 36-38
@@ -87,12 +95,6 @@ station and process the data
     event_name = 'C' + event.preferred_origin().resource_id.id.split('/')[-2]
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 47-48
 
 Attach the event station geometry to the traces, important for rotation to RTZ
@@ -106,12 +108,6 @@ Attach the event station geometry to the traces, important for rotation to RTZ
                         event_longitude=event_longitude, inv=inv)
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 53-54
 
 Processing the data very generically
@@ -122,12 +118,6 @@ Processing the data very generically
 
     bandpass = [30, 200]
     obs = opl.process(raw, inv=inv, remove_response=True, bandpass=bandpass)
-
-
-
-
-
-
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 58-64
@@ -152,17 +142,6 @@ info from the stats object and plot it in a "nice" way.
     plt.figure()
     ax = opl.trace(tr, plot_labels=True, lw=0.5)
     plt.show(block=False)
-
-
-
-
-.. image-sg:: /examples/images/sphx_glr_run_1_tutorial_001.svg
-   :alt: run 1 tutorial
-   :srcset: /examples/images/sphx_glr_run_1_tutorial_001.svg
-   :class: sphx-glr-single-img
-
-
-
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 75-77
@@ -199,17 +178,6 @@ add a header to the figure to be a little more explicit.
     opl.add_header(ax, **header_dict)
     plt.subplots_adjust(left=0.05, right=0.95, top=0.725, bottom=0.15)
     plt.show(block=False)
-
-
-
-
-.. image-sg:: /examples/images/sphx_glr_run_1_tutorial_002.svg
-   :alt: run 1 tutorial
-   :srcset: /examples/images/sphx_glr_run_1_tutorial_002.svg
-   :class: sphx-glr-single-img
-
-
-
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 104-135
@@ -275,17 +243,6 @@ The components are defined by a keyword argument. So you may use ``ZRT``
     plt.show(block=False)
 
 
-
-
-.. image-sg:: /examples/images/sphx_glr_run_1_tutorial_003.svg
-   :alt: run 1 tutorial
-   :srcset: /examples/images/sphx_glr_run_1_tutorial_003.svg
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 160-180
 
 Putting the legend outside the axes is nice when we are plotting multiple
@@ -322,21 +279,6 @@ their actual distance, but one by one with a label that has the distance.
     plt.legend(frameon=False, loc='upper right', ncol=3, fontsize='small')
     plt.subplots_adjust(left=0.15, right=0.85, top=0.95, bottom=0.05)
     plt.show(block=False)
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
-.. code-block:: pytb
-
-    Traceback (most recent call last):
-      File "/home/runner/work/obsplotlib/obsplotlib/examples/run_1_tutorial.py", line 185, in <module>
-        opl.section(obs, lw=0.5, comp='T')
-      File "/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/obsplotlib/section.py", line 308, in section
-        lw=lw[_j],
-    TypeError: 'float' object is not subscriptable
-
 
 
 
@@ -1009,7 +951,7 @@ For showing measurements on traces and windows.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 2.546 seconds)
+   **Total running time of the script:** (0 minutes 0.370 seconds)
 
 
 .. _sphx_glr_download_examples_run_1_tutorial.py:

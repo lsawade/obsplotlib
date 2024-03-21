@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Plotting the logo and the favicon" href="run_2_logo.html" /><link rel="prev" title="Obsplotlib" href="../index.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
-        <title>Full Obsplotlib Tutorial - obsplotlib 0.5.0.dev4+g87760d8 documentation</title>
+        <title>Full Obsplotlib Tutorial - obsplotlib 0.5.0.dev5+gec0cad7 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
@@ -129,7 +129,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">obsplotlib 0.5.0.dev4+g87760d8 documentation</div></a>
+      <a href="../index.html"><div class="brand">obsplotlib 0.5.0.dev5+gec0cad7 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -156,7 +156,7 @@
     <img class="sidebar-logo only-dark" src="../_static/logo.svg" alt="Dark Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">obsplotlib 0.5.0.dev4+g87760d8 documentation</span>
+  <span class="sidebar-brand-text">obsplotlib 0.5.0.dev5+gec0cad7 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -225,6 +225,19 @@ liking.</p>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
 </div>
+<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/home/runner/work/obsplotlib/obsplotlib/examples/run_1_tutorial.py&quot;</span>, line <span class="m">23</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="kn">import</span> <span class="nn">obsplotlib.plot</span> <span class="k">as</span> <span class="nn">opl</span>
+  File <span class="nb">&quot;/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/obsplotlib/plot.py&quot;</span>, line <span class="m">9</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="kn">from</span> <span class="nn">.section</span> <span class="kn">import</span> <span class="n">section</span><span class="p">,</span> <span class="n">section_multiple_comp</span>
+  File <span class="nb">&quot;/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/obsplotlib/section.py&quot;</span>, line <span class="m">10</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">stream_utils</span> <span class="k">as</span> <span class="n">su</span>
+  File <span class="nb">&quot;/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/obsplotlib/stream_utils.py&quot;</span>, line <span class="m">249</span>
+
+<span class="gr">    ^</span>
+<span class="gr">SyntaxError</span>: <span class="n">invalid non-printable character U+00A0</span>
+</pre></div>
+</div>
 </section>
 <section id="loading-data">
 <h2>Loading data<a class="headerlink" href="#loading-data" title="Permalink to this heading">#</a></h2>
@@ -269,7 +282,7 @@ info from the stats object and plot it in a “nice” way.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_run_1_tutorial_001.svg" srcset="../_images/sphx_glr_run_1_tutorial_001.svg" alt="run 1 tutorial" class = "sphx-glr-single-img"/><p>Since we have both station and event information in the stats object we can
+<p>Since we have both station and event information in the stats object we can
 add a header to the figure to be a little more explicit.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">opl</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">tr</span><span class="p">,</span> <span class="n">plot_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">origin_time</span><span class="o">=</span><span class="n">event_time</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
@@ -297,7 +310,7 @@ add a header to the figure to be a little more explicit.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_run_1_tutorial_002.svg" srcset="../_images/sphx_glr_run_1_tutorial_002.svg" alt="run 1 tutorial" class = "sphx-glr-single-img"/><p>In the example above we are providing all possible arguments to the
+<p>In the example above we are providing all possible arguments to the
 <code class="docutils literal notranslate"><span class="pre">add_header</span></code> function just for show. Depending on whether they are provided
 they will be added to the header or not. The header is a simple text object
 and all font related arguments are passed through <code class="docutils literal notranslate"><span class="pre">plot_label</span></code> and to
@@ -349,7 +362,7 @@ The components are defined by a keyword argument. So you may use <code class="do
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_run_1_tutorial_003.svg" srcset="../_images/sphx_glr_run_1_tutorial_003.svg" alt="run 1 tutorial" class = "sphx-glr-single-img"/><p>Putting the legend outside the axes is nice when we are plotting multiple
+<p>Putting the legend outside the axes is nice when we are plotting multiple
 traces to compare them. But if we are only plotting a single stream, it is
 nicer to plot the legend inside the axes. Because it removes some unused
 white space.</p>
@@ -376,14 +389,6 @@ their actual distance, but one by one with a label that has the distance.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;small&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
-  File <span class="nb">&quot;/home/runner/work/obsplotlib/obsplotlib/examples/run_1_tutorial.py&quot;</span>, line <span class="m">185</span>, in <span class="n">&lt;module&gt;</span>
-<span class="w">    </span><span class="n">opl</span><span class="o">.</span><span class="n">section</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">comp</span><span class="o">=</span><span class="s1">&#39;T&#39;</span><span class="p">)</span>
-  File <span class="nb">&quot;/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/obsplotlib/section.py&quot;</span>, line <span class="m">308</span>, in <span class="n">section</span>
-<span class="w">    </span><span class="n">lw</span><span class="o">=</span><span class="n">lw</span><span class="p">[</span><span class="n">_j</span><span class="p">],</span>
-<span class="gr">TypeError</span>: <span class="n">&#39;float&#39; object is not subscriptable</span>
 </pre></div>
 </div>
 <p>Plotting the same section but with axis limits from 300 seconds to 1500 seconds
@@ -821,7 +826,7 @@ a scaling. By finding all time-shifted correlation ratios between observed
 and synthetic data we find the amplitude that best fits the data, but
 disregard the phase. This is a very simple inversion, but it is a good example
 For showing measurements on traces and windows.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.546 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.370 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-run-1-tutorial-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/594f4e8a30d6e62f063fabdb83e9edc5/run_1_tutorial.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">run_1_tutorial.ipynb</span></code></a></p>

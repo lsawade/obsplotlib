@@ -30,6 +30,7 @@ def section(
     plot_amplitudes: bool = True,
     plot_stations_right: bool = False,
     skip_station: int | None = None,
+    invert: bool = False,
     **kwargs,
 ):
     """Plots a section of seismograms of given stream or stream set. The
@@ -183,6 +184,9 @@ def section(
     # Number of stations
     y = np.arange(1, 1 * len(pstreams[0]) + 1, 1)
 
+    if invert:
+        y *= -1
+
     # Define ylabels on the left axis to station info
     ylabels = []
     for _i, tr in enumerate(pstreams[0]):
@@ -277,6 +281,12 @@ def section(
     else:
         time_args = dict(type="matplotlib")
 
+    # Factor to add to invert the traces
+    if invert:
+        invert_factor = 1
+    else:
+        invert_factor = 1
+
     # Normalize
     for _i in range(Ntraces):
         for _j in range(Nstreams):
@@ -291,7 +301,7 @@ def section(
 
             plt.plot(
                 pstreams[_j][_i].times(**time_args),
-                pstreams[_j][_i].data / absmax * scale + y[_i],
+                pstreams[_j][_i].data / absmax * scale * invert_factor + y[_i],
                 *args,
                 c=colors[_j],
                 ls=ls[_j],
@@ -316,8 +326,8 @@ def section(
                         duration = windowend - windowstart
 
                     # Vertical window extension
-                    windowy0 = y[_i] - 0.6
-                    windowy1 = y[_i] + 0.6
+                    windowy0 = y[_i] - 0.6 * scale * invert_factor
+                    windowy1 = y[_i] + 0.6 * scale * invert_factor
                     windowdy = windowy1 - windowy0
 
                     ax.add_patch(
@@ -358,9 +368,15 @@ def section(
         plt.xlabel("Time since origin (s)")
 
     # Set y limits
-    ylim = y[0] - 1.25, y[-1] + 1.25
-    ax.set_ylim(ylim)
-    ax2.set_ylim(ylim)
+    if invert:
+        ylim = (
+            y[-1] - 1.5,
+            y[0] + 1.5,
+        )
+    else:
+        ylim = y[0] - 1.5, y[-1] + 1.5
+    # ax.set_ylim(ylim)
+    # ax2.set_ylim(ylim)
 
     return ax, ax2
 

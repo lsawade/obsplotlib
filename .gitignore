@@ -11,3 +11,6 @@ obsplotlib-testpypitoken
 obsplotlib-pypitoken
 examples/logo.svg
 examples/favicon.ico
+scripts/*.pdf
+scripts/*.ndk
+scripts/*.pkl

@@ -1,4 +1,3 @@
-
 import obspy
 import typing as tp
 import numpy as np
@@ -10,21 +9,24 @@ from .utils import plot_label
 
 
 def trace(
-        traces: tp.List[obspy.Trace] | obspy.Trace, *args,
-        ax: matplotlib.axes.Axes | None = None,
-        limits: tp.Tuple[obspy.UTCDateTime, obspy.UTCDateTime] | None = None,
-        nooffset: bool = False,
-        colors: list = ['k', 'r', 'b'],
-        labels: tp.List[str] = ['Observed', 'Synthetic', 'New Synthetic'],
-        origin_time: obspy.UTCDateTime | None = None,
-        lw: list | float = 1.0,
-        ls: list | str = '-',
-        absmax: float | None = None,
-        normalization_type: str | int = 'all',
-        plot_labels: bool = True,
-        legend: bool = True,
-        window: bool = False, windowkwargs: dict | None = None,
-        **kwargs):
+    traces: tp.List[obspy.Trace] | obspy.Trace,
+    *args,
+    ax: matplotlib.axes.Axes | None = None,
+    limits: tp.Tuple[obspy.UTCDateTime, obspy.UTCDateTime] | None = None,
+    nooffset: bool = False,
+    colors: list = ["k", "r", "b"],
+    labels: tp.List[str] = ["Observed", "Synthetic", "New Synthetic"],
+    origin_time: obspy.UTCDateTime | None = None,
+    lw: list | float = 1.0,
+    ls: list | str = "-",
+    absmax: float | None = None,
+    normalization_type: str | int = "all",
+    plot_labels: bool = True,
+    legend: bool = True,
+    window: bool = False,
+    windowkwargs: dict | None = None,
+    **kwargs,
+):
     """Plot a single or a list of traces.
 
     Parameters
@@ -88,20 +90,20 @@ def trace(
         traces = [traces]
 
     if isinstance(lw, float) or isinstance(lw, int):
-        lw = [lw]*len(traces)
+        lw = [lw] * len(traces)
 
     if isinstance(ls, str):
-        ls = [ls]*len(traces)
+        ls = [ls] * len(traces)
 
     # Check if normalization_type is valid
     if isinstance(normalization_type, int):
         if normalization_type >= len(traces):
-            raise ValueError('normalization_type must be smaller than the '
-                             'number of streams')
-    else:
-        if not normalization_type in ('all', 'first'):
             raise ValueError(
-                'normalization_type must be either "all" or "first"')
+                "normalization_type must be smaller than the " "number of streams"
+            )
+    else:
+        if not normalization_type in ("all", "first"):
+            raise ValueError('normalization_type must be either "all" or "first"')
 
     # Get limits and timedelta
     if limits is not None:
@@ -116,24 +118,23 @@ def trace(
         if limits is not None:
             delta = limits[1] - limits[0]
         else:
-            latest_endtime: obspy.UTCDateTime = max(
-                [tr.stats.endtime for tr in traces])
+            latest_endtime: obspy.UTCDateTime = max([tr.stats.endtime for tr in traces])
             delta = latest_endtime - origin_time
 
         # After computing the delta decide which unit to use
         if delta > 1800:
-            xlabel = 'Time since origin [min]'
+            xlabel = "Time since origin [min]"
             xdiv = 60
         elif delta > 10800:
-            xlabel = 'Time since origin [h]'
+            xlabel = "Time since origin [h]"
             xdiv = 3600
         else:
-            xlabel = 'Time since origin [s]'
+            xlabel = "Time since origin [s]"
             xdiv = 1
 
     else:
         # If no origin_time is given, use matplotlib time
-        xlabel = 'Time'
+        xlabel = "Time"
         xdiv = 1
 
     # Given the divisor, get the corrected x axis limits
@@ -143,7 +144,7 @@ def trace(
     # Get max amplitude
     if absmax is None:
 
-        if normalization_type == 'all':
+        if normalization_type == "all":
 
             absmaxs = []
             for tr in traces:
@@ -158,7 +159,7 @@ def trace(
                 # Get max amplitudeof each trace
                 absmaxs.append(np.max(np.abs(trc.data)))
 
-        elif normalization_type == 'first':
+        elif normalization_type == "first":
 
             # Copy the traces
             trc = traces[0].copy()
@@ -186,9 +187,9 @@ def trace(
 
     # Set time arguments for the plotting
     if origin_time is not None:
-        time_args = dict(type='relative', reftime=origin_time)
+        time_args = dict(type="relative", reftime=origin_time)
     else:
-        time_args = dict(type='matplotlib')
+        time_args = dict(type="matplotlib")
 
     # Loop over set of traces
     for _j, _tr in enumerate(traces):
@@ -201,56 +202,79 @@ def trace(
             t /= xdiv
 
         # plot trace
-        plt.plot(t, _tr.data + absmax_off * (-1)**(_j),
-                 ls[_j], *args, c=colors[_j], lw=lw[_j], label=labels[_j],
-                 **kwargs)
+        plt.plot(
+            t,
+            _tr.data + absmax_off * (-1) ** (_j),
+            *args,
+            ls=ls[_j],
+            c=colors[_j],
+            lw=lw[_j],
+            label=labels[_j],
+            **kwargs,
+        )
 
         # Plot windows if available
         if window and _j == 0:
             if windowkwargs is None:
                 windowkwargs = dict(plot_measurements=False)
 
-            if 'text_kwargs' not in windowkwargs:
-                windowkwargs['text_kwargs'] = dict()
+            if "text_kwargs" not in windowkwargs:
+                windowkwargs["text_kwargs"] = dict()
 
             for window in _tr.stats.windows:
 
                 if origin_time is not None:
-                    windowstart = (window.starttime - origin_time)/xdiv
-                    windowend = (window.endtime - origin_time)/xdiv
+                    windowstart = (window.starttime - origin_time) / xdiv
+                    windowend = (window.endtime - origin_time) / xdiv
                     duration = windowend - windowstart
                 else:
                     windowstart = window.starttime.matplotlib_date
                     windowend = window.endtime.matplotlib_date
                     duration = windowend - windowstart
 
-                ax.add_patch(patches.Rectangle(
-                    (windowstart, - 1.5 * absmax),
-                    duration, + 3 * absmax, edgecolor='none',
-                    facecolor=(0.9, 0.9, 0.9), clip_on=True))
+                ax.add_patch(
+                    patches.Rectangle(
+                        (windowstart, -1.5 * absmax),
+                        duration,
+                        +3 * absmax,
+                        edgecolor="none",
+                        facecolor=(0.9, 0.9, 0.9),
+                        clip_on=True,
+                    )
+                )
 
-                if windowkwargs['plot_measurements']:
-                    ax.text(windowstart, -1.15*absmax, window.get_label(),
-                            horizontalalignment='left',
-                            verticalalignment='bottom',
-                            bbox=dict(facecolor='none', edgecolor='none'),
-                            **windowkwargs['text_kwargs'])
+                if windowkwargs["plot_measurements"]:
+                    ax.text(
+                        windowstart,
+                        -1.15 * absmax,
+                        window.get_label(),
+                        horizontalalignment="left",
+                        verticalalignment="bottom",
+                        bbox=dict(facecolor="none", edgecolor="none"),
+                        **windowkwargs["text_kwargs"],
+                    )
 
     # Axis limits and indicator
-    ax.set_ylim(-1.15*absmax, 1.15*absmax)
+    ax.set_ylim(-1.15 * absmax, 1.15 * absmax)
 
     if plot_labels:
         network = traces[0].stats.network
         station = traces[0].stats.station
         component = traces[0].stats.channel[-1]
-        plot_label(ax, f'{network}.{station}.{component}', dist=0.025,
-                   location=3, fontsize='small', box=False)
+        plot_label(
+            ax,
+            f"{network}.{station}.{component}",
+            dist=0.025,
+            location=3,
+            fontsize="small",
+            box=False,
+        )
 
         # Plot label if absmax automatically determined
         if not absmax_given:
             plot_label(
-                ax, f'|A|max: {absmax:.5g} m', dist=0.025,
-                fontsize='small', box=False)
+                ax, f"|A|max: {absmax:.5g} m", dist=0.025, fontsize="small", box=False
+            )
 
     # Set limits
     if limits is not None:
@@ -266,7 +290,8 @@ def trace(
 
         ax.xaxis_date()
         ax.xaxis.set_major_formatter(
-            mdates.ConciseDateFormatter(ax.xaxis.get_major_locator()))
+            mdates.ConciseDateFormatter(ax.xaxis.get_major_locator())
+        )
 
         # Rotate and align the tick labels so they look better.
         ax.figure.autofmt_xdate()
@@ -287,15 +312,17 @@ def trace(
 
     # Add legend
     if legend:
-        plt.legend(frameon=False, loc='upper right',
-                   ncol=3)
+        plt.legend(frameon=False, loc="upper right", ncol=3)
 
     return ax
 
 
-def station(streams: tp.List[obspy.Stream] | obspy.Stream, *args,
-            components: str = "ZRT",
-            **kwargs):
+def station(
+    streams: tp.List[obspy.Stream] | obspy.Stream,
+    *args,
+    components: str = "ZRT",
+    **kwargs,
+):
     """Plots given set of components of stream(s). Is a wrapper around
     .trace() so :func:`obsplotlib.seismogram.trace`. Streams should only
     contain traces of a single station. Otherwise, result may be unpredictable.
@@ -336,15 +363,13 @@ def station(streams: tp.List[obspy.Stream] | obspy.Stream, *args,
         traces = [st.select(component=comp)[0] for st in streams]
 
         # Create a new subplot axes
-        ax = plt.subplot(len(components), 1, _i+1, sharex=ax)
+        ax = plt.subplot(len(components), 1, _i + 1, sharex=ax)
 
         # Plot the trace
-        trace(traces, *args, ax=ax, legend=_legend, plot_labels=False,
-              **kwargs)
+        trace(traces, *args, ax=ax, legend=_legend, plot_labels=False, **kwargs)
 
         # Plot component label
-        plot_label(ax, comp, dist=0.025, fontsize='medium', box=False,
-                   location=13)
+        plot_label(ax, comp, dist=0.025, fontsize="medium", box=False, location=13)
 
         # Format x axis to have the date
         if _i < len(components) - 1:

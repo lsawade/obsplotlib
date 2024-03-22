@@ -246,7 +246,7 @@ def attach_geometry(st: obspy.Stream,
     inv : Inventory | None, optional
         inventory, by default None
     """
- 
+
     if inv is not None:
         # Initialize
         networks, stations, latitudes, longitudes = [], [], [], []

@@ -321,6 +321,7 @@ def station(
     streams: tp.List[obspy.Stream] | obspy.Stream,
     *args,
     components: str = "ZRT",
+    transparent_axes: bool = False,
     **kwargs,
 ):
     """Plots given set of components of stream(s). Is a wrapper around
@@ -364,6 +365,10 @@ def station(
 
         # Create a new subplot axes
         ax = plt.subplot(len(components), 1, _i + 1, sharex=ax)
+
+        # Transparent axes
+        if transparent_axes:
+            ax.patch.set_alpha(0.0)
 
         # Plot the trace
         trace(traces, *args, ax=ax, legend=_legend, plot_labels=False, **kwargs)

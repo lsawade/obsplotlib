@@ -24,7 +24,7 @@ data, and a comparison between observed and two sets of synthetic seismograms.
 
 .. only:: html
 
-  .. image:: /examples/images/thumb/sphx_glr_run_1_tutorial_thumb.png
+  .. image:: /examples/images/thumb/sphx_glr_run_1_tutorial_thumb.svg
     :alt:
 
   :ref:`sphx_glr_examples_run_1_tutorial.py`
@@ -41,7 +41,7 @@ data, and a comparison between observed and two sets of synthetic seismograms.
 
 .. only:: html
 
-  .. image:: /examples/images/thumb/sphx_glr_run_2_logo_thumb.png
+  .. image:: /examples/images/thumb/sphx_glr_run_2_logo_thumb.svg
     :alt:
 
   :ref:`sphx_glr_examples_run_2_logo.py`

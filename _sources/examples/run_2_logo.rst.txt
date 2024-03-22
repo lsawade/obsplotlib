@@ -46,21 +46,7 @@ Loading all modules
 
 
 
-.. rst-class:: sphx-glr-script-out
 
-.. code-block:: pytb
-
-    Traceback (most recent call last):
-      File "/home/runner/work/obsplotlib/obsplotlib/examples/run_2_logo.py", line 25, in <module>
-        import obsplotlib.plot as opl
-      File "/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/obsplotlib/plot.py", line 9, in <module>
-        from .section import section, section_multiple_comp
-      File "/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/obsplotlib/section.py", line 10, in <module>
-        from . import stream_utils as su
-      File "/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/obsplotlib/stream_utils.py", line 249
-     
-        ^
-    SyntaxError: invalid non-printable character U+00A0
 
 
 
@@ -78,6 +64,12 @@ Loading data
     event = obspy.read_events("DATA/CMTSOLUTION")[0]
     raw = obspy.read("DATA/observed/traces/II.BFO.*.sac")
     inv = obspy.read_inventory("DATA/observed/station.xml")
+
+
+
+
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 38-40
@@ -98,6 +90,12 @@ station and process the data
     event_name = 'C' + event.preferred_origin().resource_id.id.split('/')[-2]
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 49-50
 
 Attach the event station geometry to the traces, important for rotation to RTZ
@@ -109,6 +107,12 @@ Attach the event station geometry to the traces, important for rotation to RTZ
 
     opl.attach_geometry(raw, event_latitude=event_latitude,
                         event_longitude=event_longitude, inv=inv)
+
+
+
+
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 55-61
@@ -135,6 +139,12 @@ taper.
                     component=component_str)[0]
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 72-73
 
 Finally we perform some fixes to really isolate the wavelet
@@ -153,6 +163,12 @@ Finally we perform some fixes to really isolate the wavelet
 
     # Offset the trace to be at the height of the 'T'
     tr.data += 0.0000015
+
+
+
+
+
+
 
 
 
@@ -197,6 +213,17 @@ out, soft orange and soft blue are ideal colors for that
 
     # To store as SVG
     plt.savefig('logo.svg', transparent=True)
+
+
+
+
+
+.. image-sg:: /examples/images/sphx_glr_run_2_logo_001.svg
+   :alt: run 2 logo
+   :srcset: /examples/images/sphx_glr_run_2_logo_001.svg
+   :class: sphx-glr-single-img
+
+
 
 
 
@@ -245,9 +272,20 @@ out, soft orange and soft blue are ideal colors for that
     # plt.savefig('favicon.ico', format='PNG', transparent=True, dpi=32)
 
 
+
+.. image-sg:: /examples/images/sphx_glr_run_2_logo_002.svg
+   :alt: run 2 logo
+   :srcset: /examples/images/sphx_glr_run_2_logo_002.svg
+   :class: sphx-glr-single-img
+
+
+
+
+
+
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.002 seconds)
+   **Total running time of the script:** (0 minutes 0.237 seconds)
 
 
 .. _sphx_glr_download_examples_run_2_logo.py:

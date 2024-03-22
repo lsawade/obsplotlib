@@ -380,6 +380,7 @@ def station(
         if _i < len(components) - 1:
             ax.spines.bottom.set_visible(False)
             ax.tick_params(bottom=False, labelbottom=False)
+            ax.set_xlabel("")
 
         axes.append(ax)
 

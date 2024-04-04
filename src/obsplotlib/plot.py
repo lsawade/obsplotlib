@@ -8,7 +8,7 @@ from .frechet import frechet
 from .process import process
 from .section import section, section_multiple_comp
 from .seismogram import station, trace
-from .signal import L2, X, Xratio
+from .signal import L2, X, Xratio, xcorr
 from .stream_utils import (
     attach_geometry,
     copy_geometry,
@@ -19,7 +19,7 @@ from .stream_utils import (
     stream_max,
     stream_min,
 )
-from .traveltime import add_traveltime
+from .traveltime import add_traveltime, get_arrivals, plot_arrivals
 from .utils import add_header, plot_label, axes_from_axes
 from .window import Window
 
@@ -36,6 +36,7 @@ __all__ = [
     "trace",
     "L2",
     "X",
+    "xcorr",
     "Xratio",
     "attach_geometry",
     "copy_geometry",
@@ -46,6 +47,8 @@ __all__ = [
     "stream_max",
     "stream_min",
     "add_traveltime",
+    "get_arrivals",
+    "plot_arrivals",
     "add_header",
     "plot_label",
     "axes_from_axes",

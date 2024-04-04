@@ -12,13 +12,14 @@ def trace(
     traces: tp.List[obspy.Trace] | obspy.Trace,
     *args,
     ax: matplotlib.axes.Axes | None = None,
-    limits: tp.Tuple[obspy.UTCDateTime, obspy.UTCDateTime] | None = None,
+    limits: tp.Tuple[obspy.UTCDateTime, obspy.UTCDateTime] | tp.Tuple[float, float] | None = None,
     nooffset: bool = False,
     colors: list = ["k", "r", "b"],
     labels: tp.List[str] = ["Observed", "Synthetic", "New Synthetic"],
     origin_time: obspy.UTCDateTime | None = None,
     lw: list | float = 1.0,
     ls: list | str = "-",
+    alpha: list | float = 1.0,
     absmax: float | None = None,
     normalization_type: str | int = "all",
     plot_labels: bool = True,
@@ -95,6 +96,9 @@ def trace(
     if isinstance(ls, str):
         ls = [ls] * len(traces)
 
+    if isinstance(alpha, float) or isinstance(alpha, int):
+        alpha = [alpha] * len(traces)
+
     # Check if normalization_type is valid
     if isinstance(normalization_type, int):
         if normalization_type >= len(traces):
@@ -154,7 +158,10 @@ def trace(
 
                 # Only consider amplitude within limits for normalization
                 if limits is not None:
-                    trc.trim(starttime=starttime, endtime=endtime)
+                    if origin_time is not None and not isinstance(limits[0], obspy.UTCDateTime):
+                        trc.trim(starttime=origin_time + starttime, endtime=origin_time + endtime)
+                    else:
+                        trc.trim(starttime=starttime, endtime=endtime)
 
                 # Get max amplitudeof each trace
                 absmaxs.append(np.max(np.abs(trc.data)))
@@ -166,7 +173,10 @@ def trace(
 
             # Only consider amplitude within limits for normalization
             if limits is not None:
-                trc.trim(starttime=starttime, endtime=endtime)
+                if origin_time is not None and not isinstance(limits[0], obspy.UTCDateTime):
+                    trc.trim(starttime=origin_time + starttime, endtime=origin_time + endtime)
+                else:
+                    trc.trim(starttime=starttime, endtime=endtime)
 
             # Get max amplitudeof each trace
             absmaxs = [np.max(np.abs(trc.data))]
@@ -202,7 +212,7 @@ def trace(
             t /= xdiv
 
         # plot trace
-        plt.plot(
+        ax.plot(
             t,
             _tr.data + absmax_off * (-1) ** (_j),
             *args,
@@ -210,6 +220,7 @@ def trace(
             c=colors[_j],
             lw=lw[_j],
             label=labels[_j],
+            alpha=alpha[_j],
             **kwargs,
         )
 
@@ -297,12 +308,12 @@ def trace(
         ax.figure.autofmt_xdate()
 
         # Add xlabel
-        plt.xlabel(xlabel)
+        ax.set_xlabel(xlabel)
 
     else:
 
         # Add xlabel
-        plt.xlabel(xlabel)
+        ax.set_xlabel(xlabel)
 
     # Unnecessary spines and ticks
     ax.tick_params(labelleft=False, left=False)
@@ -312,7 +323,7 @@ def trace(
 
     # Add legend
     if legend:
-        plt.legend(frameon=False, loc="upper right", ncol=3)
+        ax.legend(frameon=False, loc="upper right", ncol=3)
 
     return ax
 

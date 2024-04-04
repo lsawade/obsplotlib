@@ -2,7 +2,7 @@ import typing as tp
 import obspy
 from obspy.geodetics.base import gps2dist_azimuth
 from obspy.taup import TauPyModel
-
+import matplotlib.pyplot as plt
 
 def add_traveltime(stream: obspy.Stream, event_depth_in_m: float = 0.0,
                    origin_time: obspy.UTCDateTime | None = None,
@@ -80,3 +80,55 @@ def add_traveltime(stream: obspy.Stream, event_depth_in_m: float = 0.0,
             newstream.pop(_i)
 
         return newstream
+
+
+def get_arrivals(station_latitude, station_longitude, event_latitude,
+                       event_longitude, event_depth: float = 0.0,
+                       model: str = "ak135",
+                       phase_list=['P', 'S', 'PcP', 'ScS', 'PP', 'SS', 'PKiKP', 'SKiKS', 'PKIKP', 'SKIKS'], **kwargs):
+
+    # Get distance
+    distance = gps2dist_azimuth(station_latitude, station_longitude, event_latitude, event_longitude)[0] / 1000 / 111.195
+
+    # Initialize Taup model
+    model = TauPyModel(model=model)
+
+    # Phase list
+    arrivals = model.get_travel_times(source_depth_in_km=event_depth,
+                                      distance_in_degree=distance,
+                                      phase_list=phase_list, **kwargs)
+    return arrivals
+
+
+def plot_arrivals(arrivals, *args, origin_time: obspy.UTCDateTime | float = 0.0, ax=None,
+                  scale = 0.002, textargs=tuple(), textkwargs=dict(),
+                  timescale: float = 1.0, **kwargs):
+
+    if not ax:
+        ax = plt.gca()
+
+    # Plot arrivals
+    for _i, arrival in enumerate(arrivals):
+
+        if isinstance(origin_time, obspy.UTCDateTime):
+            onset = (origin_time + arrival.time).matplotlib_date
+        else:
+            onset = (origin_time + arrival.time) / timescale
+
+        # Plot veritcal onset times
+        ax.vlines(onset, -scale, scale, *args, **kwargs)
+
+        if _i % 2 == 0:
+            fac = -1
+            rotation = 45
+            va = 'top'
+            ha = 'right'
+        else:
+            fac = 1
+            rotation = 45
+            va = 'bottom'
+            ha = 'left'
+
+        # Plot phase name
+        ax.text(onset, scale * (-1) ** (_i+1), arrival.name, *textargs,
+                fontsize='small', rotation=rotation, va=va, ha=ha, **textkwargs)

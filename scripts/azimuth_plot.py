@@ -29,8 +29,16 @@ angles = generate_angles(N)
 # choice of either a gaussian, a trapezoid or a triangular shape. The signals
 # should not exceed 10% of the time series since the start, and the time series
 # should have length NT
-def generate_timeseries(N: int, NT: int, factor=1.0):
+def generate_timeseries(angles, NT: int, factor=1.0, strike=0.0):
     import numpy as np
+
+    # Fault parameters
+    L = 10  # length of fault
+    vR = 2.0  # rupture velocity
+    v = 1.2 * vR
+
+    # Number of signals
+    N = len(angles)
 
     # Generate a random set of shapes
     shapes = np.random.choice(["gaussian"], N)
@@ -43,7 +51,11 @@ def generate_timeseries(N: int, NT: int, factor=1.0):
 
     # Generate a random set of hdur values
     alpha = 1.628
-    sigma = (np.random.rand(N) * 5 + 15) / alpha
+
+    # Strike dependent hdur
+    hdur = L * (1 / vR - np.cos((angles - np.deg2rad(strike))) / v)
+
+    sigma = (hdur) / alpha
 
     # Generate a time vector
     t = np.arange(NT)
@@ -109,7 +121,7 @@ def generate_timeseries(N: int, NT: int, factor=1.0):
             )
             # Second half
             triangle[(t > midpoint) & (t <= endpoint)] = A[i] * (
-                1 - (midpointt[(t > midpoint) & (t <= endpoint)])
+                1 - (midpoint[(t > midpoint) & (t <= endpoint)])
             )
 
             # Store the signal
@@ -118,44 +130,57 @@ def generate_timeseries(N: int, NT: int, factor=1.0):
     return signals
 
 
-signals = generate_timeseries(N, 1000) + generate_timeseries(N, 1000, factor=-1.0)
+signals = generate_timeseries(
+    angles, 1000, strike=45.0
+)  # + generate_timeseries(N, 1000, factor=-1.0)
 
 # %%
 
 
 # We generated the angles. Now we want to bin the angles into 5 degree bins
 # and select one angle from each bin but ignore bins that do not contain angles
-def bin_angles(angles, binwidth: float):
+def bin_angles(angles, dy: float = 0.1):
     import numpy as np
 
-    # Create a list to store the new angles
+    y = np.clip(np.arange(1, -1 - dy, -dy), -1, 1)
+
+    theta = np.arccos(y)
+    x = np.sin(theta)
+
+    # Make sure that we wave bins for both sides, positive and negative x
+    x = np.concatenate([x[:-1], -x[::-1]])
+    y = np.concatenate([y[:-1], y[::-1]])
+    theta = np.concatenate([theta[:-1], np.pi + theta])
+
+    # Initialize the new angles, and indeces
     new_angles = []
     new_indeces = []
 
     # Loop over the bins
-    for i in np.arange(0, 360 + binwidth, binwidth):
+    for i in range(len(theta) - 1):
 
         # Get the angles in the bin
-        bin_angles = angles[
-            (angles >= np.deg2rad(i)) & (angles < np.deg2rad(i + binwidth))
-        ]
+        bin_angles = angles[(angles >= theta[i]) & (angles < theta[i + 1])]
 
         if len(bin_angles) == 0:
             continue
 
         # for later I also need the indices
-        indices = np.where(
-            (angles >= np.deg2rad(i)) & (angles < np.deg2rad(i + binwidth))
-        )
+        indices = np.where((angles >= theta[i]) & (angles < theta[i + 1]))
+
+        # Choose the angle that is the closest to the center of the bin
+        center = (theta[i] + theta[i + 1]) / 2
+        index = np.argmin(np.abs(bin_angles - center))
 
         # append
-        new_angles.append(np.mean(bin_angles))
-        new_indeces.append(indices[0][0])
-    return new_angles, new_indeces
+        new_angles.append(bin_angles[index])
+        new_indeces.append(indices[0][index])
+
+    return (theta, x, y), (new_angles, new_indeces)
 
 
-binwidth = 10
-new_angles, new_indeces = bin_angles(angles, 10)
+dy = 0.1
+(theta_bin, x_bin, y_bin), (new_angles, new_indeces) = bin_angles(angles, dy=dy)
 new_signals = signals[new_indeces]
 
 # %%
@@ -170,18 +195,25 @@ plt.figure(figsize=(10, 10))
 mainax = plt.gca()
 mainax.axis("off")
 
-bins = np.arange(0, 360 + binwidth, binwidth)
-
 for i in range(len(new_angles)):
 
-    # length of the axes
-    width = 0.3
-    height = 0.05
+    # Height ration
+
+    # Height of the axes as a function of stretch
+    stretch_height = 2.0
+    r = 0.5 / stretch_height
+    height = 0.5 * dy
 
     # Distance of the axes from the center
-    r = 0.3
-    stretch_height = 1.0
-    relative_stretch = 1.0
+    # r = 0.2
+    total_width = 0.5 - r
+    percentage_offset = 0.1
+    width = total_width * (1 - percentage_offset)
+    width_offset = total_width * percentage_offset
+
+    # Height of the axes as a function of stretch
+    # stretch_height = 2.0
+    # height = stretch_height * dy * r
 
     # Angle of the axes
     az = new_angles[i]
@@ -189,27 +221,18 @@ for i in range(len(new_angles)):
     # Use azimuth to get x,y. Here azimuth is with respect to North and
     # clockkwise
     x = r * np.sin(az) + 0.5
-    y = stretch_height * (1 + relative_stretch * np.cos(az) ** 2) * r * np.cos(az) + 0.5
+    y = stretch_height * r * np.cos(az) + 0.5
 
     # plot bin edges
-    for _i in bins[:-1]:
+    for _i in theta_bin[:-1]:
         mainax.plot(
-            [0.5, 0.5 + r * np.sin(np.deg2rad(_i))],
-            [
-                0.5,
-                0.5
-                + stretch_height
-                * (1 + relative_stretch * np.cos(np.deg2rad(_i)) ** 2)
-                * r
-                * np.cos(np.deg2rad(_i)),
-            ],
+            [0.5, 0.5 + r * np.sin(_i)],
+            [0.5, 0.5 + stretch_height * r * np.cos(_i)],
             c="lightgray",
             lw=0.1,
             ls="-",
             clip_on=False,
         )
-
-    print(x, y, az)
 
     # If the azimuth is larger than pi the axis is on the left side
     axis_left = az >= np.pi
@@ -218,13 +241,12 @@ for i in range(len(new_angles)):
 
     # ADjust the left axes to match the width
     if axis_left:
-        x = x - width - width * 0.1
+        x = x - width - width_offset
     else:
-        x = x + width * 0.1
+        x = x + width_offset
 
     # Create extent
     extent = [x, y - height / 2, width, height]
-    print(extent)
 
     # Create axes
     ax = opl.axes_from_axes(
@@ -279,3 +301,14 @@ for i in range(len(new_angles)):
     )
     mainax.set_xlim(0, 1)
     mainax.set_ylim(0, 1)
+
+# mainax.set_aspect("equal")
+plt.subplots_adjust(left=0.0, right=1.0, top=0.95, bottom=0.05)
+
+
+# %%
+plt.ion()
+plt.figure()
+plt.plot(x, y, "o")
+plt.gca().set_aspect("equal")
+plt.show()

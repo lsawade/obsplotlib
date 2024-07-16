@@ -50,19 +50,21 @@ Loading all modules
     Traceback (most recent call last):
       File "/home/runner/work/obsplotlib/obsplotlib/examples/run_1_tutorial.py", line 23, in <module>
         import obsplotlib.plot as opl
-      File "/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/obsplotlib/plot.py", line 9, in <module>
+      File "/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/obsplotlib/plot.py", line 9, in <module>
         from .section import section, section_multiple_comp
-      File "/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/obsplotlib/section.py", line 10, in <module>
+      File "/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/obsplotlib/section.py", line 10, in <module>
         from . import stream_utils as su
-      File "/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/obsplotlib/stream_utils.py", line 2, in <module>
+      File "/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/obsplotlib/stream_utils.py", line 2, in <module>
         from obspy.taup import TauPyModel
-      File "/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/obspy/taup/__init__.py", line 449, in <module>
+      File "/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/obspy/taup/__init__.py", line 449, in <module>
         from .tau import TauPyModel  # NOQA
-      File "/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/obspy/taup/tau.py", line 16, in <module>
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      File "/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/obspy/taup/tau.py", line 16, in <module>
         from .helper_classes import Arrival
-      File "/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/obspy/taup/helper_classes.py", line 20, in <module>
+      File "/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/obspy/taup/helper_classes.py", line 20, in <module>
         ('top_p', np.float_),
-      File "/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/numpy/__init__.py", line 397, in __getattr__
+                  ^^^^^^^^^
+      File "/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/numpy/__init__.py", line 397, in __getattr__
         raise AttributeError(
     AttributeError: `np.float_` was removed in the NumPy 2.0 release. Use `np.float64` instead.
 
@@ -958,7 +960,7 @@ For showing measurements on traces and windows.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.481 seconds)
+   **Total running time of the script:** (0 minutes 0.670 seconds)
 
 
 .. _sphx_glr_download_examples_run_1_tutorial.py:

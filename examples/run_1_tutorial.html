@@ -228,19 +228,21 @@ liking.</p>
 <div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;/home/runner/work/obsplotlib/obsplotlib/examples/run_1_tutorial.py&quot;</span>, line <span class="m">23</span>, in <span class="n">&lt;module&gt;</span>
 <span class="w">    </span><span class="kn">import</span> <span class="nn">obsplotlib.plot</span> <span class="k">as</span> <span class="nn">opl</span>
-  File <span class="nb">&quot;/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/obsplotlib/plot.py&quot;</span>, line <span class="m">9</span>, in <span class="n">&lt;module&gt;</span>
+  File <span class="nb">&quot;/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/obsplotlib/plot.py&quot;</span>, line <span class="m">9</span>, in <span class="n">&lt;module&gt;</span>
 <span class="w">    </span><span class="kn">from</span> <span class="nn">.section</span> <span class="kn">import</span> <span class="n">section</span><span class="p">,</span> <span class="n">section_multiple_comp</span>
-  File <span class="nb">&quot;/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/obsplotlib/section.py&quot;</span>, line <span class="m">10</span>, in <span class="n">&lt;module&gt;</span>
+  File <span class="nb">&quot;/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/obsplotlib/section.py&quot;</span>, line <span class="m">10</span>, in <span class="n">&lt;module&gt;</span>
 <span class="w">    </span><span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">stream_utils</span> <span class="k">as</span> <span class="n">su</span>
-  File <span class="nb">&quot;/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/obsplotlib/stream_utils.py&quot;</span>, line <span class="m">2</span>, in <span class="n">&lt;module&gt;</span>
+  File <span class="nb">&quot;/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/obsplotlib/stream_utils.py&quot;</span>, line <span class="m">2</span>, in <span class="n">&lt;module&gt;</span>
 <span class="w">    </span><span class="kn">from</span> <span class="nn">obspy.taup</span> <span class="kn">import</span> <span class="n">TauPyModel</span>
-  File <span class="nb">&quot;/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/obspy/taup/__init__.py&quot;</span>, line <span class="m">449</span>, in <span class="n">&lt;module&gt;</span>
+  File <span class="nb">&quot;/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/obspy/taup/__init__.py&quot;</span>, line <span class="m">449</span>, in <span class="n">&lt;module&gt;</span>
 <span class="w">    </span><span class="kn">from</span> <span class="nn">.tau</span> <span class="kn">import</span> <span class="n">TauPyModel</span>  <span class="c1"># NOQA</span>
-  File <span class="nb">&quot;/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/obspy/taup/tau.py&quot;</span>, line <span class="m">16</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="pm">^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+  File <span class="nb">&quot;/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/obspy/taup/tau.py&quot;</span>, line <span class="m">16</span>, in <span class="n">&lt;module&gt;</span>
 <span class="w">    </span><span class="kn">from</span> <span class="nn">.helper_classes</span> <span class="kn">import</span> <span class="n">Arrival</span>
-  File <span class="nb">&quot;/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/obspy/taup/helper_classes.py&quot;</span>, line <span class="m">20</span>, in <span class="n">&lt;module&gt;</span>
+  File <span class="nb">&quot;/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/obspy/taup/helper_classes.py&quot;</span>, line <span class="m">20</span>, in <span class="n">&lt;module&gt;</span>
 <span class="w">    </span><span class="p">(</span><span class="s1">&#39;top_p&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float_</span><span class="p">),</span>
-  File <span class="nb">&quot;/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/numpy/__init__.py&quot;</span>, line <span class="m">397</span>, in <span class="n">__getattr__</span>
+<span class="w">              </span><span class="pm">^^^^^^^^^</span>
+  File <span class="nb">&quot;/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/numpy/__init__.py&quot;</span>, line <span class="m">397</span>, in <span class="n">__getattr__</span>
 <span class="w">    </span><span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
 <span class="gr">AttributeError</span>: <span class="n">`np.float_` was removed in the NumPy 2.0 release. Use `np.float64` instead.</span>
 </pre></div>
@@ -833,7 +835,7 @@ a scaling. By finding all time-shifted correlation ratios between observed
 and synthetic data we find the amplitude that best fits the data, but
 disregard the phase. This is a very simple inversion, but it is a good example
 For showing measurements on traces and windows.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.481 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.670 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-run-1-tutorial-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/594f4e8a30d6e62f063fabdb83e9edc5/run_1_tutorial.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">run_1_tutorial.ipynb</span></code></a></p>

@@ -73,6 +73,10 @@ def section(
         plot windows if available, by default False
     plot_geometry : bool, optional
         plot geometry information, by default True
+    plot_stations_right : bool, optional
+        plot station information on the right axis, by default False
+    plot_amplitudes : bool, optional
+        plot amplitudes on the right axis, by default True
     dist_label : bool, optional
         plot distance label, by default True
     az_label : bool, optional
@@ -213,10 +217,10 @@ def section(
             ylabel = f"{tr.stats.network}.{tr.stats.station}"
 
         if plot_geometry:
-            if hasattr(tr.stats, 'distance') and dist_label:
+            if hasattr(tr.stats, "distance") and dist_label:
                 ylabel += f"\nD:{tr.stats.distance:>6.2f}"
 
-            if hasattr(tr.stats, 'azimuth') and az_label:
+            if hasattr(tr.stats, "azimuth") and az_label:
                 ylabel += f"\nAz: {tr.stats.azimuth:>5.1f}"
 
             ylabels.append(ylabel)

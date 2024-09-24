@@ -20,7 +20,7 @@ from .stream_utils import (
     stream_min,
 )
 from .traveltime import add_traveltime, get_arrivals, plot_arrivals
-from .utils import add_header, plot_label, axes_from_axes
+from .utils import add_header, plot_label, axes_from_axes, pick_colors_from_cmap, updaterc
 from .window import Window
 
 __all__ = [
@@ -52,6 +52,8 @@ __all__ = [
     "add_header",
     "plot_label",
     "axes_from_axes",
+    "pick_colors_from_cmap",
+    "updaterc",
     "Window",
 ]
 

@@ -212,18 +212,18 @@ def section(
     for _i, tr in enumerate(pstreams[0]):
         if skip_station is not None and np.mod(_i, skip_station) != 0:
             # ylabels.append("\xb7")
-            ylabels.append("")
+            ylabel = ""
         else:
             ylabel = f"{tr.stats.network}.{tr.stats.station}"
 
-        if plot_geometry:
-            if hasattr(tr.stats, "distance") and dist_label:
-                ylabel += f"\nD:{tr.stats.distance:>6.2f}"
+            if plot_geometry:
+                if hasattr(tr.stats, "distance") and dist_label:
+                    ylabel += f"\nD:{tr.stats.distance:>6.2f}"
 
-            if hasattr(tr.stats, "azimuth") and az_label:
-                ylabel += f"\nAz: {tr.stats.azimuth:>5.1f}"
+                if hasattr(tr.stats, "azimuth") and az_label:
+                    ylabel += f"\nAz: {tr.stats.azimuth:>5.1f}"
 
-            ylabels.append(ylabel)
+        ylabels.append(ylabel)
 
     # Set labels
     ax.set_yticks(
@@ -231,7 +231,7 @@ def section(
         ylabels,
         verticalalignment="center",
         horizontalalignment="right",
-        # fontsize="small",
+        fontsize="x-small",
     )
 
     # Set y values on the right axis to max values
@@ -261,7 +261,7 @@ def section(
             ticks,
             verticalalignment="center",
             horizontalalignment="left",
-            # fontsize="small",
+            fontsize="x-small",
         )
 
     elif (skip_station % 2) == 0 and plot_stations_right:
@@ -289,7 +289,7 @@ def section(
             ticks,
             verticalalignment="center",
             horizontalalignment="left",
-            # fontsize="small",
+            fontsize="x-small",
         )
 
     else:

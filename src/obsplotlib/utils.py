@@ -1,9 +1,9 @@
 import obspy
 import typing as tp
+import numpy as np
 from matplotlib.axes import Axes
 import matplotlib.pyplot as plt
 from mpl_toolkits.axes_grid1.inset_locator import InsetPosition
-
 
 def add_header(ax,
                station: str | None = None,
@@ -41,7 +41,7 @@ def add_header(ax,
         label += f"Lo {event_longitude:.3f} "
 
     if event_depth_in_km is not None:
-        label += f"Dp {event_depth_in_km:.3f}km"
+        label += f"Dp {event_depth_in_km:.3f}km "
 
     if event_Mw is not None:
         label += f"Mw: {event_Mw:.2f}"
@@ -155,124 +155,124 @@ def plot_label(ax: Axes, label: str, aspect: float = 1,
 
     # Inside
     if location == 0:
-        ax.text(0.5, 0.5, label,
+        t = ax.text(0.5, 0.5, label,
                 horizontalalignment='center', verticalalignment='center_baseline',
                 transform=ax.transAxes, bbox=boxdict,
                 fontdict=fontdict, **kwargs)
     elif location == 1:
-        ax.text(dist, 1.0 - dist * aspect, label, horizontalalignment='left',
+        t = ax.text(dist, 1.0 - dist * aspect, label, horizontalalignment='left',
                 verticalalignment='top', transform=ax.transAxes, bbox=boxdict,
                 fontdict=fontdict, **kwargs)
     elif location == 2:
-        ax.text(1.0 - dist, 1.0 - dist * aspect, label,
+        t = ax.text(1.0 - dist, 1.0 - dist * aspect, label,
                 horizontalalignment='right', verticalalignment='top',
                 transform=ax.transAxes, bbox=boxdict,
                 fontdict=fontdict, **kwargs)
     elif location == 3:
-        ax.text(dist, dist * aspect, label, horizontalalignment='left',
+        t = ax.text(dist, dist * aspect, label, horizontalalignment='left',
                 verticalalignment='bottom', transform=ax.transAxes,
                 bbox=boxdict, fontdict=fontdict, **kwargs)
     elif location == 4:
-        ax.text(1.0 - dist, dist * aspect, label,
+        t = ax.text(1.0 - dist, dist * aspect, label,
                 horizontalalignment='right', verticalalignment='bottom',
                 transform=ax.transAxes, bbox=boxdict,
                 fontdict=fontdict, **kwargs)
     # Outside
     elif location == 5:
-        ax.text(-dist, 1.0, label, horizontalalignment='right',
+        t = ax.text(-dist, 1.0, label, horizontalalignment='right',
                 verticalalignment='top', transform=ax.transAxes, bbox=boxdict,
                 fontdict=fontdict, **kwargs)
     elif location == 6:
-        ax.text(0, 1.0 + dist * aspect, label, horizontalalignment='left',
+        t = ax.text(0, 1.0 + dist * aspect, label, horizontalalignment='left',
                 verticalalignment='bottom', transform=ax.transAxes, bbox=boxdict,
                 fontdict=fontdict, **kwargs)
     elif location == 7:
-        ax.text(1.0, 1.0 + dist * aspect, label,
+        t = ax.text(1.0, 1.0 + dist * aspect, label,
                 horizontalalignment='right', verticalalignment='bottom',
                 transform=ax.transAxes, bbox=boxdict,
                 fontdict=fontdict, **kwargs)
     elif location == 8:
-        ax.text(1.0 + dist, 1.0, label,
+        t = ax.text(1.0 + dist, 1.0, label,
                 horizontalalignment='left', verticalalignment='top',
                 transform=ax.transAxes, bbox=boxdict,
                 fontdict=fontdict, **kwargs)
     elif location == 9:
-        ax.text(1.0 + dist, 0.0, label,
+        t = ax.text(1.0 + dist, 0.0, label,
                 horizontalalignment='left', verticalalignment='bottom',
                 transform=ax.transAxes, bbox=boxdict,
                 fontdict=fontdict, **kwargs)
     elif location == 10:
-        ax.text(1.0, - dist * aspect, label,
+        t = ax.text(1.0, - dist * aspect, label,
                 horizontalalignment='right', verticalalignment='top',
                 transform=ax.transAxes, bbox=boxdict,
                 fontdict=fontdict, **kwargs)
     elif location == 11:
-        ax.text(0.0, -dist * aspect, label, horizontalalignment='left',
+        t = ax.text(0.0, -dist * aspect, label, horizontalalignment='left',
                 verticalalignment='top', transform=ax.transAxes,
                 bbox=boxdict, fontdict=fontdict, **kwargs)
     elif location == 12:
-        ax.text(-dist, 0.0, label, horizontalalignment='right',
+        t = ax.text(-dist, 0.0, label, horizontalalignment='right',
                 verticalalignment='bottom', transform=ax.transAxes,
                 bbox=boxdict, fontdict=fontdict, **kwargs)
     elif location == 13:
-        ax.text(-dist, 0.5, label, horizontalalignment='right',
+        t = ax.text(-dist, 0.5, label, horizontalalignment='right',
                 verticalalignment='center_baseline', transform=ax.transAxes,
                 bbox=boxdict, fontdict=fontdict, **kwargs)
     elif location == 14:
-        ax.text(0.5, 1.0 + dist * aspect, label, horizontalalignment='center',
+        t = ax.text(0.5, 1.0 + dist * aspect, label, horizontalalignment='center',
                 verticalalignment='bottom', transform=ax.transAxes,
                 bbox=boxdict, fontdict=fontdict, **kwargs)
     elif location == 15:
-        ax.text(1 + dist, 0.5, label, horizontalalignment='left',
+        t = ax.text(1 + dist, 0.5, label, horizontalalignment='left',
                 verticalalignment='center_baseline', transform=ax.transAxes,
                 bbox=boxdict, fontdict=fontdict, **kwargs)
     elif location == 16:
-        ax.text(0.5, -dist * aspect, label, horizontalalignment='center',
+        t = ax.text(0.5, -dist * aspect, label, horizontalalignment='center',
                 verticalalignment='top', transform=ax.transAxes,
                 bbox=boxdict, fontdict=fontdict, **kwargs)
     elif location == 17:
-        ax.text(- dist, 1.0 + dist * aspect, label,
+        t = ax.text(- dist, 1.0 + dist * aspect, label,
                 horizontalalignment='right', verticalalignment='bottom',
                 transform=ax.transAxes, bbox=boxdict,
                 fontdict=fontdict, **kwargs)
     elif location == 18:
-        ax.text(1.0 + dist, 1.0 + dist * aspect, label,
+        t = ax.text(1.0 + dist, 1.0 + dist * aspect, label,
                 horizontalalignment='left', verticalalignment='bottom',
                 transform=ax.transAxes, bbox=boxdict,
                 fontdict=fontdict, **kwargs)
     elif location == 19:
-        ax.text(1.0 + dist, 0.0 - dist * aspect, label,
+        t = ax.text(1.0 + dist, 0.0 - dist * aspect, label,
                 horizontalalignment='left', verticalalignment='top',
                 transform=ax.transAxes, bbox=boxdict,
                 fontdict=fontdict, **kwargs)
     elif location == 20:
-        ax.text(0.0 - dist, 0.0 - dist * aspect, label,
+        t = ax.text(0.0 - dist, 0.0 - dist * aspect, label,
                 horizontalalignment='right', verticalalignment='top',
                 transform=ax.transAxes, bbox=boxdict,
                 fontdict=fontdict, **kwargs)
     elif location == 21:
-        ax.text(0.0 + dist, 0.5, label,
+        t = ax.text(0.0 + dist, 0.5, label,
                 horizontalalignment='left', verticalalignment='center_baseline',
                 transform=ax.transAxes, bbox=boxdict,
                 fontdict=fontdict, **kwargs)
     elif location == 22:
-        ax.text(0.5, 1.0 - dist * aspect, label,
+        t = ax.text(0.5, 1.0 - dist * aspect, label,
                 horizontalalignment='center', verticalalignment='top',
                 transform=ax.transAxes, bbox=boxdict,
                 fontdict=fontdict, **kwargs)
     elif location == 23:
-        ax.text(1.0 - dist, 0.5, label,
+        t = ax.text(1.0 - dist, 0.5, label,
                 horizontalalignment='right', verticalalignment='center_baseline',
                 transform=ax.transAxes, bbox=boxdict,
                 fontdict=fontdict, **kwargs)
     elif location == 24:
-        ax.text(0.5, 0.0 + dist * aspect, label,
+        t = ax.text(0.5, 0.0 + dist * aspect, label,
                 horizontalalignment='center', verticalalignment='bottom',
                 transform=ax.transAxes, bbox=boxdict,
                 fontdict=fontdict, **kwargs)
     else:
         raise ValueError("Other corners not defined.")
-
+    return t
 
 def axes_from_axes(
         ax: Axes, n: int,
@@ -372,3 +372,221 @@ def reset_mpl(gallery_conf, fname):
     mpl.rcParams['axes.labelcolor'] = COLOR
     mpl.rcParams['xtick.color'] = COLOR
     mpl.rcParams['ytick.color'] = COLOR
+
+
+
+
+
+def pick_colors_from_cmap(N: int, cmap: str = 'viridis') -> tp.List[tuple]:
+    """Picks N uniformly distributed colors from a given colormap.
+
+    Parameters
+    ----------
+    N : int
+        Number of wanted colors
+    cmap : str, optional
+        name of the colormap to pick from, by default 'viridis'
+
+
+    Returns
+    -------
+    List[tuple]
+        List of color tuples.
+
+
+    See Also
+    --------
+    lwsspy.plot.update_colorcycler.update_colorcycler : Updates the colors
+        used in new lines/scatter points etc.
+
+    """
+
+    # Get cmap
+    colormap = plt.get_cmap(cmap)
+
+    # Pick
+    colors = colormap(np.linspace(0, 1, N))
+
+    return colors
+
+
+
+import matplotlib.font_manager as fm
+import matplotlib
+import os
+import glob
+
+import matplotlib.ft2font as ft
+
+FONTS = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'fonts')
+
+
+def updaterc(rebuild=False):
+    """Updates the rcParams to something generic that looks ok good out of
+    the box.
+
+    Args:
+
+        rebuild (bool):
+            Rebuilds fontcache incase it needs it.
+
+    Last modified: Lucas Sawade, 2020.09.15 01.00 (lsawade@princeton.edu)
+    """
+
+    add_fonts()
+
+    params = {
+        'font.family': 'sans-serif',
+        'font.style':   'normal',
+        'font.variant': 'normal',
+        'font.weight':  'normal',
+        'font.stretch': 'normal',
+        'font.size':    12.0,
+        'font.serif':     [
+            'Times New Roman', 'DejaVu Serif', 'Bitstream Vera Serif', 'Computer Modern Roman',
+            'New Century Schoolbook', 'Century Schoolbook L', 'Utopia',
+            'ITC Bookman', 'Bookman', 'Nimbus Roman No9 L',
+            'Times', 'Palatino', 'Charter', 'serif'
+        ],
+        'font.sans-serif': [
+            'Arial', 'Helvetica', 'DejaVu Sans', 'Bitstream Vera Sans',
+            'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana',
+            'Geneva', 'Lucid', 'Avant Garde', 'sans-serif'
+        ],
+        'font.cursive':    [
+            'Apple Chancery', 'Textile', 'Zapf Chancery', 'Sand', 'Script MT',
+            'Felipa', 'Comic Neue', 'Comic Sans MS', 'cursive'
+        ],
+        'font.fantasy':    [
+            'Chicago', 'Charcoal', 'Impact', 'Western', 'Humor Sans', 'xkcd',
+            'fantasy'
+        ],
+        'font.monospace':  [
+            'Roboto Mono', 'Monaco', 'DejaVu Sans Mono',
+            'Bitstream Vera Sans Mono',  'Computer Modern Typewriter',
+            'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed',
+            'Terminal', 'monospace'
+        ],
+        'font.size': 12,
+        # 'pdf.fonttype': 3,
+        'figure.dpi': 140,
+        'font.weight': 'normal',
+        # 'pdf.fonttype': 42,
+        # 'ps.fonttype': 42,
+        # 'ps.useafm': True,
+        # 'pdf.use14corefonts': True,
+        'axes.unicode_minus': False,
+        'axes.labelweight': 'normal',
+        'axes.labelsize': 'small',
+        'axes.titlesize': 'medium',
+        'axes.linewidth': 1,
+        'axes.grid': False,
+        'grid.color': "k",
+        'grid.linestyle': ":",
+        'grid.alpha': 0.7,
+        'xtick.labelsize': 'small',
+        'xtick.direction': 'out',
+        'xtick.top': True,  # draw label on the top
+        'xtick.bottom': True,  # draw label on the bottom
+        'xtick.minor.visible': True,
+        'xtick.major.top': True,  # draw x axis top major ticks
+        'xtick.major.bottom': True,  # draw x axis bottom major ticks
+        'xtick.major.size': 4,  # draw x axis top major ticks
+        'xtick.major.width': 1,  # draw x axis top major ticks
+        'xtick.minor.top': True,  # draw x axis top minor ticks
+        'xtick.minor.bottom': True,  # draw x axis bottom minor ticks
+        'xtick.minor.width': 1,  # draw x axis top major ticks
+        'xtick.minor.size': 2,  # draw x axis top major ticks
+        'ytick.labelsize': 'small',
+        'ytick.direction': 'out',
+        'ytick.left': True,  # draw label on the top
+        'ytick.right': True,  # draw label on the bottom
+        'ytick.minor.visible': True,
+        'ytick.major.left': True,  # draw x axis top major ticks
+        'ytick.major.right': True,  # draw x axis bottom major ticks
+        'ytick.major.size': 4,  # draw x axis top major ticks
+        'ytick.major.width': 1,  # draw x axis top major ticks
+        'ytick.minor.left': True,  # draw x axis top minor ticks
+        'ytick.minor.right': True,  # draw x axis bottom minor ticks
+        'ytick.minor.size': 2,  # draw x axis top major ticks
+        'ytick.minor.width': 1,  # draw x axis top major ticks
+        'legend.fancybox': False,
+        'legend.frameon': True,
+        'legend.loc': 'best',
+        'legend.numpoints': 1,
+        'legend.fontsize': 'small',
+        'legend.framealpha': 1,
+        'legend.scatterpoints': 3,
+        'legend.edgecolor': 'inherit',
+        'legend.facecolor': 'w',
+        'mathtext.fontset': 'custom',
+        'mathtext.rm': 'sans',
+        'mathtext.it': 'sans:italic',
+        'mathtext.bf': 'sans:bold',
+        'mathtext.cal': 'cursive',
+        'mathtext.tt':  'monospace',
+        'mathtext.default': 'it'
+    }
+
+    matplotlib.rcParams.update(params)
+
+
+def add_fonts(verbose: bool = False):
+
+    # Remove fontlist:
+    for file in glob.glob('~/.matplotlib/font*.json'):
+        os.remove(file)
+
+    # Fonts
+    fontfiles = glob.glob(os.path.join(FONTS, "*.tt?"))
+
+    # for name, fname in fontdict.items():
+    for fname in fontfiles:
+
+        font = ft.FT2Font(fname)
+
+        # Just to verify what kind of fonts are added verifiably
+        if verbose:
+            print(fname, "Scalable:", font.scalable)
+            for style in ('Italic',
+                          'Bold',
+                          'Scalable',
+                          'Fixed sizes',
+                          'Fixed width',
+                          'SFNT',
+                          'Horizontal',
+                          'Vertical',
+                          'Kerning',
+                          'Fast glyphs',
+                          'Multiple masters',
+                          'Glyph names',
+                          'External stream'):
+                bitpos = getattr(ft, style.replace(' ', '_').upper()) - 1
+                print(f"{style+':':17}", bool(font.style_flags & (1 << bitpos)))
+
+        # Actually adding the fonts
+        fe = fm.ttfFontProperty(font)
+        fm.fontManager.ttflist.insert(0, fe)
+
+    # matplotlib.font_manager.findSystemFonts(fontpaths=None, fontext='ttf')
+    # def _add_Helvetica():
+
+    #     # Check if Helvetica in system fonts
+    #     from matplotlib import font_manager
+    #     fonts = [os.path.basename(x).split(".")[0]
+    #              for x in font_manager.findSystemFonts(
+    #         fontpaths=None)]
+    #     fonts.sort()
+    #     # print(fonts)
+    #     if "HelveticaNeue" in fonts:
+    #         pass
+    #     elif "Helvetica Neue" in fonts:
+    #         pass
+    #     elif "Helvetica" in fonts:
+    #         return "Helvetica"
+    #     else:
+    #         font_file = os.path.join(
+    #             os.path.dirname(__file__), 'fonts', 'HelveticaNeue.ttc')
+    #         font_manager.fontManager.addfont(font_file)
+    #     return "Helvetica Neue"
+

@@ -118,17 +118,26 @@ def plot_arrivals(arrivals, *args, origin_time: obspy.UTCDateTime | float = 0.0,
         # Plot veritcal onset times
         ax.vlines(onset, -scale, scale, *args, **kwargs)
 
+        # Set base text kwargs
+        basekwargs = dict(rotation=45, fontsize='small')
+        
+        # Update wrt adjacency
         if _i % 2 == 0:
-            fac = -1
-            rotation = 45
-            va = 'top'
-            ha = 'right'
+            topkwargs = dict(
+                va = 'top',
+                ha = 'right',
+            )
+            basekwargs.update(topkwargs)
         else:
-            fac = 1
-            rotation = 45
-            va = 'bottom'
-            ha = 'left'
-
+            bottomkwargs = dict( 
+                va = 'bottom',
+                ha = 'left',
+            )
+            basekwargs.update(bottomkwargs)
+            
+        
+        basekwargs.update(textkwargs)
+        
         # Plot phase name
         ax.text(onset, scale * (-1) ** (_i+1), arrival.name, *textargs,
-                fontsize='small', rotation=rotation, va=va, ha=ha, **textkwargs)
+                **basekwargs)

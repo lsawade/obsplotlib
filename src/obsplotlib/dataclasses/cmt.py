@@ -365,6 +365,19 @@ class CMTSOLUTION:
             + 2 * self.Mtp**2
         ) ** 0.5 * 0.5**0.5
 
+    @M0.setter
+    def M0(self, value):
+        """Set M0 and update the half duration"""
+        self.Mrr *= value
+        self.Mtt *= value
+        self.Mpp *= value
+        self.Mrt *= value
+        self.Mrp *= value
+        self.Mtp *= value
+        
+        self.update_hdur()
+        
+
     @property
     def cmt_time(self):
         """UTC Origin + Timeshift"""

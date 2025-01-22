@@ -169,7 +169,7 @@ def section(
                     np.max(np.abs(_tr.copy().slice(slicestart, sliceend).data))
                 )
 
-            maxs.append(streammaxs)
+            maxs.append(np.max(streammaxs))
 
         if absmax is None:
             absmax = np.max(maxs)
